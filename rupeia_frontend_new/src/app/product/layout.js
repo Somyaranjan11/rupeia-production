@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
         <div className="w-full">
           <Navbar />
         </div>
-        <div className="w-full h-full overflow-hidden p-3">{children}</div>
+        <div className="w-full h-full overflow-hidden">{children}</div>
       </div>
     </div>
   );

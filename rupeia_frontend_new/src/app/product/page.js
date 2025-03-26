@@ -5,39 +5,44 @@ import { PiShoppingBagOpenDuotone } from "react-icons/pi";
 import { MdSip } from "react-icons/md";
 import LandingPageCard from "../components/LandingPageCard";
 import { GoArrowUpRight } from "react-icons/go";
+import Bag from "../icons/Bag";
 
 const page = () => {
   return (
-    <div className="h-full flex flex-col font-poppins">
-      <div className="flex justify-center items-center flex-col">
-        <p className="text-[32px] font-semibold leading-7">Hi Aryan!</p>
-        <p className="text-[16px] font-medium leading-7">Welcome Back </p>
+    <div className="h-full flex flex-col font-poppins mt-5">
+      <div className="flex justify-center items-center flex-col gap-1">
+        <p className="text-[32px] font-semibold leading-7 font-poppins">
+          Hi Aryan!
+        </p>
+        <p className="text-[16px] font-medium leading-7 font-poppins">
+          Welcome Back{" "}
+        </p>
       </div>
 
-      <div className="bg-white rounded-4xl flex flex-col  h-full mt-3">
+      <div className="bg-white rounded-4xl flex flex-col h-full mt-3 p-2">
         {/* Landing page boxes */}
         <div className="flex justify-between items-center px-5 pb-4 pt-8 gap-3">
-          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-md py-1">
-            <div className="bg-primary p-[6px] w-fit rounded-full absolute -top-4">
-              <GoGoal />
+          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2">
+            <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+              <GoGoal className="text-[18px]" />
             </div>
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               Pulse
             </p>
             <p className="text-[11px] text-black font-medium">60%</p>
           </div>
-          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-md py-1">
-            <div className="bg-primary p-[6px] w-fit rounded-full absolute -top-4">
-              <PiShoppingBagOpenDuotone />
+          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2">
+            <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+              <Bag />
             </div>
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               Portfolio
             </p>
             <p className="text-[11px] text-black font-medium">₹4,700 </p>
           </div>
-          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-md py-1">
-            <div className="bg-primary p-[6px] w-fit rounded-full absolute -top-4">
-              <MdSip />
+          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2">
+            <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+              <MdSip className="text-[18px]" />
             </div>
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               SIP
@@ -53,7 +58,7 @@ const page = () => {
             <GoArrowUpRight className="text-black" />
           </span>
         </div>
-        <div className="h-full p-5">
+        <div className="h-full p-2 my-2">
           <LandingPageCard />
         </div>
       </div>
