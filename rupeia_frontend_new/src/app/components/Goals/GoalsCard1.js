@@ -1,6 +1,6 @@
 import React from "react";
 
-const WealthCard1 = () => {
+const GoalsCard1 = () => {
   const type = [
     { id: 1, name: "Phones" },
     { id: 2, name: "Laptops" },
@@ -9,7 +9,7 @@ const WealthCard1 = () => {
   return (
     <div className="font-poppins">
       <p className="text-[13px] font-medium pr-10">
-        Let's start with some questions to analyse your profile.
+        Please tell me about the type of goal you are looking for
       </p>
       <div className="flex flex-col gap-1 mt-4">
         <p className="text-[13px] font-medium leading-6">
@@ -75,4 +75,4 @@ const WealthCard1 = () => {
   );
 };
 
-export default WealthCard1;
+export default GoalsCard1;

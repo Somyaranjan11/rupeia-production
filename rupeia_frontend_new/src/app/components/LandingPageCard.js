@@ -10,7 +10,7 @@ const LandingPageCard = () => {
     <div
       className="bg-primary h-full rounded-2xl flex justify-between flex-col font-poppins"
       onClick={() => {
-        router.push("product/wealth");
+        router.push("product/kyc");
       }}
     >
       <div className="pt-12 flex flex-row justify-between relative">

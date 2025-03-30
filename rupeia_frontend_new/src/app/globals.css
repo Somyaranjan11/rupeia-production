@@ -92,3 +92,65 @@ body {
   backdrop-filter: blur(32.5px);
   box-shadow: 0px 0px 9.4px 0px #00000040;
 }
+.goal-range-class {
+  background: linear-gradient(
+    181.34deg,
+    rgba(85, 18, 98, 0.93) 41.69%,
+    rgba(39, 3, 48, 0.93) 98.86%
+  );
+}
+
+.range-slider-education-goal-amount {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  overflow: visible; /* Ensures thumb isn't clipped */
+}
+
+.range-slider-education-goal-amount::-webkit-slider-runnable-track {
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.range-slider-education-goal-amount::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  height: 24px; /* Make the bubble larger */
+  width: 24px; /* Make the bubble larger */
+  background: white;
+  border-radius: 50%; /* Fully round */
+  position: relative;
+  top: -0.5rem; /* Adjust the position to move it above the slider */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* Add a shadow for emphasis */
+}
+
+.range-slider-education-goal-amount::-moz-range-thumb {
+  height: 2rem; /* Make the bubble larger */
+  width: 2rem; /* Make the bubble larger */
+  background: white;
+  border-radius: 50%; /* Fully round */
+  position: relative;
+  top: -0.75rem; /* Adjust the position */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* Add a shadow */
+}
+
+.range-slider-education-goal-amount::-moz-range-track {
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.investment-card-background {
+  background: linear-gradient(181.06deg, #551262 40.33%, #270330 110.9%);
+}
+.swipe-start {
+  background: linear-gradient(0deg, #551262, #551262),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.31), rgba(255, 255, 255, 0.31));
+}
+.kyc-back-button {
+  background: linear-gradient(180deg, #b65cfe 0%, #a430fb 100%);
+}
+.recomended-blogs {
+  background: linear-gradient(181.06deg, #551262 40.33%, #270330 110.9%);
+}
