@@ -6,11 +6,13 @@ import KYCEmail from "@/app/components/KYC/KYCEmail";
 import KYCInvestorInformation from "@/app/components/KYC/KYCInvestorInformation";
 import KYCPancard from "@/app/components/KYC/KYCPancard";
 import KYCPersonalnformation from "@/app/components/KYC/KYCPersonalnformation";
+import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 
 const page = () => {
+  const router = useRouter();
   const [pageStep, setPageStep] = useState(1);
   return (
     <div className=" px-5 font-poppins flex flex-col h-full relative overflow-y-auto">
@@ -36,7 +38,11 @@ const page = () => {
             {pageStep == 7 && "Manage Bank"}
           </p>
         </div>
-        <div>
+        <div
+          onClick={() => {
+            router.push("/product");
+          }}
+        >
           <RxCross2 />
         </div>
       </div>

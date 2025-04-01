@@ -71,6 +71,112 @@ const WealthCard1 = () => {
           ))}
         </div>
       </div>
+      <div className="flex flex-col gap-1 mt-4">
+        <p className="text-[13px] font-medium leading-6">
+          4. Please select the type
+        </p>
+        <div className="flex flex-row gap-5">
+          {type?.map((data, index) => (
+            <div
+              className="text-white border-[1px] border-[#7474744A] rounded-full px-4 py-1"
+              key={index}
+            >
+              <p className="text-[12px] font-medium leading-6">{data?.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 mt-4">
+        <p className="text-[13px] font-medium leading-6">
+          5. Please select the type
+        </p>
+        <div className="flex flex-row gap-5">
+          {type?.map((data, index) => (
+            <div
+              className="text-white border-[1px] border-[#7474744A] rounded-full px-4 py-1"
+              key={index}
+            >
+              <p className="text-[12px] font-medium leading-6">{data?.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 mt-4">
+        <p className="text-[13px] font-medium leading-6">
+          6. Please select the type
+        </p>
+        <div className="flex flex-row gap-5">
+          {type?.map((data, index) => (
+            <div
+              className="text-white border-[1px] border-[#7474744A] rounded-full px-4 py-1"
+              key={index}
+            >
+              <p className="text-[12px] font-medium leading-6">{data?.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 mt-4">
+        <p className="text-[13px] font-medium leading-6">
+          7. Please select the type
+        </p>
+        <div className="flex flex-row gap-5">
+          {type?.map((data, index) => (
+            <div
+              className="text-white border-[1px] border-[#7474744A] rounded-full px-4 py-1"
+              key={index}
+            >
+              <p className="text-[12px] font-medium leading-6">{data?.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 mt-4">
+        <p className="text-[13px] font-medium leading-6">
+          7. Please select the type
+        </p>
+        <div className="flex flex-row gap-5">
+          {type?.map((data, index) => (
+            <div
+              className="text-white border-[1px] border-[#7474744A] rounded-full px-4 py-1"
+              key={index}
+            >
+              <p className="text-[12px] font-medium leading-6">{data?.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div className="flex flex-col gap-1 mt-4">
+        <p className="text-[13px] font-medium leading-6">
+          7. Please select the type
+        </p>
+        <div className="flex flex-row gap-5">
+          {type?.map((data, index) => (
+            <div
+              className="text-white border-[1px] border-[#7474744A] rounded-full px-4 py-1"
+              key={index}
+            >
+              <p className="text-[12px] font-medium leading-6">{data?.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex flex-col gap-1 mt-4">
+        <p className="text-[13px] font-medium leading-6">
+          17. Please select the type
+        </p>
+        <div className="flex flex-row gap-5">
+          {type?.map((data, index) => (
+            <div
+              className="text-white border-[1px] border-[#7474744A] rounded-full px-4 py-1"
+              key={index}
+            >
+              <p className="text-[12px] font-medium leading-6">{data?.name}</p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   );
 };

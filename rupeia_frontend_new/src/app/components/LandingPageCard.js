@@ -10,7 +10,7 @@ const LandingPageCard = () => {
     <div
       className="bg-primary h-full rounded-2xl flex justify-between flex-col font-poppins"
       onClick={() => {
-        router.push("product/kyc");
+        router.push("product/wealth");
       }}
     >
       <div className="pt-12 flex flex-row justify-between relative">
@@ -18,10 +18,13 @@ const LandingPageCard = () => {
           <h3 className="text-3xl font-bold bg-gradient-to-b from-[#ffffff] to-[#747474] bg-clip-text text-transparent">
             GROWTH
           </h3>
-          <p className="text-[22px] font-medium leading-7 mt-4">Steady Wealth </p>
+          <p className="text-[22px] font-medium leading-7 mt-4">
+            Steady Wealth{" "}
+          </p>
           <p className="text-[11px] font-medium mt-1">
-            You get 2x the gain if <br/>you make gain
-          </p> 
+            You get 2x the gain if <br />
+            you make gain
+          </p>
         </div>
         <div className="bg-[#9563A257] flex justify-center items-center h-[100px] w-[100px] rounded-l-full image-card-class">
           <img src={LandingImageCard.src} className="" />

@@ -40,6 +40,7 @@ const Navbar = () => {
     {
       id: 4,
       name: "Customer Support",
+      route: "/product/customer-support",
     },
     {
       id: 5,
@@ -48,10 +49,12 @@ const Navbar = () => {
     {
       id: 6,
       name: "Saved Posts",
+      route: "/product/saved-post",
     },
     {
       id: 7,
       name: "Liked Posts",
+      route: "/product/liked-post",
     },
   ];
 
@@ -100,21 +103,28 @@ const Navbar = () => {
           Rupeia
         </p>
       </div>
-      <div className="flex flex-row items-center gap-1.5">
-        <span className="flex items-center">
+      <div className="flex flex-row items-center gap-2">
+        <span
+          className={`flex items-center justify-center  ${
+            pathname.includes("customer-support") ||
+            pathname.includes("chat-bot")
+              ? ""
+              : "bg-[#FFFFFF] rounded-[5px] px-1 py-[3px]"
+          }`}
+        >
           {pathname.includes("customer-support") ||
           pathname.includes("chat-bot") ? (
             <Mobile className={`#5D20D2`} />
           ) : (
-            <Mobile className={`#ffffff`} />
+            <Mobile className={`#551262`} cl />
           )}
 
           <p
-            className={`text-[12px] font-normal leading-6 ${
+            className={`text-[12px] font-normal leading-5 ${
               pathname.includes("customer-support") ||
               pathname.includes("chat-bot")
                 ? "text-[#5D20D2]"
-                : "text-white"
+                : "text-[#551262]"
             }`}
           >
             Lite
@@ -167,6 +177,7 @@ const Navbar = () => {
                       ? "bg-[#E3E3E3] rounded-lg  flex items-center"
                       : ""
                   }`}
+                  key={index}
                 >
                   <p
                     className="text-[13px] font-poppins font-medium leading-7 text-black"
@@ -187,8 +198,23 @@ const Navbar = () => {
             </p>
             <div className="flex flex-col">
               {optionMenu?.map((data, index) => (
-                <div className="px-4 h-9 ">
-                  <p className="text-[13px] font-poppins font-medium leading-7 text-black">
+                <div
+                  className={` px-4 h-9 ${
+                    pathname?.includes(data?.route)
+                      ? "bg-[#E3E3E3] rounded-lg  flex items-center"
+                      : ""
+                  }`}
+                  key={index}
+                >
+                  <p
+                    className="text-[13px] font-poppins font-medium leading-7 text-black"
+                    onClick={() => {
+                      if (data?.route) {
+                        router.push(data?.route);
+                        setIsOpen(false);
+                      }
+                    }}
+                  >
                     {data?.name}
                   </p>
                 </div>

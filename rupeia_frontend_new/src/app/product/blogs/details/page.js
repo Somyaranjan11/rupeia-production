@@ -1,5 +1,6 @@
 "use client";
 import RecomendedBlogs from "@/app/components/Blogs/RecomendedBlogs";
+import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import Save from "@/app/icons/Save";
 import Share from "@/app/icons/Share";
 import { useRouter } from "next/navigation";
@@ -26,20 +27,14 @@ const Page = () => {
         "If you’ve put all your money in Indian Markets, then you’re in trouble: Sharan",
     },
   ];
+  const handleClick = () => {
+    console.log("hello");
+    router.push("/product/blogs/content");
+  };
   return (
-    <div className="px-5 overflow-y-auto h-full">
-      <div className="flex items-center gap-1 my-3">
-        <div
-          className="bg-[#551262D4] p-1 rounded-full border-[1px] border-[#794083] w-fit mt-2"
-          onClick={() => {
-            router.push("/product/blogs/content");
-          }}
-        >
-          <BsArrowLeftShort className="text-[22px]" />
-        </div>
-        <div className="w-full flex items-center justify-center mr-5">
-          <p className="text-[16px] leading-7 font-semibold">Blogs</p>
-        </div>
+    <div className="px-5 overflow-y-auto font-poppins flex flex-col h-screen pt-24 pb-16">
+      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
+        <NavbarCommonPage page={"Blogs"} handleClick={handleClick} />
       </div>
       <div className="flex items-center justify-between">
         <p className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]">
@@ -55,7 +50,7 @@ const Page = () => {
           Business
         </p>
       </div>
-      <div className="border-b-[1px] border-[#FFFFFF7A] h-[2px] w-full content-none mt-1"></div>
+      {/* <div className="border-b-[1px] border-[#FFFFFF7A] h-[2px] w-full content-none mt-1"></div> */}
       <div className="flex flex-col gap-3 mt-4">
         <p className="text-[17px] font-poppins font-medium leading-7">
           If you’ve put all your money in Indian Markets, then you’re in

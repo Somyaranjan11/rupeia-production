@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import "../globals.css";
 import { GoGoal } from "react-icons/go";
@@ -6,8 +7,10 @@ import { MdSip } from "react-icons/md";
 import LandingPageCard from "../components/LandingPageCard";
 import { GoArrowUpRight } from "react-icons/go";
 import Bag from "../icons/Bag";
+import { useRouter } from "next/navigation";
 
 const page = () => {
+  const router = useRouter();
   return (
     <div className="h-full flex flex-col font-poppins mt-5">
       <div className="flex justify-center items-center flex-col gap-1">
@@ -31,7 +34,12 @@ const page = () => {
             </p>
             <p className="text-[11px] text-black font-medium">60%</p>
           </div>
-          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2">
+          <div
+            className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+            onClick={() => {
+              router.push("/product/portfolio");
+            }}
+          >
             <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
               <Bag />
             </div>
@@ -40,7 +48,12 @@ const page = () => {
             </p>
             <p className="text-[11px] text-black font-medium">₹4,700 </p>
           </div>
-          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2">
+          <div
+            className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+            onClick={() => {
+              router.push("/product/sip");
+            }}
+          >
             <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
               <MdSip className="text-[18px]" />
             </div>

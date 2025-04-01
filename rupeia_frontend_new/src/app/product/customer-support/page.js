@@ -4,6 +4,7 @@ import { BsArrowLeftShort } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 import { IoRefresh } from "react-icons/io5";
 import { MdSend } from "react-icons/md";
+import { useRouter } from "next/navigation";
 
 const Page = () => {
   const pageContent = [
@@ -47,20 +48,21 @@ const Page = () => {
       reply: true,
     },
   ];
+  const router = useRouter();
   return (
     <div className="overflow-hidden h-full flex flex-col">
       <div className="flex items-center justify-between mt-4 px-5">
         <div
           className="rounded-full border-[1px] bg-[#551262D4] border-[#794083] h-[50px] w-[50px] flex justify-center items-center"
           onClick={() => {
-            console.log("helo");
+            router.push("/product");
           }}
         >
           <BsArrowLeftShort className="text-[29px]" />
         </div>
         <div>
           <p className="text-[16px] leading-7 font-semibold text-black">
-          Customer Support
+            Customer Support
           </p>
         </div>
         <div
