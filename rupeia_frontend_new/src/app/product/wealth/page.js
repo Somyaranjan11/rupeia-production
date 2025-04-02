@@ -54,9 +54,7 @@ const page = () => {
           {pageStep == 3 && <GoalsCard1 />}
           {pageStep == 4 && <GaolsCard2 />}
           {pageStep == 5 && <BenifitsCard />}
-          {pageStep == 6 && <BenifitsCard2 />}
-          {pageStep == 7 && <BenifitsCard3 />}
-          {pageStep == 8 && <Confirmation />}
+          {pageStep == 6 && <Confirmation />}
         </div>
       </div>
 

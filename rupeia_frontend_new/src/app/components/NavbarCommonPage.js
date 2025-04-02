@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import Mobile from "../icons/Mobile";
@@ -10,8 +11,8 @@ const NavbarCommonPage = ({
     console.log("rupeia");
   },
 }) => {
-  const router = useRouter();
   const pathname = usePathname();
+  const router = useRouter();
   return (
     <div
       className={`flex flex-row items-center justify-between py-6  font-poppins relative ${
@@ -25,7 +26,7 @@ const NavbarCommonPage = ({
           <BsArrowLeftShort className="text-[29px]" />
         </div>
         <div>
-          <p className="text-[17px] font-semibold leading-7">{page}</p>
+          <p className="text-[16px] font-semibold leading-7">{page}</p>
         </div>
       </div>
       <div className="flex flex-row items-center gap-2">

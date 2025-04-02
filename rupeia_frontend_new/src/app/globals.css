@@ -154,3 +154,14 @@ body {
 .recomended-blogs {
   background: linear-gradient(181.06deg, #551262 40.33%, #270330 110.9%);
 }
+
+.refer-card {
+  background: linear-gradient(181.06deg, #551262 -15.59%, #270330 110.9%);
+}
+/* background: #000000AD; */
+.profile-card {
+  background: linear-gradient(180deg, #551262 0%, #270330 100%);
+}
+.profile-shadow {
+  backdrop-filter: blur(10.399999618530273px);
+}

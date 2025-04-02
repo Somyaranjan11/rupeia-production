@@ -28,6 +28,7 @@ const Navbar = () => {
     {
       id: 1,
       name: "Profile",
+      route: "/product/profile",
     },
     {
       id: 2,
@@ -36,6 +37,7 @@ const Navbar = () => {
     {
       id: 3,
       name: "Invite Friends",
+      route: "/product/refer",
     },
     {
       id: 4,
@@ -45,6 +47,7 @@ const Navbar = () => {
     {
       id: 5,
       name: "Terms and Conditions",
+      route: "/product/terms-condition",
     },
     {
       id: 6,
@@ -131,7 +134,12 @@ const Navbar = () => {
           </p>
         </span>
 
-        <div className="flex flex-row items-center gap-1.5">
+        <div
+          className="flex flex-row items-center gap-1.5"
+          onClick={() => {
+            router.push("/product/profile");
+          }}
+        >
           <span
             className={`border-[1px]  rounded-full ${
               pathname.includes("customer-support") ||
