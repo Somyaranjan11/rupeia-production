@@ -165,3 +165,9 @@ body {
 .profile-shadow {
   backdrop-filter: blur(10.399999618530273px);
 }
+.plan-card {
+  background: linear-gradient(179.72deg, #551262 0.24%, #270330 63.43%);
+}
+.plan-card1{
+  background: linear-gradient(181.06deg, #551262 -15.59%, #270330 110.9%);
+}
