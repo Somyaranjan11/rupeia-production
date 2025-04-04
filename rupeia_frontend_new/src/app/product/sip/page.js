@@ -78,22 +78,21 @@ const Page = () => {
             <p className="text-[13px] leading-5 font-medium">All investments</p>
           </div>
           <div className="flex flex-row justify-center items-center gap-8 my-2">
-            <p
+            <span
               className={`text-[13px] leading-5 font-medium ${
-                currentPage == "goal"
-                  ? "text-white underline"
-                  : "text-[#FFFFFF70]"
+                currentPage == "goal" ? "text-white" : "text-[#FFFFFF70]"
               }`}
               onClick={() => {
                 setCurrentPage("goal");
               }}
             >
               Goal
-            </p>
-            <p
+              {currentPage == "goal" && <p className="border-[1px]"></p>}
+            </span>
+            <span
               className={`text-[13px] leading-5 font-medium  ${
                 currentPage == "wealth-creation"
-                  ? "text-white underline"
+                  ? "text-white"
                   : "text-[#FFFFFF70]"
               }`}
               onClick={() => {
@@ -101,7 +100,10 @@ const Page = () => {
               }}
             >
               Wealth Creation
-            </p>
+              {currentPage == "wealth-creation" && (
+                <p className="border-[1px]"></p>
+              )}
+            </span>
           </div>
           <div>
             <SIPCard investmentDetails={investment_plan} />

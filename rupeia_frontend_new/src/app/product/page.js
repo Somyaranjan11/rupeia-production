@@ -8,11 +8,13 @@ import LandingPageCard from "../components/LandingPageCard";
 import { GoArrowUpRight } from "react-icons/go";
 import Bag from "../icons/Bag";
 import { useRouter } from "next/navigation";
+import LandingPageNewsCard from "../components/LandingPageNewsCard";
+import LandingPageBlogsCard from "../components/LandingPageBlogsCard";
 
 const page = () => {
   const router = useRouter();
   return (
-    <div className="h-full flex flex-col font-poppins mt-5">
+    <div className="h-screen flex flex-col font-poppins mt-5 overflow-y-auto pb-20">
       <div className="flex justify-center items-center flex-col gap-1">
         <p className="text-[32px] font-semibold leading-7 font-poppins">
           Hi Aryan!
@@ -22,9 +24,9 @@ const page = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-4xl flex flex-col h-full mt-3 p-2">
+      <div className="bg-white rounded-4xl flex flex-col h-full mt-3 p-2 relative">
         {/* Landing page boxes */}
-        <div className="flex justify-between items-center px-5 pb-4 pt-8 gap-3">
+        <div className="flex justify-between items-center px-5 pb-4 pt-4 gap-3">
           <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2">
             <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
               <GoGoal className="text-[18px]" />
@@ -71,8 +73,11 @@ const page = () => {
             <GoArrowUpRight className="text-black" />
           </span>
         </div>
-        <div className="h-full p-2 my-2">
+        <div className="p-2 h-fit my-2 overflow-y-hidden overflow-x-auto flex gap-3 rounded-4xl mb-24 fixed w-full -bottom-20">
           <LandingPageCard />
+          <LandingPageNewsCard />
+          <LandingPageBlogsCard />
+
         </div>
       </div>
     </div>

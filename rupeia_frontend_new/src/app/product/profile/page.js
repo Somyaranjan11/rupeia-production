@@ -8,7 +8,7 @@ import { FaAngleRight } from "react-icons/fa6";
 const Page = () => {
   const router = useRouter();
   return (
-    <div className="bg-[#0000004d] fixed top-0 left-0 right-0 bottom-0 h-screen z-50 w-full px-8 flex justify-center items-center">
+    <div className="bg-[#0000004d] h-screen z-50 w-full px-8 flex justify-center items-center">
       <div className="profile-card h-[505px] w-[100%] z-50 rounded-3xl mx-auto">
         <div className="flex flex-row p-5">
           <div
@@ -60,7 +60,12 @@ const Page = () => {
               <FaAngleRight />
             </div>
           </div>
-          <div className="flex justify-between items-center">
+          <div
+            className="flex justify-between items-center"
+            onClick={() => {
+              router.push("/product/refer");
+            }}
+          >
             <div>
               <p className="text-[14px] font-medium leading-7">
                 Invite Friends
@@ -70,7 +75,12 @@ const Page = () => {
               <FaAngleRight />
             </div>
           </div>
-          <div className="flex justify-between items-center">
+          <div
+            className="flex justify-between items-center"
+            onClick={() => {
+              router.push("/product/customer-support");
+            }}
+          >
             <div>
               <p className="text-[14px] font-medium leading-7">
                 Customer Support
@@ -80,7 +90,12 @@ const Page = () => {
               <FaAngleRight />
             </div>
           </div>
-          <div className="flex justify-between items-center">
+          <div
+            className="flex justify-between items-center"
+            onClick={() => {
+              router.push("/product");
+            }}
+          >
             <div>
               <p className="text-[14px] font-medium leading-7">Rupeia</p>
             </div>
