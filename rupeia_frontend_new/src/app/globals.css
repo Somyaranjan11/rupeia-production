@@ -77,6 +77,10 @@ a {
 /* Apply globally using Tailwind */
 :root {
   --font-poppins: "Poppins", sans-serif;
+  --screen-height-xs: 367px;
+  --screen-height-sm: 667px;
+  --screen-height-md: 812px;
+  --screen-height-lg: 896px;
 }
 
 /* Example Usage */
@@ -168,6 +172,13 @@ body {
 .plan-card {
   background: linear-gradient(179.72deg, #551262 0.24%, #270330 63.43%);
 }
-.plan-card1{
+.plan-card1 {
   background: linear-gradient(181.06deg, #551262 -15.59%, #270330 110.9%);
+}
+
+@media (min-height: 300px) and (max-height:680px) {
+  .image-resize{
+    height: 100px;
+    width: 200px;
+  }
 }

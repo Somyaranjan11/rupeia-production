@@ -58,31 +58,31 @@ const BenifitsCard3 = () => {
             </div>
           </div>
         </div>
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 mt-4">
           <p className="text-[13px] font-poppins font-medium text-[#FFFFFF]">
             Best funds for You
           </p>
           <p className="text-[#FFFFFF8F] text-[13px] font-poppins font-medium leading-5">
-            It is a long established fact that a reader will be distracted by
-            the readable.
+            Handpicked investment options tailored to your needs, risk appetite,
+            and market trends!.
           </p>
         </div>
-        <div className="flex flex-col gap-2 mt-2">
+        <div className="flex flex-col gap-2 mt-4">
           <p className="text-[13px] font-poppins font-medium text-[#FFFFFF]">
-            24/7 Monitoring*
+            24/7 Monitoring
           </p>
           <p className="text-[#FFFFFF8F] text-[12px] font-poppins font-medium leading-5">
-            It is a long established fact that a reader will be distracted by
-            the readable.
+            Active portfolio tracking and adjustments to ensure consistent and
+            optimal investment growth!.
           </p>
         </div>
-        <div className="flex flex-col gap-2 mt-2">
+        <div className="flex flex-col gap-2 mt-4">
           <p className="text-[13px] font-poppins font-medium text-[#FFFFFF]">
-            Loss Prevention*
+            Loss Prevention
           </p>
           <p className="text-[#FFFFFF8F] text-[12px] font-poppins font-medium leading-5">
-            It is a long established fact that a reader will be distracted by
-            the readable.
+            Proactive risk management to safeguard your investments and minimize
+            potential losses!.
           </p>
         </div>
       </div>

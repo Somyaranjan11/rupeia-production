@@ -14,7 +14,7 @@ import LandingPageBlogsCard from "../components/LandingPageBlogsCard";
 const page = () => {
   const router = useRouter();
   return (
-    <div className="h-screen flex flex-col font-poppins mt-5 overflow-y-auto pb-20">
+    <div className="h-screen flex flex-col font-poppins mt-5 pb-20 w-full">
       <div className="flex justify-center items-center flex-col gap-1">
         <p className="text-[32px] font-semibold leading-7 font-poppins">
           Hi Aryan!
@@ -24,7 +24,7 @@ const page = () => {
         </p>
       </div>
 
-      <div className="bg-white rounded-4xl flex flex-col h-full mt-3 p-2 relative">
+      <div className="bg-white rounded-4xl flex flex-col h-full mt-3 mb-10 p-2 relative">
         {/* Landing page boxes */}
         <div className="flex justify-between items-center px-5 pb-4 pt-4 gap-3">
           <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2">
@@ -73,11 +73,16 @@ const page = () => {
             <GoArrowUpRight className="text-black" />
           </span>
         </div>
-        <div className="p-2 h-fit my-2 overflow-y-hidden overflow-x-auto flex gap-3 rounded-4xl mb-24 fixed w-full -bottom-20">
-          <LandingPageCard />
-          <LandingPageNewsCard />
-          <LandingPageBlogsCard />
-
+        <div className="h-full  w-full mt-3 overflow-y-hidden overflow-x-auto flex gap-3  mb-12 ">
+          <div className="min-w-[280px]">
+            <LandingPageCard />
+          </div>
+          <div className="min-w-[280px]">
+            <LandingPageNewsCard />
+          </div>
+          <div>
+            <LandingPageBlogsCard />
+          </div>
         </div>
       </div>
     </div>

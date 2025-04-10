@@ -32,7 +32,7 @@ const Page = () => {
   return (
     <div className="px-5 pt-24 pb-16 overflow-y-auto flex flex-col h-screen font-poppins">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
-        <NavbarCommonPage page={"News"} handleClick={handleClick} />
+        <NavbarCommonPage page={"Newss"} handleClick={handleClick} />
       </div>
       <div className="flex items-center justify-between">
         <p className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]">
@@ -44,7 +44,12 @@ const Page = () => {
         <p className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]">
           Commidity
         </p>
-        <p className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]">
+        <p
+          className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           Business
         </p>
       </div>

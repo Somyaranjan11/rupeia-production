@@ -19,14 +19,14 @@ const Page = () => {
           <img src={Logo.src} />
           <p className="text-[35px] font-semibold leading-7">Rupeia</p>
         </div>
-        <div className="flex flex-col gap-8 mt-8">
+        <div className="flex flex-col gap-6 mt-8">
           <span className="text-[19px] font-semibold leading-6 text-center px-5">
             <p>Stress free investing.</p>
-            <p>Only saving money.</p>
+            <p>all about stacking savings!.</p>
           </span>
           <p className="text-[15px] font-medium leading-6 text-center">
-            It is a long established fact that a reader will be distracted by
-            the readable{" "}
+            Explore our subscription plans to get the most out of our service.
+            Upgrade to a plan that matches your needs. (2- 3 lines)
           </p>
         </div>
         <div className="flex flex-col justify-center items-center mt-28">

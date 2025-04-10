@@ -8,9 +8,13 @@ const BenifitsCard = () => {
   const [investmentYear, setInvestmentYear] = useState("10");
   return (
     <div>
-      <div>
+      <div className="flex flex-col gap-3">
         <p className="text-[21px] font-poppins text-center font-semibold text-[#FFFFFF]">
           Suggested Investment
+        </p>
+        <p className="text-[13px] font-medium text-white text-center">
+          Great news! We've handpicked the best funds just for you. Sit back and
+          start your journey!
         </p>
       </div>
       <div className="flex justify-center items-center flex-col my-3">

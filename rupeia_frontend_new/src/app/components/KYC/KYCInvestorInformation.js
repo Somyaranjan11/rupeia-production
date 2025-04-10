@@ -21,10 +21,10 @@ const KYCInvestorInformation = () => {
             </p>
           </div>
           <div className="flex flex-row gap-3">
-            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 h-[50px] w-full rounded-3xl focus:outline-none">
+            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 h-[44px] w-full rounded-3xl focus:outline-none">
               Yes
             </button>
-            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 py-1 w-full h-[50px] rounded-3xl focus:outline-none">
+            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 py-1 w-full h-[44px] rounded-3xl focus:outline-none">
               No
             </button>
           </div>
@@ -32,14 +32,14 @@ const KYCInvestorInformation = () => {
         <div className="flex flex-col gap-1  mt-5">
           <div>
             <p className="text-[14px] font-normal leading-7">
-            Are you a politically exposed person (PEP)?
+              Are you a politically exposed person (PEP)?
             </p>
           </div>
           <div className="flex flex-row gap-3">
-            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 h-[50px] w-full rounded-3xl focus:outline-none">
+            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3  h-[44px] w-full rounded-3xl focus:outline-none">
               Yes
             </button>
-            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 py-1 w-full h-[50px] rounded-3xl focus:outline-none">
+            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 py-1 w-full  h-[44px] rounded-3xl focus:outline-none">
               No
             </button>
           </div>
@@ -47,14 +47,14 @@ const KYCInvestorInformation = () => {
         <div className="flex flex-col gap-1  mt-5">
           <div>
             <p className="text-[14px] font-normal leading-7">
-            Are you a politically related person?
+              Are you a politically related person?
             </p>
           </div>
           <div className="flex flex-row gap-3">
-            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 h-[50px] w-full rounded-3xl focus:outline-none">
+            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3  h-[44px] w-full rounded-3xl focus:outline-none">
               Yes
             </button>
-            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 py-1 w-full h-[50px] rounded-3xl focus:outline-none">
+            <button className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 py-1 w-full  h-[44px] rounded-3xl focus:outline-none">
               No
             </button>
           </div>

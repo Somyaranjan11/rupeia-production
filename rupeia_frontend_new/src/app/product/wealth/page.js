@@ -12,6 +12,7 @@ import BenifitsCard3 from "@/app/components/Benifits/BenifitsCard3";
 import Confirmation from "@/app/components/Confirmation/Confirmation";
 import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
+import WealthCard3 from "@/app/components/Wealth/WealthCard3";
 
 const page = () => {
   const [pageStep, setPageStep] = useState(1);
@@ -20,12 +21,17 @@ const page = () => {
       setPageStep(pageStep - 1);
     }
   };
+  const pageName = [1, 2, 3].includes(pageStep)
+    ? "Wealth"
+    : [4].includes(pageStep)
+    ? "Goals"
+    : "Benefits";
 
   return (
     <div className="font-poppins flex flex-col h-screen overflow-hidden">
       {/* Navbar stays fixed at the top */}
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
-        <NavbarCommonPage page={"Wealth"} handleClick={handleClick} />
+        <NavbarCommonPage page={pageName} handleClick={handleClick} />
       </div>
 
       {/* Scrollable Middle Content */}
@@ -34,12 +40,12 @@ const page = () => {
           <div className="pr-16 pt-2">
             <p className="text-[35px] font-semibold leading-16">Hi!</p>
             <span className="flex flex-row flex-wrap text-[16px] font-semibold items-center gap-1">
-              I am your <p className="text-[#D9B9E2]">Wealth Manager ,</p> I
-              will be helping you To fulfill your financial goals
+              I Am Your <p className="text-[#D9B9E2]">Wealth Manager ,</p> Let’s
+              Grow Your Money And Turn Your Goals into Reality
             </span>
           </div>
         )}
-        {pageStep == 3 && (
+        {pageStep == 4 && (
           <div className="pr-16 pt-2">
             <p className="text-[35px] font-semibold leading-16">Goals</p>
             <span className="flex flex-row flex-wrap text-[16px] font-semibold items-center gap-1">
@@ -51,10 +57,11 @@ const page = () => {
         <div className="mt-5 mb-[80px]">
           {pageStep == 1 && <WealthCard1 />}
           {pageStep == 2 && <WealthCard2 />}
-          {pageStep == 3 && <GoalsCard1 />}
-          {pageStep == 4 && <GaolsCard2 />}
-          {pageStep == 5 && <BenifitsCard />}
-          {pageStep == 6 && <Confirmation />}
+          {pageStep == 3 && <WealthCard3 />}
+          {pageStep == 4 && <GoalsCard1 />}
+          {pageStep == 5 && <GaolsCard2 />}
+          {pageStep == 6 && <BenifitsCard />}
+          {pageStep == 7 && <Confirmation />}
         </div>
       </div>
 
@@ -65,7 +72,7 @@ const page = () => {
             className="bg-[#551262] w-full py-2 rounded-full text-[15px] leading-7 font-medium text-white"
             type="button"
             onClick={() => {
-              if (pageStep > 0 && pageStep < 8) {
+              if (pageStep > 0 && pageStep < 7) {
                 setPageStep(pageStep + 1);
               }
             }}
@@ -78,7 +85,7 @@ const page = () => {
             className="bg-[#551262] w-full py-2 rounded-full text-[15px] leading-7 font-medium text-white flex items-center gap-5"
             type="button"
             onClick={() => {
-              if (pageStep > 0 && pageStep < 8) {
+              if (pageStep > 0 && pageStep < 7) {
                 setPageStep(pageStep + 1);
               }
             }}

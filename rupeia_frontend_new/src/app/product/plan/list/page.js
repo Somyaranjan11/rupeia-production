@@ -32,8 +32,7 @@ const page = () => {
               className="h-[50px] w-[50px] rounded-full"
             />
             <p className="text-[12px] font-medium leading-5 text-[#FFFFFF]">
-              It is a long established fact that a reader will be distracted by
-              the readable{" "}
+              Get access to top-performing funds, handpicked for smarter growth.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -42,8 +41,8 @@ const page = () => {
               className="h-[50px] w-[50px] rounded-full"
             />
             <p className="text-[12px] font-medium leading-5 text-[#FFFFFF]">
-              It is a long established fact that a reader will be distracted by
-              the readable{" "}
+              Build a balanced portfolio tailored to your goals and risk
+              appetite.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -52,8 +51,7 @@ const page = () => {
               className="h-[50px] w-[50px] rounded-full"
             />
             <p className="text-[12px] font-medium leading-5 text-[#FFFFFF]">
-              It is a long established fact that a reader will be distracted by
-              the readable{" "}
+              We detect dips early and reshuffle to protect your money.
             </p>
           </div>
           <div className="flex items-center gap-3">
@@ -62,7 +60,7 @@ const page = () => {
               className="h-[50px] w-[50px] rounded-full"
             />
             <p className="text-[12px] font-medium leading-5 text-[#FFFFFF]">
-              It is a long established fact
+              Your portfolio never sleeps — we track it round the clock for you.
             </p>
           </div>
         </div>

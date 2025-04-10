@@ -30,12 +30,11 @@ const page = () => {
         <div>
           <p className="text-[16px] leading-7 font-semibold">
             {pageStep == 1 && "KYC Verification"}
-            {pageStep == 2 && "Email Verification"}
-            {pageStep == 3 && "Personal Information"}
-            {pageStep == 4 && "Address Information"}
-            {pageStep == 5 && "Investor Information"}
-            {pageStep == 6 && "Nominee"}
-            {pageStep == 7 && "Manage Bank"}
+            {pageStep == 2 && "Personal Information"}
+            {pageStep == 3 && "Address Information"}
+            {pageStep == 4 && "Investor Information"}
+            {pageStep == 5 && "Nominee"}
+            {pageStep == 6 && "Manage Bank"}
           </p>
         </div>
         <div
@@ -52,18 +51,17 @@ const page = () => {
 
       <div className="mt-5 mb-4 h-full">
         {pageStep == 1 && <KYCPancard />} {pageStep == 2 && <KYCEmail />}{" "}
-        {pageStep == 3 && <KYCPersonalnformation />}
-        {pageStep == 4 && <KYCAddessInformation />}
-        {pageStep == 5 && <KYCInvestorInformation />}
-        {pageStep == 6 && <KYCAddNominee />}
-        {pageStep == 7 && <KYCBankDetails />}
+        {pageStep == 3 && <KYCAddessInformation />}
+        {pageStep == 4 && <KYCInvestorInformation />}
+        {pageStep == 5 && <KYCAddNominee />}
+        {pageStep == 6 && <KYCBankDetails />}
       </div>
       <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
         <button
           className=" bg-[#551262] w-full  py-2 rounded-full text-[15px] leading-7 font-medium text-white"
           type="button"
           onClick={() => {
-            if (pageStep > 0 && pageStep < 7) {
+            if (pageStep > 0 && pageStep < 6) {
               setPageStep(pageStep + 1);
             }
           }}
