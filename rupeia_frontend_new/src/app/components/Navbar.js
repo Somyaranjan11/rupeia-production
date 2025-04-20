@@ -13,11 +13,10 @@ import {
   UserButton,
   useUser,
 } from "@clerk/nextjs";
-import { useAuth } from '@clerk/nextjs';
-
+import { useAuth } from "@clerk/nextjs";
 
 const Navbar = () => {
-  const { isSignedIn, isLoaded,user } = useUser();
+  const { isSignedIn, isLoaded, user } = useUser();
   const { isAuthenticated, getToken, session } = useAuth();
 
   const [token, setToken] = useState(null);
@@ -28,10 +27,10 @@ const Navbar = () => {
       console.log("Auth Token:", authToken);
       setToken(authToken);
     } else {
-      console.log('User is not authenticated');
+      console.log("User is not authenticated");
     }
   };
-  console.log("user", user?.firstName, isSignedIn,isAuthenticated);
+  console.log("user", user?.firstName, isSignedIn, isAuthenticated);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -158,11 +157,7 @@ const Navbar = () => {
           </p>
         </span>
         <div>
-          {isSignedIn ? (
-            <button onClick={getAuthToken}>Get Token</button>
-          ) : (
-            <p>Please log in</p>
-          )}
+          {isSignedIn && <button onClick={getAuthToken}>Get Token</button>}
         </div>
 
         {isSignedIn && (
