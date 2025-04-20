@@ -14,6 +14,7 @@ import {
   useUser,
 } from "@clerk/nextjs";
 import { useAuth } from "@clerk/nextjs";
+import axios from "axios";
 
 const Navbar = () => {
   const { isSignedIn, isLoaded, user } = useUser();
@@ -101,6 +102,31 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
+
+  useEffect(() => {
+    const syncUserData = async () => {
+      if (!user) return;
+      try {
+        await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/sync-user`,
+          {
+            clerkUserId: user.id,
+            email: user.emailAddresses[0]?.emailAddress,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            profileImageUrl: user.imageUrl,
+          }
+        );
+
+        console.log("✅ User synced successfully.");
+      } catch (error) {
+        console.error("❌ Failed to sync user:", error);
+      }
+    };
+
+    syncUserData();
+  }, [user]);
+
   return (
     <div className="flex flex-row items-center justify-between mx-5 py-7 border-b-[0.5px] font-poppins relative">
       <div
