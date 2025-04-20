@@ -53,14 +53,14 @@ const Page = () => {
       {/* <div className="border-b-[1px] border-[#FFFFFF7A] h-[2px] w-full content-none mt-1"></div> */}
       <div className="flex flex-col gap-3 mt-4">
         <p className="text-[17px] font-poppins font-medium leading-7">
-          If you’ve put all your money in Indian Markets, then you’re in
+          If you ve put all your money in Indian Markets, then you are in
           trouble: Sharan
         </p>
         <p className="text-[15px] font-poppins font-medium leading-6">
           It is a long established fact that a reader will be distracted by the
           readable content of a page when looking at its layout. The point of
           using Lorem Ipsum is that it has a more-or-less normal distribution of
-          letters, as opposed to using 'Content...
+          letters, as opposed to using Content...
         </p>
       </div>
       <div className="flex justify-end items-center mt-1">
@@ -81,7 +81,7 @@ const Page = () => {
         </div>
         <div className="flex items-center gap-2">
           <span className="flex items-center gap-1">
-            <CiHeart />
+            <CiHeart className="text-[21px]"/>
             <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
               40K
             </p>

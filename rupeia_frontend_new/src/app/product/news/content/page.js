@@ -35,13 +35,28 @@ const Page = () => {
         <NavbarCommonPage page={"Newss"} handleClick={handleClick} />
       </div>
       <div className="flex items-center justify-between">
-        <p className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]">
+        <p
+          className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           Finance
         </p>
-        <p className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]">
+        <p
+          className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           Gold
         </p>
-        <p className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]">
+        <p
+          className="text-[14px] leading-7 font-medium text-[#FFFFFF5E]"
+          onClick={(e) => {
+            e.preventDefault();
+          }}
+        >
           Commidity
         </p>
         <p

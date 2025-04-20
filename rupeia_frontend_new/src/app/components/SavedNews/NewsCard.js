@@ -3,7 +3,26 @@ import Share from "@/app/icons/Share";
 import React from "react";
 import { CiHeart } from "react-icons/ci";
 
-const NewsCard = ({detailsData}) => {
+const NewsCard = ({ detailsData }) => {
+  const handleShare = async () => {
+    const shareData = {
+      title: "Check this out!",
+      text: "I found this awesome app!",
+      url: "https://your-website.com", // optional
+    };
+
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        console.log("✅ Shared successfully");
+      } else {
+        console.warn("❌ Web Share API not supported in this browser");
+        // fallback code here
+      }
+    } catch (err) {
+      console.error("⚠️ Error sharing:", err);
+    }
+  };
   return (
     <div className="flex flex-col gap-3">
       {detailsData?.map((data, index) => (
@@ -16,12 +35,12 @@ const NewsCard = ({detailsData}) => {
           <div className="flex justify-start gap-2 items-center mt-3">
             <div className="flex items-center gap-3">
               <span className="flex items-center gap-1">
-                <CiHeart />
+                <CiHeart className="text-[21px]" />
                 <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
                   40K
                 </p>
               </span>
-              <span className="flex items-center gap-1">
+              <span className="flex items-center gap-1" onClick={handleShare}>
                 <Share />
                 <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
                   10K

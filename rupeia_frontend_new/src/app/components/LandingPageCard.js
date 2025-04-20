@@ -27,7 +27,7 @@ const LandingPageCard = () => {
           </p>
         </div>
         <div className="bg-[#9563A257] flex justify-center items-center h-[100px] w-[100px] rounded-l-full image-card-class">
-          <img src={LandingImageCard.src} className="" />
+          <img src={LandingImageCard.src} className=""  alt="landing-image"/>
         </div>
       </div>
       <div className="w-full h-full flex justify-center items-center  ">

@@ -11,7 +11,7 @@ import React, { useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import { RxCross2 } from "react-icons/rx";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const [pageStep, setPageStep] = useState(1);
   return (
@@ -73,4 +73,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

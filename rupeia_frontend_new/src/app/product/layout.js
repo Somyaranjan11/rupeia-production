@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation";
 
 const Layout = ({ children }) => {
   const pathname = usePathname();
-  console.log("pathname", pathname);
   return (
     <div
       className={` h-screen flex flex-col font-poppins ${

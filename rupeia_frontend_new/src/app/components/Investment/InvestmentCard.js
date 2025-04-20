@@ -9,7 +9,7 @@ const InvestmentCard = ({ investmentDetails }) => {
           key={index}
         >
           <div className="flex items-center gap-3">
-            <img src={data?.image.src} className="h-[38px] w-[38px]" />
+            <img src={data?.image.src} className="h-[38px] w-[38px]" alt="investment-card" />
             <p className="text-[14px] leading-5 font-semibold">{data?.name}</p>
           </div>
           <div className="flex justify-between my-2  ml-[50px]">

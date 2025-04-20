@@ -14,7 +14,7 @@ import { MdOutlineKeyboardArrowRight } from "react-icons/md";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import WealthCard3 from "@/app/components/Wealth/WealthCard3";
 
-const page = () => {
+const Page = () => {
   const [pageStep, setPageStep] = useState(1);
   const handleClick = () => {
     if (pageStep > 1) {
@@ -104,4 +104,4 @@ const page = () => {
     </div>
   );
 };
-export default page;
+export default Page;

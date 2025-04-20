@@ -5,8 +5,33 @@ import Mobile from "../icons/Mobile";
 import Profile from "../icons/Profile";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
+import {
+  SignInButton,
+  SignUpButton,
+  SignedIn,
+  SignedOut,
+  UserButton,
+  useUser,
+} from "@clerk/nextjs";
+import { useAuth } from '@clerk/nextjs';
+
 
 const Navbar = () => {
+  const { isSignedIn, isLoaded,user } = useUser();
+  const { isAuthenticated, getToken, session } = useAuth();
+
+  const [token, setToken] = useState(null);
+
+  const getAuthToken = async () => {
+    if (isSignedIn) {
+      const authToken = await getToken(); // Fetch the authentication token
+      console.log("Auth Token:", authToken);
+      setToken(authToken);
+    } else {
+      console.log('User is not authenticated');
+    }
+  };
+  console.log("user", user?.firstName, isSignedIn,isAuthenticated);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -16,12 +41,12 @@ const Navbar = () => {
     {
       id: 2,
       name: "News",
-      route: "/product/news",
+      route: "/product/news/content",
     },
     {
       id: 3,
       name: "Blogs",
-      route: "/product/blogs",
+      route: "/product/blogs/content",
     },
   ];
   const optionMenu = [
@@ -77,7 +102,6 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
-
   return (
     <div className="flex flex-row items-center justify-between mx-5 py-7 border-b-[0.5px] font-poppins relative">
       <div
@@ -133,39 +157,56 @@ const Navbar = () => {
             Lite
           </p>
         </span>
-
-        <div
-          className="flex flex-row items-center gap-1.5"
-          onClick={() => {
-            router.push("/product/profile");
-          }}
-        >
-          <span
-            className={`border-[1px]  rounded-full ${
-              pathname.includes("customer-support") ||
-              pathname.includes("chat-bot")
-                ? "border-[#5D20D2]"
-                : "border-white"
-            }`}
-          >
-            {pathname.includes("customer-support") ||
-            pathname.includes("chat-bot") ? (
-              <Profile className={`#5D20D2`} />
-            ) : (
-              <Profile className={`#ffffff`} />
-            )}
-          </span>
-          <p
-            className={`text-[12px] font-normal leading-6 ${
-              pathname.includes("customer-support") ||
-              pathname.includes("chat-bot")
-                ? "text-[#5D20D2]"
-                : "text-white"
-            }`}
-          >
-            You
-          </p>
+        <div>
+          {isSignedIn ? (
+            <button onClick={getAuthToken}>Get Token</button>
+          ) : (
+            <p>Please log in</p>
+          )}
         </div>
+
+        {isSignedIn && (
+          <SignedIn>
+            {/* <div
+              className="flex flex-row items-center gap-1.5"
+              // onClick={() => {
+              //   router.push("/product/profile");
+              // }}
+            >
+              <span
+                className={`border-[1px]  rounded-full ${
+                  pathname.includes("customer-support") ||
+                  pathname.includes("chat-bot")
+                    ? "border-[#5D20D2]"
+                    : "border-white"
+                }`}
+              >
+                {pathname.includes("customer-support") ||
+                pathname.includes("chat-bot") ? (
+                  <Profile className={`#5D20D2`} />
+                ) : (
+                  <Profile className={`#ffffff`} />
+                )}
+              </span>
+            </div> */}
+            <UserButton />
+            <p
+              className={`text-[12px] font-normal leading-6 ${
+                pathname.includes("customer-support") ||
+                pathname.includes("chat-bot")
+                  ? "text-[#5D20D2]"
+                  : "text-white"
+              }`}
+            >
+              You
+            </p>
+          </SignedIn>
+        )}
+        <SignedOut>
+          <div className="text-[12px] text-[#551262] font-normal leading-5 bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] flex justify-center items-center">
+            <SignInButton />
+          </div>
+        </SignedOut>
       </div>
       {isOpen && (
         <div className="absolute bottom-0 top-0 h-screen w-screen right-0 bg-black opacity-40 z-20 -left-[20px] p-6 shadow-2xs content-none"></div>

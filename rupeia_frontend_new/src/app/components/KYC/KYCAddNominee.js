@@ -13,7 +13,7 @@ const KYCAddNominee = () => {
         </p>
       </div>
       <div className="border-[1px] border-[#916D98] rounded-2xl px-4 py-4 flex flex-col gap-1.5 mt-4">
-        <img src={AddNomineeImage.src} />
+        <img src={AddNomineeImage.src} alt="nominee-image" />
         <p className="text-[13px] font-semibold leading-5">
           You have opted not to choose anyone as your nominee in your investor
           profile.

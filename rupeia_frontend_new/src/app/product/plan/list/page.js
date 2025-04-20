@@ -9,7 +9,7 @@ import Profile from "@/app/icons/Profile";
 import FAQS from "@/app/components/MembershipPlan/FAQS";
 import { useRouter } from "next/navigation";
 
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const handleClick = () => {
     router.push("/product/plan");
@@ -141,4 +141,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;

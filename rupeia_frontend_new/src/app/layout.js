@@ -1,8 +1,10 @@
 import { Geist, Geist_Mono } from "next/font/google";
-import './globals.css'
+import "./globals.css";
 import localFont from "next/font/local";
 
 import Head from "next/head";
+import { ClerkProvider } from "@clerk/nextjs";
+export const dynamic = "force-dynamic";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,17 +32,16 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <Head>
-        {/* ✅ Add the manifest file link */}
-        <link rel="manifest" href="/manifest.json" />
-      </Head>
-      <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body>
-      {/* <body className={`${geistSans.variable} ${geistMono.variable}`}>
-        {children}
-      </body> */}
-    </html>
+    <ClerkProvider>
+      <html lang="en">
+        <Head>
+          {/* ✅ Add the manifest file link */}
+          <link rel="manifest" href="/manifest.json" />
+        </Head>
+        <body className={`${geistSans.variable} ${geistMono.variable}`}>
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }

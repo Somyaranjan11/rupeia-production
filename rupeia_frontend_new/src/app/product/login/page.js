@@ -8,7 +8,7 @@ const page = () => {
   return (
     <div className="flex justify-between flex-col h-full overflow-hidden">
       <div>
-        <img src={LoginImage.src} />
+        <img src={LoginImage.src} alt="login-image"/>
         <div className="flex justify-center items-center flex-col gap-[2px] px-10">
           <p className="text-[#807B98] text-[12px] font-medium text-center">
             Choose your dream and fulfill them with the help of mutual funds

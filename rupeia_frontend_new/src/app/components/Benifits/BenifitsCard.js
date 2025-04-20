@@ -13,7 +13,7 @@ const BenifitsCard = () => {
           Suggested Investment
         </p>
         <p className="text-[13px] font-medium text-white text-center">
-          Great news! We've handpicked the best funds just for you. Sit back and
+          Great news! We&apos;ve handpicked the best funds just for you. Sit back and
           start your journey!
         </p>
       </div>
@@ -70,6 +70,7 @@ const BenifitsCard = () => {
         </div>
         <div className="relative mb-5">
           <img
+          alt="graph-image"
             src={graphImage.src}
             className={`h-[100px] w-full absolute  ${
               investmentYear == "10"
@@ -79,7 +80,7 @@ const BenifitsCard = () => {
                 : "-top-2"
             }`}
           />
-          <img src={graphImage1.src} className="h-[100px] w-full " />
+          <img src={graphImage1.src} className="h-[100px] w-full " alt="graph-image1" />
         </div>
         <div className="bg-[#D9D9D9DE] flex justify-between items-center rounded-3xl h-9 my-2 px-1 gap-2">
           <p

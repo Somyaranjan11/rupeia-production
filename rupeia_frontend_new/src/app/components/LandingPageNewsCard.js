@@ -10,7 +10,7 @@ const LandingPageNewsCard = () => {
     <div
       className="bg-primary rounded-2xl flex flex-col font-poppins h-full relative w-full"
       onClick={() => {
-        router.push("product/news");
+        router.push("product/news/content");
       }}
     >
       <div className="pt-5 flex flex-row justify-between relative mt-4">

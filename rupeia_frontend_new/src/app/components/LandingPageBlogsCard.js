@@ -10,7 +10,7 @@ const LandingPageBlogsCard = () => {
     <div
       className="bg-primary rounded-2xl flex flex-col font-poppins h-full relative w-full"
       onClick={() => {
-        router.push("product/blogs");
+        router.push("product/blogs/content");
       }}
     >
       <div className="pt-5 flex flex-row justify-between relative mt-4">
@@ -24,12 +24,13 @@ const LandingPageBlogsCard = () => {
           </p>
         </div>
         <div className="bg-[#9563A257] flex justify-center items-center h-[100px] w-[110px] rounded-l-full image-card-class">
-          <img src={LandingImage.src} className="h-[100px] w-[130px]" />
+          <img src={LandingImage.src} className="h-[100px] w-[130px]" alt="landing-image1" />
         </div>
       </div>
       <div className="w-full h-full flex justify-center items-center ">
         <img
           src={LandingImageCard.src}
+          alt="landing-page"
           className="h-[150px] w-full mb-5 image-resize"
         />
       </div>

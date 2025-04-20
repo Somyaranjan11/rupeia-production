@@ -10,8 +10,9 @@ import Bag from "../icons/Bag";
 import { useRouter } from "next/navigation";
 import LandingPageNewsCard from "../components/LandingPageNewsCard";
 import LandingPageBlogsCard from "../components/LandingPageBlogsCard";
-
-const page = () => {
+export const dynamic = "force-dynamic";
+import { useUser } from "@clerk/nextjs";
+const Page = () => {
   const router = useRouter();
   return (
     <div className="h-screen flex flex-col font-poppins mt-5 pb-20 w-full">
@@ -48,7 +49,7 @@ const page = () => {
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               Portfolio
             </p>
-            <p className="text-[11px] text-black font-medium">₹4,700 </p>
+            <p className="text-[11px] text-black font-medium">₹4,7k </p>
           </div>
           <div
             className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
@@ -62,7 +63,7 @@ const page = () => {
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               SIP
             </p>
-            <p className="text-[11px] text-black font-medium">(₹5,600)</p>
+            <p className="text-[11px] text-black font-medium">(₹5,6k)</p>
           </div>
         </div>
         <div className="flex items-center gap-2 px-5">
@@ -74,13 +75,13 @@ const page = () => {
           </span>
         </div>
         <div className="h-full  w-full mt-3 overflow-y-hidden overflow-x-auto flex gap-3  mb-12 ">
-          <div className="min-w-[280px]">
+          <div className="min-w-[320px]">
             <LandingPageCard />
           </div>
-          <div className="min-w-[280px]">
+          <div className="min-w-[320px]">
             <LandingPageNewsCard />
           </div>
-          <div>
+          <div className="min-w-[320px]">
             <LandingPageBlogsCard />
           </div>
         </div>
@@ -89,4 +90,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
