@@ -127,6 +127,27 @@ const Navbar = () => {
     syncUserData();
   }, [user]);
 
+  const saveBlogPost = async (blogId) => {
+    const token = await getToken();
+    try {
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/referral/generate-code`,
+        {},
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      console.log("✅ Response:", response.data);
+    } catch (error) {
+      console.error(
+        "❌ Error saving blog:",
+        error.response?.data || error.message
+      );
+    }
+  };
+
   return (
     <div className="flex flex-row items-center justify-between mx-5 py-7 border-b-[0.5px] font-poppins relative">
       <div
@@ -156,7 +177,7 @@ const Navbar = () => {
         </p>
       </div>
       <div className="flex flex-row items-center gap-2">
-        <span
+        {/* <span
           className={`flex items-center justify-center  ${
             pathname.includes("customer-support") ||
             pathname.includes("chat-bot")
@@ -181,9 +202,19 @@ const Navbar = () => {
           >
             Lite
           </p>
-        </span>
+        </span> */}
         <div>
-          {isSignedIn && <button onClick={getAuthToken}>Get Token</button>}
+          {isSignedIn && (
+            <button
+              className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
+              onClick={() => {
+                saveBlogPost();
+              }}
+              type="button"
+            >
+              TES API
+            </button>
+          )}
         </div>
 
         {isSignedIn && (
