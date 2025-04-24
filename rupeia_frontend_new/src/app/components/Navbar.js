@@ -127,24 +127,49 @@ const Navbar = () => {
     syncUserData();
   }, [user]);
 
-  const saveBlogPost = async (blogId) => {
-    const token = await getToken();
+  //   email
+  // :
+  // "user@example.com"
+  // firstName
+  // :
+  // "John"
+  // lastName
+  // :
+  // "Doe"
+  // password
+  // :
+  // "securepassword123"
+  // referralCode
+  // :
+  // "USER123"
+
+  const loginUser = async () => {
     try {
       const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/referral/generate-code`,
-        {},
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`,
         {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          email: "user@example.com",
+          password: "securepassword123"
+        },
+        {
+          withCredentials: true // 🔥 Must include this!
         }
       );
-      console.log("✅ Response:", response.data);
+      console.log("response", response?.data);
+      return response.data; // assuming backend returns token like { token: '...' }
     } catch (error) {
-      console.error(
-        "❌ Error saving blog:",
-        error.response?.data || error.message
-      );
+      console.error("Login failed:", error.response?.data || error.message);
+      return null;
+    }
+  };
+  const fetchProtectedData = async () => {
+    try {
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`, {
+        withCredentials: true, // <- This is **required** to send cookies
+      });
+      console.log('✅ Response:', response.data);
+    } catch (error) {
+      console.error('❌ Error:', error.response?.data || error.message);
     }
   };
 
@@ -208,11 +233,24 @@ const Navbar = () => {
             <button
               className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
               onClick={() => {
-                saveBlogPost();
+                loginUser();
               }}
               type="button"
             >
               TES API
+            </button>
+          )}
+        </div>
+        <div>
+          {isSignedIn && (
+            <button
+              className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
+              onClick={() => {
+                fetchProtectedData();
+              }}
+              type="button"
+            >
+              TEST AUTH
             </button>
           )}
         </div>
