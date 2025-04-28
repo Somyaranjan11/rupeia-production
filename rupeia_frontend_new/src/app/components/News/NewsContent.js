@@ -47,10 +47,12 @@ const NewsContent = ({ categoryList }) => {
         setLoading(false);
       }
     };
-  
+
     fetchBlogs();
   }, [categoryList]);
-
+  const saveNews = (news_id) => {
+    console.log("save news", news_id);
+  };
   return (
     <div className="h-full w-full overflow-y-auto px-5">
       {loading ? (
@@ -76,7 +78,12 @@ const NewsContent = ({ categoryList }) => {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="flex items-center gap-1">
-                      <CiHeart className="text-[25px]" />
+                      <CiHeart
+                        className="text-[25px]"
+                        onClick={() => {
+                          saveNews(data?._id);
+                        }}
+                      />
                       <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
                         {data?.likeCount}
                       </p>
@@ -87,7 +94,7 @@ const NewsContent = ({ categoryList }) => {
                     >
                       <Share />
                       <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
-                        10K
+                        11K
                       </p>
                     </span>
                     <span className="flex items-center gap-1">

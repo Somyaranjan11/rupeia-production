@@ -8,7 +8,7 @@ import axios from "axios";
 import BlogsImage from "../../components/Images/blogs-content.png";
 import AnimateLoader from "../Loader/AnimateLoader";
 
-const BlogsContent = ({ blogsContent,categoryList }) => {
+const BlogsContent = ({ blogsContent, categoryList }) => {
   const router = useRouter();
   const handleShare = async () => {
     const shareData = {
@@ -29,27 +29,70 @@ const BlogsContent = ({ blogsContent,categoryList }) => {
       console.error("⚠️ Error sharing:", err);
     }
   };
-  console.log("categoryList",categoryList)
+  console.log("categoryList", categoryList);
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const fetchBlogs = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/blogs?category=${categoryList}`
+      );
+      setBlogs(response?.data?.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        setLoading(true)
-        const response = await axios.get(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/blogs?category=${categoryList}`
-        );
-        setBlogs(response?.data?.data);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
     fetchBlogs();
   }, [categoryList]);
+
+  const saveBlogs = async (blogs_id) => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/blogs/${blogs_id}/save`,
+        {}, // <-- empty body if no body needed
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- correct place for headers
+          },
+        }
+      );
+      if (response?.data?.success) {
+        fetchBlogs();
+      }
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const saveLike = async (blogs_id) => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/blogs/${blogs_id}/like`,
+        {}, // <-- empty body if no body needed
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- correct place for headers
+          },
+        }
+      );
+      if (response?.data?.success) {
+        fetchBlogs();
+      }
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
   return (
     <div className="h-full w-full overflow-y-auto px-5">
       {loading ? (
@@ -92,7 +135,12 @@ const BlogsContent = ({ blogsContent,categoryList }) => {
                   </div>
                   <div className="flex items-center gap-2">
                     <span className="flex items-center gap-1">
-                      <CiHeart className="text-[25px]" />
+                      <CiHeart
+                        className="text-[25px]"
+                        onClick={() => {
+                          saveLike(data?._id);
+                        }}
+                      />
                       <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
                         {data?.likeCount}
                       </p>
@@ -106,8 +154,14 @@ const BlogsContent = ({ blogsContent,categoryList }) => {
                         10K
                       </p>
                     </span>
-                    <span className="flex items-center gap-1">
-                      <Save />
+                    <span className="flex items-center">
+                      <div
+                        onClick={() => {
+                          saveBlogs(data?._id);
+                        }}
+                      >
+                        <Save />
+                      </div>
                       <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
                         {data?.saveCount}
                       </p>

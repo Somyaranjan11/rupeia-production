@@ -1,9 +1,11 @@
 "use client";
+import AnimateLoader from "@/app/components/Loader/AnimateLoader";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import BlogsCard from "@/app/components/SaveBlogs/BlogsCard";
 import NewsCard from "@/app/components/SavedNews/NewsCard";
+import axios from "axios";
 import { useRouter } from "next/navigation";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 
 const Page = () => {
@@ -39,6 +41,32 @@ const Page = () => {
   const handleClick = () => {
     router.push("/product");
   };
+  const [savedBlogs, setSavedBlogs] = useState();
+  const [loading, setLoading] = useState(false);
+  const fetchProtectedData = async () => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/blogs/saved`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- add Authorization header
+          },
+        }
+      );
+      if (response?.data?.success) {
+        setSavedBlogs(response?.data?.data);
+      }
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchProtectedData();
+  }, []);
   return (
     <div className="font-poppins flex flex-col h-screen overflow-hidden">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
@@ -71,8 +99,10 @@ const Page = () => {
         </div>
         <div className="border-[0.5px] content-none border-[#FFFFFF7A] w-full mb-3"></div>
         <div>
-          {currentPage == "blogs" ? (
-            <BlogsCard detailsData={detailsContent} />
+          {loading ? (
+            <AnimateLoader count={3} />
+          ) : currentPage == "blogs" ? (
+            <BlogsCard detailsData={savedBlogs} />
           ) : (
             <NewsCard detailsData={detailsContent} />
           )}

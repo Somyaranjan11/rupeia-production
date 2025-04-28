@@ -103,59 +103,21 @@ const Navbar = () => {
     };
   }, [isOpen]);
 
-  useEffect(() => {
-    const syncUserData = async () => {
-      if (!user) return;
-      try {
-        await axios.post(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/sync-user`,
-          {
-            clerkUserId: user.id,
-            email: user.emailAddresses[0]?.emailAddress,
-            firstName: user.firstName,
-            lastName: user.lastName,
-            profileImageUrl: user.imageUrl,
-          }
-        );
-
-        console.log("✅ User synced successfully.");
-      } catch (error) {
-        console.error("❌ Failed to sync user:", error);
-      }
-    };
-
-    syncUserData();
-  }, [user]);
-
-  //   email
-  // :
-  // "user@example.com"
-  // firstName
-  // :
-  // "John"
-  // lastName
-  // :
-  // "Doe"
-  // password
-  // :
-  // "securepassword123"
-  // referralCode
-  // :
-  // "USER123"
-
   const loginUser = async () => {
     try {
       const response = await axios.post(
         `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`,
         {
           email: "user@example.com",
-          password: "securepassword123"
+          password: "securepassword123",
         },
         {
-          withCredentials: true // 🔥 Must include this!
+          withCredentials: true, // 🔥 Must include this!
         }
       );
-      console.log("response", response?.data);
+      if (response?.data?.success) {
+        localStorage.setItem("accessToken", response?.data?.accessToken);
+      }
       return response.data; // assuming backend returns token like { token: '...' }
     } catch (error) {
       console.error("Login failed:", error.response?.data || error.message);
@@ -163,13 +125,22 @@ const Navbar = () => {
     }
   };
   const fetchProtectedData = async () => {
+    const token =
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MGE2NThkNTQ5NWQxZWFkOGY1NDA5MCIsImlhdCI6MTc0NTY4NzQ4OSwiZXhwIjoxNzQ4Mjc5NDg5fQ.pMPSwOKfyyYnA2g1PjKfyiPhqeVSVC_Bz2fzpbzQ50A";
     try {
-      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`, {
-        withCredentials: true, // <- This is **required** to send cookies
-      });
-      console.log('✅ Response:', response.data);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- add Authorization header
+          },
+          withCredentials: true, // optional, usually needed for cookies but not mandatory for Bearer
+        }
+      );
+
+      console.log("✅ Response:", response.data);
     } catch (error) {
-      console.error('❌ Error:', error.response?.data || error.message);
+      console.error("❌ Error:", error.response?.data || error.message);
     }
   };
 
