@@ -14,6 +14,24 @@ import { RxCross2 } from "react-icons/rx";
 const Page = () => {
   const router = useRouter();
   const [pageStep, setPageStep] = useState(1);
+  // Personal Information
+  const [fistPageOnboard, setFirstPageOnboard] = useState({
+    name: "",
+    pan_number: "",
+    dob: "",
+    email_id: "",
+    phone_number: "",
+    aadhaar_number: "",
+  });
+  const [secondPageOnboard, setSecondPageOnboard] = useState({
+    marital_status: "",
+    gender: "",
+    father_name: "",
+    occupation_type: "",
+    mother_name: "",
+    residential_status: "",
+    spouse_name: "",
+  });
   return (
     <div className=" px-5 font-poppins flex flex-col h-full relative overflow-y-auto">
       <div className="flex items-center justify-between mt-4">
@@ -50,25 +68,42 @@ const Page = () => {
       </div>
 
       <div className="mt-5 mb-4 h-full">
-        {pageStep == 1 && <KYCPancard />} {pageStep == 2 && <KYCEmail />}{" "}
+        {pageStep == 1 && (
+          <KYCPancard
+            setFirstPageOnboard={setFirstPageOnboard}
+            fistPageOnboard={fistPageOnboard}
+            setPageStep={setPageStep}
+            pageStep={pageStep}
+          />
+        )}{" "}
+        {pageStep == 2 && (
+          <KYCEmail
+            setPageStep={setPageStep}
+            setSecondPageOnboard={setSecondPageOnboard}
+            secondPageOnboard={secondPageOnboard}
+            fistPageOnboard={fistPageOnboard}
+          />
+        )}{" "}
         {pageStep == 3 && <KYCAddessInformation />}
         {pageStep == 4 && <KYCInvestorInformation />}
         {pageStep == 5 && <KYCAddNominee />}
         {pageStep == 6 && <KYCBankDetails />}
       </div>
-      <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
-        <button
-          className=" bg-[#551262] w-full  py-2 rounded-full text-[15px] leading-7 font-medium text-white"
-          type="button"
-          onClick={() => {
-            if (pageStep > 0 && pageStep < 6) {
-              setPageStep(pageStep + 1);
-            }
-          }}
-        >
-          Continue
-        </button>
-      </div>
+      {pageStep > 2 && (
+        <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
+          <button
+            className=" bg-[#551262] w-full  py-2 rounded-full text-[15px] leading-7 font-medium text-white"
+            type="button"
+            onClick={() => {
+              if (pageStep > 1 && pageStep < 6) {
+                setPageStep(pageStep + 1);
+              }
+            }}
+          >
+            Continue
+          </button>
+        </div>
+      )}
     </div>
   );
 };
