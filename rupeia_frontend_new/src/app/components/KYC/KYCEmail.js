@@ -11,32 +11,8 @@ const KYCEmail = ({
   secondPageOnboard,
   fistPageOnboard,
 }) => {
-  const [marriedStatusDropdown, setMarriedStatusDropdown] = useState({
-    isOpen: false,
-    selectedOption: "",
-  });
-  const [genderStatusDropdown, setGenderStatusDropdown] = useState({
-    isOpen: false,
-    selectedOption: "",
-  });
-  const [occupationStatusDropdown, setOccupationStatusDropdown] = useState({
-    isOpen: false,
-    selectedOption: "",
-  });
-  const [residentialStatusDropdown, setResidentialStatusDropdown] = useState({
-    isOpen: false,
-    selectedOption: "",
-  });
   const [loading, setLoading] = useState(false);
-  const marriedStatus = ["Single", "Married"];
   const gender = ["Male", "Female", "Other"];
-  const occupation_type = [
-    "Farmer",
-    "Teacher",
-    "Public sector service",
-    "Private sector service",
-  ];
-  const residential_status = ["Active", "In Active"];
   const [onBoardError, setOnBoardError] = useState({
     dob_blank_validation: false,
     marital_blank_validation: false,
@@ -54,6 +30,8 @@ const KYCEmail = ({
     spouse_name_isnumber_validation: false,
   });
   const onBoardFunction = () => {
+    setPageStep(3);
+    return;
     if (secondPageOnboard?.father_name == "") {
       setOnBoardError({ ...onBoardError, father_name_blank_validation: true });
     } else if (/^\s/.test(secondPageOnboard?.father_name)) {
@@ -72,26 +50,11 @@ const KYCEmail = ({
         ...onBoardError,
         mother_name_isnumber_validation: true,
       });
-    } else if (secondPageOnboard?.spouse_name == "") {
-      setOnBoardError({ ...onBoardError, spouse_name_blank_validation: true });
-    } else if (/^\s/.test(secondPageOnboard?.spouse_name)) {
-      setOnBoardError({ ...onBoardError, spouse_name_space_validation: true });
-    } else if (/\d/.test(secondPageOnboard?.spouse_name)) {
-      setOnBoardError({
-        ...onBoardError,
-        spouse_name_isnumber_validation: true,
-      });
     } else if (secondPageOnboard?.gender == "") {
       setOnBoardError({ ...onBoardError, gender_blank_validation: true });
     } else if (secondPageOnboard?.marital_status == "") {
       setOnBoardError({ ...onBoardError, marital_blank_validation: true });
-    } else if (secondPageOnboard?.residential_status == "") {
-      setOnBoardError({
-        ...onBoardError,
-        residental_status_type_validation: true,
-      });
     } else {
-      console.log("secondPageOnboard", secondPageOnboard);
       updateKycRequest();
     }
   };
@@ -116,79 +79,25 @@ const KYCEmail = ({
       Authorization: `Bearer ${token}`,
     };
     const kyc_id = localStorage.getItem("kyc_id");
-    // Investor Profile.
-    const investor_profile = {
-      type: "individual",
-      tax_status: "resident_individual",
-      name: fistPageOnboard?.name,
-      date_of_birth: fistPageOnboard?.dob,
-      gender: secondPageOnboard?.gender?.toLowerCase(),
-      occupation: "business",
-      pan: fistPageOnboard?.pan_number,
-      country_of_birth: "IN",
-      place_of_birth: "IN",
-      use_default_tax_residences: "false",
-      pep_details: "not_applicable",
-      ip_address: "192.92.12.39",
-      first_tax_residency: {
-        country: "IN",
-        taxid_type: "pan",
-        taxid_number: fistPageOnboard?.pan_number,
-      },
-      source_of_wealth:"salary",
-      income_slab:"upto_1lakh"
-    };
     axios
-      .all([
-        axios.patch(
-          `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/kyc/kyc_requests/${kyc_id}`,
-          payloadData,
-          headers
-        ),
-        axios.post(
-          `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/invProfiles/createProfile`,
-          investor_profile,
-          headers
-        ),
-      ])
-      .then(
-        axios.spread((res1, res2) => {
-          if (res1) {
-            console.log("response is", res1.data);
-            ShowSucessmessages("Details have been updated");
-          }
-          if (res2) {
-            ShowSucessmessages("Investor profile created");
-          }
-        })
+      .patch(
+        `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/kyc/kyc_requests/${kyc_id}`,
+        payloadData,
+        headers
       )
+      .then((res1) => {
+        if (res1) {
+          console.log("response is", res1.data);
+          ShowSucessmessages("Details have been updated");
+          setPageStep(3);
+        }
+      })
       .catch((error) => {
         console.error("Error in one of the requests:", error);
       })
       .finally(() => {
         setLoading(false);
       });
-
-    // axios
-    //   .patch(
-    //     `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/kyc/kyc_requests/${kyc_id}`,
-    //     payloadData,
-    //     headers
-    //   )
-    //   .then((response) => {
-    //     if (response) {
-    //       console.log("response is", response.data);
-    //       ShowSucessmessages("Details have been updated");
-    //     }
-    //   })
-    //   .catch((error) => {
-    //     if (error) {
-    //       console.log("error is", error);
-    //     }
-    //   })
-    //   .finally(() => {
-    //     setLoading(false);
-    //   });
   };
   return (
     <div className="flex flex-col gap-3">
@@ -498,7 +407,7 @@ const KYCEmail = ({
             onBoardFunction();
           }}
         >
-          {loading ? <ButtonLoader /> : "Continue"}
+          {loading ? <ButtonLoader /> : "Continue 12"}
         </button>
       </div>
     </div>

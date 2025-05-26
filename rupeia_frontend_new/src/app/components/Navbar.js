@@ -200,17 +200,15 @@ const Navbar = () => {
           </p>
         </span> */}
         <div>
-          {isSignedIn && (
-            <button
-              className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
-              onClick={() => {
-                loginUser();
-              }}
-              type="button"
-            >
-              TES API
-            </button>
-          )}
+          <button
+            className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
+            onClick={() => {
+              loginUser();
+            }}
+            type="button"
+          >
+            TES API
+          </button>
         </div>
         <div>
           {isSignedIn && (

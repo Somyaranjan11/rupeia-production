@@ -4,7 +4,9 @@ import KYCAddNominee from "@/app/components/KYC/KYCAddNominee";
 import KYCBankDetails from "@/app/components/KYC/KYCBankDetails";
 import KYCEmail from "@/app/components/KYC/KYCEmail";
 import KYCInvestorInformation from "@/app/components/KYC/KYCInvestorInformation";
+import KYCInvestorInformation2 from "@/app/components/KYC/KYCInvestorInformation2";
 import KYCPancard from "@/app/components/KYC/KYCPancard";
+import KYCPersonalInfromation2 from "@/app/components/KYC/KYCPersonalInfromation2";
 import KYCPersonalnformation from "@/app/components/KYC/KYCPersonalnformation";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
@@ -32,6 +34,22 @@ const Page = () => {
     residential_status: "",
     spouse_name: "",
   });
+  const [thirdPageOnboard, setThirdPageOnboard] = useState({
+    occupation_type: "",
+    income_slab: "",
+  });
+  const [fourthPageOnboard, setFourthPageOnboard] = useState({
+    address_1: "",
+    pin_code: "",
+    city: "",
+    state: "",
+  });
+  const [fifthPageOnboard, setFifthPageOnboard] = useState({
+    account_name: "",
+    account_number: "",
+    confirm_account_number: "",
+    ifsc_code: "",
+  });
   return (
     <div className=" px-5 font-poppins flex flex-col h-full relative overflow-y-auto">
       <div className="flex items-center justify-between mt-4">
@@ -48,11 +66,10 @@ const Page = () => {
         <div>
           <p className="text-[16px] leading-7 font-semibold">
             {pageStep == 1 && "KYC Verification"}
-            {pageStep == 2 && "Personal Information"}
-            {pageStep == 3 && "Address Information"}
-            {pageStep == 4 && "Investor Information"}
-            {pageStep == 5 && "Nominee"}
-            {pageStep == 6 && "Manage Bank"}
+            {(pageStep == 2 || pageStep == 3) && "Personal Information"}
+            {pageStep == 4 && "Address Information"}
+            {pageStep == 5 && "Manage Bank"}
+            {pageStep == 6 && "Nominee"}
           </p>
         </div>
         <div
@@ -84,12 +101,36 @@ const Page = () => {
             fistPageOnboard={fistPageOnboard}
           />
         )}{" "}
-        {pageStep == 3 && <KYCAddessInformation />}
-        {pageStep == 4 && <KYCInvestorInformation />}
+        {pageStep == 3 && (
+          <KYCPersonalInfromation2
+            setThirdPageOnboard={setThirdPageOnboard}
+            thirdPageOnboard={thirdPageOnboard}
+            fistPageOnboard={fistPageOnboard}
+            secondPageOnboard={secondPageOnboard}
+            setPageStep={setPageStep}
+          />
+        )}
+        {pageStep == 4 && (
+          <KYCAddessInformation
+            setFourthPageOnboard={setFourthPageOnboard}
+            fourthPageOnboard={fourthPageOnboard}
+            setPageStep={setPageStep}
+            fistPageOnboard={fistPageOnboard}
+          />
+        )}
+        {pageStep == 5 && (
+          <KYCBankDetails
+            setFifthPageOnboard={setFifthPageOnboard}
+            fifthPageOnboard={fifthPageOnboard}
+            setPageStep={setPageStep}
+          />
+        )}
+        {pageStep == 6 && <KYCAddNominee />}
+        {/* {pageStep == 4 && <KYCInvestorInformation />}
         {pageStep == 5 && <KYCAddNominee />}
-        {pageStep == 6 && <KYCBankDetails />}
+        {pageStep == 6 && <KYCBankDetails />} */}
       </div>
-      {pageStep > 2 && (
+      {pageStep > 5 && (
         <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
           <button
             className=" bg-[#551262] w-full  py-2 rounded-full text-[15px] leading-7 font-medium text-white"

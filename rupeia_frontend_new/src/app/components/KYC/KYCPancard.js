@@ -27,7 +27,6 @@ const KYCPancard = ({
   const [loading, setLoading] = useState(false);
   const onBoardFunction = () => {
     setPageStep(2);
-
     return;
     if (fistPageOnboard?.name == "") {
       setOnBoardError({ ...onBoardError, name_blank_validation: true });
@@ -78,13 +77,11 @@ const KYCPancard = ({
     //   });
     // }
     else {
-      setPageStep(2);
       createKycRequest();
     }
   };
   const createKycRequest = () => {
     setLoading(true);
-
     const payloadData = {
       name: fistPageOnboard?.name,
       pan: fistPageOnboard?.pan_number,
@@ -114,6 +111,7 @@ const KYCPancard = ({
       .then((response) => {
         if (response) {
           console.log("response is", response.data);
+          setPageStep(2);
           if (response?.data?.id) {
             localStorage.setItem("kyc_id", response?.data?.id);
             localStorage.setItem("kyc_status", response?.data?.status);
