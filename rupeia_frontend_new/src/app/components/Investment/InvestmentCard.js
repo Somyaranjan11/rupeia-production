@@ -1,7 +1,7 @@
 import React from "react";
 import sipImage from "../../components/Images/SIP_2.png";
 
-const InvestmentCard = ({ investmentDetails }) => {
+const InvestmentCard = ({ investmentDetails, currentPage }) => {
   return (
     <div>
       {investmentDetails?.map((data, index) => (
@@ -15,7 +15,15 @@ const InvestmentCard = ({ investmentDetails }) => {
               className="h-[38px] w-[38px]"
               alt="sip-image"
             />
-            <p className="text-[14px] leading-5 font-semibold">Goal #{index+1}</p>
+            {currentPage == "goal" ? (
+              <p className="text-[14px] leading-5 font-semibold">
+                Goal #{index + 1}
+              </p>
+            ) : (
+              <p className="text-[14px] leading-5 font-semibold">
+                Wealth Creation #{index + 1}
+              </p>
+            )}
           </div>
           <div className="flex justify-between my-2 ">
             <div className="flex flex-col gap-1  w-[50%]">

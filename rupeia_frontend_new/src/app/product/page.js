@@ -74,14 +74,14 @@ const Page = () => {
             <GoArrowUpRight className="text-black" />
           </span>
         </div>
-        <div className="h-full  w-full mt-3 overflow-y-hidden overflow-x-auto flex gap-3  mb-12 ">
-          <div className="min-w-[320px]">
+        <div className="h-full w-auto mt-3 overflow-y-hidden overflow-x-auto flex gap-3  mb-12 ml-5 ">
+          <div className="min-w-[270px]">
             <LandingPageCard />
           </div>
-          <div className="min-w-[320px]">
+          <div className="min-w-[270px]">
             <LandingPageNewsCard />
           </div>
-          <div className="min-w-[320px]">
+          <div className="min-w-[270px]">
             <LandingPageBlogsCard />
           </div>
         </div>

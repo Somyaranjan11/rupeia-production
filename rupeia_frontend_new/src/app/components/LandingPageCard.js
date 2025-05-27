@@ -31,7 +31,7 @@ const LandingPageCard = () => {
         </div>
       </div>
       <div className="w-full h-full flex justify-center items-center  ">
-        <img src={LandingImage.src} className="h-[150px] w-full mb-5 image-resize" />
+        <img src={LandingImage.src} className="h-[150px] w-[200px] mb-5 image-resize" />
       </div>
       <div className="flex justify-center items-center pb-6 mt-5 absolute -bottom-4 left-0 right-0">
         <button className="bg-[#551262] text-white text-[13px] font-semibold px-5 rounded-full py-2">

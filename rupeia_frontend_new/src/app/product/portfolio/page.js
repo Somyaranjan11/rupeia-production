@@ -6,47 +6,10 @@ import sipImage from "../../components/Images/sip_image.png";
 import { useRouter } from "next/navigation";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import axios from "axios";
+import AnimateLoader from "@/app/components/Loader/AnimateLoader";
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState("goal");
-
-  const investment_plan = [
-    {
-      id: 1,
-      name: "DSP ELSS Tax Saver Fund",
-      image: sipImage,
-      current_value: "₹1,32,000",
-      invested_value: "₹1,22,000",
-    },
-    {
-      id: 2,
-      name: "DSP ELSS Tax Saver Fund",
-      image: sipImage,
-      current_value: "₹1,32,000",
-      invested_value: "₹1,22,000",
-    },
-    {
-      id: 3,
-      name: "DSP ELSS Tax Saver Fund",
-      image: sipImage,
-      current_value: "₹1,32,000",
-      invested_value: "₹1,22,000",
-    },
-    {
-      id: 3,
-      name: "DSP ELSS Tax Saver Fund",
-      image: sipImage,
-      current_value: "₹1,32,000",
-      invested_value: "₹1,22,000",
-    },
-    {
-      id: 3,
-      name: "DSP ELSS Tax Saver Fund",
-      image: sipImage,
-      current_value: "₹1,32,000",
-      invested_value: "₹1,22,000",
-    },
-  ];
   const router = useRouter();
   const handleClick = () => {
     router.push("/product");
@@ -57,15 +20,22 @@ const Page = () => {
     const token = localStorage.getItem("accessToken");
     try {
       setLoading(true);
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/goal/user-goals`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // <-- add Authorization header
-          },
-        }
-      );
-      setGoalDetails(response?.data?.data?.goals);
+      let url = "";
+      if (currentPage == "goal") {
+        url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/goal/user-goals`;
+      } else if (currentPage == "wealth-creation") {
+        url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/wealth-plus/user-profiles`;
+      }
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`, // <-- add Authorization header
+        },
+      });
+      if (currentPage == "goal") {
+        setGoalDetails(response?.data?.data?.goals);
+      } else {
+        setGoalDetails(response?.data?.data?.profiles);
+      }
     } catch (error) {
       console.error("Error fetching blogs:", error);
     } finally {
@@ -74,7 +44,7 @@ const Page = () => {
   };
   useEffect(() => {
     fetchBlogs();
-  }, []);
+  }, [currentPage]);
 
   console.log("goalDetails", goalDetails);
   return (
@@ -140,9 +110,13 @@ const Page = () => {
               )}
             </span>
           </div>
-          <div>
-            <InvestmentCard investmentDetails={goalDetails} />
-          </div>
+          {loading ? (
+            <AnimateLoader count={2} />
+          ) : (
+            <div>
+              <InvestmentCard investmentDetails={goalDetails} currentPage={currentPage} />
+            </div>
+          )}
         </div>
       </div>
     </div>

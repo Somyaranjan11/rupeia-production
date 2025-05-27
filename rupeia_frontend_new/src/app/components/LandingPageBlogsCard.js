@@ -8,7 +8,7 @@ const LandingPageBlogsCard = () => {
   const router = useRouter();
   return (
     <div
-      className="bg-primary rounded-2xl flex flex-col font-poppins h-full relative w-full"
+      className="bg-primary rounded-2xl flex flex-col font-poppins h-full relative"
       onClick={() => {
         router.push("product/blogs/content");
       }}
@@ -18,8 +18,8 @@ const LandingPageBlogsCard = () => {
           <h3 className="text-3xl font-bold bg-gradient-to-b from-[#ffffff] to-[#747474] bg-clip-text text-transparent">
             BLOGS
           </h3>
-          <p className="text-[22px] font-medium leading-7 mt-2">Personalized</p>
-          <p className="text-[11px] font-medium mt-1">
+          <p className="text-[22px] font-medium leading-7 mt-2 text-wrap">Personalized</p>
+          <p className="text-[11px] font-medium mt-1 flex-wrap">
             Curated blogs tailored to your financial journey!
           </p>
         </div>
@@ -31,7 +31,7 @@ const LandingPageBlogsCard = () => {
         <img
           src={LandingImageCard.src}
           alt="landing-page"
-          className="h-[150px] w-full mb-5 image-resize"
+          className="h-[150px] w-[200px] mb-5 image-resize"
         />
       </div>
       <div className="flex justify-center items-center pb-6 mt-5 absolute -bottom-4 left-0 right-0">
