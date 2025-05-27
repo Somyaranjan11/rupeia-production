@@ -1,12 +1,15 @@
 "use client";
 import InvestmentCard from "@/app/components/Investment/InvestmentCard";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import sipImage from "../../components/Images/sip_image.png";
 import { useRouter } from "next/navigation";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
+import axios from "axios";
 
 const Page = () => {
+  const [currentPage, setCurrentPage] = useState("goal");
+
   const investment_plan = [
     {
       id: 1,
@@ -48,6 +51,32 @@ const Page = () => {
   const handleClick = () => {
     router.push("/product");
   };
+  const [goalDetails, setGoalDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const fetchBlogs = async () => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/goal/user-goals`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- add Authorization header
+          },
+        }
+      );
+      setGoalDetails(response?.data?.data?.goals);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
+
+  console.log("goalDetails", goalDetails);
   return (
     <div className="font-poppins flex flex-col h-screen overflow-hidden">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
@@ -77,13 +106,42 @@ const Page = () => {
             </div>
           </div>
         </div>
+
         <div className="my-4">
           <div className="flex items-center justify-center">
             {" "}
             <p className="text-[13px] leading-5 font-medium">All investments</p>
           </div>
-          <div className="mb-5">
-            <InvestmentCard investmentDetails={investment_plan} />
+          <div className="flex flex-row justify-center items-center gap-8 my-2">
+            <span
+              className={`text-[13px] leading-5 font-medium ${
+                currentPage == "goal" ? "text-white" : "text-[#FFFFFF70]"
+              }`}
+              onClick={() => {
+                setCurrentPage("goal");
+              }}
+            >
+              Goal
+              {currentPage == "goal" && <p className="border-[1px]"></p>}
+            </span>
+            <span
+              className={`text-[13px] leading-5 font-medium  ${
+                currentPage == "wealth-creation"
+                  ? "text-white"
+                  : "text-[#FFFFFF70]"
+              }`}
+              onClick={() => {
+                setCurrentPage("wealth-creation");
+              }}
+            >
+              Wealth Creation
+              {currentPage == "wealth-creation" && (
+                <p className="border-[1px]"></p>
+              )}
+            </span>
+          </div>
+          <div>
+            <InvestmentCard investmentDetails={goalDetails} />
           </div>
         </div>
       </div>
