@@ -173,7 +173,7 @@ const Navbar = () => {
         </p>
       </div>
       <div className="flex flex-row items-center gap-2">
-        {/* <span
+        <span
           className={`flex items-center justify-center  ${
             pathname.includes("customer-support") ||
             pathname.includes("chat-bot")
@@ -198,8 +198,8 @@ const Navbar = () => {
           >
             Lite
           </p>
-        </span> */}
-        <div>
+        </span>
+        {/* <div>
           <button
             className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
             onClick={() => {
@@ -209,8 +209,8 @@ const Navbar = () => {
           >
             TES API
           </button>
-        </div>
-        <div>
+        </div> */}
+        {/* <div>
           {isSignedIn && (
             <button
               className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
@@ -222,50 +222,45 @@ const Navbar = () => {
               TEST AUTH
             </button>
           )}
+        </div> */}
+        <div
+          className="flex flex-row items-center gap-1.5"
+          onClick={() => {
+            router.push("/product/login");
+          }}
+        >
+          <span
+            className={`border-[1px]  rounded-full ${
+              pathname.includes("customer-support") ||
+              pathname.includes("chat-bot")
+                ? "border-[#5D20D2]"
+                : "border-white"
+            }`}
+          >
+            {pathname.includes("customer-support") ||
+            pathname.includes("chat-bot") ? (
+              <Profile className={`#5D20D2`} />
+            ) : (
+              <Profile className={`#ffffff`} />
+            )}
+          </span>
         </div>
+        <p
+          className={`text-[12px] font-normal leading-6 ${
+            pathname.includes("customer-support") ||
+            pathname.includes("chat-bot")
+              ? "text-[#5D20D2]"
+              : "text-white"
+          }`}
+        >
+          You
+        </p>
 
-        {isSignedIn && (
-          <SignedIn>
-            {/* <div
-              className="flex flex-row items-center gap-1.5"
-              // onClick={() => {
-              //   router.push("/product/profile");
-              // }}
-            >
-              <span
-                className={`border-[1px]  rounded-full ${
-                  pathname.includes("customer-support") ||
-                  pathname.includes("chat-bot")
-                    ? "border-[#5D20D2]"
-                    : "border-white"
-                }`}
-              >
-                {pathname.includes("customer-support") ||
-                pathname.includes("chat-bot") ? (
-                  <Profile className={`#5D20D2`} />
-                ) : (
-                  <Profile className={`#ffffff`} />
-                )}
-              </span>
-            </div> */}
-            <UserButton />
-            <p
-              className={`text-[12px] font-normal leading-6 ${
-                pathname.includes("customer-support") ||
-                pathname.includes("chat-bot")
-                  ? "text-[#5D20D2]"
-                  : "text-white"
-              }`}
-            >
-              You
-            </p>
-          </SignedIn>
-        )}
-        <SignedOut>
+        {/* <SignedOut>
           <div className="text-[12px] text-[#551262] font-normal leading-5 bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] flex justify-center items-center">
             <SignInButton />
           </div>
-        </SignedOut>
+        </SignedOut> */}
       </div>
       {isOpen && (
         <div className="absolute bottom-0 top-0 h-screen w-screen right-0 bg-black opacity-40 z-20 -left-[20px] p-6 shadow-2xs content-none"></div>
