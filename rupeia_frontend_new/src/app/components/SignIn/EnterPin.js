@@ -1,9 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import ShowErroemessage from "../alert/ShowErroemessage";
+import ButtonLoader from "../Loader/ButtonLoader";
+import axios from "axios";
+import ShowSucessmessages from "../alert/ShowSucessmessages";
+import { useRouter } from "next/navigation";
 
 const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
   const inputsRef = [useRef(), useRef(), useRef(), useRef()];
-
+  const [loading, setLoading] = useState(false);
+  const router = useRouter();
   const handleChange = (e, index) => {
     const value = e.target.value.replace(/\D/g, ""); // Only allow digits
     if (value.length > 1) return;
@@ -26,9 +31,9 @@ const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
       return;
     } else {
       const payloadData = {
-        pin: fistPageOnboard?.pin,
+        pin: fistPageOnboard?.pin.join(""),
       };
-      const token = localStorage.getItem("token");
+      const token = localStorage.getItem("accessToken");
       try {
         setLoading(true);
         const response = await axios.post(
@@ -80,7 +85,7 @@ const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
           type="button"
           onClick={handleContinue}
         >
-          Continue
+          {loading ? <ButtonLoader /> : "Continue"}
         </button>
       </div>
     </div>

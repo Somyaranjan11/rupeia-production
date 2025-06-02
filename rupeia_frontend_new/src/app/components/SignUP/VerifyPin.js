@@ -2,6 +2,8 @@ import React, { useRef, useState } from "react";
 import ShowErroemessage from "../alert/ShowErroemessage";
 import ButtonLoader from "../Loader/ButtonLoader";
 import { useRouter } from "next/navigation";
+import axios from "axios";
+import ShowSucessmessages from "../alert/ShowSucessmessages";
 
 const VerifyPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
   const router = useRouter();
@@ -39,10 +41,11 @@ const VerifyPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
   const [loading, setLoading] = useState(false);
   const setPin = async () => {
     const payloadData = {
-      pin: fistPageOnboard?.pin,
-      confirmPin: fistPageOnboard?.verify_pin,
+      pin: fistPageOnboard?.pin.join(""),
+      confirmPin: fistPageOnboard?.verify_pin.join(""),
     };
-    const token = localStorage.getItem("register_access_token");
+    const token = localStorage.getItem("accessToken");
+    console.log("token",token)
     try {
       setLoading(true);
       const response = await axios.post(

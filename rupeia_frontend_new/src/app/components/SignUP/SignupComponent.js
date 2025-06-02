@@ -3,6 +3,9 @@ import { FcGoogle } from "react-icons/fc";
 import ButtonLoader from "../Loader/ButtonLoader";
 import axios from "axios";
 import ShowErroemessage from "../alert/ShowErroemessage";
+import { signInWithPopup } from "firebase/auth";
+import { auth, provider } from "@/app/utility/firebase";
+import ShowSucessmessages from "../alert/ShowSucessmessages";
 
 const SignupComponent = ({
   setFirstPageOnboard,
@@ -51,6 +54,46 @@ const SignupComponent = ({
       } finally {
         setLoading(false);
       }
+    }
+  };
+  const handleLogin = async () => {
+    try {
+      const result = await signInWithPopup(auth, provider);
+      // ✅ Extract profile info
+      const user = result.user;
+      const email = user.email;
+      const fullName = user.displayName || ""; // e.g. "John Doe"
+      const photoUrl = user.photoURL;
+      const [firstName, lastName] = fullName.split(" ");
+      const payloadData = {
+        email: email,
+        firstName: firstName,
+        lastName: lastName,
+        referralCode: "",
+        googlePhotoUrl: photoUrl,
+      };
+      try {
+        setLoading(true);
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/oauth/google`,
+          payloadData
+        );
+        console.log("response?.data", response?.data);
+        if (response?.data?.success) {
+          ShowSucessmessages(response?.data?.message);
+          localStorage.setItem("accessToken", response?.data?.accessToken);
+          setPage(4);
+        }
+      } catch (error) {
+        console.error("❌ Error:", error.response?.data || error.message);
+        ShowErroemessage(error.response?.data?.message);
+      } finally {
+        setLoading(false);
+      }
+    } catch (error) {
+      console.error("Error during login:", error);
+    } finally {
+      setLoading(false);
     }
   };
   return (
@@ -126,7 +169,10 @@ const SignupComponent = ({
         </div>
       </div>
       <div className="flex flex-col gap-2 rounded-t-xl">
-        <div className="bg-[#270330] rounded-2xl flex justify-center items-center gap-2 py-2">
+        <div
+          className="bg-[#270330] rounded-2xl flex justify-center items-center gap-2 py-2"
+          onClick={handleLogin}
+        >
           <span>
             <FcGoogle />
           </span>

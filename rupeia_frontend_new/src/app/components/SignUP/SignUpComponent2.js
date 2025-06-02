@@ -58,7 +58,7 @@ const SignUpComponent2 = ({
         if (response?.data?.success) {
           ShowSucessmessages("Registration completed");
           localStorage.setItem(
-            "register_access_token",
+            "accessToken",
             response?.data?.accessToken
           );
           setPage(page + 1);
