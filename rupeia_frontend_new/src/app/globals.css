@@ -176,8 +176,8 @@ body {
   background: linear-gradient(181.06deg, #551262 -15.59%, #270330 110.9%);
 }
 
-@media (min-height: 300px) and (max-height:680px) {
-  .image-resize{
+@media (min-height: 300px) and (max-height: 680px) {
+  .image-resize {
     height: 100px;
     width: 200px;
   }
@@ -226,4 +226,7 @@ body {
 
 .Animate-loader:nth-child(5) {
   animation-delay: 0.9s;
+}
+.why-rupeia-blur {
+  backdrop-filter: blur(95.9000015258789px);
 }

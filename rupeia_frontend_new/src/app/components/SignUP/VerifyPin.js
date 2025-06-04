@@ -45,7 +45,7 @@ const VerifyPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
       confirmPin: fistPageOnboard?.verify_pin.join(""),
     };
     const token = localStorage.getItem("accessToken");
-    console.log("token",token)
+    console.log("token", token);
     try {
       setLoading(true);
       const response = await axios.post(
@@ -60,7 +60,7 @@ const VerifyPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
       console.log("response?.data", response?.data);
       if (response?.data?.success) {
         ShowSucessmessages("PIN is successfully set");
-        router.push("/product/sign-in");
+        router.push("/product");
       }
     } catch (error) {
       console.error("❌ Error:", error.response?.data || error.message);
