@@ -41,6 +41,10 @@ const Goal = () => {
   ];
   return (
     <div className="px-5">
+      <div>
+        <p className="text-[22px] font-normal text-white text-center">Our Features</p>
+        <p className="text-[35px] font-black text-[#AF7BB6] text-center">Grow</p>
+      </div>
       <div className="flex flex-col gap-2">
         <p className="text-[25px] font-medium leading-6">Goals</p>
         <p className="text-[14px] font-medium leading-5 pr-10">
