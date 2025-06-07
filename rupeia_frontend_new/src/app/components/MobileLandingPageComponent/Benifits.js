@@ -3,7 +3,7 @@ import BenifitsAI from "../Images/BenifitsAI.png";
 import BenifitsRisk from "../Images/BenifitsRisk.png";
 import BenifitsCalculator from "../Images/BeniifitsCalculator.png";
 import BenifitsProtofilio from "../Images/BenifitsProtfolio.png";
-import BenifitsGoal from "../Images/BenifitsGoal.png";
+import BenifitsGoal from "../Images/BenifitsAI.png";
 
 const Benifits = () => {
   const benifitsItems = [

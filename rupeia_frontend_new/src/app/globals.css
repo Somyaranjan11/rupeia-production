@@ -230,3 +230,63 @@ body {
 .why-rupeia-blur {
   backdrop-filter: blur(95.9000015258789px);
 }
+.text-gradient {
+  color: linear-gradient(
+    90.01deg,
+    #d0cccb 0.01%,
+    #6a6867 50%,
+    #d0cccb 99.99%
+  );
+}
+
+.range-slider-education-goal-amount {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  overflow: visible; /* Ensures thumb isn't clipped */
+}
+
+.range-slider-education-goal-amount::-webkit-slider-runnable-track {
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.range-slider-education-goal-amount::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  padding: 2px;
+  height: 24px; /* Make the bubble larger */
+  width: 24px; /* Make the bubble larger */
+  background: white;
+  border: 3px solid #61236D;
+  border-radius: 50%; /* Fully round */
+  border-color: #61236D;
+  position: relative;
+  top: -0.5rem; /* Adjust the position to move it above the slider */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* Add a shadow for emphasis */
+}
+
+.range-slider-education-goal-amount::-moz-range-thumb {
+  height: 2rem; /* Make the bubble larger */
+  width: 2rem; /* Make the bubble larger */
+  background: blue;
+  border-radius: 50%; /* Fully round */
+  position: relative;
+  top: -0.75rem; /* Adjust the position */
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3); /* Add a shadow */
+}
+
+.range-slider-education-goal-amount::-moz-range-track {
+  height: 0.5rem;
+  border-radius: 0.25rem;
+}
+@keyframes moveDown {
+  0% {
+    top: 0%;
+  }
+  100% {
+    top: 100%;
+  }
+}

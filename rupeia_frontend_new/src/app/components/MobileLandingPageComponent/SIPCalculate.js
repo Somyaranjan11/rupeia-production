@@ -1,0 +1,180 @@
+"use client";
+import { calculateSIPDetails } from "@/app/utility/calculateSIPDetails";
+import React, { useState, useEffect, useRef } from "react";
+import { MdCurrencyRupee } from "react-icons/md";
+
+const SIPCalculate = () => {
+  const [value, setValue] = useState(50000); // Initial amount
+  const [durationValue, setDurationValue] = useState(9); // Initial duration (months)
+  const [loading, setLoading] = useState(false);
+  const [totalReturns, setTotalReturn] = useState({
+    estimatedReturns: 0,
+    totalInvestment: 0,
+    finalValue: 0,
+    duration: 0,
+    monthlySIP: 0,
+  });
+
+  // Store last API-triggered value
+  const lastTriggeredValue = useRef(value);
+
+  // Normalize values for UI styling
+  const normalizedValue = ((value - 12000) / (1000000 - 12000)) * 100;
+  const normalizedValueDuration = ((durationValue - 12) / (60 - 12)) * 100;
+
+  const handleChange = (e) => {
+    setValue(Number(e.target.value)); // Ensure numeric value
+  };
+
+  const handleChangeDuration = (e) => {
+    setDurationValue(Number(e.target.value)); // Ensure numeric value
+  };
+
+  const fetchGrowCalculation = async () => {
+    try {
+      setLoading(true);
+      const response = await calculateSIPDetails(value, durationValue);
+      console.log("API Response:", response);
+      if (response) {
+        setTotalReturn({
+          estimatedReturns: response?.estimatedReturns,
+          totalInvestment: response?.totalInvestment,
+          finalValue: response?.finalValue,
+          duration: response?.finalValue,
+          monthlySIP: response?.finalValue,
+        });
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="px-5 py-8 flex flex-col gap-7 border-t-[1px] border-b-[1px] border-[#FFFFFF61]">
+      <div>
+        <p className="text-[#ECE6ED] text-[18px] font-medium font-poppins text-center">
+          Calculate return on your mutual fund investments
+        </p>
+      </div>
+      <div className="border border-[#FFFFFF61] w-full h-auto px-5 py-5 rounded-3xl">
+        <div className="">
+          <div className="p-4 flex flex-col gap-3 rounded-lg">
+            <div>
+              <p className="text-[#ECE6ED] text-[13px] font-medium">
+                Monthly Amount
+              </p>
+            </div>
+            <div className="w-full flex mt-2">
+              <input
+                type="range"
+                min="12000"
+                max="1000000"
+                value={value}
+                onChange={handleChange}
+                className="range-slider-education-goal-amount w-full h-[8px] appearance-none rounded-lg overflow-hidden bg-[#FFFFFF3B]"
+                style={{
+                  background: `linear-gradient(to right, #FFFFFF 0%, #FFFFFF ${normalizedValue}%, #FFFF  ${normalizedValue}%, #FFFFFF3B 100%)`,
+                }}
+              />
+            </div>
+            <div className="flex justify-between">
+              <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[12px] font-semibold px-[10px] py-1 rounded-full">
+                12 k
+              </p>
+              <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[12px] font-semibold px-[10px] py-1 rounded-full">
+                10 L
+              </p>
+            </div>
+          </div>
+          <div className="p-4 flex flex-col gap-3 rounded-lg">
+            <div>
+              <p className="text-[#ECE6ED] text-[13px] font-medium">
+                Time Duration
+              </p>
+            </div>
+            <div className="w-full flex mt-2">
+              <input
+                type="range"
+                min="12"
+                max="60"
+                value={durationValue}
+                onChange={handleChangeDuration}
+                className="range-slider-education-goal-amount w-full h-[8px] appearance-none rounded-lg overflow-hidden"
+                style={{
+                  background: `linear-gradient(to right, #FFFFFF 0%, #FFFFFF ${normalizedValueDuration}%, #FFFF  ${normalizedValueDuration}%, #FFFFFF3B 100%)`,
+                }}
+              />
+            </div>
+            <div className="flex justify-between">
+              <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[12px] font-semibold px-[10px] py-1 rounded-full">
+                1 Yr
+              </p>
+              <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[12px] font-semibold px-[10px] py-1 rounded-full">
+                5 Yr
+              </p>
+            </div>
+          </div>
+          <div className="flex justify-center items-center flex-col gap-2">
+            <button
+              className="bg-[#B2A8F2] w-[115px] h-[33px] flex justify-center items-center text-[12px] font-semibold font-poppins rounded-full text-[#551262]"
+              type="button"
+              onClick={() => {
+                fetchGrowCalculation();
+              }}
+            >
+              CALCULATE
+            </button>
+            <p className="text-[#ECE6ED7A] text-[10px] font-semibold font-poppins text-center">
+              Based on Nifty Fifty
+            </p>
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-3">
+        <div className="grid grid-cols-2 gap-4">
+          <div className="bg-[#632A6D] p-5 rounded-2xl flex flex-col gap-3">
+            <p className="flex flex-row items-center gap-0 text-[18px] text-[#ECE6ED] font-poppins font-semibold">
+              <MdCurrencyRupee />
+              {totalReturns?.totalInvestment}
+            </p>
+            <p className="text-[12px] text-[#ECE6ED] font-poppins font-medium">
+              Invested Amount
+            </p>
+          </div>
+          <div className="border-[0.5px] border-[#FFFFFF] p-5 rounded-2xl flex flex-col gap-3">
+            <p className="flex flex-row items-center gap-0 text-[18px] text-[#ECE6ED] font-poppins font-semibold">
+              <MdCurrencyRupee />
+              {totalReturns?.estimatedReturns}
+            </p>
+            <p className="text-[12px] text-[#ECE6ED] font-poppins font-medium">
+              Estimated Returns
+            </p>
+          </div>
+        </div>
+        <div className="grid grid-cols-2 gap-4">
+          <div className="border-[0.5px] border-[#FFFFFF] p-5 rounded-2xl flex flex-col gap-3">
+            <p className="text-[12px] text-[#ECE6ED] font-poppins font-medium">
+              Total Returns
+            </p>
+            <p className="flex flex-row items-center gap-0 text-[18px] text-[#ECE6ED] font-poppins font-semibold">
+              <MdCurrencyRupee />
+              {totalReturns?.finalValue}
+            </p>
+          </div>
+          <div className="bg-[#9563A2] p-5 rounded-2xl flex flex-col gap-3">
+            <p className="flex flex-row items-center gap-0 text-[20px] text-[#270330] font-poppins font-semibold">
+              14.5%
+            </p>
+            <p className="text-[12px] text-[#270330] font-poppins font-medium">
+              Return %
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SIPCalculate;

@@ -5,7 +5,7 @@ import AiGem from "../Images/AiGem.png";
 
 const Wealth = () => {
   return (
-    <div className="px-5 mt-10">
+    <div className="px-5 mt-5">
       <div className="flex flex-col gap-2">
         <p className="text-[25px] font-medium leading-6 text-right">
           Wealth Creation
