@@ -313,3 +313,12 @@ body {
     animation: techScroll 20s linear infinite;
   }
 }
+
+.wealth-backgroud {
+  background: linear-gradient(
+    180deg,
+    #350040 0%,
+    rgba(158, 67, 186, 0.7) 47.73%,
+    #350040 100%
+  );
+}

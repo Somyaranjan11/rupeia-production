@@ -3,6 +3,7 @@ import Brand from "@/app/components/MobileLandingPageComponent/Brand";
 import CustomerReview from "@/app/components/MobileLandingPageComponent/CustomerReview";
 import FAQS from "@/app/components/MobileLandingPageComponent/FAQS";
 import Goal from "@/app/components/MobileLandingPageComponent/Goal";
+import Graph from "@/app/components/MobileLandingPageComponent/Graph";
 import Howitworks from "@/app/components/MobileLandingPageComponent/Howitworks";
 import SIPCalculate from "@/app/components/MobileLandingPageComponent/SIPCalculate";
 import Wealth from "@/app/components/MobileLandingPageComponent/Wealth";
@@ -15,9 +16,10 @@ const Page = () => {
       <div className="font-poppins flex flex-col gap-5 overflow-y-auto">
         <Whyrupeia />
         <Howitworks />
-        <Goal />
-        <Wealth />
+        {/* <Goal />
+        <Wealth /> */}
         <Benifits />
+        <Graph />
         <SIPCalculate />
         <CustomerReview />
         <Brand />

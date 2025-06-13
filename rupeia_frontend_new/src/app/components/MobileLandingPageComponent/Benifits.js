@@ -10,16 +10,16 @@ import WealthImage1 from "../../components/Images/wealthImage1.png";
 
 const Benifits = () => {
   return (
-    <div className="bg-white py-10 flex flex-col gap-10">
+    <div className="wealth-backgroud flex flex-col gap-10 py-10">
       <div className="flex flex-col gap-10">
         <div className="flex flex-col">
-          <p className="text-[45px] font-semibold tracking-wide text-[#270330] text-center ">
+          <p className="text-[45px] font-semibold tracking-wide text-[#ECE6ED] text-center ">
             Goals-First Investing
           </p>
-          <p className="text-[19px] font-semibold  text-[#270330] text-center">
+          <p className="text-[19px] font-semibold  text-[#CD90D6] text-center">
             Every dream deserves a plan.
           </p>
-          <p className="text-[16px] font-normal leading-5  text-[#270330] text-center">
+          <p className="text-[16px] font-normal leading-5  text-[#CD90D6] text-center">
             We all have goals some we've chased, some we've put on hold. At
             Rupeia, we believe it’s never too late to start.
           </p>
@@ -44,21 +44,21 @@ const Benifits = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 ">
         <div className="flex flex-col">
-          <p className="text-[45px] font-semibold tracking-wide text-[#270330] text-center ">
+          <p className="text-[45px] font-semibold tracking-wide text-[#ECE6ED] text-center ">
             Wealth+
           </p>
-          <p className="text-[19px] font-semibold  text-[#270330] text-center">
+          <p className="text-[19px] font-semibold  text-[#CD90D6] text-center">
             Tried investing… but gave up after a loss?
           </p>
-          <p className="text-[16px] px-[20%] font-normal leading-6  text-[#270330] text-center mt-2">
+          <p className="text-[16px] px-[20%] font-normal leading-6  text-[#CD90D6] text-center mt-2">
             Many of us stop when markets dip, lose confidence, and feel left
             behind. At Rupeia, we ensure your confidence stays strong so you can
             invest with a long-term focus.
           </p>
         </div>
-        <div className="flex flex-row items-center justify-center gap-4">
+        <div className="flex flex-row items-center justify-center gap-4  pb-14">
           <div>
             <img src={WealthImage1.src} className="h-[400px] w-[300px]" />
           </div>
