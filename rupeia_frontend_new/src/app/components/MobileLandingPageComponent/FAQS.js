@@ -47,7 +47,7 @@ const FAQS = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4  mt-3">
         {faqs_question?.map((data) => (
           <div className="border-[0.3px] border-[#9563A2] why-rupeia-blur px-5 flex flex-row gap-3 justify-between items-center py-3 rounded-2xl">
-            <span className="text-[12px] font-medium leading-5 font-poppins">
+            <span className="text-[12px] sm:text-[15px] font-medium leading-5 font-poppins w-[70%]">
               {data?.question}
             </span>
             <span>

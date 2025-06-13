@@ -136,7 +136,7 @@ const SIPCalculate = () => {
         <div className="flex flex-col gap-3 w-[100%] sm:w-[50%]">
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-[#632A6D] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="flex flex-row items-center gap-0 text-[18px] text-[#ECE6ED] font-poppins font-semibold">
+              <p className="flex flex-row items-center gap-0 text-[18px] sm:text-[22px] text-[#ECE6ED] font-poppins font-semibold">
                 <MdCurrencyRupee />
                 {totalReturns?.totalInvestment}
               </p>
@@ -145,7 +145,7 @@ const SIPCalculate = () => {
               </p>
             </div>
             <div className="border-[0.5px] bg-[#42004F] border-[#FFFFFF] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="flex flex-row items-center gap-0 text-[18px] text-[#ECE6ED] font-poppins font-semibold">
+              <p className="flex flex-row items-center gap-0 text-[18px] sm:text-[22px] text-[#ECE6ED] font-poppins font-semibold">
                 <MdCurrencyRupee />
                 {totalReturns?.estimatedReturns}
               </p>
@@ -156,19 +156,19 @@ const SIPCalculate = () => {
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="border-[0.5px] border-[#FFFFFF] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="text-[12px] text-[#ECE6ED] font-poppins font-medium">
+              <p className="text-[12px] text-[#ECE6ED] text-[18px] sm:text-[22px] font-poppins font-medium">
                 Total Returns
               </p>
-              <p className="flex flex-row items-center gap-0 text-[18px] text-[#ECE6ED] font-poppins font-semibold">
+              <p className="flex flex-row items-center gap-0  text-[#ECE6ED] font-poppins font-semibold">
                 <MdCurrencyRupee />
                 {totalReturns?.finalValue}
               </p>
             </div>
             <div className="bg-[#9563A2] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="flex flex-row items-center gap-0 text-[20px] text-[#270330] font-poppins font-semibold">
+              <p className="flex flex-row items-center gap-0 text-[20px] sm:text-[24px] text-[#270330] font-poppins font-semibold">
                 14.5%
               </p>
-              <p className="text-[12px] text-[#270330] font-poppins font-medium">
+              <p className="text-[12px] sm:text-[16px] text-[#270330] font-poppins font-medium">
                 Return %
               </p>
             </div>
@@ -176,10 +176,10 @@ const SIPCalculate = () => {
         </div>
       </div>
       <div>
-        <p className="text-[#ECE6ED] text-[18px] sm:text-[27px] font-semibold font-poppins text-center">
+        <p className="text-[#ECE6ED]  sm:text-[27px] font-semibold font-poppins text-center">
           Do SIP, Withdraw anytime
         </p>
-        <p className="text-[#632A6D] text-[18px] sm:text-[27px] font-semibold font-poppins text-center">The choice is yours.</p>
+        <p className="text-[#632A6D]  sm:text-[27px] font-semibold font-poppins text-center">The choice is yours.</p>
       </div>
     </div>
   );
