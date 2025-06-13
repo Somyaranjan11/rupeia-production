@@ -18,9 +18,9 @@ const Page = () => {
         <Goal />
         <Wealth />
         <Benifits />
-        <Brand />
         <SIPCalculate />
         <CustomerReview />
+        <Brand />
         <FAQS />
       </div>
     </div>

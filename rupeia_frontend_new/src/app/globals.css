@@ -231,12 +231,7 @@ body {
   backdrop-filter: blur(95.9000015258789px);
 }
 .text-gradient {
-  color: linear-gradient(
-    90.01deg,
-    #d0cccb 0.01%,
-    #6a6867 50%,
-    #d0cccb 99.99%
-  );
+  color: linear-gradient(90.01deg, #d0cccb 0.01%, #6a6867 50%, #d0cccb 99.99%);
 }
 
 .range-slider-education-goal-amount {
@@ -258,9 +253,9 @@ body {
   height: 24px; /* Make the bubble larger */
   width: 24px; /* Make the bubble larger */
   background: white;
-  border: 3px solid #61236D;
+  border: 3px solid #61236d;
   border-radius: 50%; /* Fully round */
-  border-color: #61236D;
+  border-color: #61236d;
   position: relative;
   top: -0.5rem; /* Adjust the position to move it above the slider */
   cursor: pointer;
@@ -288,5 +283,33 @@ body {
   }
   100% {
     top: 100%;
+  }
+}
+@layer utilities {
+  @keyframes brandScroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-brandScroll {
+    animation: brandScroll 15s linear infinite;
+  }
+}
+@layer utilities {
+  @keyframes techScroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-techScroll {
+    animation: techScroll 20s linear infinite;
   }
 }

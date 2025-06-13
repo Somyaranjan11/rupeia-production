@@ -32,13 +32,19 @@ const FAQS = () => {
         "It is a long established fact that a reader will be distracted by the readable?",
       answer: "Ok",
     },
+    {
+      id: 1,
+      question:
+        "It is a long established fact that a reader will be distracted by the readable?",
+      answer: "Ok",
+    },
   ];
   return (
-    <div className="px-5">
-      <p className="text-[30px] text-left font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
-        FAQ’S
+    <div className="px-5 sm:px-28">
+       <p className="text-[22px] sm:text-[32px] my-5 text-left font-normal bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
+        All your questions, answered.
       </p>
-      <div className="flex flex-col gap-2  mt-3">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4  mt-3">
         {faqs_question?.map((data) => (
           <div className="border-[0.3px] border-[#9563A2] why-rupeia-blur px-5 flex flex-row gap-3 justify-between items-center py-3 rounded-2xl">
             <span className="text-[12px] font-medium leading-5 font-poppins">

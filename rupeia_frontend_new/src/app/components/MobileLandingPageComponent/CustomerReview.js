@@ -1,4 +1,5 @@
 import React from "react";
+import profileImage from "../../components/Images/review_profile.png";
 
 const CustomerReview = () => {
   const customerReview = [
@@ -18,21 +19,29 @@ const CustomerReview = () => {
       details_1: "CEO, Founder",
       details_2: "Kotak Mahindra Bank",
     },
+    {
+      id: 1,
+      content:
+        "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.",
+      name: "Aryan Singh",
+      details_1: "CEO, Founder",
+      details_2: "Kotak Mahindra Bank",
+    },
   ];
   return (
-    <div className="px-5">
-      <p className="text-[22px] my-5 text-center font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
-        Our Happy Customers
+    <div className="px-5 pb-10">
+      <p className="text-[22px] sm:text-[32px] my-5 text-center font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
+        Meet the people we’ve helped.
       </p>
-      <div className="w-full overflow-x-auto">
-        <div className="flex gap-4 px-2">
+      <div className="w-full flex justify-center items-center overflow-x-auto sm:px-28">
+        <div className="flex gap-4 sm:gap-14 px-2">
           {customerReview?.map((data, index) => (
             <div
               key={index}
-              className="h-[340px] min-w-[250px] border border-[#FFFFFF61] px-7 py-4 rounded-xl flex justify-center items-center flex-col gap-4"
+              className="h-[340px] min-w-[250px] sm:min-w-0 w-[280px] bg-[#D9D9D914] border border-[#FFFFFF61] px-5 py-5 gap-5 rounded-xl flex  items-center flex-col"
             >
-              <div className="h-[75px] w-[75px] border-[1px] border-[#FFFFFF61] flex justify-center items-center rounded-full">
-                img
+              <div className="h-[75px] w-[75px] border-[1px] border-[#FFFFFF61] flex justify-center items-center rounded-full ">
+                <img src={profileImage.src} className="w-full h-full" />
               </div>
               <p className="text-[13px] text-white leading-5 font-medium text-left">
                 {data?.content}
