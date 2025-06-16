@@ -14,7 +14,7 @@ import React from "react";
 
 const Page = () => {
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-screen flex flex-col overflow-hidden bg-primary">
       <div className="font-poppins flex flex-col gap-5 overflow-y-auto">
         <Whyrupeia />
         {/* <Howitworks /> */}

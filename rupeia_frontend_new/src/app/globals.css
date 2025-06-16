@@ -333,3 +333,7 @@ body {
 .footer-background-color {
   background: linear-gradient(180deg, #551262 24.36%, #270330 100%);
 }
+
+.pricing-back-drop {
+  backdrop-filter: blur(10.400001525878906px);
+}
