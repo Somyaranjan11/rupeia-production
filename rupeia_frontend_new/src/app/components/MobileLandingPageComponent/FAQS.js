@@ -40,7 +40,7 @@ const FAQS = () => {
     },
   ];
   return (
-    <div className="px-5 sm:px-28">
+    <div className="px-5 sm:px-28 mt-14">
        <p className="text-[22px] sm:text-[32px] my-5 text-left font-normal bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
         All your questions, answered.
       </p>

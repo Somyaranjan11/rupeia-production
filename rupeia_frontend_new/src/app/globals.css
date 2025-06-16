@@ -330,3 +330,6 @@ body {
     #350040 100%
   ) !important;
 }
+.footer-background-color {
+  background: linear-gradient(180deg, #551262 24.36%, #270330 100%);
+}
