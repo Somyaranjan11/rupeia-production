@@ -71,7 +71,7 @@ const Brand = () => {
   ];
   return (
     <div className="wealth-backgroud">
-      <div className="px-5 sm:px-10 flex flex-col gap-5 py-12">
+      <div className="px-5 sm:px-10 flex flex-col gap-5 py-6 sm:py-12">
         <div>
           <p className=" text-[22px] sm:text-[32px] text-center font-semibold  text-white">
             Our Investment Partners
@@ -81,13 +81,13 @@ const Brand = () => {
           <div className="flex gap-12 px-2 animate-brandScroll">
             {brandImage?.map((data, index) => (
               <div className="flex justify-center items-center">
-                <img src={data?.image?.src} className="w-[210px] h-[100px]" />
+                <img src={data?.image?.src} className="min-w-[210px] h-[100px]" />
               </div>
             ))}
           </div>
         </div>
       </div>
-      <div className="px-5 sm:px-10 flex flex-col gap-5 py-12 border-t-[2px] border-[#270330]">
+      <div className="px-5 sm:px-10 flex flex-col gap-5 py-6 sm:py-12 border-t-[2px] border-[#270330]">
         <div>
           <p className=" text-[22px] sm:text-[32px] text-center font-semibold  text-white">
             Our Tech Partners
@@ -101,7 +101,7 @@ const Brand = () => {
                   data?.id == 1 ? "bg-black" : ""
                 }`}
               >
-                <img src={data?.image?.src} className="w-[210px] h-[80px]" />
+                <img src={data?.image?.src} className="min-w-[210px] h-[80px]" />
               </div>
             ))}
           </div>

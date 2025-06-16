@@ -33,7 +33,7 @@ const CustomerReview = () => {
       <p className="text-[22px] sm:text-[32px] my-5 text-center font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
         Meet the people we’ve helped.
       </p>
-      <div className="w-full flex justify-center items-center overflow-x-auto sm:px-28">
+      <div className="w-full flex justify-start sm:justify-center items-center overflow-x-auto sm:px-28">
         <div className="flex gap-4 sm:gap-14 px-2">
           {customerReview?.map((data, index) => (
             <div

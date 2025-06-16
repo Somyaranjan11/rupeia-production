@@ -17,7 +17,7 @@ const Page = () => {
     <div className="h-screen flex flex-col overflow-hidden">
       <div className="font-poppins flex flex-col gap-5 overflow-y-auto">
         <Whyrupeia />
-        <Howitworks />
+        {/* <Howitworks /> */}
         {/* <Goal />
         <Wealth /> */}
         <Benifits />
