@@ -1,18 +1,32 @@
 import React from "react";
-
 const Howitworks = () => {
   return (
-    <div className="px-28">
+    <div className="bg-[#3E004A] flex flex-col gap-8 px-28 py-10 font-poppins ">
+      <div className="why-stress-free w-[55%] flex justify-center items-center p-10 flex-col gap-2 mx-auto">
+        <p className="text-[#ECAFFF] text-[30px] font-semibold">
+          Why Stress-Free Investing?
+        </p>
+        <p className="text-white text-[15px] font-normal">
+          Stress-free investing means your portfolio is monitored round the
+          clock just like having your personal CA, so your goals stay on track
+          and you can concentrate your job.
+        </p>
+      </div>
       <div>
-        <p className="text-[25px] font-normal text-white text-left">
+        <span className="pb-7 text-[26px] sm:text-[38px] font-medium -tracking-wide text-white flex-wrap gap-[2px] text-center flex justify-center items-center">
+          <span> Built</span>
+          <span className="text-[#AF7BB6] px-1">for 5 crore</span>
+          <span>proud employees!</span>
+        </span>
+        <p className="text-[25px] sm:text-[35px] font-normal text-white text-left">
           How it works?
         </p>
-        <p className="text-[16px] font-normal text-[#AF7BB6] text-left">
+        <p className="text-[16px] sm:text-[20px] font-normal text-[#AF7BB6] text-left">
           See how Rupeia helps you earn more
         </p>
       </div>
       <div className="flex flex-row gap-10">
-        <div className=" border-[2px] border-[#FFFFFF61] rounded-3xl p-8 mt-5 flex flex-col gap-2">
+        <div className=" border-[2px] border-[#FFFFFF61] rounded-3xl p-8 mt-5 flex flex-col gap-5">
           <span className="text-[16px] sm:text-[18px] font-normal text-white flex flex-wrap gap-[2px]">
             <span> Smart</span>
             <span className="text-[#AF7BB6] px-1">Analysis &</span>
@@ -23,7 +37,7 @@ const Howitworks = () => {
             funds.
           </p>
         </div>
-        <div className=" border-[2px] border-[#FFFFFF61] rounded-3xl p-7 mt-5 ">
+        <div className=" border-[2px] border-[#FFFFFF61] rounded-3xl p-7 mt-5 flex flex-col gap-5 ">
           <span className="text-[16px] sm:text-[18px] font-normal text-white flex flex-wrap gap-[2px]">
             <span className="text-[#AF7BB6] px-1">AI</span>
             <span>powered and seek</span>
@@ -35,7 +49,7 @@ const Howitworks = () => {
             goals.
           </p>
         </div>
-        <div className=" border-[2px] border-[#FFFFFF61] rounded-3xl p-7 mt-5 ">
+        <div className=" border-[2px] border-[#FFFFFF61] rounded-3xl p-7 mt-5 flex flex-col gap-5 ">
           <span className="text-[16px] sm:text-[18px] font-normal text-white flex flex-wrap gap-[2px]">
             <span>Stress Free</span>
             <span className="text-[#AF7BB6] px-1">Investing and </span>
@@ -48,11 +62,17 @@ const Howitworks = () => {
           </p>
         </div>
       </div>
-      <div className="mt-5 px-2 flex flex-col gap-3">
-        <p className="text-[19px] italic font-semibold leading-6 text-center font-poppins text-[#AF7BB6]">
+      <div>
+        <video autoPlay loop muted playsInline className="w-full border-none">
+          <source src="/how_works_video1.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div className="px-2 flex flex-col gap-5">
+        <p className="text-[19px] sm:text-[25px] font-semibold leading-6 text-center font-poppins text-[#ECE6ED] tracking-wide">
           Sit back, relax and watch your money grow.
         </p>
-        <p className="text-[15px] italic font-semibold leading-6 text-center font-poppins text-[#AF7BB6]">
+        <p className="text-[15px] sm:text-[20px] font-semibold leading-6 text-center font-poppins text-[#AF7BB6]">
           Investing has not been more stress free.
         </p>
       </div>

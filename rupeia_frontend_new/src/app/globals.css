@@ -322,3 +322,11 @@ body {
     #350040 100%
   );
 }
+.why-stress-free {
+  background: linear-gradient(
+    180deg,
+    #350040 0%,
+    rgba(158, 67, 186, 0.7) 47.73%,
+    #350040 100%
+  ) !important;
+}
