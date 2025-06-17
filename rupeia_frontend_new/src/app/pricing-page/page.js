@@ -4,7 +4,7 @@ import Footer from "../components/MobileLandingPageComponent/Footer";
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-primary">
+    <div className="min-h-screen flex flex-col bg-[#551262]">
       {/* Top Section */}
       <div className="relative flex flex-col items-center justify-center pt-12 pb-16">
         {/* Background "Pricing" Text */}
