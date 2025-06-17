@@ -337,3 +337,11 @@ body {
 .pricing-back-drop {
   backdrop-filter: blur(10.400001525878906px);
 }
+.about-us-building-platform {
+  background: linear-gradient(
+    180deg,
+    #350040 0%,
+    rgba(158, 67, 186, 0.7) 47.73%,
+    #350040 100%
+  );
+}

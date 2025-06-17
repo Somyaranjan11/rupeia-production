@@ -3,6 +3,8 @@ import OurVision from "../components/AboutUs/OurVision";
 import Founder from "../components/AboutUs/Founder";
 import Brand from "../components/AboutUs/Brand";
 import Footer from "../components/MobileLandingPageComponent/Footer";
+import OurValue from "../components/AboutUs/OurValue";
+import BuildingPlatform from "../components/AboutUs/BuildingPlatform";
 
 const Page = () => {
   return (
@@ -10,6 +12,8 @@ const Page = () => {
       <OurVision />
       <Founder />
       <Brand/>
+      <OurValue/>
+      <BuildingPlatform/>
       <Footer/>
     </div>
   );
