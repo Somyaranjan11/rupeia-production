@@ -345,3 +345,7 @@ body {
     #350040 100%
   );
 }
+
+.features-card {
+  backdrop-filter: blur(95.9000015258789px);
+}
