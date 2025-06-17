@@ -4,7 +4,7 @@ import Urvasi from "../../components/Images/urvasi-founder2.png";
 
 const Founder = () => {
   return (
-    <div className="flex flex-col gap-10 mt-10">
+    <div className="flex flex-col gap-10 my-10">
       <div className="flex flex-col items-center justify-center">
         <p className="text-[#FFFFFF] text-[30px] font-semibold">
           Meet The Founders
