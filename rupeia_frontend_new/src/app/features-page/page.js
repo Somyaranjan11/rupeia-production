@@ -7,6 +7,7 @@ import Benifit3 from "../components/Images/benifit3.png";
 import Benifit4 from "../components/Images/benifit4.png";
 import Benifit5 from "../components/Images/benifit5.png";
 import cardImage from "../components/Images/card-bg-image.png";
+import LandingNavbar from "../components/LandingComponent/LandingNavbar";
 
 const Page = () => {
   const benifitData = [
@@ -42,7 +43,8 @@ const Page = () => {
     },
   ];
   return (
-    <div className="min-h-screen flex flex-col bg-[#350040] py-6 sm:py-10 gap-8  sm:gap-16">
+    <div className="min-h-screen flex flex-col bg-[#350040] gap-8  sm:gap-16">
+      <LandingNavbar />
       <div className="px-5 sm:px-28">
         <div className="py-3 sm:py-10">
           <p className="text-[25px] sm:text-[45px] text-[#AF7BB6] text-center font-semibold tracking-wide">
@@ -76,7 +78,10 @@ const Page = () => {
                 />
               </div>
               <div className="relative">
-                <img src={cardImage.src} className="h-[45px] sm:h-[65px] w-full " />
+                <img
+                  src={cardImage.src}
+                  className="h-[45px] sm:h-[65px] w-full "
+                />
                 <p className="text-[#ECE6ED] text-[10px] sm:text-[15px] font-medium text-center absolute inset-0 flex items-center justify-center bg-opacity-40 flex-col gap-3 px-4">
                   {data?.heading}
                 </p>

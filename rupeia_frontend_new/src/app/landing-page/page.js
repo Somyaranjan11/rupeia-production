@@ -11,24 +11,23 @@ import SIPCalculate from "@/app/components/MobileLandingPageComponent/SIPCalcula
 import Wealth from "@/app/components/MobileLandingPageComponent/Wealth";
 import Whyrupeia from "@/app/components/MobileLandingPageComponent/Whyrupeia";
 import React from "react";
+import LandingNavbar from "../components/LandingComponent/LandingNavbar";
 
 const Page = () => {
   return (
-    <div className="h-screen flex flex-col overflow-hidden bg-primary">
-      <div className="font-poppins flex flex-col gap-5 overflow-y-auto">
-        <Whyrupeia />
-        {/* <Howitworks /> */}
-        {/* <Goal />
+    <div className="min-h-screen flex flex-col bg-primary">
+      <LandingNavbar />
+      {/* <Howitworks /> */}
+      {/* <Goal />
         <Wealth /> */}
-        <Benifits />
-        <Graph />
-        <SIPCalculate />
-        <CustomerReview />
-        <Brand />
-        <MobileBlogs/>
-        <FAQS />
-        <Footer/>
-      </div>
+      <Benifits />
+      <Graph />
+      <SIPCalculate />
+      <CustomerReview />
+      <Brand />
+      <MobileBlogs />
+      <FAQS />
+      <Footer />
     </div>
   );
 };

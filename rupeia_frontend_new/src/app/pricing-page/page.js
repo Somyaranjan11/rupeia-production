@@ -1,10 +1,12 @@
 import React from "react";
 import PlansCardModel from "../components/PricingPage/PlansCardModel";
 import Footer from "../components/MobileLandingPageComponent/Footer";
+import LandingNavbar from "../components/LandingComponent/LandingNavbar";
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#551262]">
+    <div className="min-h-screen flex flex-col bg-[#350040]">
+      <LandingNavbar />
       {/* Top Section */}
       <div className="relative flex flex-col items-center justify-center pt-12 pb-16">
         {/* Background "Pricing" Text */}

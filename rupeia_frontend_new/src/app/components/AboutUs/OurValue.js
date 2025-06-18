@@ -46,23 +46,23 @@ const OurValue = () => {
     },
   ];
   return (
-    <div className="px-28 py-10 flex flex-col gap-10 ">
+    <div className="px-4 sm:px-28 py-5 sm:py-10 flex flex-col gap-5 sm:gap-10 ">
       <div>
-        <p className="text-[#FFFFFF] text-[40px] font-medium text-center">
+        <p className="text-[#FFFFFF] text-[25px] sm:text-[40px] font-medium text-center">
           The Values That Drive Us
         </p>
       </div>
-      <div className="flex flex-row items-center justify-center gap-7 flex-wrap ">
+      <div className="flex flex-row gap-3 sm:gap-7 sm:flex-wrap justify-start sm:justify-center items-center overflow-x-auto ">
         {dummyValueData?.map((data, index) => (
           <div
             key={index}
-            className="p-10 bg-[#D9D9D9] w-[400px] h-[260px] flex gap-2 justify-center items-center flex-col rounded-3xl"
+            className="p-4 sm:p-10 bg-[#D9D9D9] min-w-[270px] sm:min-w-0 sm:w-[400px] h-[260px] flex gap-2 justify-center items-center flex-col rounded-3xl"
           >
             <img src={data?.image.src} className="h-[70x] w-[70px]" />
-            <p className="text-[#5D20D2] text-[20px] font-semibold">
+            <p className="text-[#5D20D2] text-[16px] sm:text-[20px] font-semibold">
               {data?.name}
             </p>
-            <p className="text-[#551262] text-[14px] font-normal text-center">
+            <p className="text-[#551262] text-[12px] sm:text-[14px] font-normal text-center">
               {data?.desc}
             </p>
           </div>

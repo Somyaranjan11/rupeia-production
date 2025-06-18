@@ -5,11 +5,13 @@ import { FaLinkedin } from "react-icons/fa";
 import { IoCall } from "react-icons/io5";
 import Brand from "../components/ContactUs/Brand";
 import Footer from "../components/MobileLandingPageComponent/Footer";
+import LandingNavbar from "../components/LandingComponent/LandingNavbar";
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-[#E19EEE]  pt-10 sm:pt-24">
-      <div className="px-5 sm:px-28">
+    <div className="min-h-screen flex flex-col bg-[#E19EEE]  ">
+      <LandingNavbar />
+      <div className="px-5 sm:px-28 pt-10 sm:pt-24">
         <div className="bg-[#551262] flex flex-row justify-between items-center rounded-2xl px-3 sm:px-20">
           <div>
             <p className="text-[18px] sm:text-[34px] font-semibold">
@@ -142,7 +144,7 @@ const Page = () => {
       <div className="my-16">
         <Brand />
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };
