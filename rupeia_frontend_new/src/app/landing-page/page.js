@@ -12,12 +12,14 @@ import Wealth from "@/app/components/MobileLandingPageComponent/Wealth";
 import Whyrupeia from "@/app/components/MobileLandingPageComponent/Whyrupeia";
 import React from "react";
 import LandingNavbar from "../components/LandingComponent/LandingNavbar";
+import SteeeFree from "../components/MobileLandingPageComponent/SteeeFree";
 
 const Page = () => {
   return (
     <div className="min-h-screen flex flex-col bg-primary">
       <LandingNavbar />
-      {/* <Howitworks /> */}
+      <SteeeFree/>
+      <Howitworks />
       {/* <Goal />
         <Wealth /> */}
       <Benifits />

@@ -349,3 +349,11 @@ body {
 .features-card {
   backdrop-filter: blur(95.9000015258789px);
 }
+.landing-page-text {
+  background: linear-gradient(95.02deg, #ece6ed 3.51%, #af7bb6 91.69%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.landing-page-button-shadow {
+  box-shadow: 0px 0px 28.6px 7px #af7bb67d;
+}
