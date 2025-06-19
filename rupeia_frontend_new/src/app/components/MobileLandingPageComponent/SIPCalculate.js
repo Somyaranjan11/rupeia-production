@@ -54,7 +54,7 @@ const SIPCalculate = () => {
   return (
     <div className="px-5 py-11 flex flex-col gap-7 border-t-[1px] border-b-[1px] border-[#FFFFFF61]">
       <div>
-        <p className="text-[#ECE6ED] text-[18px] sm:text-[48px] font-medium font-poppins text-center py-6">
+        <p className="text-[#ECE6ED] text-[18px] sm:text-[32px] font-medium font-poppins text-center py-6">
           Calculate return on your mutual fund investments
         </p>
       </div>
@@ -63,7 +63,7 @@ const SIPCalculate = () => {
           <div className="">
             <div className="p-4 flex flex-col gap-3 rounded-lg">
               <div>
-                <p className="text-[#ECE6ED] text-[28px] font-medium">
+                <p className="text-[#ECE6ED] text-[20px] font-medium">
                   Monthly Amount
                 </p>
               </div>
@@ -80,18 +80,18 @@ const SIPCalculate = () => {
                   }}
                 />
               </div>
-              <div className="flex justify-between">
-                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[20px] font-semibold px-[10px] py-1 rounded-full">
+              <div className="flex justify-between mt-1">
+                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[16px] font-semibold px-[10px] py-1 rounded-full">
                   12 k
                 </p>
-                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[20px] font-semibold px-[10px] py-1 rounded-full">
+                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[16px] font-semibold px-[10px] py-1 rounded-full">
                   10 L
                 </p>
               </div>
             </div>
             <div className="p-4 flex flex-col gap-3 rounded-lg">
               <div>
-                <p className="text-[#ECE6ED] text-[28px] font-medium">
+                <p className="text-[#ECE6ED] text-[20px] font-medium">
                   Time Duration
                 </p>
               </div>
@@ -108,18 +108,18 @@ const SIPCalculate = () => {
                   }}
                 />
               </div>
-              <div className="flex justify-between">
-                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[20px]] font-semibold px-[10px] py-1 rounded-full">
+              <div className="flex justify-between mt-1">
+                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[16px] font-semibold px-[10px] py-1 rounded-full">
                   1 Yr
                 </p>
-                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[20px]] font-semibold px-[10px] py-1 rounded-full">
+                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[16px] font-semibold px-[10px] py-1 rounded-full">
                   5 Yr
                 </p>
               </div>
             </div>
             <div className="flex justify-center items-center flex-col gap-2 mt-10">
               <button
-                className="bg-[#B2A8F2] w-[224px] h-[77px] flex justify-center items-center text-[24px] font-semibold font-poppins rounded-full text-[#551262]"
+                className="bg-[#B2A8F2] w-[224px] h-[52px] flex justify-center items-center text-[18px] font-semibold font-poppins rounded-full text-[#551262]"
                 type="button"
                 onClick={() => {
                   fetchGrowCalculation();
@@ -127,7 +127,7 @@ const SIPCalculate = () => {
               >
                 CALCULATE
               </button>
-              <p className="text-[#ECE6ED7A] text-[20px] font-semibold font-poppins text-center">
+              <p className="text-[#ECE6ED7A] text-[16px] font-semibold font-poppins text-center">
                 Based on Nifty Fifty
               </p>
             </div>
@@ -136,39 +136,39 @@ const SIPCalculate = () => {
         <div className="flex flex-col gap-3 w-[100%] sm:w-[50%]">
           <div className="grid grid-cols-2 gap-4">
             <div className="bg-[#632A6D] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="flex flex-row items-center gap-0 text-[18px] sm:text-[48px] text-[#ECE6ED] font-poppins font-semibold">
+              <p className="flex flex-row items-center gap-0 text-[18px] sm:text-[32px] text-[#ECE6ED] font-poppins font-semibold">
                 <MdCurrencyRupee />
                 {totalReturns?.totalInvestment}
               </p>
-              <p className="text-[28px] text-[#ECE6ED] font-poppins font-medium">
+              <p className="text-[18px] text-[#ECE6ED] font-poppins font-medium">
                 Invested Amount
               </p>
             </div>
             <div className="border-[0.5px] bg-[#42004F] border-[#FFFFFF] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="flex flex-row items-center gap-0 text-[18px] sm:text-[48px] text-[#ECE6ED] font-poppins font-semibold">
+              <p className="flex flex-row items-center gap-0 text-[18px] sm:text-[32px] text-[#ECE6ED] font-poppins font-semibold">
                 <MdCurrencyRupee />
                 {totalReturns?.estimatedReturns}
               </p>
-              <p className="text-[28px] text-[#ECE6ED] font-poppins font-medium">
+              <p className="text-[18px] text-[#ECE6ED] font-poppins font-medium">
                 Estimated Returns
               </p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
             <div className="border-[0.5px] border-[#FFFFFF] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="text-[28px] text-[#ECE6ED] font-poppins font-medium">
+              <p className="text-[18px] text-[#ECE6ED] font-poppins font-medium">
                 Total Returns
               </p>
-              <p className="flex flex-row items-center gap-0  text-[#ECE6ED] font-poppins font-semibold text-[18px] sm:text-[48px]">
+              <p className="flex flex-row items-center gap-0  text-[#ECE6ED] font-poppins font-semibold text-[18px] sm:text-[32px]">
                 <MdCurrencyRupee />
                 {totalReturns?.finalValue}
               </p>
             </div>
             <div className="bg-[#9563A2] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="flex flex-row items-center gap-0 text-[18px] sm:text-[48px] text-[#270330] font-poppins font-semibold">
+              <p className="flex flex-row items-center gap-0 text-[18px] sm:text-[32px] text-[#270330] font-poppins font-semibold">
                 14.5%
               </p>
-              <p className="text-[28px] sm:text-[16px] text-[#270330] font-poppins font-medium">
+              <p className="text-[18px] sm:text-[16px] text-[#270330] font-poppins font-medium">
                 Return %
               </p>
             </div>
@@ -176,10 +176,10 @@ const SIPCalculate = () => {
         </div>
       </div>
       <div>
-        <p className="text-[#ECE6ED]  sm:text-[64px] font-semibold font-poppins text-center">
+        <p className="text-[#ECE6ED]  sm:text-[42px] font-semibold font-poppins text-center">
           Do SIP, Withdraw anytime
         </p>
-        <p className="text-[#B17CB5]  sm:text-[64px] font-semibold font-poppins text-center">
+        <p className="text-[#B17CB5]  sm:text-[42px] font-semibold font-poppins text-center">
           The choice is yours.
         </p>
       </div>

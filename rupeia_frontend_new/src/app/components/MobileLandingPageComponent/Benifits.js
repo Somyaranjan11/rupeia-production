@@ -16,7 +16,7 @@ const Benifits = () => {
     <div className="wealth-backgroud flex flex-col gap-10 py-20 px-28">
       <div className="flex flex-col gap-10">
         <div className="flex flex-col">
-          <p className="text-[32px] sm:text-[80px] font-semibold tracking-wide text-[#ECE6ED] text-center leading-[100%] ">
+          <p className="text-[32px] sm:text-[53px] font-semibold tracking-wide text-[#ECE6ED] text-center leading-[100%] ">
             Goals-First Investing
           </p>
           <p className="text-[16px] sm:text-[32px] font-semibold  text-[#CD90D6] text-center mt-5">
@@ -31,21 +31,21 @@ const Benifits = () => {
         </div>
         <div className=" flex-row items-center justify-between gap-4 hidden sm:flex mt-14">
           <div>
-            <img src={GoalsImage1.src} className="h-[318px] w-[228px]" />
+            <img src={GoalsImage1.src} className="h-[280px] w-[228px]" />
           </div>
           <div className="flex flex-col gap-4">
-            <img src={GoalsImage2.src} className="h-[347px] w-[286px]" />
-            <img src={GoalsImage3.src} className="h-[347px] w-[286px]" />
+            <img src={GoalsImage2.src} className="h-[290px] w-[286px]" />
+            <img src={GoalsImage3.src} className="h-[290px] w-[286px]" />
           </div>
           <div>
-            <img src={GoalsImage4.src} className="h-[720px] w-[320px]" />
+            <img src={GoalsImage4.src} className="h-[630px] w-[320px]" />
           </div>
           <div className="flex flex-col gap-4">
-            <img src={GoalsImage5.src} className="h-[347px] w-[326px]" />
-            <img src={GoalsImage6.src} className="h-[347px] w-[326px]" />
+            <img src={GoalsImage5.src} className="h-[290px] w-[286px]" />
+            <img src={GoalsImage6.src} className="h-[290px] w-[286px]" />
           </div>
           <div>
-            <img src={GoalsImage7.src} className="h-[318px] w-[228px]" />
+            <img src={GoalsImage7.src} className="h-[280px] w-[228px]" />
           </div>
         </div>
         <div className="flex-row px-5 sm:px-0 items-center justify-between sm:justify-center gap-2 flex sm:hidden w-full">
@@ -76,7 +76,7 @@ const Benifits = () => {
       </div>
       <div className="flex flex-col gap-10 ">
         <div className="flex flex-col">
-          <p className="text-[32px] sm:text-[96px] font-semibold tracking-wide text-[#ECE6ED] text-center ">
+          <p className="text-[32px] sm:text-[53px] font-semibold tracking-wide text-[#ECE6ED] text-center ">
             Wealth+
           </p>
           <p className="text-[16px] sm:text-[32px] font-semibold  text-[#CD90D6] text-center">
@@ -93,16 +93,16 @@ const Benifits = () => {
         </div>
         <div className=" flex-row items-center justify-center gap-4  pb-14 hidden sm:flex mt-14 ">
           <div>
-            <img src={WealthImage1.src} className="h-[561px] w-[384px]" />
+            <img src={WealthImage1.src} className="h-[470px] w-[384px]" />
           </div>
           <div>
-            <img src={WealthImage2.src} className="h-[561px] w-[384px]" />
+            <img src={WealthImage2.src} className="h-[470px] w-[384px]" />
           </div>
           <div>
-            <img src={WealthImage3.src} className="h-[561px] w-[384px]" />
+            <img src={WealthImage3.src} className="h-[470px] w-[384px]" />
           </div>
           <div>
-            <img src={WealthImage4.src} className="h-[561px] w-[384px]" />
+            <img src={WealthImage4.src} className="h-[470px] w-[384px]" />
           </div>
         </div>
         <div className="grid-cols-2 gap-4  pb-14 grid sm:hidden px-5 ">

@@ -7,7 +7,7 @@ const Graph = () => {
     <div className="flex justify-center items-center sm:py-10">
       <img
         src={rupeiaGraph.src}
-        className="w-[1314px] h-[1016px] hidden sm:block"
+        className="w-[1200px] h-[700px] hidden sm:block"
       />
       <div className="block md:hidden">
         <p className="text-[22px] sm:text-[32px] my-5 text-center font-normal bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
