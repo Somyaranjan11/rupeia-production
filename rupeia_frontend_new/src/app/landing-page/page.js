@@ -16,7 +16,7 @@ import SteeeFree from "../components/MobileLandingPageComponent/SteeeFree";
 
 const Page = () => {
   return (
-    <div className="min-h-screen flex flex-col bg-primary">
+    <div className="min-h-screen flex flex-col bg-[#350040]">
       <LandingNavbar />
       <SteeeFree/>
       <Howitworks />

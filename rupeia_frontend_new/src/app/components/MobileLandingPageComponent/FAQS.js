@@ -40,14 +40,14 @@ const FAQS = () => {
     },
   ];
   return (
-    <div className="px-5 sm:px-28  py-6 sm:py-14">
-       <p className="text-[22px] sm:text-[32px] my-5 text-left font-normal bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
+    <div className="px-5 sm:px-28 py-6 sm:py-10">
+       <p className="text-[22px] sm:text-[64px] my-5 text-left font-normal bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
         All your questions, answered.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4  mt-3">
         {faqs_question?.map((data) => (
-          <div className="border-[0.3px] border-[#9563A2] why-rupeia-blur px-5 flex flex-row gap-3 justify-between items-center py-3 rounded-2xl">
-            <span className="text-[12px] sm:text-[15px] font-medium leading-5 font-poppins w-[70%]">
+          <div className="border-[0.3px] border-[#9563A2] why-rupeia-blur px-8 flex flex-row gap-3 justify-between items-center py-4 rounded-4xl">
+            <span className="text-[12px] sm:text-[24px] font-medium leading-[150%] font-poppins w-[100%]">
               {data?.question}
             </span>
             <span>

@@ -4,9 +4,9 @@ import downloadRupeia from "../../components/Images/download-rupeia.png";
 
 const SteeeFree = () => {
   return (
-    <div className="px-4 sm:px-28 py-5 sm:py-10 bg-[#3E004A]">
+    <div className="px-4 sm:px-28 py-5 sm:py-10 bg-[#350040]">
       <div className="flex justify-center items-center flex-col">
-        <p className="text-[#FFFFFF] text-[30px] sm:text-[50px] tracking-wider">Stress free</p>
+        <p className="text-[#FFFFFF] text-[30px] sm:text-[128px]">Stress free</p>
         <p className="text-[#AF7BB6] font-semibold text-[20px] sm:text-[35px]">Investing</p>
       </div>
       <div className="flex flex-col sm:flex-row items-center justify-center mt-5 sm:mt-0">

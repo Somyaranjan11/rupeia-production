@@ -8,11 +8,11 @@ import { GiHamburgerMenu } from "react-icons/gi";
 const LandingNavbar = () => {
   const router = useRouter();
   return (
-    <div className="bg-[#551262] h-[70px] flex items-center justify-between px-4 sm:px-28">
+    <div className="bg-[#551262] h-[117px] flex items-center justify-between px-4 sm:px-28">
       <div className="">
         <img
           src={rupeiaLogo.src}
-          className="h-[30px] w-[120px] sm:w-[140px] cursor-pointer"
+          className="h-[43px] w-[120px] sm:w-[180px] cursor-pointer"
           onClick={() => {
             router.push("/landing-page");
           }}
@@ -20,21 +20,21 @@ const LandingNavbar = () => {
       </div>
       <div className="items-center flex-row gap-14 hidden sm:flex">
         <p
-          className="text-[#ECE6ED] text-[16px] font-medium cursor-pointer"
+          className="text-[#ECE6ED] text-[24px] font-medium cursor-pointer"
           onClick={() => {
             router.push("/features-page");
           }}
         >
           FEATURES
         </p>
-        <p className="text-[#ECE6ED] text-[16px] font-medium cursor-pointer">
+        <p className="text-[#ECE6ED] text-[24px] font-medium cursor-pointer">
           NEWS
         </p>
-        <p className="text-[#ECE6ED] text-[16px] font-medium cursor-pointer">
+        <p className="text-[#ECE6ED] text-[24px] font-medium cursor-pointer">
           BLOGS
         </p>
         <p
-          className="text-[#ECE6ED] text-[16px] font-medium cursor-pointer"
+          className="text-[#ECE6ED] text-[24px] font-medium cursor-pointer"
           onClick={() => {
             router.push("/pricing-page");
           }}
@@ -42,7 +42,7 @@ const LandingNavbar = () => {
           PRICING
         </p>
         <p
-          className="text-[#ECE6ED] text-[16px] font-medium cursor-pointer"
+          className="text-[#ECE6ED] text-[24px] font-medium cursor-pointer"
           onClick={() => {
             router.push("/contactus");
           }}
@@ -50,7 +50,7 @@ const LandingNavbar = () => {
           CONTACT US
         </p>
         <p
-          className="text-[#ECE6ED] text-[16px] font-medium cursor-pointer"
+          className="text-[#ECE6ED] text-[24px] font-medium cursor-pointer"
           onClick={() => {
             router.push("/about-us");
           }}
@@ -59,7 +59,7 @@ const LandingNavbar = () => {
         </p>
       </div>
       <div className="hidden sm:block">
-        <button className="bg-[#270330] flex items-center justify-center gap-1 px-5 py-[10px] text-[#ECE6ED] text-[14px] font-medium shadow-2xl rounded-[8px]">
+        <button className="bg-[#270330] flex items-center justify-center gap-1 px-5 py-[10px] text-[#ECE6ED] text-[20px] font-medium shadow-2xl rounded-[8px]">
           START INVESTING
           <GoArrowUpRight className="text-[20px]" />
         </button>
