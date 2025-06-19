@@ -30,9 +30,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-html, body {
+html,
+body {
   scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE and Edge */
+  -ms-overflow-style: none; /* IE and Edge */
   overflow-y: scroll;
 }
 
@@ -371,4 +372,13 @@ body {
   background: linear-gradient(0.37deg, #021e48 -29.35%, #0071bc 99.68%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+/* Custom Hide scrollbar while allowing scroll */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }

@@ -1,5 +1,6 @@
 import React from "react";
 import featuresVector from "../components/Images/features-page-vector-image.png";
+import featuresVectorMobile from "../components/Images/features-mobile-image.png";
 import Footer from "../components/MobileLandingPageComponent/Footer";
 import Benifit1 from "../components/Images/benifit1.png";
 import Benifit2 from "../components/Images/benifit2.png";
@@ -54,7 +55,7 @@ const Page = () => {
       <LandingNavbar />
       <div className="px-5 sm:px-28">
         <div className="py-3 sm:py-5">
-          <p className="text-[25px] sm:text-[64px] text-[#AF7BB6] text-center font-medium tracking-wide">
+          <p className="text-[36px] sm:text-[64px] text-[#AF7BB6] text-center font-medium tracking-wide">
             Our Features
           </p>
         </div>
@@ -62,13 +63,18 @@ const Page = () => {
           <img
             src={featuresVector.src}
             alt="features-page"
-            className="h-[500px] sm:h-[900px] w-full sm:w-[65%] pl-5"
+            className="h-[500px] sm:h-[900px] w-full sm:w-[65%] pl-5 hidden sm:block"
+          />
+          <img
+            src={featuresVectorMobile.src}
+            alt="features-page"
+            className="h-[500px] sm:h-[900px] w-full sm:w-[65%] pl-5 block sm:hidden"
           />
         </div>
       </div>
       <div className="w-full px-3 sm:px-28">
         <div>
-          <p className="text-[32px] sm:text-[75px] my-5 text-center font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
+          <p className="text-[48px] sm:text-[75px] my-5 text-center font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
             Benefits
           </p>
         </div>
@@ -81,7 +87,7 @@ const Page = () => {
               <div className="flex justify-center items-center p-4 sm:p-7">
                 <img
                   src={data.image.src}
-                  className="h-[70px] sm:h-[120px] w-[80px] sm:w-[150px]"
+                  className="h-[76px] sm:h-[120px] w-[80px] sm:w-[150px]"
                 />
               </div>
               <div className="relative">

@@ -23,10 +23,6 @@ const Brand = () => {
       image: Brand6,
     },
     {
-      id: 3,
-      image: Brand6,
-    },
-    {
       id: 4,
       image: Brand7,
     },
@@ -70,18 +66,18 @@ const Brand = () => {
     },
   ];
   return (
-    <div className="wealth-backgroud">
+    <div className="wealth-backgroud border-t-[1px] border-b-[1px] border-[#FFFFFF61]">
       <div className="px-5 sm:px-10 flex flex-col gap-5 py-6 sm:py-12">
         <div>
           <p className="text-[22px] sm:text-[32px] text-center font-semibold  text-white">
             Our Investment Partners
           </p>
         </div>
-        <div className="w-full overflow-x-auto">
+        <div className="w-full overflow-x-auto hide-scrollbar">
           <div className="flex gap-12 px-2 animate-brandScroll">
             {brandImage?.map((data, index) => (
               <div className="flex justify-center items-center">
-                <img src={data?.image?.src} className="min-w-[210px] h-[100px]" />
+                <img src={data?.image?.src} className="min-w-[160px] sm:min-w-[210px] h-[70px] sm:h-[100px]" />
               </div>
             ))}
           </div>
@@ -93,7 +89,7 @@ const Brand = () => {
             Our Tech Partners
           </p>
         </div>
-        <div className="w-full overflow-x-auto">
+        <div className="w-full overflow-x-auto hide-scrollbar">
           <div className="flex gap-12 px-2 animate-techScroll">
             {partnerImage?.map((data, index) => (
               <div
@@ -101,7 +97,7 @@ const Brand = () => {
                   data?.id == 1 ? "bg-black" : ""
                 }`}
               >
-                <img src={data?.image?.src} className="min-w-[210px] h-[80px]" />
+                <img src={data?.image?.src} className="min-w-[160px] sm:min-w-[210px] h-[60px] sm:h-[80px]" />
               </div>
             ))}
           </div>

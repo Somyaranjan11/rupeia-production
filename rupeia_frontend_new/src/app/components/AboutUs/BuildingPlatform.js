@@ -24,16 +24,16 @@ const BuildingPlatform = () => {
     },
   ];
   return (
-    <div className="about-us-building-platform sm:px-28 sm:py-10 px-4 py-5 flex flex-col gap-5 sm:gap-10">
+    <div className="about-us-building-platform sm:px-28 sm:py-10 px-5 py-5 flex flex-col gap-5 sm:gap-10">
       <div>
-        <p className="text-[23px] sm:text-[32px] font-semibold tracking-wider text-center">
+        <p className="text-[24px] sm:text-[32px] font-semibold tracking-wider text-center text-[#FFFFFF]">
           India’s most trusted & loved wealth-building platform
         </p>
       </div>
-      <div className="flex flex-row items-center justify-between sm:justify-center flex-wrap ">
+      <div className="flex flex-row items-center sm:justify-center flex-wrap ">
         {buildingPlatform?.map((data, index) => (
-          <div className="w-[50%] sm:w-[335px] h-[260px] sm:h-[270px]">
-            <img src={data?.image.src} className="w-full sm:w-[335px] h-[260px] sm:h-[270px]" />
+          <div className="w-[50%] sm:w-[335px] h-[140px] sm:h-[270px]">
+            <img src={data?.image.src} className="w-full sm:w-[335px] h-[140px] sm:h-[270px]" />
           </div>
         ))}
       </div>
