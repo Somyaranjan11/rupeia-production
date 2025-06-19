@@ -18,7 +18,7 @@ const Page = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[#350040]">
       <LandingNavbar />
-      <SteeeFree/>
+      {/* <SteeeFree/> */}
       <Howitworks />
       {/* <Goal />
         <Wealth /> */}

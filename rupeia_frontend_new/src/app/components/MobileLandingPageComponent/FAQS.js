@@ -40,8 +40,8 @@ const FAQS = () => {
     },
   ];
   return (
-    <div className="px-5 sm:px-28 py-6 sm:py-10">
-       <p className="text-[22px] sm:text-[42px] my-5 text-left font-normal bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
+    <div className="px-5 sm:px-28 py-4 sm:py-10">
+       <p className="text-[32px] sm:text-[42px] my-5 text-left font-normal bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
         All your questions, answered.
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4  mt-3">

@@ -1,8 +1,8 @@
 import React from "react";
 const Howitworks = () => {
   return (
-    <div className="bg-[#350040] flex flex-col gap-3 sm:gap-8 px-4 sm:px-28 py-20 font-poppins ">
-      <div className="why-stress-free w-full sm:w-[75%] flex justify-center items-center p-10 flex-col gap-2 mx-auto">
+    <div className="bg-[#350040] flex flex-col gap-3 sm:gap-8 px-4 sm:px-28 py-10 sm:py-20 font-poppins ">
+      <div className="why-stress-free w-full sm:w-[75%] flex justify-center items-center p-10 flex-col gap-2 mx-auto rounded-3xl">
         <p className="text-[#ECAFFF] text-[18px] sm:text-[32px] font-semibold text-center ">
           Why Stress-Free Investing?
         </p>
@@ -15,15 +15,15 @@ const Howitworks = () => {
         </p>
       </div>
       <div>
-        <span className="pb-2 sm:py-10 text-[28px] sm:text-[55px] font-medium -tracking-wide text-white flex-wrap text-center flex justify-center items-center gap-4">
+        <span className="pb-2 sm:py-10 text-[26px] sm:text-[55px] font-medium text-white flex-wrap text-center flex justify-center items-center gap-2 sm:gap-4">
           <span>Built</span>
           <span className="text-[#E760D5]">for 5 crore</span>
           <span>proud employees!</span>
         </span>
-        <p className="text-[32px] sm:text-[53px] font-normal text-white text-left pl-20">
+        <p className="text-[28px] sm:text-[53px] font-normal text-white text-left sm:pl-20 mt-5 sm:mt-0">
           How it works?
         </p>
-        <p className="text-[20px] sm:text-[40px] font-normal text-[#AF7BB6] text-left pl-20">
+        <p className="text-[20px] sm:text-[40px] font-normal text-[#AF7BB6] text-lefts sm:pl-20">
           See how Rupeia helps you earn more
         </p>
       </div>
@@ -70,11 +70,11 @@ const Howitworks = () => {
           Your browser does not support the video tag.
         </video>
       </div>
-      <div className="px-2 flex flex-col gap-5">
+      <div className="px-2 flex flex-col gap-5 py-10 sm:py-0">
         <p className="text-[24px] sm:text-[42px] font-semibold font-poppins text-center text-[#ECE6ED] tracking-wide">
           Sit back, relax and watch your money grow.
         </p>
-        <p className="text-[16px] sm:text-[32px] font-semibold leading-6 text-center font-poppins text-[#AF7BB6]">
+        <p className="text-[20px] sm:text-[32px] font-semibold leading-6 text-center font-poppins text-[#AF7BB6]">
           Investing has not been more stress free.
         </p>
       </div>

@@ -13,23 +13,23 @@ import WealthImage4 from "../../components/Images/wealthimage5.png";
 
 const Benifits = () => {
   return (
-    <div className="wealth-backgroud flex flex-col gap-10 py-20 px-28">
+    <div className="wealth-backgroud flex flex-col gap-10 sm:py-20 px-4 sm:px-28">
       <div className="flex flex-col gap-10">
         <div className="flex flex-col">
           <p className="text-[32px] sm:text-[53px] font-semibold tracking-wide text-[#ECE6ED] text-center leading-[100%] ">
             Goals-First Investing
           </p>
-          <p className="text-[16px] sm:text-[32px] font-semibold  text-[#CD90D6] text-center mt-5">
+          <p className="text-[16px] sm:text-[32px] font-semibold  text-[#CD90D6] text-center mt-2 sm:mt-5">
             Every dream deserves a plan.
           </p>
-          <p className="text-[14px] sm:text-[26px] px-5 font-normal leading-5  text-[#CD90D6] text-center mt-4">
+          <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">
             We all have goals some we've chased, some we've put on hold.
           </p>
-          <p className="text-[14px] sm:text-[26px] px-5 font-normal leading-5  text-[#CD90D6] text-center mt-4">
+          <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">
             At Rupeia, we believe it’s never too late to start.
           </p>
         </div>
-        <div className=" flex-row items-center justify-between gap-4 hidden sm:flex mt-14">
+        <div className=" flex-row items-center justify-between gap-4 hidden sm:flex mt-6 sm:mt-14">
           <div>
             <img src={GoalsImage1.src} className="h-[280px] w-[228px]" />
           </div>
@@ -48,7 +48,7 @@ const Benifits = () => {
             <img src={GoalsImage7.src} className="h-[280px] w-[228px]" />
           </div>
         </div>
-        <div className="flex-row px-5 sm:px-0 items-center justify-between sm:justify-center gap-2 flex sm:hidden w-full">
+        <div className="flex-row sm:px-0 items-center justify-between sm:justify-center gap-2 flex sm:hidden w-full">
           <div className="flex flex-col gap-2 w-full">
             <div>
               <img src={GoalsImage4.src} className="h-[305px] w-[100%]" />
@@ -74,7 +74,7 @@ const Benifits = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-10 ">
+      <div className="flex flex-col gap-10">
         <div className="flex flex-col">
           <p className="text-[32px] sm:text-[53px] font-semibold tracking-wide text-[#ECE6ED] text-center ">
             Wealth+
@@ -82,16 +82,16 @@ const Benifits = () => {
           <p className="text-[16px] sm:text-[32px] font-semibold  text-[#CD90D6] text-center">
             Tried investing… but gave up after a loss?
           </p>
-          <p className="text-[14px] sm:text-[26px] px-5 font-normal leading-5  text-[#CD90D6] text-center mt-4">
+          <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">
             Many of us stop when markets dip, lose confidence, and feel left
             behind.
           </p>
-          <p className="text-[14px] sm:text-[26px] px-5 font-normal leading-5  text-[#CD90D6] text-center mt-4">
+          <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">
             At Rupeia, we ensure your confidence stays strong so you can invest
             with a long-term focus.
           </p>
         </div>
-        <div className=" flex-row items-center justify-center gap-4  pb-14 hidden sm:flex mt-14 ">
+        <div className=" flex-row items-center justify-center gap-4 sm:pb-14 hidden sm:flex mt-7 sm:mt-14 ">
           <div>
             <img src={WealthImage1.src} className="h-[470px] w-[384px]" />
           </div>
@@ -105,18 +105,18 @@ const Benifits = () => {
             <img src={WealthImage4.src} className="h-[470px] w-[384px]" />
           </div>
         </div>
-        <div className="grid-cols-2 gap-4  pb-14 grid sm:hidden px-5 ">
+        <div className="grid-cols-2 gap-4  pb-14 grid sm:hidden sm:px-5 ">
           <div>
-            <img src={WealthImage1.src} className="h-[230px] w-full" />
+            <img src={WealthImage1.src} className="h-[210px] w-full" />
           </div>
           <div>
-            <img src={WealthImage2.src} className="h-[230px] w-full" />
+            <img src={WealthImage2.src} className="h-[210px] w-full" />
           </div>
           <div>
-            <img src={WealthImage3.src} className="h-[230px] w-full" />
+            <img src={WealthImage3.src} className="h-[210px] w-full" />
           </div>
           <div>
-            <img src={WealthImage4.src} className="h-[230px] w-full" />
+            <img src={WealthImage4.src} className="h-[210px] w-full" />
           </div>
         </div>
       </div>
