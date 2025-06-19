@@ -73,7 +73,7 @@ const Brand = () => {
     <div className="wealth-backgroud">
       <div className="px-5 sm:px-10 flex flex-col gap-5 py-6 sm:py-12">
         <div>
-          <p className=" text-[22px] sm:text-[32px] text-center font-semibold  text-white">
+          <p className="text-[22px] sm:text-[32px] text-center font-semibold  text-white">
             Our Investment Partners
           </p>
         </div>
@@ -89,7 +89,7 @@ const Brand = () => {
       </div>
       <div className="px-5 sm:px-10 flex flex-col gap-5 py-6 sm:py-12 border-t-[2px] border-[#270330]">
         <div>
-          <p className=" text-[22px] sm:text-[32px] text-center font-semibold  text-white">
+          <p className="text-[22px] sm:text-[32px] text-center font-semibold  text-white">
             Our Tech Partners
           </p>
         </div>

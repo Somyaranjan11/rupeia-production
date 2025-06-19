@@ -26,7 +26,7 @@ const BuildingPlatform = () => {
   return (
     <div className="about-us-building-platform sm:px-28 sm:py-10 px-4 py-5 flex flex-col gap-5 sm:gap-10">
       <div>
-        <p className="text-[23px] sm:text-[33px] font-medium tracking-tight text-center">
+        <p className="text-[23px] sm:text-[32px] font-semibold tracking-wider text-center">
           India’s most trusted & loved wealth-building platform
         </p>
       </div>

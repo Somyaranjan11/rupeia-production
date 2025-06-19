@@ -11,11 +11,17 @@ const Page = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[#350040]">
       <LandingNavbar />
-      <div className="py-5 sm:py-20 flex flex-col gap-5">
-        <p className="text-[25px] sm:text-[45px] text-[#ECAFFF] text-center font-semibold tracking-wide uppercase">
-          About us
-        </p>
-        <p className="text-[15px] sm:text-[25px] text-[#ECAFFF] text-center font-semibold tracking-wide">
+      <div className="py-5 sm:py-14 flex flex-col gap-5 px-28">
+        <span className="flex flex-row items-center gap-1 justify-center">
+          <p className="text-[25px] sm:text-[64px] text-white text-center font-semibold tracking-wide uppercase">
+            About
+          </p>
+          <p className="text-[25px] sm:text-[64px] text-[#ECAFFF] text-center font-semibold tracking-wide uppercase">
+            us
+          </p>
+        </span>
+
+        <p className="text-[15px] sm:text-[42px] text-[#ECAFFF] text-center font-semibold tracking-wide px-14">
           “Our mission is to help every Indian confidently Up their wealth”
         </p>
       </div>

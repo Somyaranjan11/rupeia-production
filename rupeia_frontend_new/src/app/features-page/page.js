@@ -6,6 +6,7 @@ import Benifit2 from "../components/Images/benifit2.png";
 import Benifit3 from "../components/Images/benifit3.png";
 import Benifit4 from "../components/Images/benifit4.png";
 import Benifit5 from "../components/Images/benifit5.png";
+import Benifit6 from "../components/Images/benifits6.png";
 import cardImage from "../components/Images/card-bg-image.png";
 import LandingNavbar from "../components/LandingComponent/LandingNavbar";
 
@@ -41,13 +42,19 @@ const Page = () => {
       heading: "24/7 monitoring",
       desc: "During market drops, we automatically adjust your portfolio to protect and grow your wealth.",
     },
+     {
+      id: 5,
+      image: Benifit6,
+      heading: "Dedicated Investment Manager",
+      desc: "Stay stress-free with a Dedicated Manager who handles your investments while you focus on your job.",
+    },
   ];
   return (
     <div className="min-h-screen flex flex-col bg-[#350040] gap-8  sm:gap-16">
       <LandingNavbar />
       <div className="px-5 sm:px-28">
-        <div className="py-3 sm:py-10">
-          <p className="text-[25px] sm:text-[45px] text-[#AF7BB6] text-center font-semibold tracking-wide">
+        <div className="py-3 sm:py-5">
+          <p className="text-[25px] sm:text-[64px] text-[#AF7BB6] text-center font-medium tracking-wide">
             Our Features
           </p>
         </div>
@@ -61,7 +68,7 @@ const Page = () => {
       </div>
       <div className="w-full px-3 sm:px-28">
         <div>
-          <p className="text-[32px] sm:text-[52px] my-5 text-center font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
+          <p className="text-[32px] sm:text-[75px] my-5 text-center font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
             Benefits
           </p>
         </div>
@@ -82,12 +89,12 @@ const Page = () => {
                   src={cardImage.src}
                   className="h-[45px] sm:h-[65px] w-full "
                 />
-                <p className="text-[#ECE6ED] text-[10px] sm:text-[15px] font-medium text-center absolute inset-0 flex items-center justify-center bg-opacity-40 flex-col gap-3 px-4">
+                <p className="text-[#ECE6ED] text-[10px] sm:text-[18px] font-medium text-center absolute inset-0 flex items-center justify-center bg-opacity-40 flex-col gap-3 px-4">
                   {data?.heading}
                 </p>
               </div>
               <div className="px-4 sm:px-12 pt-4 pb-8">
-                <p className="text-[#ECE6ED] text-[10px] sm:text-[15px] font-medium text-center">
+                <p className="text-[#ECE6ED] text-[10px] sm:text-[16px] font-medium text-center">
                   {data?.desc}
                 </p>
               </div>

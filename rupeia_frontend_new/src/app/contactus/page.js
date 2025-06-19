@@ -14,7 +14,7 @@ const Page = () => {
       <div className="px-5 sm:px-28 pt-10 sm:pt-24">
         <div className="bg-[#551262] flex flex-row justify-between items-center rounded-2xl px-3 sm:px-20">
           <div>
-            <p className="text-[18px] sm:text-[34px] font-semibold">
+            <p className="text-[18px] sm:text-[42px] font-semibold">
               CONTACT US
             </p>
           </div>
@@ -24,7 +24,7 @@ const Page = () => {
         </div>
         <div className="flex flex-col ">
           <div className="my-4 sm:my-10">
-            <p className="text-[#551262] text-[23px] sm:text-[33px] font-semibold text-center">
+            <p className="text-[#551262] text-[23px] sm:text-[42px] font-semibold text-center">
               Help Center
             </p>
           </div>
@@ -134,7 +134,7 @@ const Page = () => {
               </div>
             </div>
             <div>
-              <button className="bg-[#551262] flex justify-center items-center text-[16px] font-medium px-10 py-3 rounded-[8px]">
+              <button className="bg-[#551262] flex justify-center items-center text-[18px] font-semibold px-10 py-3 rounded-[8px]">
                 Raise a ticket
               </button>
             </div>

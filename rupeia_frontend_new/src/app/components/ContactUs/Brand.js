@@ -51,7 +51,7 @@ const Brand = () => {
     <div className="bg-[#A90C2B1A]">
       <div className="px-5 sm:px-10 flex flex-col gap-5 py-6 sm:py-12">
         <div>
-          <p className=" text-[20px] sm:text-[27px] text-center font-semibold  text-[#551262]">
+          <p className="text-[22px] sm:text-[32px] text-center font-semibold  text-[#551262]">
             Our Funding Partners
           </p>
         </div>

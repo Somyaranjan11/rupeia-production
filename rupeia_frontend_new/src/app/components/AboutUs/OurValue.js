@@ -48,7 +48,7 @@ const OurValue = () => {
   return (
     <div className="px-4 sm:px-28 py-5 sm:py-10 flex flex-col gap-5 sm:gap-10 ">
       <div>
-        <p className="text-[#FFFFFF] text-[25px] sm:text-[40px] font-medium text-center">
+        <p className="text-[#FFFFFF] text-[25px] sm:text-[48px] font-medium text-center">
           The Values That Drive Us
         </p>
       </div>
@@ -59,7 +59,7 @@ const OurValue = () => {
             className="p-4 sm:p-10 bg-[#D9D9D9] min-w-[270px] sm:min-w-0 sm:w-[400px] h-[260px] flex gap-2 justify-center items-center flex-col rounded-3xl"
           >
             <img src={data?.image.src} className="h-[70x] w-[70px]" />
-            <p className="text-[#5D20D2] text-[16px] sm:text-[20px] font-semibold">
+            <p className="text-[#5D20D2] text-[16px] sm:text-[22px] font-semibold">
               {data?.name}
             </p>
             <p className="text-[#551262] text-[12px] sm:text-[14px] font-normal text-center">

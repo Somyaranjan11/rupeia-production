@@ -25,7 +25,7 @@ const Page = () => {
               <span className="text-[15px] sm:text-[17px] text-[#ECE6EDAD] font-semibold">
                 Note:{" "}
               </span>
-              <span className="text-[#ECE6EDAD] text-[13px] sm:text-[15px]">
+              <span className="text-[#ECE6EDAD] text-[13px] sm:text-[18px]">
                 1 month free trial applicable with all our plans. No credit card
                 required.
               </span>
