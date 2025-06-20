@@ -65,7 +65,7 @@ const LandingNavbar = () => {
         </button>
       </div>
       <div className="block sm:hidden">
-        <GiHamburgerMenu className="text-[26px]"/>
+        <GiHamburgerMenu className="text-[26px] text-white"/>
       </div>
     </div>
   );

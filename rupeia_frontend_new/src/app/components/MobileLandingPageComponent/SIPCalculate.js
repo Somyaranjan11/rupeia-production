@@ -4,8 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 
 const SIPCalculate = () => {
-  const [value, setValue] = useState(500); // Initial amount
-  const [durationValue, setDurationValue] = useState(12); // Initial duration (months)
+  const [value, setValue] = useState(10000); // Initial amount
+  const [durationValue, setDurationValue] = useState(5); // Initial duration (months)
   const [loading, setLoading] = useState(false);
   const [totalReturns, setTotalReturn] = useState({
     estimatedReturns: 0,
@@ -20,7 +20,7 @@ const SIPCalculate = () => {
 
   // Normalize values for UI styling
   const normalizedValue = ((value - 500) / (1000000 - 500)) * 100;
-  const normalizedValueDuration = ((durationValue - 12) / (30 - 12)) * 100;
+  const normalizedValueDuration = ((durationValue - 1) / (30 - 1)) * 100;
 
   const handleChange = (e) => {
     setValue(Number(e.target.value)); // Ensure numeric value
@@ -52,7 +52,7 @@ const SIPCalculate = () => {
   };
 
   return (
-    <div className="font-poppins px-5 sm:px-20 py-11 flex flex-col gap-7 border-t-[1px] border-b-[1px] border-[#FFFFFF61]">
+    <div className="font-poppins px-5 sm:px-20 py-11 flex flex-col gap-7 mt-10 border-t-[1px] border-b-[1px] border-[#FFFFFF61]">
       <div>
         <p className="text-[#ECE6ED] text-[20px] sm:text-[32px] font-medium font-poppins text-center py-2 sm:py-6">
           Calculate return on your mutual fund investments
@@ -62,7 +62,7 @@ const SIPCalculate = () => {
         <div className="border border-[#FFFFFF61] sm:border-none w-full sm:w-[50%] h-auto px-5 py-3 sm:py-5 rounded-3xl ">
           <div className="">
             <div className="p-4 flex flex-col gap-3 rounded-lg">
-              <div>
+              <div className="pb-5 sm:pb-0">
                 <p className="text-[#ECE6ED] text-[13px] sm:text-[20px] font-medium">
                   Monthly Amount
                 </p>
@@ -97,7 +97,7 @@ const SIPCalculate = () => {
               </div>
               <div className="flex justify-between mt-1">
                 <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] rounded-full flex flex-row items-center">
-                  <MdCurrencyRupee /> 12,000
+                  <MdCurrencyRupee /> 500
                 </p>
                 <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full flex flex-row items-center ">
                   <MdCurrencyRupee /> 10,00,000
@@ -105,7 +105,7 @@ const SIPCalculate = () => {
               </div>
             </div>
             <div className="p-4 flex flex-col gap-3 rounded-lg">
-              <div>
+              <div className="pb-5 sm:pb-0">
                 <p className="text-[#ECE6ED] text-[13px] sm:text-[20px] font-medium">
                   Time Duration
                 </p>
@@ -126,7 +126,7 @@ const SIPCalculate = () => {
                 </div>
                 <input
                   type="range"
-                  min="12"
+                  min="1"
                   max="30"
                   value={durationValue}
                   onChange={handleChangeDuration}
@@ -138,7 +138,7 @@ const SIPCalculate = () => {
               </div>
               <div className="flex justify-between mt-1">
                 <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full">
-                  12 Yr
+                  1 Yr
                 </p>
                 <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full">
                   30 Yr

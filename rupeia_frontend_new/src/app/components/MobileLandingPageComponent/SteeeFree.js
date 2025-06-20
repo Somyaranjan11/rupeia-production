@@ -16,7 +16,7 @@ const SteeeFree = () => {
           Stress free
           <img
             src={capImage.src}
-            className="h-[40px] w-[40px] absolute -right-6 -top-8 z-50 "
+            className="h-[35px] w-[35px] sm:h-[40px] sm:w-[40px] absolute -right-6 sm:-right-6 -top-6  sm:-top-8 z-50 "
           />
         </span>
         <p className="text-[#AF7BB6] font-semibold text-[32px] sm:text-[60px] lg:leading-7 lg:mt-2">
@@ -48,8 +48,8 @@ const SteeeFree = () => {
             className="w-full sm:w-[1200px] h-[800px] absolute -left-28 "
           />
           <div className="w-fit  h-fit  lg:justify-center sm:justify-start flex sm:hidden absolute -top-2 ">
-            <div className=" border-[1px] border-[#FFFFFF61] h-fit py-4 sm:py-10 w-[100px] sm:w-[210px] sm:px-10 justify-s flex flex-row gap-1 items-center justify-center rounded-2xl bg-[#D9D9D914] ">
-              <p className="text-[#CAC6C5] sm:text-[16px] text-[30px]">AI</p>
+            <div className=" border-[1px] border-[#FFFFFF61] h-fit ml-1 py-2 sm:py-10 w-[100px] sm:w-[210px] sm:px-10 justify-s flex flex-row gap-1 items-center justify-center rounded-2xl bg-[#D9D9D914] ">
+              <p className="text-[#CAC6C5] sm:text-[14px] text-[30px]">AI</p>
               <p className="text-[#CAC6C5E5] text-[12px] sm:text-[18px] pt-3">
                 Powered
               </p>

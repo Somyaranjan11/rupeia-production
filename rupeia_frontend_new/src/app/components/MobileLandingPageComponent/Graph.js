@@ -1,6 +1,6 @@
 import React from "react";
 import rupeiaGraph from "../../components/Images/rupeia_graph.png";
-import mobileGraph from "../../components/Images/rupeia_mobile_graph.png";
+import mobileGraph from "../../components/Images/rupeia-graph-image-final.png";
 
 const Graph = () => {
   return (
@@ -13,7 +13,7 @@ const Graph = () => {
         <p className="text-[22px] sm:text-[32px] my-5 text-center font-normal bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
           The Performance of Rupeia 
         </p>
-        <img src={mobileGraph.src} className="h-[250px] w-full" />
+        <img src={mobileGraph.src} className="h-[250px] w-full pl-2" />
       </div>
     </div>
   );

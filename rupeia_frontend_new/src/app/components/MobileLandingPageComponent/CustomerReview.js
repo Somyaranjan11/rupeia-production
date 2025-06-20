@@ -30,7 +30,7 @@ const CustomerReview = () => {
   ];
   return (
     <div className="px-5 pb-20">
-      <p className="text-[28px] sm:text-[42px] my-10 sm:my-16 text-center font-semibold  text-white">
+      <p className="text-[28px] sm:text-[42px] my-10 sm:my-16 text-center font-medium sm:font-semibold  text-white">
         Meet the people we’ve helped.
       </p>
       <div className="w-full flex justify-start sm:justify-center items-center overflow-x-auto sm:px-28 hide-scrollbar">

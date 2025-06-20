@@ -22,15 +22,20 @@ const Howitworks = () => {
         </p>
       </div>
       <div>
-        <span className="pb-2 sm:py-10 text-[26px] sm:text-[68px] font-medium text-white flex-wrap text-center flex justify-center items-center gap-2 sm:gap-4">
+        <span className="pb-2 mt-5 sm:mt-0 sm:py-10 text-[28px] leading-7 sm:text-[68px] font-medium text-white flex-wrap text-center flex justify-center items-center gap-2 sm:gap-4">
           <span>Built for</span>
-          <span className="text-[#E760D5]"> 5 crore</span>
-          <span>proud employees!</span>
+          <span className="text-[#E760D5] hidden sm:flex"> 5 crore</span>
+          <span className="text-[#E760D5] flex sm:hidden"> 5 crore</span>
+          <span className="text-white flex sm:hidden">proud</span>
+
+
+          <span className=" hidden sm:flex">proud employees!</span>
+          <span className="flex sm:hidden"> employees!</span>
         </span>
-        <p className="text-[28px] sm:text-[53px] font-normal text-white text-left  mt-5 sm:mt-0 sm:pl-7">
+        <p className="text-[24px] sm:text-[53px] font-normal text-white text-left  mt-10 sm:mt-0 sm:pl-7">
           How it works?
         </p>
-        <p className="text-[20px] sm:text-[32px] font-normal text-[#AF7BB6] text-left sm:pl-7 ">
+        <p className="text-[18px] sm:text-[32px] font-normal text-[#AF7BB6] text-left sm:pl-7 ">
           See how Rupeia helps you earn more
         </p>
       </div>
@@ -135,7 +140,7 @@ const Howitworks = () => {
           </video>
         )}
       </div>
-      <div className="px-2 flex flex-col gap-5 py-10 sm:py-0">
+      <div className="px-2 flex flex-col gap-3 sm:gap-5 pt-10 sm:py-0 ">
         <p className="text-[24px] sm:text-[42px] font-semibold font-poppins text-center text-[#ECE6ED] tracking-wide">
           Sit back, relax and watch your money grow.
         </p>
