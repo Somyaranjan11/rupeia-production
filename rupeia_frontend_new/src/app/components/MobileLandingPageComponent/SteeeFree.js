@@ -1,9 +1,9 @@
 import React from "react";
-import landingImage from "../../components/Images/stree-free-final-image.png";
+import landingImage from "../../components/Images/stree-free-image-23 (1).png";
 import downloadRupeia from "../../components/Images/download-rupeia.png";
 import leftImage from "../../components/Images/image copy 5.png";
 import rightImage from "../../components/Images/right-stree-free-image.png";
-import capImage from "../../components/Images/stree-free-cap-image.png";
+import capImage from "../../components/Images/strees-free-cap-image1.png";
 import scheduleMobileImage from "../../components/Images/schedule-mobile-image.png";
 
 import { IoCallOutline } from "react-icons/io5";
@@ -11,15 +11,15 @@ import { IoCallOutline } from "react-icons/io5";
 const SteeeFree = () => {
   return (
     <div className="px-4 sm:px-16 py-5 sm:py-10 bg-[#350040]">
-      <div className="flex justify-center items-center flex-col gap-5 mt-10 relative">
-        <span className="text-[#FFFFFF] text-[36px] sm:text-[64px] leading-5 sm:tracking-wider relative">
+      <div className="flex justify-center items-center flex-col gap-3 sm:gap-10 mt-10 relative">
+        <span className="text-[#FFFFFF] text-[42px] sm:text-[80px] leading-5 sm:tracking-wide relative">
           Stress free
           <img
             src={capImage.src}
-            className="h-[30px] w-[30px] absolute -right-3 -top-6 z-50 "
+            className="h-[40px] w-[40px] absolute -right-6 -top-8 z-50 "
           />
         </span>
-        <p className="text-[#AF7BB6] font-semibold text-[32px] sm:text-[45px] leading-5">
+        <p className="text-[#AF7BB6] font-semibold text-[32px] sm:text-[60px] lg:leading-7 lg:mt-2">
           Investing
         </p>
         <div>
@@ -41,49 +41,49 @@ const SteeeFree = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col sm:flex-row items-center w-full justify-end gap-5 sm:gap-20 mt-5 sm:mt-10 relative">
-        <div className="flex flex-row sm:flex-row items-center sm:gap-30  ">
+      <div className="flex flex-col sm:flex-row items-center w-full justify-end gap-5 sm:gap-20 mt-5 sm:mt-0 relative">
+        <div className="flex flex-row sm:flex-row  lg:justify-center lg:items-center sm:gap-0  ">
           <img
             src={leftImage.src}
             className="w-full sm:w-[1200px] h-[800px] absolute -left-28 "
           />
-          <div className="w-fit  h-fit  justify-center sm:justify-start flex sm:hidden absolute -top-2">
+          <div className="w-fit  h-fit  lg:justify-center sm:justify-start flex sm:hidden absolute -top-2 ">
             <div className=" border-[1px] border-[#FFFFFF61] h-fit py-4 sm:py-10 w-[100px] sm:w-[210px] sm:px-10 justify-s flex flex-row gap-1 items-center justify-center rounded-2xl bg-[#D9D9D914] ">
-              <p className="text-[#CAC6C5] sm:text-[16px] text-[18px]">AI</p>
-              <p className="text-[#CAC6C5E5] text-[12px] sm:text-[13px]">
+              <p className="text-[#CAC6C5] sm:text-[16px] text-[30px]">AI</p>
+              <p className="text-[#CAC6C5E5] text-[12px] sm:text-[18px] pt-3">
                 Powered
               </p>
             </div>
           </div>
-          <div className="w-fit  h-fit  justify-center sm:justify-start hidden sm:flex ">
-            <div className=" border-[1px] border-[#FFFFFF61] h-fit py-4 sm:py-10 w-[150px] sm:w-[210px] px-10 justify-s flex flex-row gap-1 items-center sm:rounded-4xl bg-[#D9D9D914] ">
-              <p className="text-[#CAC6C5] text-[18px]">AI</p>
-              <p className="text-[#CAC6C5E5] text-[13px]">Powered</p>
+          <div className="w-fit  h-fit  justify-center sm:justify-start hidden sm:flex ml-20 ">
+            <div className=" border-[1px] border-[#FFFFFF61] h-fit py-4 sm:py-10 w-[150px] sm:w-[250px] px-10 justify-s flex flex-row gap-1 items-center sm:rounded-4xl bg-[#D9D9D914] ">
+              <p className="text-[#CAC6C5] text-[50px] font-medium">AI</p>
+              <p className="text-[#CAC6C5E5] text-[20px] pt-4">Powered</p>
             </div>
           </div>
-          <div className="w-full sm:w-[550px] flex justify-end ">
+          <div className="w-full sm:w-[700px] flex justify-end lg:ml-16 ">
             <img
               src={landingImage.src}
-              className="h-[350px] sm:h-fit sm:w-[100%] "
+              className="h-[300px] lg:h-[600px] sm:w-[700px]"
             />
           </div>
         </div>
         <div className="flex flex-col justify-start gap-6 sm:gap-16 w-full sm:w-[30%]  ">
-          <div className="w-full flex flex-col justify-center sm:items-start items-center sm:justify-start gap-5 sm:gap-7 px-12 sm:px-0 ">
-            <div className="flex flex-col gap-4">
-              <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px] leading-5">
+          <div className="w-full flex flex-col justify-center sm:items-start items-center sm:justify-start gap-5 sm:gap-7 px-6 sm:px-0">
+            <div className="flex flex-col sm:gap-2">
+              <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px]">
                 Start your Investment
               </p>
-              <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px] leading-5 ">
+              <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px] leading-8">
                 Journey now!
               </p>
             </div>
-            <button className="text-[13px] sm:text-[20px] w-[130px] sm:w-[200px] px-4 h-[60px] sm:h-[70px] border-[4px] sm:border-[8px] border-[#AF7BB6C7] landing-page-button-shadow bg-[#ECE6ED] rounded-full text-[#270330]">
+            <button className="text-[13px] mt-2 sm:text-[20px] font-semibold w-[130px] sm:w-[200px] px-4 h-[60px] sm:h-[70px] border-[4px] sm:border-[8px] border-[#AF7BB6C7] landing-page-button-shadow bg-[#ECE6ED] rounded-full text-[#270330]">
               INVEST NOW
             </button>
           </div>
           <div className="w-full justify-center sm:justify-end  items-center sm:items-end mt-10 hidden md:flex">
-            <div className="bg-[#DBDBDB14] border-[1px] border-[#FFFFFF61] p-2 rounded-3xl ">
+            <div className="bg-[#DBDBDB14] border-[1px] border-[#FFFFFF61] p-4 rounded-3xl ">
               <img src={downloadRupeia.src} className="h-[120px] w-[250px]" />
             </div>
           </div>

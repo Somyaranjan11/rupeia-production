@@ -76,9 +76,9 @@ const Footer = () => {
           <div className="flex flex-col gap-2 sm:gap-4 ">
             <p className="text-[18px] font-medium text-white">Follow us on:</p>
             <span className="flex flex-row items-center gap-5">
-              <FaInstagram className="text-[32px] text-[#6A6867]" />
-              <FaLinkedin className="text-[32px] text-[#6A6867]" />
-              <FaTwitter className="text-[32px] text-[#6A6867]" />
+              <FaInstagram className="text-[32px] text-[#A4A1A0]" />
+              <FaLinkedin className="text-[32px] text-[#A4A1A0]" />
+              <FaTwitter className="text-[32px] text-[#A4A1A0]" />
             </span>
           </div>
         </div>
@@ -92,7 +92,7 @@ const Footer = () => {
                   setIsOptionOpen(!isOptionOpen);
                 }}
               >
-                <FaAngleDown />
+                <FaAngleDown className="text-white"/>
               </span>
             </div>
             <div className=" flex-col gap-[6px] mt-4 hidden sm:flex">
@@ -129,7 +129,7 @@ const Footer = () => {
                     setIsOptionOpen(!isOptionOpen);
                   }}
                 >
-                  <FaAngleDown />
+                  <FaAngleDown className="text-white" />
                 </span>
               </div>
               <div className="flex-col gap-[6px] mt-4  hidden sm:flex">
@@ -156,13 +156,13 @@ const Footer = () => {
             <div className="flex justify-between items-center">
               <p className="text-[16px] sm:text-[18px] font-medium text-white">News</p>
               <span className="block sm:hidden">
-                <FaAngleDown />
+                <FaAngleDown className="text-white" />
               </span>
             </div>
             <div className="flex justify-between items-center">
               <p className="text-[16px] sm:text-[18px] font-medium text-white">Blogs</p>
               <span className="block sm:hidden">
-                <FaAngleDown />
+                <FaAngleDown className="text-white" />
               </span>
             </div>
           </div>
@@ -178,7 +178,7 @@ const Footer = () => {
                     setIsOptionOpen(!isOptionOpen);
                   }}
                 >
-                  <FaAngleDown />
+                  <FaAngleDown className="text-white" />
                 </span>
               </div>
               <div className="hidden flex-col gap-[6px] mt-4 sm:flex">
@@ -209,7 +209,7 @@ const Footer = () => {
                     setIsOptionOpen(!isOptionOpen);
                   }}
                 >
-                  <FaAngleDown />
+                  <FaAngleDown className="text-white" />
                 </span>
               </div>
               <div className="flex-col gap-[6px] mt-4 hidden sm:flex">
@@ -249,7 +249,7 @@ const Footer = () => {
                   setIsOptionOpen(!isOptionOpen);
                 }}
               >
-                <FaAngleDown />
+                <FaAngleDown className="text-white" />
               </span>
             </div>
             <div className="flex-col gap-[6px] mt-4 hidden sm:flex">

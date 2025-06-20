@@ -4,7 +4,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 
 const SIPCalculate = () => {
-  const [value, setValue] = useState(12000); // Initial amount
+  const [value, setValue] = useState(500); // Initial amount
   const [durationValue, setDurationValue] = useState(12); // Initial duration (months)
   const [loading, setLoading] = useState(false);
   const [totalReturns, setTotalReturn] = useState({
@@ -19,8 +19,8 @@ const SIPCalculate = () => {
   const lastTriggeredValue = useRef(value);
 
   // Normalize values for UI styling
-  const normalizedValue = ((value - 12000) / (1000000 - 12000)) * 100;
-  const normalizedValueDuration = ((durationValue - 12) / (60 - 12)) * 100;
+  const normalizedValue = ((value - 500) / (1000000 - 500)) * 100;
+  const normalizedValueDuration = ((durationValue - 12) / (30 - 12)) * 100;
 
   const handleChange = (e) => {
     setValue(Number(e.target.value)); // Ensure numeric value
@@ -70,7 +70,7 @@ const SIPCalculate = () => {
               <div className="w-full flex mt-2 relative">
                 {/* Value Bubble */}
                 <div
-                  className="absolute -top-9 lg:-top-14 transform -translate-x-1/2 text-white font-normal z-10 text-[12px] sm:text-[16px]"
+                  className="absolute -top-9 lg:-top-16 transform -translate-x-1/2 text-white font-normal z-10 text-[12px] sm:text-[16px]"
                   style={{
                     left: `calc(${normalizedValue}% + (${
                       8 - normalizedValue * 0.15
@@ -85,7 +85,7 @@ const SIPCalculate = () => {
                 </div>
                 <input
                   type="range"
-                  min="12000"
+                  min="500"
                   max="1000000"
                   value={value}
                   onChange={handleChange}
@@ -112,7 +112,7 @@ const SIPCalculate = () => {
               </div>
               <div className="w-full flex mt-2 relative">
                 <div
-                  className="absolute -top-9 lg:-top-14 left-0 transform -translate-x-1/2 text-white text-sm font-normal z-10 text-[12px] sm:text-[16px]"
+                  className="absolute -top-9 lg:-top-16 left-0 transform -translate-x-1/2 text-white text-sm font-normal z-10 text-[12px] sm:text-[16px]"
                   style={{
                     left: `calc(${normalizedValueDuration}% + (${
                       8 - normalizedValueDuration * 0.15
@@ -127,7 +127,7 @@ const SIPCalculate = () => {
                 <input
                   type="range"
                   min="12"
-                  max="60"
+                  max="30"
                   value={durationValue}
                   onChange={handleChangeDuration}
                   className="range-slider w-full h-[12px] appearance-none rounded-lg overflow-hidden"
