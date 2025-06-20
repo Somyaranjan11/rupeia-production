@@ -52,7 +52,7 @@ const SIPCalculate = () => {
   };
 
   return (
-    <div className="px-5 py-11 flex flex-col gap-7 border-t-[1px] border-b-[1px] border-[#FFFFFF61]">
+    <div className="font-poppins px-5 sm:px-20 py-11 flex flex-col gap-7 border-t-[1px] border-b-[1px] border-[#FFFFFF61]">
       <div>
         <p className="text-[#ECE6ED] text-[20px] sm:text-[32px] font-medium font-poppins text-center py-2 sm:py-6">
           Calculate return on your mutual fund investments
@@ -74,7 +74,7 @@ const SIPCalculate = () => {
                   max="1000000"
                   value={value}
                   onChange={handleChange}
-                  className="range-slider-education-goal-amount w-full h-[8px] appearance-none rounded-lg overflow-hidden bg-[#FFFFFF3B]"
+                  className="range-slider-education-goal-amount w-full h-[12px] appearance-none rounded-lg overflow-hidden bg-[#FFFFFF3B]"
                   style={{
                     background: `linear-gradient(to right, #FFFFFF 0%, #FFFFFF ${normalizedValue}%, #FFFF  ${normalizedValue}%, #FFFFFF3B 100%)`,
                   }}
@@ -82,10 +82,10 @@ const SIPCalculate = () => {
               </div>
               <div className="flex justify-between mt-1">
                 <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full">
-                  12 k
+                  12,000
                 </p>
                 <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full">
-                  10 L
+                  10, 00,000
                 </p>
               </div>
             </div>
@@ -102,7 +102,7 @@ const SIPCalculate = () => {
                   max="60"
                   value={durationValue}
                   onChange={handleChangeDuration}
-                  className="range-slider-education-goal-amount w-full h-[8px] appearance-none rounded-lg overflow-hidden"
+                  className="range-slider-education-goal-amount w-full h-[12px] appearance-none rounded-lg overflow-hidden"
                   style={{
                     background: `linear-gradient(to right, #FFFFFF 0%, #FFFFFF ${normalizedValueDuration}%, #FFFF  ${normalizedValueDuration}%, #FFFFFF3B 100%)`,
                   }}
@@ -140,32 +140,32 @@ const SIPCalculate = () => {
                 <MdCurrencyRupee />
                 {totalReturns?.totalInvestment}
               </p>
-              <p className="text-[13px] sm:text-[18px] text-[#ECE6ED] font-poppins font-medium">
+              <p className="text-[13px] sm:text-[18px] text-[#ECE6ED] font-poppins font-medium pl-2">
                 Invested Amount
               </p>
             </div>
-            <div className="border-[0.5px] bg-[#42004F] border-[#FFFFFF] p-7 rounded-2xl flex flex-col gap-3">
+            <div className="border-[0.5px] bg-[#42004F] border-[#A080A7] p-7 rounded-2xl flex flex-col gap-3">
               <p className="flex flex-row items-center gap-0 text-[20px] sm:text-[32px] text-[#ECE6ED] font-poppins font-semibold">
                 <MdCurrencyRupee />
                 {totalReturns?.estimatedReturns}
               </p>
-              <p className="text-[13px] sm:text-[18px] text-[#ECE6ED] font-poppins font-medium">
+              <p className="text-[13px] sm:text-[18px] text-[#ECE6ED] font-poppins font-medium pl-2">
                 Estimated Returns
               </p>
             </div>
           </div>
           <div className="grid grid-cols-2 gap-4">
-            <div className="border-[0.5px] border-[#FFFFFF] p-7 rounded-2xl flex flex-col gap-3">
+            <div className=" p-7 rounded-2xl flex flex-col gap-3">
               <p className="text-[13px] sm:text-[18px] text-[#ECE6ED] font-poppins font-medium">
                 Total Returns
               </p>
-              <p className="flex flex-row items-center gap-0  text-[#ECE6ED] font-poppins font-semibold text-[20px] sm:text-[32px]">
+              <p className="flex flex-row items-center gap-0  text-[#FEC857] font-poppins font-semibold text-[20px] sm:text-[32px]">
                 <MdCurrencyRupee />
                 {totalReturns?.finalValue}
               </p>
             </div>
             <div className="bg-[#9563A2] p-7 rounded-2xl flex flex-col gap-3">
-              <p className="flex flex-row items-center gap-0 text-[20px] sm:text-[32px] text-[#270330] font-poppins font-semibold">
+              <p className="flex flex-row items-center gap-0 text-[20px] sm:text-[32px] text-white font-poppins font-semibold">
                 14.5%
               </p>
               <p className="text-[13px] sm:text-[18px] text-[#270330] font-poppins font-medium">

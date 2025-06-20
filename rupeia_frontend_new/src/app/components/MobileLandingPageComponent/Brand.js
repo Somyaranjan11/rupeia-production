@@ -19,10 +19,6 @@ const Brand = () => {
       image: Brand5,
     },
     {
-      id: 2,
-      image: Brand6,
-    },
-    {
       id: 3,
       image: Brand6,
     },
@@ -77,11 +73,11 @@ const Brand = () => {
             Our Investment Partners
           </p>
         </div>
-        <div className="w-full overflow-x-auto">
+        <div className="w-full overflow-x-auto hide-scrollbar">
           <div className="flex gap-12 px-2 animate-brandScroll">
             {brandImage?.map((data, index) => (
               <div className="flex justify-center items-center">
-                <img src={data?.image?.src} className="min-w-[160px] sm:min-w-[210px] h-[70px] sm:h-[100px]" />
+                <img src={data?.image?.src} className="min-w-[160px] sm:min-w-[210px] h-[60px] sm:h-[80px]" />
               </div>
             ))}
           </div>
@@ -93,8 +89,8 @@ const Brand = () => {
             Our Tech Partners
           </p>
         </div>
-        <div className="w-full overflow-x-auto">
-          <div className="flex gap-12 px-2 animate-techScroll">
+        <div className="w-full overflow-x-auto hide-scrollbar">
+          <div className="gap-12 px-2 flex justify-center items-center">
             {partnerImage?.map((data, index) => (
               <div
                 className={`flex justify-center items-center  p-2 ${

@@ -382,3 +382,10 @@ body {
 .hide-scrollbar::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }
+.meet-people-gradient-color {
+  background: linear-gradient(90deg, #d0cccb 100%, #6a6867 100%, #d0cccb 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text; /* for Firefox */
+  color: transparent;
+}

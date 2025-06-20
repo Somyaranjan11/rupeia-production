@@ -19,7 +19,7 @@ const Benifits = () => {
           <p className="text-[32px] sm:text-[53px] font-semibold tracking-wide text-[#ECE6ED] text-center leading-[100%] ">
             Goals-First Investing
           </p>
-          <p className="text-[16px] sm:text-[32px] font-semibold  text-[#CD90D6] text-center mt-2 sm:mt-5">
+          <p className="text-[16px] sm:text-[32px] font-semibold  text-[#F7C1FF] text-center mt-2 sm:mt-5">
             Every dream deserves a plan.
           </p>
           <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">
@@ -74,12 +74,12 @@ const Benifits = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 mt-10">
         <div className="flex flex-col">
           <p className="text-[32px] sm:text-[53px] font-semibold tracking-wide text-[#ECE6ED] text-center ">
             Wealth+
           </p>
-          <p className="text-[16px] sm:text-[32px] font-semibold  text-[#CD90D6] text-center">
+          <p className="text-[16px] sm:text-[32px] font-semibold  text-[#F7C1FF] text-center">
             Tried investing… but gave up after a loss?
           </p>
           <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">

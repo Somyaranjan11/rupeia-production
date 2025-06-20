@@ -39,7 +39,7 @@ const MobileBlogs = () => {
   return (
     <div className="px-5 sm:px-28 py-8 sm:-16 flex flex-col w-full h-full">
       <div>
-        <p className="text-[28px] sm:text-[32px] text-center font-semibold bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent">
+        <p className="text-[28px] sm:text-[42px] text-center font-semibold text-[#918E8D]">
           Blogs
         </p>
       </div>
@@ -48,14 +48,14 @@ const MobileBlogs = () => {
           Our Centre of Knowledge{" "}
         </p>
       </div>
-      <div className="w-full flex items-center justify-start sm:justify-between mt-8 sm:px-28 sm:mt-8 overflow-x-auto">
+      <div className="w-full flex items-center justify-start sm:justify-between mt-8 sm:px-28 sm:mt-8 overflow-x-auto hide-scrollbar">
         <div className="flex gap-4 sm:gap-14 px-2">
           {dummyBlogsData?.map((data, index) => (
             <div className="border-[1px] border-[#FFFFFF] p-4 w-[300px] sm:w-[403px] h-[444px] flex flex-col gap-2">
               <div>
                 <img src={data?.image.src} className="h-[195px] w-[360px]" />
               </div>
-              <div className="flex flex-col gap-2">
+              <div className="flex flex-col gap-3 mt-2">
                 <span className="flex items-center gap-1">
                   <CgProfile />
                   <p className="text-[12px] sm:text-[14px] font-normal text-white">
@@ -63,13 +63,13 @@ const MobileBlogs = () => {
                   </p>
                 </span>
 
-                <p className="text-[15px] sm:text-[18px] sm:font-semibold text-white">
+                <p className="text-[15px] sm:text-[18px] sm:font-medium bg-gradient-to-t from-[#d0cccb] via-[#d0cccb] to-[#d0cccb] bg-clip-text text-transparent">
                   {data?.heading}
                 </p>
                 <p className="text-[12px] sm:text-[14px] font-normal text-white">
                   {data?.time}
                 </p>
-                <p className="text-[12px] sm:text-[14px] font-normal text-white">
+                <p className="text-[12px] sm:text-[14px] font-normal text-white line-clamp-2 ">
                   {data?.description}
                 </p>
               </div>
