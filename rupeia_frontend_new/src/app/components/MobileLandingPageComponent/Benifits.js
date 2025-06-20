@@ -6,7 +6,7 @@ import GoalsImage4 from "../../components/Images/goalsImage4.png";
 import GoalsImage5 from "../../components/Images/goalsImage5.png";
 import GoalsImage6 from "../../components/Images/goalsImage6.png";
 import GoalsImage7 from "../../components/Images/goalsImage7.png";
-import WealthImage1 from "../../components/Images/wealthimage2.png";
+import WealthImage1 from "../../components/Images/wealthImage2.png";
 import WealthImage2 from "../../components/Images/wealthimage3.png";
 import WealthImage3 from "../../components/Images/wealthimage4.png";
 import WealthImage4 from "../../components/Images/wealthimage5.png";

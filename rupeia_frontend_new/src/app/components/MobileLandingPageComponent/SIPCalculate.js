@@ -4,8 +4,8 @@ import React, { useState, useEffect, useRef } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 
 const SIPCalculate = () => {
-  const [value, setValue] = useState(50000); // Initial amount
-  const [durationValue, setDurationValue] = useState(9); // Initial duration (months)
+  const [value, setValue] = useState(12000); // Initial amount
+  const [durationValue, setDurationValue] = useState(12); // Initial duration (months)
   const [loading, setLoading] = useState(false);
   const [totalReturns, setTotalReturn] = useState({
     estimatedReturns: 0,
@@ -67,25 +67,40 @@ const SIPCalculate = () => {
                   Monthly Amount
                 </p>
               </div>
-              <div className="w-full flex mt-2">
+              <div className="w-full flex mt-2 relative">
+                {/* Value Bubble */}
+                <div
+                  className="absolute -top-9 lg:-top-14 transform -translate-x-1/2 text-white font-normal z-10 text-[12px] sm:text-[16px]"
+                  style={{
+                    left: `calc(${normalizedValue}% + (${
+                      8 - normalizedValue * 0.15
+                    }px))`,
+                  }}
+                >
+                  <div className="bg-[#794083] w-[60px] sm:w-[108px] h-[25px] lg:h-[55px]  rounded-full relative text-center text-[#ECE6ED] flex flex-row  justify-center items-center">
+                    <MdCurrencyRupee className="text-[12px] lg:text-[18px]" />{" "}
+                    {value.toLocaleString()}
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-[6px] w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent  border-t-[white]"></div>
+                  </div>
+                </div>
                 <input
                   type="range"
                   min="12000"
                   max="1000000"
                   value={value}
                   onChange={handleChange}
-                  className="range-slider-education-goal-amount w-full h-[12px] appearance-none rounded-lg overflow-hidden bg-[#FFFFFF3B]"
+                  className="range-slider w-full h-[12px] appearance-none rounded-lg overflow-hidden bg-[#FFFFFF3B]"
                   style={{
                     background: `linear-gradient(to right, #FFFFFF 0%, #FFFFFF ${normalizedValue}%, #FFFF  ${normalizedValue}%, #FFFFFF3B 100%)`,
                   }}
                 />
               </div>
               <div className="flex justify-between mt-1">
-                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full">
-                  12,000
+                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] rounded-full flex flex-row items-center">
+                  <MdCurrencyRupee /> 12,000
                 </p>
-                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full">
-                  10, 00,000
+                <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full flex flex-row items-center ">
+                  <MdCurrencyRupee /> 10,00,000
                 </p>
               </div>
             </div>
@@ -95,14 +110,27 @@ const SIPCalculate = () => {
                   Time Duration
                 </p>
               </div>
-              <div className="w-full flex mt-2">
+              <div className="w-full flex mt-2 relative">
+                <div
+                  className="absolute -top-9 lg:-top-14 left-0 transform -translate-x-1/2 text-white text-sm font-normal z-10 text-[12px] sm:text-[16px]"
+                  style={{
+                    left: `calc(${normalizedValueDuration}% + (${
+                      8 - normalizedValueDuration * 0.15
+                    }px))`,
+                  }}
+                >
+                  <div className="bg-[#794083] w-[60px] sm:w-[108px] h-[25px] lg:h-[55px]  rounded-full relative text-center text-[#ECE6ED] flex flex-row justify-center  items-center">
+                    {durationValue.toLocaleString()} Years
+                    <div className="absolute left-1/2 transform -translate-x-1/2 -bottom-[6px] w-0 h-0 border-l-[6px] border-r-[6px] border-t-[6px] border-l-transparent border-r-transparent  border-t-[white]"></div>
+                  </div>
+                </div>
                 <input
                   type="range"
                   min="12"
                   max="60"
                   value={durationValue}
                   onChange={handleChangeDuration}
-                  className="range-slider-education-goal-amount w-full h-[12px] appearance-none rounded-lg overflow-hidden"
+                  className="range-slider w-full h-[12px] appearance-none rounded-lg overflow-hidden"
                   style={{
                     background: `linear-gradient(to right, #FFFFFF 0%, #FFFFFF ${normalizedValueDuration}%, #FFFF  ${normalizedValueDuration}%, #FFFFFF3B 100%)`,
                   }}
@@ -110,16 +138,16 @@ const SIPCalculate = () => {
               </div>
               <div className="flex justify-between mt-1">
                 <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full">
-                  1 Yr
+                  12 Yr
                 </p>
                 <p className="text-[#ECE6ED] border-[1px] border-[#794083] ont-poppins text-[8px] sm:text-[16px] font-semibold px-[10px] py-1 rounded-full">
-                  5 Yr
+                  30 Yr
                 </p>
               </div>
             </div>
             <div className="flex justify-center items-center flex-col gap-2 mt-5 sm:mt-10">
               <button
-                className="bg-[#B2A8F2] w-[135px] sm:w-[224px] h-[42px] sm:h-[52px] flex justify-center items-center text-[12px] sm:text-[18px] font-semibold font-poppins rounded-full text-[#551262]"
+                className="bg-[#B2A8F2] w-[135px] sm:w-[224px] h-[42px] sm:h-[52px] flex justify-center items-center text-[12px] sm:text-[18px] font-semibold font-poppins rounded-full text-[#551262] cursor-pointer"
                 type="button"
                 onClick={() => {
                   fetchGrowCalculation();

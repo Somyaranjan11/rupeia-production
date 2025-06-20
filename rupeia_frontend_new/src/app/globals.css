@@ -389,3 +389,47 @@ body {
   background-clip: text; /* for Firefox */
   color: transparent;
 }
+/* Range filter with bubble */
+.range-slider {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 12px;
+  background: transparent;
+  position: relative;
+  overflow: visible;
+}
+
+.range-slider::-webkit-slider-runnable-track {
+  height: 12px;
+  border-radius: 6px;
+}
+
+.range-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 24px;
+  width: 24px;
+  background: white;
+  border-radius: 50%;
+  position: relative;
+  top: -5px;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  border: 4px solid #7A4A90; /* Match your color theme */
+}
+
+.range-slider::-moz-range-track {
+  height: 12px;
+  border-radius: 6px;
+}
+
+.range-slider::-moz-range-thumb {
+  height: 24px;
+  width: 24px;
+  background: white;
+  border-radius: 50%;
+  cursor: pointer;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+  border: 4px solid #7A4A90;
+}
