@@ -27,7 +27,7 @@ const SteeeFree = () => {
             src={rightImage.src}
             className="w-[400px] sm:w-[1000px] h-[500px] absolute -right-28 -top-20  "
           />
-          <div className=" absolute -right-5 sm:-right-16  top-5 sm:-top-0 ">
+          <div className="fixed -right-0 sm:-right-0  top-40 sm:top-28 z-50 ">
             <div className="recomended-blogs  flex-row items-center justify-center gap-2 h-[48px] w-fit px-7 rounded-l-full hidden sm:flex">
               <IoCallOutline className="text-[20px] hidden sm:block" />
               <p className="text-[16px] font-normal tracking-wide hidden sm:block">
@@ -68,7 +68,7 @@ const SteeeFree = () => {
             />
           </div>
         </div>
-        <div className="flex flex-col justify-start gap-6 sm:gap-16 w-full sm:w-[30%]  ">
+        <div className="flex flex-col justify-start gap-6 sm:gap-20 w-full sm:w-[30%]  ">
           <div className="w-full flex flex-col justify-center sm:items-start items-center sm:justify-start gap-5 sm:gap-7 px-6 sm:px-0">
             <div className="flex flex-col sm:gap-2">
               <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px]">
@@ -82,8 +82,9 @@ const SteeeFree = () => {
               INVEST NOW
             </button>
           </div>
-          <div className="w-full justify-center sm:justify-end  items-center sm:items-end mt-10 hidden md:flex">
-            <div className="bg-[#DBDBDB14] border-[1px] border-[#FFFFFF61] p-4 rounded-3xl ">
+          {/* QR code */}
+          <div className="w-full justify-center sm:justify-end  items-center sm:items-end mt-10 hidden md:flex bg-red-400 relative">
+            <div className="bg-[#DBDBDB14] border-[1px] border-[#FFFFFF61] p-4 rounded-3xl fixed bottom-5 z-50">
               <img src={downloadRupeia.src} className="h-[120px] w-[250px]" />
             </div>
           </div>

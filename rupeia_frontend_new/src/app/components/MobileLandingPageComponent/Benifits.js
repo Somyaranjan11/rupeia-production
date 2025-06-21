@@ -10,6 +10,10 @@ import WealthImage1 from "../../components/Images/wealthImage2.png";
 import WealthImage2 from "../../components/Images/wealthimage3.png";
 import WealthImage3 from "../../components/Images/wealthimage4.png";
 import WealthImage4 from "../../components/Images/wealthimage5.png";
+import WealthMobileImage1 from "../../components/Images/wealth-mobile-image.png";
+import WealthMobileImage2 from "../../components/Images/wealth-mobile-image2.png";
+import WealthMobileImage3 from "../../components/Images/wealth-mobile-image3.png";
+import WealthMobileImage4 from "../../components/Images/welath-mobile-image4.png";
 
 const Benifits = () => {
   return (
@@ -107,16 +111,16 @@ const Benifits = () => {
         </div>
         <div className="grid-cols-2 gap-4  pb-14 grid sm:hidden sm:px-5 ">
           <div>
-            <img src={WealthImage1.src} className="h-[210px] w-full" />
+            <img src={WealthMobileImage1.src} className="h-[240px] w-full" />
           </div>
           <div>
-            <img src={WealthImage2.src} className="h-[210px] w-full" />
+            <img src={WealthMobileImage2.src} className="h-[240px] w-full" />
           </div>
           <div>
-            <img src={WealthImage3.src} className="h-[210px] w-full" />
+            <img src={WealthMobileImage3.src} className="h-[240px] w-full" />
           </div>
           <div>
-            <img src={WealthImage4.src} className="h-[210px] w-full" />
+            <img src={WealthMobileImage4.src} className="h-[240px] w-full" />
           </div>
         </div>
       </div>

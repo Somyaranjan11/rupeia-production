@@ -13,12 +13,14 @@ import Whyrupeia from "@/app/components/MobileLandingPageComponent/Whyrupeia";
 import React from "react";
 import LandingNavbar from "../components/LandingComponent/LandingNavbar";
 import SteeeFree from "../components/MobileLandingPageComponent/SteeeFree";
+import PowerByUPI from "../components/MobileLandingPageComponent/PowerByUPI";
 
 const Page = () => {
   return (
     <div className="min-h-screen flex flex-col bg-[#350040]">
       <LandingNavbar />
       <SteeeFree/>
+      <PowerByUPI/>
       <Howitworks />
       {/* <Goal />
         <Wealth /> */}

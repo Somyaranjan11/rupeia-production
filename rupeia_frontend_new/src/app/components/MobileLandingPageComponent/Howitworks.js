@@ -32,7 +32,7 @@ const Howitworks = () => {
           <span className=" hidden sm:flex">proud employees!</span>
           <span className="flex sm:hidden"> employees!</span>
         </span>
-        <p className="text-[24px] sm:text-[53px] font-normal text-white text-left  mt-10 sm:mt-0 sm:pl-7">
+        <p className="text-[24px] sm:text-[53px] font-normal text-white text-left  mt-10 sm:mt-10 sm:pl-7">
           How it works?
         </p>
         <p className="text-[18px] sm:text-[32px] font-normal text-[#AF7BB6] text-left sm:pl-7 ">
