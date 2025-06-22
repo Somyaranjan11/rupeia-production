@@ -51,7 +51,9 @@ const MobileBlogs = () => {
       <div className="w-full flex items-center justify-start sm:justify-between mt-8 sm:px-28 sm:mt-8 overflow-x-auto hide-scrollbar">
         <div className="flex gap-4 sm:gap-14 px-2">
           {dummyBlogsData?.map((data, index) => (
-            <div className="border-[1px] border-[#FFFFFF] p-4 w-[300px] sm:w-[403px] h-[444px] flex flex-col gap-2">
+            <div className="border-[1px] border-[#FFFFFF] p-4 w-[300px] sm:w-[403px] h-[444px] flex flex-col gap-2"
+            key={index}
+            >
               <div>
                 <img src={data?.image.src} className="h-[195px] w-[360px]" />
               </div>

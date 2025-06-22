@@ -1,30 +1,31 @@
-exports.calculateSIPDetails = (targetAmount, months) => {
+exports.calculateSIPReturns = (monthlySIP, years) => {
   const FIXED_RETURN_RATE = 0.125; // 12.5% annual return
-  const monthlyRate = FIXED_RETURN_RATE / 12; // ≈ 1.0417% monthly
-  const monthsDecimal = months;
+  const monthlyRate = FIXED_RETURN_RATE / 12;
+  const totalMonths = years * 12;
 
-  // SIP Future Value Formula multiplier
   const multiplier =
-    ((Math.pow(1 + monthlyRate, monthsDecimal) - 1) / monthlyRate) *
+    ((Math.pow(1 + monthlyRate, totalMonths) - 1) / monthlyRate) *
     (1 + monthlyRate);
 
-  // Monthly SIP to reach the target amount
-  const sipPerMonth = Math.round(targetAmount / multiplier);
-
-  // Total amount invested over the duration
-  const totalInvestment = sipPerMonth * monthsDecimal;
-
-  // Estimated returns = final value - investment
-  const estimatedReturns = Math.round(targetAmount - totalInvestment);
-
+  const finalValue = Math.round(monthlySIP * multiplier);
+  const totalInvestment = monthlySIP * totalMonths;
+  const estimatedReturns = finalValue - totalInvestment;
+  const returnPercentage = ((estimatedReturns / totalInvestment) * 100).toFixed(
+    2
+  );
+  const formatIndianCurrency = (value) => {
+    return new Intl.NumberFormat("en-IN").format(value);
+  };
   return {
-    duration: months,
-    monthlySIP: sipPerMonth,
-    totalInvestment: totalInvestment,
-    estimatedReturns: estimatedReturns,
-    finalValue: targetAmount,
+    monthlySIP: formatIndianCurrency(monthlySIP),
+    durationInYears: years,
+    totalInvestment: formatIndianCurrency(totalInvestment),
+    estimatedReturns: formatIndianCurrency(estimatedReturns),
+    finalValue: formatIndianCurrency(finalValue),
+    returnPercentage: `${returnPercentage}%`,
   };
 };
+
 exports.calculateEMIDetails = (
   loanAmount,
   annualInterestRate,

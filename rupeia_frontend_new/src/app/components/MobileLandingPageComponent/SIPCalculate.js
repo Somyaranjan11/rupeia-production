@@ -1,5 +1,5 @@
 "use client";
-import { calculateSIPDetails } from "@/app/utility/calculateSIPDetails";
+import { calculateSIPReturns } from "@/app/utility/calculateSIPDetails";
 import React, { useState, useEffect, useRef } from "react";
 import { MdCurrencyRupee } from "react-icons/md";
 
@@ -13,6 +13,7 @@ const SIPCalculate = () => {
     finalValue: 0,
     duration: 0,
     monthlySIP: 0,
+    returnPercentage: 0,
   });
 
   // Store last API-triggered value
@@ -33,7 +34,7 @@ const SIPCalculate = () => {
   const fetchGrowCalculation = async () => {
     try {
       setLoading(true);
-      const response = await calculateSIPDetails(value, durationValue);
+      const response = await calculateSIPReturns(value, durationValue);
       console.log("API Response:", response);
       if (response) {
         setTotalReturn({
@@ -42,6 +43,7 @@ const SIPCalculate = () => {
           finalValue: response?.finalValue,
           duration: response?.finalValue,
           monthlySIP: response?.finalValue,
+          returnPercentage: response?.returnPercentage,
         });
       }
     } catch (error) {
@@ -194,7 +196,7 @@ const SIPCalculate = () => {
             </div>
             <div className="bg-[#9563A2] p-7 rounded-2xl flex flex-col gap-3">
               <p className="flex flex-row items-center gap-0 text-[20px] sm:text-[32px] text-white font-poppins font-semibold">
-                14.5%
+                {totalReturns?.returnPercentage}
               </p>
               <p className="text-[13px] sm:text-[18px] text-[#270330] font-poppins font-medium">
                 Return %
