@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+
 const Howitworks = () => {
   const [howWorks, setHowWorks] = useState(1);
   return (
@@ -27,7 +28,6 @@ const Howitworks = () => {
           <span className="text-[#E760D5] hidden sm:flex"> 5 crore</span>
           <span className="text-[#E760D5] flex sm:hidden"> 5 crore</span>
           <span className="text-white flex sm:hidden">proud</span>
-
 
           <span className=" hidden sm:flex">proud employees!</span>
           <span className="flex sm:hidden"> employees!</span>
@@ -66,18 +66,7 @@ const Howitworks = () => {
           )}
         </div>
         <div className="block lg:hidden">
-          {howWorks == 1 && (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full border-none rounded-4xl "
-            >
-              <source src="/how_works_video1.mp4" type="video/mp4" />
-              Your browser does not support the video tag.
-            </video>
-          )}
+          {howWorks == 1 && <img src="/Vector 1.2.gif" alt="My animated gif" />}
         </div>
         <div
           className={`cursor-pointer border-[1px] lg:border-[3px] border-[#FFFFFF61] w-full lg:w-[450px] rounded-[40px] p-6 lg:p-8 sm:mt-5 flex flex-col gap-5 ${
@@ -99,6 +88,9 @@ const Howitworks = () => {
               your goals.
             </p>
           )}
+        </div>
+         <div className="block lg:hidden">
+          {howWorks == 2 && <img src="/Vector 2.gif" alt="My animated gif" />}
         </div>
         <div
           className={`cursor-pointer border-[1px] lg:border-[3px] border-[#FFFFFF61] min-w-[250px] sm:min-w-0 lg:w-[450px] rounded-[40px] p-6 lg:p-8 sm:mt-5 flex flex-col gap-5 ${
@@ -125,20 +117,12 @@ const Howitworks = () => {
             </p>
           )}
         </div>
+         {howWorks == 3 && <img src="/Vector 3.gif" alt="My animated gif" />}
       </div>
-      <div className="hidden lg:block">
-        {howWorks == 1 && (
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full border-none "
-          >
-            <source src="/how_works_video1.mp4" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        )}
+      <div className="hidden lg:block bg-red-400">
+        {howWorks == 1 && <img src="/Vector 1.2.gif" alt="My animated gif" />}
+        {howWorks == 2 && <img src="/Vector 2.gif" alt="My animated gif" />}
+        {howWorks == 3 && <img src="/Vector 3.gif" alt="My animated gif" />}
       </div>
       <div className="px-2 flex flex-col gap-3 sm:gap-5 pt-10 sm:py-0 ">
         <p className="text-[24px] sm:text-[42px] font-semibold font-poppins text-center text-[#ECE6ED] tracking-wide">
