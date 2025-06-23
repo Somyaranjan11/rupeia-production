@@ -55,25 +55,34 @@ const Benifits = () => {
         <div className="flex-row sm:px-0 items-center justify-between sm:justify-center gap-2 flex sm:hidden w-full">
           <div className="flex flex-col gap-2 w-full">
             <div>
+              {/* Vechicles */}
               <img src={GoalsImage4.src} className="h-[305px] w-[100%]" />
             </div>
             <div className="flex flex-col gap-2">
-              <img src={GoalsImage2.src} className="h-[167px] w-full" />
-              <img src={GoalsImage3.src} className="h-[167px] w-full" />
+              {/* Wedding */}
+              <img src={GoalsImage5.src} className="h-[167px] w-full" />
+
+              {/* International Vacation */}
+              <img src={GoalsImage1.src} className="h-[218px] w-full" />
             </div>
           </div>
           <div className="flex flex-col gap-2 w-full">
             <div>
-              <img src={GoalsImage6.src} className="h-[157px] w-full" />
+              {/* Home */}
+              <img src={GoalsImage2.src} className="h-[167px] w-full" />
             </div>
             <div>
-              <img src={GoalsImage6.src} className="h-[157px] w-full" />
+              {/* Education */}
+              <img src={GoalsImage3.src} className="h-[154px] w-full" />
             </div>
             <div>
-              <img src={GoalsImage1.src} className="h-[137px] w-full" />
+              {/* Start up */}
+              <img src={GoalsImage6.src} className="h-[143px] w-full" />
             </div>
+
             <div>
-              <img src={GoalsImage7.src} className="h-[187px] w-full" />
+              {/* Retirement */}
+              <img src={GoalsImage7.src} className="h-[220px] w-full" />
             </div>
           </div>
         </div>

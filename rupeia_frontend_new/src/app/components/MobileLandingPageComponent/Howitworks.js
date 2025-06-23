@@ -89,7 +89,7 @@ const Howitworks = () => {
             </p>
           )}
         </div>
-         <div className="block lg:hidden">
+        <div className="block lg:hidden">
           {howWorks == 2 && <img src="/Vector 2.gif" alt="My animated gif" />}
         </div>
         <div
@@ -117,7 +117,9 @@ const Howitworks = () => {
             </p>
           )}
         </div>
-         {howWorks == 3 && <img src="/Vector 3.gif" alt="My animated gif" />}
+        <div className="block lg:hidden">
+          {howWorks == 3 && <img src="/Vector 3.gif" alt="My animated gif" />}
+        </div>
       </div>
       <div className="hidden lg:block bg-red-400">
         {howWorks == 1 && <img src="/Vector 1.2.gif" alt="My animated gif" />}
