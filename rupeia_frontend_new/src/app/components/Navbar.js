@@ -67,7 +67,7 @@ const Navbar = () => {
     {
       id: 4,
       name: "Customer Support",
-      route: "/product/customer-support",
+      route: "/product/ticket",
     },
     {
       id: 5,
