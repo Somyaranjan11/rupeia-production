@@ -29,29 +29,71 @@ const NewsContent = ({ categoryList }) => {
   };
   const [news, setNews] = useState([]);
   const [loading, setLoading] = useState(true);
-
+  const fetchNews = async () => {
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/news`,
+        {
+          topic: categoryList, // You can replace this with a dynamic variable
+        }
+      );
+      setNews(response?.data?.data);
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
   useEffect(() => {
-    const fetchBlogs = async () => {
-      try {
-        setLoading(true);
-        const response = await axios.post(
-          `${process.env.NEXT_PUBLIC_API_BASE_URL}/news`,
-          {
-            topic: categoryList, // You can replace this with a dynamic variable
-          }
-        );
-        setNews(response?.data?.data);
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchBlogs();
+    fetchNews();
   }, [categoryList]);
-  const saveNews = (news_id) => {
+
+  const saveNews = async (news_id) => {
     console.log("save news", news_id);
+    const token = localStorage.getItem("accessToken");
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/news/${news_id}/save`,
+        {}, // <-- empty body if no body needed
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- correct place for headers
+          },
+        }
+      );
+      if (response?.data?.success) {
+        fetchNews();
+      }
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const likeNews = async (news_id) => {
+    console.log("save news", news_id);
+    const token = localStorage.getItem("accessToken");
+    try {
+      setLoading(true);
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/news/${news_id}/like`,
+        {}, // <-- empty body if no body needed
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- correct place for headers
+          },
+        }
+      );
+      if (response?.data?.success) {
+        fetchNews();
+      }
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
   };
   return (
     <div className="h-full w-full overflow-y-auto px-5">
@@ -81,7 +123,7 @@ const NewsContent = ({ categoryList }) => {
                       <CiHeart
                         className="text-[25px]"
                         onClick={() => {
-                          saveNews(data?._id);
+                          likeNews(data?._id);
                         }}
                       />
                       <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
@@ -98,7 +140,13 @@ const NewsContent = ({ categoryList }) => {
                       </p>
                     </span>
                     <span className="flex items-center gap-1">
-                      <Save />
+                      <div
+                        onClick={() => {
+                          saveNews(data?._id);
+                        }}
+                      >
+                        <Save />
+                      </div>
                       <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
                         {data?.saveCount}
                       </p>

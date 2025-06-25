@@ -29,7 +29,7 @@ const NewsCard = ({ detailsData }) => {
         <div className=" recomended-blogs p-3 rounded-2xl" key={index}>
           <div className="flex items-center gap-2 ">
             <p className="text-[14px] font-poppins font-medium leading-6 ">
-              {data?.content}
+              {data?.title}
             </p>
           </div>
           <div className="flex justify-start gap-2 items-center mt-3">
@@ -37,7 +37,7 @@ const NewsCard = ({ detailsData }) => {
               <span className="flex items-center gap-1">
                 <CiHeart className="text-[21px]" />
                 <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
-                  40K
+                  {data?.likeCount}
                 </p>
               </span>
               <span className="flex items-center gap-1" onClick={handleShare}>
@@ -49,7 +49,7 @@ const NewsCard = ({ detailsData }) => {
               <span className="flex items-center gap-1">
                 <Save />
                 <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
-                  1K
+                  {data?.saveCount}
                 </p>
               </span>
             </div>

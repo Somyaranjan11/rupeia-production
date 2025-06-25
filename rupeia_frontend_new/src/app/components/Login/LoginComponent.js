@@ -44,7 +44,8 @@ const LoginComponent = () => {
         console.log("response?.data", response?.data);
         if (response?.data?.success) {
           ShowSucessmessages(response?.data?.message);
-          localStorage.setItem("access_token", response?.data?.accessToken);
+          localStorage.setItem("accessToken", response?.data?.accessToken);
+          router.push("/product");
         }
       } catch (error) {
         console.error("❌ Error:", error.response?.data || error.message);

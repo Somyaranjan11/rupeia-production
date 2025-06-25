@@ -47,7 +47,7 @@ const GaolsCard2 = ({ setGoalDetails, goalDetails }) => {
       </div>
       <div className="w-full flex flex-col gap-2 mt-10 goal-range-class h-[100px] rounded-3xl justify-center items-center border-[1px] border-[#794083] px-2">
         <div className="text-white bg-[#794083] text-[13px] font-poppins font-medium leading-5 rounded-full px-3">
-          ₹ {parseInt(goalDetails?.duration)}
+           {parseInt(goalDetails?.duration)} Years
         </div>
         <input
           type="range"

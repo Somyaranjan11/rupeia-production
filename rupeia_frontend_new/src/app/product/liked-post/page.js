@@ -42,8 +42,10 @@ const Page = () => {
     router.push("/product");
   };
   const [savedBlogs, setSavedBlogs] = useState();
+  const [savedNews, setSavedNews] = useState();
+
   const [loading, setLoading] = useState(false);
-  const fetchProtectedData = async () => {
+  const fetchProtectedDataBlogs = async () => {
     const token = localStorage.getItem("accessToken");
     try {
       setLoading(true);
@@ -64,9 +66,35 @@ const Page = () => {
       setLoading(false);
     }
   };
+  const fetchProtectedDataNews = async () => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      setLoading(true);
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/news/liked`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- add Authorization header
+          },
+        }
+      );
+      if (response?.data?.success) {
+        setSavedNews(response?.data?.data);
+      }
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
   useEffect(() => {
-    fetchProtectedData();
-  }, []);
+    if (currentPage == "news") {
+      fetchProtectedDataNews();
+    } else if (currentPage == "blogs") {
+      fetchProtectedDataBlogs();
+    }
+  }, [currentPage]);
   return (
     <div className="font-poppins flex flex-col h-screen overflow-hidden">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
@@ -104,7 +132,7 @@ const Page = () => {
           ) : currentPage == "blogs" ? (
             <BlogsCard detailsData={savedBlogs} />
           ) : (
-            <NewsCard detailsData={detailsContent} />
+            <NewsCard detailsData={savedNews} />
           )}
         </div>
       </div>
