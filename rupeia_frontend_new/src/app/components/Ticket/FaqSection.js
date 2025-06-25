@@ -28,7 +28,7 @@ const FaqSection = ({ categoriesValue }) => {
   }, []);
   console.log("faqSection", faqSection);
   return (
-    <div className="pt-25 px-5">
+    <div className="py-25 px-5">
       <div className="h-fit flex flex-col">
         <span className="text-[19px] font-medium">
           <p className="text-white">Okay! Now tell us about your</p>{" "}
