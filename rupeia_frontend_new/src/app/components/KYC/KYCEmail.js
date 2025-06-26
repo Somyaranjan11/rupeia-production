@@ -407,7 +407,7 @@ const KYCEmail = ({
             onBoardFunction();
           }}
         >
-          {loading ? <ButtonLoader /> : "Continue 12"}
+          {loading ? <ButtonLoader /> : "Continue"}
         </button>
       </div>
     </div>

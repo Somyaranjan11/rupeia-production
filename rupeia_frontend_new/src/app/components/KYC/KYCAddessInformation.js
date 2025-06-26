@@ -10,8 +10,6 @@ const KYCAddessInformation = ({
 }) => {
   const [loading, setLoading] = useState(false);
   const updateProfileDetails = () => {
-    setPageStep(5);
-    return;
     const profile_id = localStorage.getItem("profile_id");
     const lane2 = `${fourthPageOnboard?.city},${fourthPageOnboard?.state}`;
     const addressPayloadData = {
@@ -23,10 +21,6 @@ const KYCAddessInformation = ({
       nature: "business_location",
     };
     const token = localStorage.getItem("accessToken");
-    const headers = {
-      "Content-type": "application/json; charset=UTF-8",
-      Authorization: `Bearer ${token}`,
-    };
     setLoading(true);
     const emailData = {
       profile: profile_id,
@@ -42,17 +36,32 @@ const KYCAddessInformation = ({
         axios.post(
           `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/addresses`,
           addressPayloadData,
-          headers
+          {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
         ),
         axios.post(
           `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/emailAddress`,
           emailData,
-          headers
+          {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
         ),
         axios.post(
           `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/phoneNumber`,
           phoneData,
-          headers
+          {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
         ),
       ])
       .then(

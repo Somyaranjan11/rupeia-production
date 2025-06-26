@@ -26,8 +26,6 @@ const KYCPancard = ({
   });
   const [loading, setLoading] = useState(false);
   const onBoardFunction = () => {
-    setPageStep(2);
-    return;
     if (fistPageOnboard?.name == "") {
       setOnBoardError({ ...onBoardError, name_blank_validation: true });
       return;
@@ -85,7 +83,6 @@ const KYCPancard = ({
     const payloadData = {
       name: fistPageOnboard?.name,
       pan: fistPageOnboard?.pan_number,
-      // aadhaar_number: fistPageOnboard?.aadhaar_number,
       date_of_birth: fistPageOnboard?.dob,
       email: fistPageOnboard?.email_id,
       mobile: {
@@ -98,15 +95,16 @@ const KYCPancard = ({
       },
     };
     const token = localStorage.getItem("accessToken");
-    const headers = {
-      "Content-type": "application/json; charset=UTF-8",
-      Authorization: `Bearer ${token}`,
-    };
     axios
       .post(
         `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/kyc/kyc_requests`,
         payloadData,
-        headers
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        }
       )
       .then((response) => {
         if (response) {
@@ -120,9 +118,7 @@ const KYCPancard = ({
         }
       })
       .catch((error) => {
-        if (error) {
-          console.log("error is", error);
-        }
+        console.log("error is", error);
       })
       .finally(() => {
         setLoading(false);

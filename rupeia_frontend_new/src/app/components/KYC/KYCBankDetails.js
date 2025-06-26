@@ -21,8 +21,6 @@ const KYCBankDetails = ({ setFifthPageOnboard, fifthPageOnboard,setPageStep }) =
   const [loading, setLoading] = useState(false);
 
   const onBoardFunction = () => {
-    setPageStep(6);
-    return;
     if (fifthPageOnboard?.account_name == "") {
       setOnBoardError({ ...onBoardError, account_name_validation: true });
     } else if (/^\s/.test(fifthPageOnboard?.account_name)) {
@@ -84,8 +82,7 @@ const KYCBankDetails = ({ setFifthPageOnboard, fifthPageOnboard,setPageStep }) =
       .then((res1) => {
         if (res1) {
           console.log("response is", res1.data);
-          ShowSucessmessages("Address have been updated");
-          // setPageStep(3);
+          ShowSucessmessages("Bank Details added");
         }
       })
       .catch((error) => {

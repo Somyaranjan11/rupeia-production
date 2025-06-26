@@ -5,6 +5,7 @@ import KYCBankDetails from "@/app/components/KYC/KYCBankDetails";
 import KYCEmail from "@/app/components/KYC/KYCEmail";
 import KYCInvestorInformation from "@/app/components/KYC/KYCInvestorInformation";
 import KYCInvestorInformation2 from "@/app/components/KYC/KYCInvestorInformation2";
+import KYCNomineeForm from "@/app/components/KYC/KYCNomineeForm";
 import KYCPancard from "@/app/components/KYC/KYCPancard";
 import KYCPersonalInfromation2 from "@/app/components/KYC/KYCPersonalInfromation2";
 import KYCPersonalnformation from "@/app/components/KYC/KYCPersonalnformation";
@@ -15,7 +16,7 @@ import { RxCross2 } from "react-icons/rx";
 
 const Page = () => {
   const router = useRouter();
-  const [pageStep, setPageStep] = useState(1);
+  const [pageStep, setPageStep] = useState(6);
   // Personal Information
   const [fistPageOnboard, setFirstPageOnboard] = useState({
     name: "",
@@ -50,6 +51,12 @@ const Page = () => {
     confirm_account_number: "",
     ifsc_code: "",
   });
+  const [sevenPageOnboard, setSevenPageOnboard] = useState({
+    first_name: "",
+    last_name: "",
+    dob: "",
+    relationship: "",
+  });
   return (
     <div className=" px-5 font-poppins flex flex-col h-full relative overflow-y-auto">
       <div className="flex items-center justify-between mt-4">
@@ -70,6 +77,7 @@ const Page = () => {
             {pageStep == 4 && "Address Information"}
             {pageStep == 5 && "Manage Bank"}
             {pageStep == 6 && "Nominee"}
+            {pageStep == 7 && "Add Nominee"}
           </p>
         </div>
         <div
@@ -125,12 +133,16 @@ const Page = () => {
             setPageStep={setPageStep}
           />
         )}
-        {pageStep == 6 && <KYCAddNominee />}
-        {/* {pageStep == 4 && <KYCInvestorInformation />}
-        {pageStep == 5 && <KYCAddNominee />}
-        {pageStep == 6 && <KYCBankDetails />} */}
+        {pageStep == 6 && <KYCAddNominee setPageStep={setPageStep} />}
+        {pageStep == 7 && (
+          <KYCNomineeForm
+            setSevenPageOnboard={setSevenPageOnboard}
+            sevenPageOnboard={sevenPageOnboard}
+            setPageStep={setPageStep}
+          />
+        )}
       </div>
-      {pageStep > 5 && (
+      {/* {pageStep > 5 && (
         <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
           <button
             className=" bg-[#551262] w-full  py-2 rounded-full text-[15px] leading-7 font-medium text-white"
@@ -144,7 +156,7 @@ const Page = () => {
             Continue
           </button>
         </div>
-      )}
+      )} */}
     </div>
   );
 };

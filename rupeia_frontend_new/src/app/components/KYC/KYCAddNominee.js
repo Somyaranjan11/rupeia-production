@@ -1,7 +1,7 @@
 import React from "react";
 import AddNomineeImage from "../Images/add-nominee.png";
 
-const KYCAddNominee = () => {
+const KYCAddNominee = ({ setPageStep }) => {
   return (
     <div>
       <div>
@@ -20,6 +20,17 @@ const KYCAddNominee = () => {
         </p>
         <button className="bg-[#551262] border-[1px] border-[#916D98] text-[13px] font-medium text-white h-[45px] w-full rounded-3xl">
           Add Nominee
+        </button>
+      </div>
+      <div className="border-[1px] border-[#65636394] py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
+        <button
+          className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white cursor-pointer`}
+          type="button"
+          onClick={() => {
+            setPageStep(7);
+          }}
+        >
+          {"Continue"}
         </button>
       </div>
     </div>

@@ -90,8 +90,6 @@ const KYCPersonalInfromation2 = ({
   });
   const [loading, setLoading] = useState(false);
   const onBoardFunction = () => {
-    setPageStep(4);
-    return;
     if (thirdPageOnboard?.occupation_type == "") {
       setOnBoardError({
         ...onBoardError,
@@ -107,6 +105,7 @@ const KYCPersonalInfromation2 = ({
     }
   };
   const updateKycRequest = () => {
+    setPageStep(4);
     setLoading(true);
     const payloadData = {
       father_name: secondPageOnboard?.father_name,
@@ -122,10 +121,6 @@ const KYCPersonalInfromation2 = ({
       pep_details: "not_applicable",
     };
     const token = localStorage.getItem("accessToken");
-    const headers = {
-      "Content-type": "application/json; charset=UTF-8",
-      Authorization: `Bearer ${token}`,
-    };
     const kyc_id = localStorage.getItem("kyc_id");
     // Investor Profile.
     const investor_profile = {
@@ -159,12 +154,22 @@ const KYCPersonalInfromation2 = ({
         axios.patch(
           `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/kyc/kyc_requests/${kyc_id}`,
           payloadData,
-          headers
+          {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
         ),
         axios.post(
           `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/invProfiles/createProfile`,
           investor_profile,
-          headers
+          {
+            headers: {
+              "Content-type": "application/json; charset=UTF-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
         ),
       ])
       .then(
@@ -179,6 +184,7 @@ const KYCPersonalInfromation2 = ({
               localStorage.setItem("profile_id", res2?.data?.id);
               localStorage.setItem("kyc_status", response?.data?.status);
             }
+            setPageStep(4);
           }
         })
       )
@@ -269,7 +275,9 @@ const KYCPersonalInfromation2 = ({
       <div className="border-[1px] border-[#65636394] py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
         <button
           className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white ${
-            loading ? "pointer-events-none cursor-not-allowed" : "cursor-pointer"
+            loading
+              ? "pointer-events-none cursor-not-allowed"
+              : "cursor-pointer"
           }`}
           type="button"
           onClick={() => {
