@@ -12,13 +12,15 @@ import LandingPageNewsCard from "../components/LandingPageNewsCard";
 import LandingPageBlogsCard from "../components/LandingPageBlogsCard";
 export const dynamic = "force-dynamic";
 import { useUser } from "@clerk/nextjs";
+import { getUserData } from "../utility/getUserData";
 const Page = () => {
   const router = useRouter();
+  const user = getUserData();
   return (
     <div className="h-screen flex flex-col font-poppins mt-5 pb-20 w-full">
       <div className="flex justify-center items-center flex-col gap-1">
         <p className="text-[32px] font-semibold leading-7 font-poppins">
-          Hi Aryan!
+          Hi {user?.firstName}!
         </p>
         <p className="text-[16px] font-medium leading-7 font-poppins">
           Welcome Back{" "}

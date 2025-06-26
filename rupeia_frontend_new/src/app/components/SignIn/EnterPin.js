@@ -48,6 +48,7 @@ const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
         console.log("response?.data", response?.data);
         if (response?.data?.success) {
           ShowSucessmessages("PIN is successfully verified");
+          getUserData();
           router.push("/product");
         }
       } catch (error) {
@@ -56,6 +57,23 @@ const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
       } finally {
         setLoading(false);
       }
+    }
+  };
+  const getUserData = async () => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- add Authorization header
+          },
+        }
+      );
+      console.log("✅ Response:", response.data);
+      localStorage.setItem("userData", JSON.stringify(response?.data?.user));
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
     }
   };
 

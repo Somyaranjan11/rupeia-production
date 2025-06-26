@@ -1,37 +1,18 @@
 import { GiHamburgerMenu } from "react-icons/gi";
 import { CgProfile } from "react-icons/cg";
-
 import Mobile from "../icons/Mobile";
 import Profile from "../icons/Profile";
 import { usePathname, useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import {
-  SignInButton,
-  SignUpButton,
-  SignedIn,
-  SignedOut,
-  UserButton,
-  useUser,
-} from "@clerk/nextjs";
-import { useAuth } from "@clerk/nextjs";
 import axios from "axios";
+import { checkLogin } from "../utility/checkLogin";
+import { getUserData } from "../utility/getUserData";
 
 const Navbar = () => {
-  const { isSignedIn, isLoaded, user } = useUser();
-  const { isAuthenticated, getToken, session } = useAuth();
-
+  const isLoggedIn = checkLogin();
+  console.log("isLoggedIn", isLoggedIn);
+  const user = getUserData();
   const [token, setToken] = useState(null);
-
-  const getAuthToken = async () => {
-    if (isSignedIn) {
-      const authToken = await getToken(); // Fetch the authentication token
-      console.log("Auth Token:", authToken);
-      setToken(authToken);
-    } else {
-      console.log("User is not authenticated");
-    }
-  };
-  console.log("user", user?.firstName, isSignedIn, isAuthenticated);
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const router = useRouter();
@@ -102,47 +83,6 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
-
-  const loginUser = async () => {
-    try {
-      const response = await axios.post(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/login`,
-        {
-          email: "user@example.com",
-          password: "securepassword123",
-        },
-        {
-          withCredentials: true, // 🔥 Must include this!
-        }
-      );
-      if (response?.data?.success) {
-        localStorage.setItem("accessToken", response?.data?.accessToken);
-      }
-      return response.data; // assuming backend returns token like { token: '...' }
-    } catch (error) {
-      console.error("Login failed:", error.response?.data || error.message);
-      return null;
-    }
-  };
-  const fetchProtectedData = async () => {
-    const token =
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4MGE2NThkNTQ5NWQxZWFkOGY1NDA5MCIsImlhdCI6MTc0NTY4NzQ4OSwiZXhwIjoxNzQ4Mjc5NDg5fQ.pMPSwOKfyyYnA2g1PjKfyiPhqeVSVC_Bz2fzpbzQ50A";
-    try {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`, // <-- add Authorization header
-          },
-          withCredentials: true, // optional, usually needed for cookies but not mandatory for Bearer
-        }
-      );
-
-      console.log("✅ Response:", response.data);
-    } catch (error) {
-      console.error("❌ Error:", error.response?.data || error.message);
-    }
-  };
 
   return (
     <div className="flex flex-row items-center justify-between mx-5 py-7 border-b-[0.5px] font-poppins relative">
@@ -223,28 +163,42 @@ const Navbar = () => {
             </button>
           )}
         </div> */}
-        <div
-          className="flex flex-row items-center gap-1.5"
-          onClick={() => {
-            router.push("/product/login");
-          }}
-        >
-          <span
-            className={`border-[1px]  rounded-full ${
-              pathname.includes("customer-support") ||
-              pathname.includes("chat-bot")
-                ? "border-[#5D20D2]"
-                : "border-white"
-            }`}
+        {isLoggedIn ? (
+          <div
+            onClick={() => {
+              router.push("/product/profile");
+            }}
           >
-            {pathname.includes("customer-support") ||
-            pathname.includes("chat-bot") ? (
-              <Profile className={`#5D20D2`} />
-            ) : (
-              <Profile className={`#ffffff`} />
-            )}
-          </span>
-        </div>
+            <img
+              src={user?.profilePicture}
+              className="h-[25px] w-[25px] rounded-full"
+            />
+          </div>
+        ) : (
+          <div
+            className="flex flex-row items-center gap-1.5"
+            onClick={() => {
+              router.push("/product/login");
+            }}
+          >
+            <span
+              className={`border-[1px]  rounded-full ${
+                pathname.includes("customer-support") ||
+                pathname.includes("chat-bot")
+                  ? "border-[#5D20D2]"
+                  : "border-white"
+              }`}
+            >
+              {pathname.includes("customer-support") ||
+              pathname.includes("chat-bot") ? (
+                <Profile className={`#5D20D2`} />
+              ) : (
+                <Profile className={`#ffffff`} />
+              )}
+            </span>
+          </div>
+        )}
+
         <p
           className={`text-[12px] font-normal leading-6 ${
             pathname.includes("customer-support") ||
@@ -255,12 +209,6 @@ const Navbar = () => {
         >
           You
         </p>
-
-        {/* <SignedOut>
-          <div className="text-[12px] text-[#551262] font-normal leading-5 bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] flex justify-center items-center">
-            <SignInButton />
-          </div>
-        </SignedOut> */}
       </div>
       {isOpen && (
         <div className="absolute bottom-0 top-0 h-screen w-screen right-0 bg-black opacity-40 z-20 -left-[20px] p-6 shadow-2xs content-none"></div>
@@ -326,9 +274,12 @@ const Navbar = () => {
           </div>
           <div className="flex items-center gap-2 fixed bottom-5 ">
             <p className="rounded-full border-[1px] bg-[#551262D4] border-[#794083] h-[35px] w-[35px] flex justify-center items-center text-[18px] font-semibold">
-              A
+              {user?.firstName?.split("")[0]}
             </p>
-            <p className="text-black  text-[13px] font-medium ">Aryan Singh</p>
+            <p className="text-black  text-[13px] font-medium ">
+              {" "}
+              {user?.firstName}
+            </p>
           </div>
         </div>
       )}
