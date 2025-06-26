@@ -168,11 +168,23 @@ const Navbar = () => {
             onClick={() => {
               router.push("/product/profile");
             }}
+            className="flex flex-row items-center gap-1.5"
           >
             <img
               src={user?.profilePicture}
               className="h-[25px] w-[25px] rounded-full"
+              alt="Profile"
             />
+            <p
+              className={`text-[12px] font-normal leading-6 ${
+                pathname.includes("customer-support") ||
+                pathname.includes("chat-bot")
+                  ? "text-[#5D20D2]"
+                  : "text-white"
+              }`}
+            >
+              You
+            </p>
           </div>
         ) : (
           <div
@@ -196,19 +208,18 @@ const Navbar = () => {
                 <Profile className={`#ffffff`} />
               )}
             </span>
+            <p
+              className={`text-[12px] font-normal leading-6 ${
+                pathname.includes("customer-support") ||
+                pathname.includes("chat-bot")
+                  ? "text-[#5D20D2]"
+                  : "text-white"
+              }`}
+            >
+              You
+            </p>
           </div>
         )}
-
-        <p
-          className={`text-[12px] font-normal leading-6 ${
-            pathname.includes("customer-support") ||
-            pathname.includes("chat-bot")
-              ? "text-[#5D20D2]"
-              : "text-white"
-          }`}
-        >
-          You
-        </p>
       </div>
       {isOpen && (
         <div className="absolute bottom-0 top-0 h-screen w-screen right-0 bg-black opacity-40 z-20 -left-[20px] p-6 shadow-2xs content-none"></div>

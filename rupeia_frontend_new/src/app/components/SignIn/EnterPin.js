@@ -49,7 +49,6 @@ const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
         if (response?.data?.success) {
           ShowSucessmessages("PIN is successfully verified");
           getUserData();
-          router.push("/product");
         }
       } catch (error) {
         console.error("❌ Error:", error.response?.data || error.message);
@@ -72,6 +71,7 @@ const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
       );
       console.log("✅ Response:", response.data);
       localStorage.setItem("userData", JSON.stringify(response?.data?.user));
+      router.push("/product");
     } catch (error) {
       console.error("❌ Error:", error.response?.data || error.message);
     }

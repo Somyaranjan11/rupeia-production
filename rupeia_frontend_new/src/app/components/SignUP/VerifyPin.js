@@ -59,14 +59,32 @@ const VerifyPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
       );
       console.log("response?.data", response?.data);
       if (response?.data?.success) {
+        getUserData();
         ShowSucessmessages("PIN is successfully set");
-        router.push("/product");
       }
     } catch (error) {
       console.error("❌ Error:", error.response?.data || error.message);
       ShowErroemessage("Unable to set PIN. Please try again");
     } finally {
       setLoading(false);
+    }
+  };
+  const getUserData = async () => {
+    let token_id = localStorage.getItem("accessToken");
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`,
+        {
+          headers: {
+            Authorization: `Bearer ${token_id}`, // <-- add Authorization header
+          },
+        }
+      );
+      console.log("✅ Response:", response.data);
+      localStorage.setItem("userData", JSON.stringify(response?.data?.user));
+      router.push("/product");
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
     }
   };
 

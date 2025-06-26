@@ -45,7 +45,7 @@ const LoginComponent = () => {
         if (response?.data?.success) {
           ShowSucessmessages(response?.data?.message);
           localStorage.setItem("accessToken", response?.data?.accessToken);
-          router.push("/product");
+          getUserData(response?.data?.accessToken);
         }
       } catch (error) {
         console.error("❌ Error:", error.response?.data || error.message);
@@ -57,6 +57,24 @@ const LoginComponent = () => {
       console.error("Error during login:", error);
     } finally {
       setLoading(false);
+    }
+  };
+  const getUserData = async (token) => {
+    let token_id = token ? token : localStorage.getItem("accessToken");
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`,
+        {
+          headers: {
+            Authorization: `Bearer ${token_id}`, // <-- add Authorization header
+          },
+        }
+      );
+      console.log("✅ Response:", response.data);
+      localStorage.setItem("userData", JSON.stringify(response?.data?.user));
+      router.push("/product");
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
     }
   };
   return (
