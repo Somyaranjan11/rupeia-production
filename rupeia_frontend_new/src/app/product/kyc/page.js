@@ -1,6 +1,7 @@
 "use client";
 import KYCAddessInformation from "@/app/components/KYC/KYCAddessInformation";
 import KYCAddNominee from "@/app/components/KYC/KYCAddNominee";
+import KYCAllNominee from "@/app/components/KYC/KYCAllNominee";
 import KYCBankDetails from "@/app/components/KYC/KYCBankDetails";
 import KYCEmail from "@/app/components/KYC/KYCEmail";
 import KYCInvestorInformation from "@/app/components/KYC/KYCInvestorInformation";
@@ -78,6 +79,8 @@ const Page = () => {
             {pageStep == 5 && "Manage Bank"}
             {pageStep == 6 && "Nominee"}
             {pageStep == 7 && "Add Nominee"}
+            {pageStep == 8 && "Add Nominee"}
+
           </p>
         </div>
         <div
@@ -138,6 +141,11 @@ const Page = () => {
           <KYCNomineeForm
             setSevenPageOnboard={setSevenPageOnboard}
             sevenPageOnboard={sevenPageOnboard}
+            setPageStep={setPageStep}
+          />
+        )}
+        {pageStep == 8 && (
+          <KYCAllNominee
             setPageStep={setPageStep}
           />
         )}

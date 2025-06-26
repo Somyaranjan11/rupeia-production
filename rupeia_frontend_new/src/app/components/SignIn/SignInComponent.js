@@ -3,6 +3,7 @@ import { FcGoogle } from "react-icons/fc";
 import ButtonLoader from "../Loader/ButtonLoader";
 import ShowErroemessage from "../alert/ShowErroemessage";
 import axios from "axios";
+import ShowSucessmessages from "../alert/ShowSucessmessages";
 
 const SignInComponent = ({
   setFirstPageOnboard,
@@ -41,6 +42,7 @@ const SignInComponent = ({
         console.log("response?.data", response?.data);
         if (response?.data?.success) {
           setPage(page + 1);
+          ShowSucessmessages("Login OTP sent to your email address");
         }
       } catch (error) {
         console.error("❌ Error:", error.response?.data || error.message);

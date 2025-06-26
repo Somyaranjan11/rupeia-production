@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import ButtonLoader from "../Loader/ButtonLoader";
+import axios from "axios";
 
 const KYCNomineeForm = ({
   setSevenPageOnboard,
@@ -20,6 +21,7 @@ const KYCNomineeForm = ({
   });
   const [loading, setLoading] = useState(false);
   const onBoardFunction = () => {
+    setPageStep(8)
     if (sevenPageOnboard?.first_name == "") {
       setOnBoardError({ ...onBoardError, first_blank_validation: true });
       return;

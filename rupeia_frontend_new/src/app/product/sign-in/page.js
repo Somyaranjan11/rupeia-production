@@ -1,11 +1,8 @@
 "use client";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import EnterPin from "@/app/components/SignIn/EnterPin";
+import OTPComponent from "@/app/components/SignIn/OTPComponent";
 import SignInComponent from "@/app/components/SignIn/SignInComponent";
-import OTPComponent from "@/app/components/SignUP/OTPComponent";
-import SetPin from "@/app/components/SignUP/SetPin";
-import SignupComponent from "@/app/components/SignUP/SignupComponent";
-import VerifyPin from "@/app/components/SignUP/VerifyPin";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -13,11 +10,14 @@ const Page = () => {
   const [fistPageOnboard, setFirstPageOnboard] = useState({
     email_id: "",
     pin: "",
+    otp: "",
   });
   const [page, setPage] = useState(1);
   const router = useRouter();
   const handleClick = () => {
-    router.push("/product");
+    if (page > 1 && page < 3) {
+      setPage(page - 1);
+    }
   };
   return (
     <div className="flex justify-between flex-col h-full w-full overflow-hidden">
@@ -39,7 +39,15 @@ const Page = () => {
               page={page}
             />
           )}
-           {page == 2 && (
+          {page == 2 && (
+            <OTPComponent
+              setFirstPageOnboard={setFirstPageOnboard}
+              fistPageOnboard={fistPageOnboard}
+              setPage={setPage}
+              page={page}
+            />
+          )}
+          {page == 3 && (
             <EnterPin
               setFirstPageOnboard={setFirstPageOnboard}
               fistPageOnboard={fistPageOnboard}
