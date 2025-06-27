@@ -17,7 +17,7 @@ import { RxCross2 } from "react-icons/rx";
 
 const Page = () => {
   const router = useRouter();
-  const [pageStep, setPageStep] = useState(6);
+  const [pageStep, setPageStep] = useState(1);
   // Personal Information
   const [fistPageOnboard, setFirstPageOnboard] = useState({
     name: "",

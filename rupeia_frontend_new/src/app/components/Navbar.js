@@ -83,6 +83,25 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
+  const fetchProtectedDataNews = async () => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      const response = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/pulse/summary`,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // <-- add Authorization header
+          },
+        }
+      );
+      if (response?.data?.success) {
+        console.log("response?.data?.success", response?.data?.success);
+      }
+    } catch (error) {
+      console.error("❌ Error:", error.response?.data || error.message);
+    } finally {
+    }
+  };
 
   return (
     <div className="flex flex-row items-center justify-between mx-5 py-7 border-b-[0.5px] font-poppins relative">
@@ -143,7 +162,7 @@ const Navbar = () => {
           <button
             className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
             onClick={() => {
-              loginUser();
+              fetchProtectedDataNews();
             }}
             type="button"
           >

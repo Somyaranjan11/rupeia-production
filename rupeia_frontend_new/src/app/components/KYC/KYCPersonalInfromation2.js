@@ -105,7 +105,6 @@ const KYCPersonalInfromation2 = ({
     }
   };
   const updateKycRequest = () => {
-    setPageStep(4);
     setLoading(true);
     const payloadData = {
       father_name: secondPageOnboard?.father_name,
