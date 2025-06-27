@@ -28,7 +28,7 @@ const FaqSection = ({ categoriesValue }) => {
   }, []);
   console.log("faqSection", faqSection);
   return (
-    <div className="py-25 px-5">
+    <div className="py-25 px-5 plan-card min-h-screen overflow-y-auto">
       <div className="h-fit flex flex-col">
         <span className="text-[19px] font-medium">
           <p className="text-white">Okay! Now tell us about your</p>{" "}
@@ -39,7 +39,7 @@ const FaqSection = ({ categoriesValue }) => {
       </div>
       <div
         className={`grid grid-cols-1 ${
-          loading ? "gap-0 mt-3" : "gap-4 mt-10"
+          loading ? "gap-0 mt-3" : "gap-4 mt-5"
         } `}
       >
         {loading ? (

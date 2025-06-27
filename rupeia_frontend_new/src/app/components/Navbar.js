@@ -158,17 +158,7 @@ const Navbar = () => {
             Lite
           </p>
         </span>
-        {/* <div>
-          <button
-            className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
-            onClick={() => {
-              fetchProtectedDataNews();
-            }}
-            type="button"
-          >
-            TES API
-          </button>
-        </div> */}
+        
         {/* <div>
           {isSignedIn && (
             <button

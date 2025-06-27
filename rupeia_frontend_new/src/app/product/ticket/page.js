@@ -1,7 +1,9 @@
 "use client";
+import ButtonLoader from "@/app/components/Loader/ButtonLoader";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import Categories from "@/app/components/Ticket/Categories";
 import FaqSection from "@/app/components/Ticket/FaqSection";
+import SendQuery from "@/app/components/Ticket/SendQuery";
 import React, { useState } from "react";
 
 const Page = () => {
@@ -25,17 +27,20 @@ const Page = () => {
         />
       )}
       {step == 2 && <FaqSection categoriesValue={categoriesValue} />}
-      <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl">
-        <button
-          className="fixed bottom-5 left-1/2 -translate-x-1/2 bg-[#551262] w-full max-w-[calc(100%-64px)] py-2 rounded-full text-[15px] leading-7 font-medium text-white"
-          type="button"
-          onClick={() => {
-            setStep(step + 1);
-          }}
-        >
-          Continue
-        </button>
-      </div>
+       {step == 3 && <SendQuery categoriesValue={categoriesValue}/>}
+      {step < 3 && (
+        <div className="py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
+          <button
+            className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white`}
+            type="button"
+            onClick={() => {
+              setStep(step + 1);
+            }}
+          >
+            Continue
+          </button>
+        </div>
+      )}
     </div>
   );
 };
