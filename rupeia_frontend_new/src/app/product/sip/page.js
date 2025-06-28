@@ -1,10 +1,12 @@
 "use client";
 import SIPCard from "@/app/components/SIP/SIPCard";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import sipImage from "../../components/Images/sip_image.png";
 import { useRouter } from "next/navigation";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
+import InvestmentCard from "@/app/components/Investment/InvestmentCard";
+import axios from "axios";
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState("goal");
@@ -41,8 +43,42 @@ const Page = () => {
   const handleClick = () => {
     router.push("/product");
   };
+  const [sipDetails, setSIPDetails] = useState();
+  const [loading, setLoading] = useState(true);
+  const fetchSIP = async () => {
+    const token = localStorage.getItem("accessToken");
+    try {
+      setLoading(true);
+      let url = "";
+      url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/sip/summary`;
+      const response = await axios.get(url, {
+        headers: {
+          Authorization: `Bearer ${token}`, // <-- add Authorization header
+        },
+      });
+      if (response?.data?.success) {
+        setSIPDetails(response?.data?.data);
+      }
+    } catch (error) {
+      console.error("Error fetching blogs:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+  useEffect(() => {
+    fetchSIP();
+  }, [currentPage]);
+
+  function formatIndianCurrency(num) {
+    return new Intl.NumberFormat("en-IN", {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(num);
+  }
+
+  console.log("sipDetails", sipDetails);
   return (
-    <div className="font-poppins flex flex-col h-screen overflow-hidden">
+    <div className="font-poppins flex flex-col h-screen overflow-hidden plan-card">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
         <NavbarCommonPage page={"SIP"} handleClick={handleClick} />
       </div>
@@ -53,7 +89,7 @@ const Page = () => {
               Total SIP Amount
             </p>
             <p className="text-[22px] leading-5 font-medium tracking-wide">
-              ₹1,45,000{" "}
+              ₹{formatIndianCurrency(sipDetails?.summary?.totalSipAmount)}
             </p>
             <div className="border-[0.5px] border-[#FFFFFF7A] content-none min-w-[130px] mt-1"></div>
           </div>
@@ -62,12 +98,15 @@ const Page = () => {
               <p className="text-[13px] leading-5 font-medium">
                 Current Amount
               </p>
-              <p className="text-[16px] leading-5 font-medium">₹1,45,000 </p>
+              <p className="text-[15px] leading-5 font-medium">
+                ₹{formatIndianCurrency(sipDetails?.summary?.totalCurrentAmount)}
+              </p>
             </div>
             <div className="flex flex-col gap-2">
               <p className="text-[13px] leading-5 font-medium">Total Returns</p>
-              <p className="text-[16px] text-[#11FF42] leading-5 font-medium">
-                +45,000 (5.67%)
+              <p className="text-[15px] text-[#11FF42] leading-5 font-medium">
+                +{sipDetails?.summary?.totalReturns} (
+                {sipDetails?.summary?.totalReturnsPercentage}%)
               </p>
             </div>
           </div>
@@ -105,9 +144,22 @@ const Page = () => {
               )}
             </span>
           </div>
-          <div>
-            <SIPCard investmentDetails={investment_plan} />
-          </div>
+          {currentPage == "goal" && (
+            <div>
+              <InvestmentCard
+                investmentDetails={sipDetails?.goals}
+                currentPage={currentPage}
+              />
+            </div>
+          )}
+          {currentPage == "wealth-creation" && (
+            <div>
+              <InvestmentCard
+                investmentDetails={sipDetails?.wealthPlus}
+                currentPage={currentPage}
+              />
+            </div>
+          )}
         </div>
       </div>
     </div>

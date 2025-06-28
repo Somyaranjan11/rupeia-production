@@ -38,30 +38,26 @@ const Navbar = () => {
     },
     {
       id: 2,
-      name: "Communication Settings",
-    },
-    {
-      id: 3,
       name: "Invite Friends",
       route: "/product/refer",
     },
-    {
-      id: 4,
+    { 
+      id: 3,
       name: "Customer Support",
       route: "/product/ticket",
     },
-    {
-      id: 5,
+    {  
+      id: 4,
       name: "Terms and Conditions",
       route: "/product/terms-condition",
     },
     {
-      id: 6,
+      id: 5,
       name: "Saved Posts",
       route: "/product/saved-post",
     },
     {
-      id: 7,
+      id: 6,
       name: "Liked Posts",
       route: "/product/liked-post",
     },
@@ -83,11 +79,11 @@ const Navbar = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
-  const fetchProtectedDataNews = async () => {
+  const fetchProtectedData = async () => {
     const token = localStorage.getItem("accessToken");
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/pulse/summary`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // <-- add Authorization header
@@ -158,20 +154,16 @@ const Navbar = () => {
             Lite
           </p>
         </span>
-        
-        {/* <div>
-          {isSignedIn && (
-            <button
-              className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
-              onClick={() => {
-                fetchProtectedData();
-              }}
-              type="button"
-            >
-              TEST AUTH
-            </button>
-          )}
-        </div> */}
+
+        <button
+          className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
+          onClick={() => {
+            fetchProtectedData();
+          }}
+          type="button"
+        >
+          TEST AUTH
+        </button>
         {isLoggedIn ? (
           <div
             onClick={() => {

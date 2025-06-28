@@ -30,7 +30,12 @@ const Page = () => {
       <div className="bg-white rounded-4xl flex flex-col h-full mt-3 mb-10 p-2 relative">
         {/* Landing page boxes */}
         <div className="flex justify-between items-center px-5 pb-4 pt-4 gap-3">
-          <div className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2">
+          <div
+            className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+            onClick={() => {
+              router.push("/product/pulse");
+            }}
+          >
             <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
               <GoGoal className="text-[18px]" />
             </div>

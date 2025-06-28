@@ -76,7 +76,7 @@ const SendQuery = ({ categoriesValue }) => {
           Raise Ticket
         </button>
       </div>
-      {isEmail == "email" && (
+      {isEmail == "raise_ticket" && (
         <div className="mt-5 flex flex-col gap-7">
           <input
             type="text"
@@ -92,8 +92,8 @@ const SendQuery = ({ categoriesValue }) => {
           </p>
         </div>
       )}
-      {isEmail == "raise_ticket" && (
-        <div className="mt-5 flex flex-col gap-7">
+      {isEmail == "email" && (
+        <div className="mt-5 flex flex-col gap-4">
           <input
             type="text"
             className="border-b-[1px] border-[#FFFFFF] text-[#FFFFFF8C] text-[13px] font-medium w-full h-[48px] focus:outline-none"
@@ -106,7 +106,7 @@ const SendQuery = ({ categoriesValue }) => {
         </div>
       )}
 
-      {isEmail == "email" && (
+      {isEmail == "raise_ticket" && (
         <div className="mt-10">
           <button
             className="bg-[#551262] w-full  h-[45px] rounded-4xl text-[15px] leading-7 font-medium text-white flex justify-center items-center"
@@ -118,7 +118,7 @@ const SendQuery = ({ categoriesValue }) => {
           </button>
         </div>
       )}
-      {isEmail == "raise_ticket" && (
+      {isEmail == "email" && (
         <div className="py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
           <button
             className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white`}

@@ -74,7 +74,7 @@ const FaqSection = ({ categoriesValue }) => {
       </div>
       {!loading && (
         <div className="mt-5">
-          <div className="bg-[#551262] w-full  h-[50px] rounded-4xl text-[15px] leading-7 font-medium text-white flex justify-center items-center">
+          <div className="bg-[#551262] w-full border-[1px] border-[#916D98] h-[45px] rounded-4xl text-[14px] leading-7 font-medium text-white flex justify-center items-center">
             <p>I have a different query</p>
           </div>
         </div>

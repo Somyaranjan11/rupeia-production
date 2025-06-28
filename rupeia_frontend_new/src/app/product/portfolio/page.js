@@ -16,21 +16,19 @@ const Page = () => {
   };
   const [goalDetails, setGoalDetails] = useState([]);
   const [loading, setLoading] = useState(true);
-  const fetchBlogs = async () => {
+  const fetchPortfolio = async () => {
     const token = localStorage.getItem("accessToken");
     try {
       setLoading(true);
       let url = "";
-      if (currentPage == "goal") {
-        url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/goal/user-goals`;
-      } else if (currentPage == "wealth-creation") {
-        url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/wealth-plus/user-profiles`;
-      }
+      url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio`;
       const response = await axios.get(url, {
         headers: {
           Authorization: `Bearer ${token}`, // <-- add Authorization header
         },
       });
+      console.log("response",response);
+      return;
       if (currentPage == "goal") {
         setGoalDetails(response?.data?.data?.goals);
       } else {
@@ -43,7 +41,7 @@ const Page = () => {
     }
   };
   useEffect(() => {
-    fetchBlogs();
+    fetchPortfolio();
   }, [currentPage]);
 
   console.log("goalDetails", goalDetails);
@@ -94,6 +92,17 @@ const Page = () => {
               Goal
               {currentPage == "goal" && <p className="border-[1px]"></p>}
             </span>
+             <span
+              className={`text-[13px] leading-5 font-medium ${
+                currentPage == "goal" ? "text-white" : "text-[#FFFFFF70]"
+              }`}
+              onClick={() => {
+                setCurrentPage("goal");
+              }}
+            >
+              Buying a house
+             
+            </span>
             <span
               className={`text-[13px] leading-5 font-medium  ${
                 currentPage == "wealth-creation"
@@ -104,7 +113,7 @@ const Page = () => {
                 setCurrentPage("wealth-creation");
               }}
             >
-              Wealth Creation
+              Wealth +
               {currentPage == "wealth-creation" && (
                 <p className="border-[1px]"></p>
               )}
@@ -114,7 +123,10 @@ const Page = () => {
             <AnimateLoader count={2} />
           ) : (
             <div>
-              <InvestmentCard investmentDetails={goalDetails} currentPage={currentPage} />
+              <InvestmentCard
+                investmentDetails={goalDetails}
+                currentPage={currentPage}
+              />
             </div>
           )}
         </div>
