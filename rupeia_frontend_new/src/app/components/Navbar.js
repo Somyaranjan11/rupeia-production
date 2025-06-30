@@ -83,7 +83,7 @@ const Navbar = () => {
     const token = localStorage.getItem("accessToken");
     try {
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/portfolio`,
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/notifications`,
         {
           headers: {
             Authorization: `Bearer ${token}`, // <-- add Authorization header
@@ -155,7 +155,7 @@ const Navbar = () => {
           </p>
         </span>
 
-        <button
+        {/* <button
           className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
           onClick={() => {
             fetchProtectedData();
@@ -163,7 +163,7 @@ const Navbar = () => {
           type="button"
         >
           TEST AUTH
-        </button>
+        </button> */}
         {isLoggedIn ? (
           <div
             onClick={() => {
