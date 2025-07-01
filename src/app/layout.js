@@ -3,7 +3,6 @@ import "./globals.css";
 import localFont from "next/font/local";
 
 import Head from "next/head";
-import { ClerkProvider } from "@clerk/nextjs";
 export const dynamic = "force-dynamic";
 
 const geistSans = localFont({
@@ -32,7 +31,6 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <ClerkProvider>
       <html lang="en">
         <Head>
           {/* ✅ Add the manifest file link */}
@@ -42,6 +40,5 @@ export default function RootLayout({ children }) {
           {children}
         </body>
       </html>
-    </ClerkProvider>
   );
 }
