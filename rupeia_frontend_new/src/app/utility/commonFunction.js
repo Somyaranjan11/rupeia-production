@@ -1,0 +1,3 @@
+exports.deleteUserData = () => {
+  localStorage.clear();
+};
