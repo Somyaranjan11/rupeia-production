@@ -98,6 +98,28 @@ const Navbar = () => {
     } finally {
     }
   };
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault(); // Stop automatic prompt
+      setDeferredPrompt(event); // Save event for later
+    });
+  }, []);
+
+  const handleInstallClick = () => {
+    console.log("deferredPrompt", deferredPrompt);
+    if (deferredPrompt) {
+      deferredPrompt.prompt(); // Show install prompt
+      deferredPrompt.userChoice.then((choice) => {
+        if (choice.outcome === "accepted") {
+          console.log("User installed the PWA");
+        } else {
+          console.log("User dismissed the installation");
+        }
+      });
+    }
+  };
 
   return (
     <div className="flex flex-row items-center justify-between mx-5 py-7 border-b-[0.5px] font-poppins relative">
@@ -135,6 +157,9 @@ const Navbar = () => {
               ? ""
               : "bg-[#FFFFFF] rounded-[5px] px-1 py-[3px]"
           }`}
+          onClick={() => {
+            handleInstallClick();
+          }}
         >
           {pathname.includes("customer-support") ||
           pathname.includes("chat-bot") ? (
