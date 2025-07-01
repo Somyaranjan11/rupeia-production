@@ -2,17 +2,19 @@ import axios from "axios";
 import React, { useState } from "react";
 import { MdAddCircle } from "react-icons/md";
 import ButtonLoader from "../Loader/ButtonLoader";
+import ShowSucessmessages from "../alert/ShowSucessmessages";
+import { useRouter } from "next/navigation";
 
 const KYCAllNominee = ({ setPageStep }) => {
   const [loading, setLoading] = useState(false);
+  const router = useRouter();
   function generateUnique8DigitNumber() {
     const timestampPart = Date.now().toString().slice(-5); // Last 5 digits of timestamp
     const randomPart = Math.floor(100 + Math.random() * 900); // Random 3-digit number (100–999)
-    return parseInt(timestampPart + randomPart); // Combines to 8 digits
+    return (timestampPart + randomPart).toString(); // Combines to 8 digits
   }
   const updateProfileDetails = () => {
     setLoading(true);
-
     const profile_id = localStorage.getItem("profile_id");
     const dematAccountPayloadData = {
       profile: profile_id,
@@ -20,7 +22,7 @@ const KYCAllNominee = ({ setPageStep }) => {
       client_id: generateUnique8DigitNumber(),
     };
     const mutualFundAccountPayloadData = {
-      profile: profile_id,
+      primary_investor: profile_id,
       holding_pattern: "single",
       primary_investor_pan: "AAAAA9998C",
     };
@@ -57,6 +59,7 @@ const KYCAllNominee = ({ setPageStep }) => {
           if (res2) {
             ShowSucessmessages("Mutual fund account created successfully");
           }
+          router.push("/product");
         })
       )
       .catch((error) => {

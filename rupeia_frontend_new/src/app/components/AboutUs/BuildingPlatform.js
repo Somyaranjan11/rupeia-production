@@ -32,7 +32,9 @@ const BuildingPlatform = () => {
       </div>
       <div className="flex flex-row items-center sm:justify-center flex-wrap ">
         {buildingPlatform?.map((data, index) => (
-          <div className="w-[50%] sm:w-[335px] h-[140px] sm:h-[270px]">
+          <div className="w-[50%] sm:w-[335px] h-[140px] sm:h-[270px]"
+          key={index}
+          >
             <img src={data?.image.src} className="w-full sm:w-[335px] h-[140px] sm:h-[270px]" />
           </div>
         ))}

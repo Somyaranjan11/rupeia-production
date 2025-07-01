@@ -29,7 +29,7 @@ const WealthCard1 = ({ setGoalQuestionSelect, goalQuestionSelect }) => {
       </p>
       <div>
         {goalQuestions?.risk?.map((data, index) => (
-          <div className="flex flex-col gap-1 mt-4">
+          <div className="flex flex-col gap-1 mt-4" key={index}>
             <p className="text-[13px] font-medium leading-6">
               {data?.order}. {data?.question}
             </p>
@@ -82,7 +82,7 @@ const WealthCard1 = ({ setGoalQuestionSelect, goalQuestionSelect }) => {
       </div>
       <div>
         {goalQuestions?.emotional?.map((data, index) => (
-          <div className="flex flex-col gap-1 mt-4">
+          <div className="flex flex-col gap-1 mt-4" key={index}>
             <p className="text-[13px] font-medium leading-6">
               {data?.order}. {data?.question}
             </p>

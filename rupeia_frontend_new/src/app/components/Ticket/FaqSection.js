@@ -46,7 +46,9 @@ const FaqSection = ({ categoriesValue }) => {
           <AnimateLoader count={2} />
         ) : (
           faqSection?.map((data, index) => (
-            <div className="border-[1px] border-[#916D98] why-rupeia-blur px-5 sm:px-8 flex flex-col gap-3 justify-between items-center py-4 rounded-4xl h-fit">
+            <div className="border-[1px] border-[#916D98] why-rupeia-blur px-5 sm:px-8 flex flex-col gap-3 justify-between items-center py-4 rounded-4xl h-fit"
+             key={index}
+            >
               <div className="flex justify-between items-center gap-3 w-full">
                 <span className="text-[14px] sm:text-[18px] font-medium leading-[150%] font-poppins w-[100%] text-[#FFFFFF]">
                   {index + 1}. {data?.question}

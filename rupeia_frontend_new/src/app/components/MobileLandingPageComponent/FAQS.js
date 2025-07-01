@@ -55,7 +55,9 @@ const FAQS = () => {
       </p>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4  mt-3">
         {faqs_question?.map((data, index) => (
-          <div className="border-[0.3px] border-[#9563A2] why-rupeia-blur px-5 sm:px-8 flex flex-col gap-3 justify-between items-center py-4 rounded-4xl h-fit">
+          <div className="border-[0.3px] border-[#9563A2] why-rupeia-blur px-5 sm:px-8 flex flex-col gap-3 justify-between items-center py-4 rounded-4xl h-fit"
+          key={index}
+          >
             <div className="flex justify-between items-center gap-3">
               <span className="text-[14px] sm:text-[18px] font-medium leading-[150%] font-poppins w-[100%] text-[#ECE6ED]">
                 {data?.question}

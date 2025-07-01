@@ -257,13 +257,16 @@ const KYCEmail = ({
         {/* Dropdown Button */}
         <div className="flex flex-row gap-3">
           {gender?.map((item, index) => (
-            <div className="w-full">
+            <div className="w-full"
+            key={index}
+            >
               <button
                 className={`mb-1 border-[1px] border-[#916D98] text-[14px] font-medium leading-7  px-3 h-[40px] w-full rounded-3xl focus:outline-none ${
                   item == secondPageOnboard.gender
                     ? "bg-white text-[#916D98] font-semibold"
                     : "text-[#FFFFFF]"
                 }`}
+                key={index}
                 type="button"
                 onClick={() => {
                   setSecondPageOnboard({

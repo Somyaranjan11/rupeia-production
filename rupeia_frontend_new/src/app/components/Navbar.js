@@ -41,12 +41,12 @@ const Navbar = () => {
       name: "Invite Friends",
       route: "/product/refer",
     },
-    { 
+    {
       id: 3,
       name: "Customer Support",
       route: "/product/ticket",
     },
-    {  
+    {
       id: 4,
       name: "Terms and Conditions",
       route: "/product/terms-condition",
@@ -155,7 +155,7 @@ const Navbar = () => {
           </p>
         </span>
 
-        {/* <button
+        <button
           className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
           onClick={() => {
             fetchProtectedData();
@@ -163,7 +163,7 @@ const Navbar = () => {
           type="button"
         >
           TEST AUTH
-        </button> */}
+        </button>
         {isLoggedIn ? (
           <div
             onClick={() => {

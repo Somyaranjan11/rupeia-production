@@ -26,7 +26,7 @@ const PlansCardModel = () => {
       </div>
       <div className="flex flex-col gap-4  p-5 sm:p-10">
         {planList?.map((data, index) => (
-          <div className="flex flex-row items-center gap-3">
+          <div className="flex flex-row items-center gap-3" key={index}>
             <span className="bg-[#FFFFFF61] rounded-full h-[25px] w-[25px] flex justify-center items-center">
               <img src={correctImage.src} className="h-[10px] w-[14px]" />
             </span>

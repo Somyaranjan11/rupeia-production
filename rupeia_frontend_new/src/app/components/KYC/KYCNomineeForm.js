@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ButtonLoader from "../Loader/ButtonLoader";
 import axios from "axios";
+import ShowSucessmessages from "../alert/ShowSucessmessages";
 
 const KYCNomineeForm = ({
   setSevenPageOnboard,
@@ -21,7 +22,6 @@ const KYCNomineeForm = ({
   });
   const [loading, setLoading] = useState(false);
   const onBoardFunction = () => {
-    setPageStep(8)
     if (sevenPageOnboard?.first_name == "") {
       setOnBoardError({ ...onBoardError, first_blank_validation: true });
       return;
@@ -60,7 +60,7 @@ const KYCNomineeForm = ({
       profile: profile_id,
       name: fullName,
       date_of_birth: sevenPageOnboard?.dob,
-      relationship: sevenPageOnboard?.relationship,
+      relationship: sevenPageOnboard?.relationship?.toLowerCase(),
     };
     const token = localStorage.getItem("accessToken");
     axios
@@ -78,6 +78,7 @@ const KYCNomineeForm = ({
         if (response) {
           console.log("response is", response.data);
           ShowSucessmessages("Nominee details added");
+          setPageStep(8);
         }
       })
       .catch((error) => {

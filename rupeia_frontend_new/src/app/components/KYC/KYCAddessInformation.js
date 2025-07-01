@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ButtonLoader from "../Loader/ButtonLoader";
 import axios from "axios";
+import ShowSucessmessages from "../alert/ShowSucessmessages";
 
 const KYCAddessInformation = ({
   setFourthPageOnboard,
@@ -76,6 +77,7 @@ const KYCAddessInformation = ({
           if (res3) {
             ShowSucessmessages("Details have been updated");
           }
+          setPageStep(5)
         })
       )
       .catch((error) => {
@@ -121,7 +123,7 @@ const KYCAddessInformation = ({
             placeholder="Please enter your pin code"
             className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3  h-[44px] w-full rounded-3xl focus:outline-none"
             onChange={(e) => {
-              if (e.target.value < 7) {
+              if (e.target.value.length < 7) {
                 setFourthPageOnboard({
                   ...fourthPageOnboard,
                   pin_code: e.target.value,

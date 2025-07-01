@@ -76,7 +76,9 @@ const Brand = () => {
         <div className="w-full overflow-x-auto hide-scrollbar">
           <div className="flex gap-12 px-2 animate-brandScroll">
             {brandImage?.map((data, index) => (
-              <div className="flex justify-center items-center">
+              <div className="flex justify-center items-center"
+              key={index}
+              >
                 <img src={data?.image?.src} className="min-w-[160px] sm:min-w-[210px] h-[70px] sm:h-[100px]" />
               </div>
             ))}
@@ -96,6 +98,7 @@ const Brand = () => {
                 className={`flex justify-center items-center  p-2 ${
                   data?.id == 1 ? "bg-black" : ""
                 }`}
+                key={index}
               >
                 <img src={data?.image?.src} className="min-w-[160px] sm:min-w-[210px] h-[60px] sm:h-[80px]" />
               </div>

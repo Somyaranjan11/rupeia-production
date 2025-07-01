@@ -58,13 +58,13 @@ const Page = () => {
         <NavbarCommonPage page={"News"} handleClick={handleClick} />
         <div className="flex overflow-x-auto w-full gap-5 py-2 my-auto">
           {category?.map((data, index) => (
-            <div>
+            <div key={index}>
               <p
                 className={`text-[14px] leading-7 font-medium  text-nowrap ${
                   categoryList == data ? "text-white" : "text-[#FFFFFF5E]"
                 }`}
-                onClick={()=>{
-                  setCateGoryList(data)
+                onClick={() => {
+                  setCateGoryList(data);
                 }}
               >
                 {data}

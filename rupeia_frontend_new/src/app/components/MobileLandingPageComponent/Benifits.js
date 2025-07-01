@@ -27,10 +27,10 @@ const Benifits = () => {
             Every dream deserves a plan.
           </p>
           <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">
-            We all have goals some we've chased, some we've put on hold.
+            We all have goals some we have chased, some we have put on hold.
           </p>
           <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">
-            At Rupeia, we believe it’s never too late to start.
+            At Rupeia, we believe its never too late to start.
           </p>
         </div>
         <div className=" flex-row items-center justify-between gap-4 hidden sm:flex mt-6 sm:mt-14">
@@ -93,7 +93,7 @@ const Benifits = () => {
             Wealth+
           </p>
           <p className="text-[16px] sm:text-[32px] font-semibold  text-[#F7C1FF] text-center">
-            Tried investing… but gave up after a loss?
+            Tried investing. but gave up after a loss?
           </p>
           <p className="text-[14px] sm:text-[26px] sm:px-5 font-normal leading-5  text-[#CD90D6] text-center mt-2 sm:mt-4">
             Many of us stop when markets dip, lose confidence, and feel left

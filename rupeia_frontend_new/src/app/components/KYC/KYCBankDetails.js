@@ -4,7 +4,11 @@ import ButtonLoader from "../Loader/ButtonLoader";
 import ShowSucessmessages from "../alert/ShowSucessmessages";
 import axios from "axios";
 
-const KYCBankDetails = ({ setFifthPageOnboard, fifthPageOnboard,setPageStep }) => {
+const KYCBankDetails = ({
+  setFifthPageOnboard,
+  fifthPageOnboard,
+  setPageStep,
+}) => {
   const [onBoardError, setOnBoardError] = useState({
     account_name_validation: false,
     account_name_space_validation: false,
@@ -55,7 +59,7 @@ const KYCBankDetails = ({ setFifthPageOnboard, fifthPageOnboard,setPageStep }) =
     } else if (!/^[A-Z]{4}[0][0-9A-Z]{6}$/.test(fifthPageOnboard?.ifsc_code)) {
       setOnBoardError({ ...onBoardError, ifsc_code_validation_reg: true });
     } else {
-      updateProfileDetails()
+      updateProfileDetails();
     }
   };
   const updateProfileDetails = () => {
@@ -83,6 +87,7 @@ const KYCBankDetails = ({ setFifthPageOnboard, fifthPageOnboard,setPageStep }) =
         if (res1) {
           console.log("response is", res1.data);
           ShowSucessmessages("Bank Details added");
+          setPageStep(6);
         }
       })
       .catch((error) => {
@@ -115,7 +120,7 @@ const KYCBankDetails = ({ setFifthPageOnboard, fifthPageOnboard,setPageStep }) =
         </span>
       </div>
       <div className="flex flex-col gap-5 mt-5">
-      <div>
+        <div>
           <input
             type="text"
             placeholder="Please enter your name"

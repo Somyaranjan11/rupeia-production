@@ -181,7 +181,7 @@ const KYCPersonalInfromation2 = ({
             ShowSucessmessages("Investor profile created");
             if (res2?.data?.id) {
               localStorage.setItem("profile_id", res2?.data?.id);
-              localStorage.setItem("kyc_status", response?.data?.status);
+              localStorage.setItem("kyc_status", res1?.data?.status);
             }
             setPageStep(4);
           }
@@ -204,7 +204,9 @@ const KYCPersonalInfromation2 = ({
         {/* Dropdown Button */}
         <div className="flex flex-row flex-wrap gap-2 mt-1">
           {occupation_type?.map((item, index) => (
-            <div className="w-fit">
+            <div className="w-fit"
+             key={index}
+            >
               <button
                 className={`border-[1px] border-[#916D98] text-[14px] font-medium leading-7  px-6 h-[40px] w-fit rounded-3xl focus:outline-none ${
                   thirdPageOnboard.occupation_type == item.value
@@ -241,7 +243,9 @@ const KYCPersonalInfromation2 = ({
         {/* Dropdown Button */}
         <div className="flex flex-row flex-wrap gap-2 mt-1">
           {income_slab?.map((item, index) => (
-            <div className="w-fit">
+            <div className="w-fit"
+             key={index}
+            >
               <button
                 className={`border-[1px] border-[#916D98] text-[14px] font-medium leading-7  px-6 h-[40px] w-fit rounded-3xl focus:outline-none ${
                   thirdPageOnboard.income_slab == item.value

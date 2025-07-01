@@ -7,7 +7,7 @@ import LoginImage2 from "@/app/icons/LoginImage2";
 import LoginImage3 from "@/app/icons/LoginImage3";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import { useRouter } from "next/navigation";
-const page = () => {
+const Page = () => {
   const router = useRouter();
   const handleClick = () => {
     router.push("/product");
@@ -15,7 +15,7 @@ const page = () => {
   return (
     <div className="flex justify-between flex-col h-full overflow-hidden">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
-        <NavbarCommonPage page={"Rupeia"} handleClick={handleClick} />
+        <NavbarCommonPage Page={"Rupeia"} handleClick={handleClick} />
       </div>
       <div>
         <img src={LoginImage.src} alt="login-image" className="mt-16" />
@@ -48,4 +48,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
