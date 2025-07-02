@@ -16,11 +16,6 @@ const KYCAllNominee = ({ setPageStep }) => {
   const updateProfileDetails = () => {
     setLoading(true);
     const profile_id = localStorage.getItem("profile_id");
-    const dematAccountPayloadData = {
-      profile: profile_id,
-      dp_id: generateUnique8DigitNumber(),
-      client_id: generateUnique8DigitNumber(),
-    };
     const mutualFundAccountPayloadData = {
       primary_investor: profile_id,
       holding_pattern: "single",
@@ -29,16 +24,6 @@ const KYCAllNominee = ({ setPageStep }) => {
     const token = localStorage.getItem("accessToken");
     axios
       .all([
-        axios.post(
-          `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/dematAccount/createDematAccount`,
-          dematAccountPayloadData,
-          {
-            headers: {
-              "Content-type": "application/json; charset=UTF-8",
-              Authorization: `Bearer ${token}`,
-            },
-          }
-        ),
         axios.post(
           `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/MFAccount`,
           mutualFundAccountPayloadData,
