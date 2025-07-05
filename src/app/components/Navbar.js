@@ -146,7 +146,7 @@ const Navbar = () => {
               : "text-white"
           }`}
         >
-          Rupeias
+          Rupeia
         </p>
       </div>
       <div className="flex flex-row items-center gap-2">

@@ -1,10 +1,10 @@
 {
-    "name": "My PWA",
-    "short_name": "Next.js PWA",
+    "name": "Rupeia Lite",
+    "short_name": "Rupeia Lite",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
-    "theme_color": "#007bff",
+    "theme_color": "#551262",
     "description": "A Next.js PWA example",
     "icons": [
       {
