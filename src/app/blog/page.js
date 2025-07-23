@@ -2,57 +2,140 @@ import React from "react";
 import Navbar from "../components/LandingComponent/Navbar";
 import blogLandingImage from "../components/Images/blogs_mobile_customize_image.png";
 import blogLandingImage2 from "../components/Images/blogs_mobile_customize_2.png";
+import blogLandingImage3 from "../components/Images/blogs-desktop-customize.png";
+import blogLandingImage4 from "../components/Images/blogs-desktop-top-image.png";
 
 import BlogsCard from "../components/LandingComponent/BlogsCard";
 import Categories from "../components/LandingComponent/Categories";
+import LandingNavbar from "../components/LandingComponent/LandingNavbar";
+import Footer from "../components/MobileLandingPageComponent/Footer";
 
 const Page = () => {
   return (
     <div className="bg-white min-h-screen overflow-x-hidden flex flex-col">
       {/* Navbar */}
-      <div className="mt-[52px]">
-        <Navbar />
+      <div className="">
+        <LandingNavbar />
       </div>
 
       {/* Blog Landing Image */}
-      <div className="px-4 py-6">
-        <img src={blogLandingImage.src} alt="Blog landing" />
+      <div className="mt-8 sm:mt-16 mb-8 sm:mb-11 px-4 sm:px-28 flex justify-center items-center ">
+        <img
+          src={blogLandingImage.src}
+          alt="Blog landing"
+          className="block sm:hidden w-full"
+        />
+        <img
+          src={blogLandingImage4.src}
+          alt="Blog landing"
+          className="hidden sm:block h-[225px] w-full"
+        />
       </div>
 
       {/* First Horizontal Blog Cards */}
-      <div className="px-4 pb-5">
-        <p className="text-[24px] font-normal leading-5 text-black">
-          Recent Blogs
-        </p>
-      </div>
-      <div className="w-full overflow-x-auto mx-4 mb-6 pr-4">
-        <div className="flex gap-4 flex-row w-fit">
-          {[1, 2, 3, 4].map((data, index) => (
-            <div key={`card-row-1-${index}`} className="min-w-[277px]">
-              <BlogsCard />
-            </div>
-          ))}
+      <div className="flex flex-col gap-5">
+        <div className="pb-5 px-4 sm:px-28">
+          <p className="text-[24px] font-normal leading-5 text-black">
+            Recent Blogs
+          </p>
         </div>
-      </div>
+        <div className="w-full overflow-x-auto lg:overflow-x-hidden mx-4 sm:mx-0 sm:px-28 pr-4">
+          <div className="flex flex-row gap-0 sm:gap-8  ">
+            {[1, 2, 3, 4].map((data, index) => (
+              <div
+                key={`card-row-1-${index}`}
+                className="min-w-[277px] lg:min-w-[277px] pr-4 sm:pr-0 "
+              >
+                <BlogsCard />
+              </div>
+            ))}
+          </div>
+        </div>
 
-      {/* Second Horizontal Blog Cards */}
-      <div className="w-full overflow-x-auto mx-4 mb-6">
-        <div className="flex gap-4">
-          {[1, 2, 3, 4].map((data, index) => (
-            <div key={`card-row-2-${index}`} className="min-w-[277px]">
-              <BlogsCard />
-            </div>
-          ))}
+        {/* Second Horizontal Blog Cards */}
+        <div className="w-full overflow-x-auto lg:overflow-x-hidden  mx-4 sm:mx-0 sm:px-28 pr-4">
+          <div className="flex flex-row gap-0 sm:gap-8  ">
+            {[1, 2, 3, 4].map((data, index) => (
+              <div
+                key={`card-row-1-${index}`}
+                className="min-w-[277px] lg:min-w-[277px] pr-4 sm:pr-0 "
+              >
+                <BlogsCard />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
-      <div className="px-4 py-6">
-        <img src={blogLandingImage2.src} alt="Blog landing" />
+      <div className="px-4 sm:px-28 flex justify-center items-center my-8 sm:my-20">
+        <img
+          src={blogLandingImage2.src}
+          alt="Blog landing"
+          className="block sm:hidden"
+        />
+        <img
+          src={blogLandingImage3.src}
+          alt="Blog landing"
+          className="hidden sm:block h-[400px]"
+        />
       </div>
-      <div className="px-4 flex flex-col gap-5">
-        <p className="text-[19px] font-normal leading-5 text-black">
+      <div className="flex flex-col gap-5 px-4 sm:px-28">
+        <p className="text-[24px] font-normal leading-5 text-black">
           Explore Other Categories
         </p>
         <Categories />
+      </div>
+      <div className="mt-16 flex flex-col gap-5 ">
+        <div className="pb-5 px-4 sm:px-28">
+          <p className="text-[24px] font-normal leading-5 text-black">
+            Popular Blogs
+          </p>
+        </div>
+        <div className="w-full overflow-x-auto lg:overflow-x-hidden mx-4 sm:mx-0 sm:px-28 pr-4">
+          <div className="flex flex-row gap-0 sm:gap-8  ">
+            {[1, 2, 3, 4].map((data, index) => (
+              <div
+                key={`card-row-1-${index}`}
+                className="min-w-[277px] lg:min-w-[277px] pr-4 sm:pr-0 "
+              >
+                <BlogsCard />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="flex flex-col gap-5 mt-10">
+        <div className="pb-5 px-4 sm:px-28">
+          <p className="text-[24px] font-normal leading-5 text-black">
+            Most Read Blogs
+          </p>
+        </div>
+        <div className="w-full overflow-x-auto lg:overflow-x-hidden mx-4 sm:mx-0 sm:px-28 pr-4">
+          <div className="flex flex-row gap-0 sm:gap-8  ">
+            {[1, 2, 3, 4].map((data, index) => (
+              <div
+                key={`card-row-1-${index}`}
+                className="min-w-[277px] lg:min-w-[277px] pr-4 sm:pr-0 "
+              >
+                <BlogsCard />
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+      <div className="my-12 px-4 sm:px-28 flex justify-center items-center">
+        <img
+          src={blogLandingImage.src}
+          alt="Blog landing"
+          className="block sm:hidden w-full"
+        />
+        <img
+          src={blogLandingImage4.src}
+          alt="Blog landing"
+          className="hidden sm:block h-[225px] w-full"
+        />
+      </div>
+      <div>
+        <Footer />
       </div>
     </div>
   );

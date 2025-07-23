@@ -39,7 +39,7 @@ const SendQuery = ({ categoriesValue }) => {
       )
       .then((response) => {
         if (response) {
-          ShowSucessmessages("Your ticket created successfully");
+          ShowSucessmessages("Support ticket created successfully");
           router.push("/product")
         } 
       })
@@ -51,7 +51,7 @@ const SendQuery = ({ categoriesValue }) => {
       });
   };
   return (
-    <div className="py-25 px-5 plan-card min-h-screen">
+    <div className="py-25 px-5 bg-[#1A0120] min-h-screen">
       <div className="flex flex-row items-center w-full gap-5 my-3">
         <button
           className={` border-[1px] border-[#AF7BB6] h-[48px] text-[14px] font-medium w-full rounded-full ${
@@ -80,7 +80,7 @@ const SendQuery = ({ categoriesValue }) => {
         <div className="mt-5 flex flex-col gap-7">
           <input
             type="text"
-            className="border-b-[1px] border-[#FFFFFF] text-[#FFFFFF8C] text-[13px] font-medium w-full h-[48px] focus:outline-none"
+            className="border-b-[1px] border-[#FFFFFF] text-[#FFFFFFB8] text-[13px] font-medium w-full h-[48px] focus:outline-none"
             placeholder="Please write your query here..."
             onChange={(e) => {
               setQuery(e.target.value);
@@ -96,7 +96,7 @@ const SendQuery = ({ categoriesValue }) => {
         <div className="mt-5 flex flex-col gap-4">
           <input
             type="text"
-            className="border-b-[1px] border-[#FFFFFF] text-[#FFFFFF8C] text-[13px] font-medium w-full h-[48px] focus:outline-none"
+            className="border-b-[1px] border-[#FFFFFF] text-[#FFFFFFB8] text-[13px] font-medium w-full h-[48px] focus:outline-none"
             placeholder="Please write your query here..."
             value={"Email ID: Rupeai@gmail.com"}
           />
@@ -121,7 +121,7 @@ const SendQuery = ({ categoriesValue }) => {
       {isEmail == "email" && (
         <div className="py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
           <button
-            className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white`}
+            className={` border-[#FFFFFF] border-[1px] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white`}
             type="button"
             onClick={() => {
               router.push("/product");

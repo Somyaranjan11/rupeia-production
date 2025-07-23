@@ -51,11 +51,11 @@ const Categories = () => {
     },
   ];
   return (
-    <div className="grid grid-cols-2 gap-4">
+    <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8">
       {categoriesData?.map((data, index) => (
         <div key={index}>
-          <img src={data?.image.src} />
-          <p className="bg-white text-[#213565] text-[14px] font-semibold text-center shadow-xl py-1 rounded-br-2xl">
+          <img src={data?.image.src} className="w-full"/>
+          <p className="bg-white text-[#213565] text-[14px] font-semibold text-center shadow-xl py-3 rounded-br-2xl">
             {data?.name}
           </p>
         </div>

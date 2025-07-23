@@ -18,21 +18,26 @@ import ButtonLoader from "@/app/components/Loader/ButtonLoader";
 import axios from "axios";
 import GoalsCard3 from "@/app/components/Goals/GoalsCard3";
 import { useRouter } from "next/navigation";
+import ShowErroemessage from "@/app/components/alert/ShowErroemessage";
+import AnalyizeCard from "@/app/components/Goals/AnalyizeCard";
 
 const Page = () => {
   const router = useRouter();
   const [pageStep, setPageStep] = useState(1);
+  const [currentStep, setCurrentStep] = useState(-1);
   const handleClick = () => {
     if (pageStep > 1) {
       setPageStep(pageStep - 1);
     }
   };
   const pageName = [1, 2].includes(pageStep)
-    ? "Wealth"
+    ? "Grow"
     : [3, 4].includes(pageStep)
     ? "Goals"
     : [5].includes(pageStep)
     ? "Benefits"
+    : [6].includes(pageStep)
+    ? "Wealth+"
     : "";
   const [goalDetails, setGoalDetails] = useState({
     goalId: "",
@@ -52,7 +57,7 @@ const Page = () => {
       goalTitle: goalDetails?.goalTitle,
       investmentType: goalDetails?.investmentType,
       goalAmount: goalDetails?.goalAmount,
-      duration: goalDetails?.duration,
+      duration: goalDetails?.duration * 12,
     };
     try {
       setLoading(true);
@@ -73,6 +78,7 @@ const Page = () => {
       }
     } catch (error) {
       console.error("❌ Error:", error.response?.data || error.message);
+      ShowErroemessage(error?.response?.data?.message);
     } finally {
       setLoading(false);
     }
@@ -100,7 +106,8 @@ const Page = () => {
         }
       }
     } catch (error) {
-      console.error("❌ Error:", error.response?.data || error.message);
+      console.error("❌ Error:", error.response?.data);
+      ShowErroemessage(error?.response?.data?.message);
     } finally {
       setLoading(false);
     }
@@ -110,7 +117,7 @@ const Page = () => {
     const payloadData = {
       investmentType: goalDetails?.investmentType,
       investmentAmount: goalDetails?.wealth_budget,
-      duration: 3,
+      duration: 120,
     };
     try {
       setLoading(true);
@@ -131,21 +138,35 @@ const Page = () => {
       }
     } catch (error) {
       console.error("❌ Error:", error.response?.data || error.message);
+      ShowErroemessage(error?.response?.data?.message);
     } finally {
       setLoading(false);
     }
   };
-
   return (
     <div className="font-poppins flex flex-col h-screen overflow-hidden">
       {/* Navbar stays fixed at the top */}
-      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
-        <NavbarCommonPage page={pageName} handleClick={handleClick} />
+      <div className="fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">
+        <NavbarCommonPage
+          page={pageName}
+          handleClick={handleClick}
+          isBottomShow={
+            pageStep == 1 && currentStep == -1
+              ? true
+              : pageStep > 1
+              ? true
+              : false
+          }
+        />
       </div>
 
       {/* Scrollable Middle Content */}
-      <div className="flex-grow overflow-y-auto px-5 pt-20 pb-20">
-        {pageStep == 1 && (
+      <div
+        className={`flex-grow ${
+          pageStep == 5 ? "" : "overflow-y-auto pt-20 pb-20"
+        }  ${pageStep == 1 ? "px-0" : " px-5"}`}
+      >
+        {/* {pageStep == 1 && (
           <div className="pr-16 pt-2">
             <p className="text-[35px] font-semibold leading-16">Hi!</p>
             <span className="flex flex-row flex-wrap text-[16px] font-semibold items-center gap-1">
@@ -153,9 +174,9 @@ const Page = () => {
               Grow Your Money And Turn Your Goals into Reality
             </span>
           </div>
-        )}
-        {pageStep == 4 && (
-          <div className="pr-16 pt-2">
+        )} */}
+        {pageStep == 3 && (
+          <div className="pr-16 pt-2 hidden">
             <p className="text-[35px] font-semibold leading-16">Goals</p>
             <span className="flex flex-row flex-wrap text-[16px] font-semibold items-center gap-1">
               I am your <p className="text-[#D9B9E2]">Goals Manager ,</p>
@@ -168,6 +189,11 @@ const Page = () => {
             <WealthCard1
               setGoalQuestionSelect={setGoalQuestionSelect}
               goalQuestionSelect={goalQuestionSelect}
+              submitQuestions={submitQuestions}
+              setCurrentStep={setCurrentStep}
+              currentStep={currentStep}
+              setGoalDetails={setGoalDetails}
+              goalDetails={goalDetails}
             />
           )}
           {/* {pageStep == 2 && <WealthCard2 />} */}
@@ -182,30 +208,41 @@ const Page = () => {
             <GoalsCard1
               setGoalDetails={setGoalDetails}
               goalDetails={goalDetails}
+              setPageStep={setPageStep}
+              pageStep={pageStep}
             />
           )}
           {goalDetails?.goalType == "Goal" && pageStep == 4 && (
             <GaolsCard2
               setGoalDetails={setGoalDetails}
               goalDetails={goalDetails}
+              setUpGoal={setUpGoal}
+              loading={loading}
             />
           )}
           {goalDetails?.goalType == "Wealth+" && pageStep == 3 && (
             <GoalsCard3
               setGoalDetails={setGoalDetails}
               goalDetails={goalDetails}
+              submitWealth={submitWealth}
+              loading={loading}
             />
           )}
-          {pageStep == 5 && <BenifitsCard />}
-          {pageStep == 6 && <Confirmation />}
+          {pageStep == 6 && <BenifitsCard />}
+          {pageStep == 5 && <AnalyizeCard />}
+          {/* {pageStep == 7 && <Confirmation />} */}
         </div>
       </div>
 
       {/* Continue Button stays fixed at the bottom */}
-      <div className="border-[1px] border-[#65636394] bg-[#270330] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl">
-        {[2, 8, 6, 5].includes(pageStep) && (
+      <div
+        className={`bg-[#1A0120] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full ${
+          (pageStep == 1 || pageStep == 3 || pageStep == 4) && "hidden"
+        }`}
+      >
+        {[2, 8, 6, 5, 7].includes(pageStep) && (
           <button
-            className="bg-[#551262] w-full py-2 rounded-full text-[15px] leading-7 font-medium text-white"
+            className="border-[#FFFFFF] border-[1px] w-full py-2 rounded-full text-[15px] leading-7 font-medium text-white"
             type="button"
             onClick={() => {
               if (pageStep > 0 && pageStep < 6) {
@@ -217,29 +254,6 @@ const Page = () => {
             }}
           >
             Continue
-          </button>
-        )}
-        {[1, 3, 4].includes(pageStep) && (
-          <button
-            className="bg-[#551262] w-full py-2 rounded-full text-[15px] leading-7 font-medium text-white"
-            type="button"
-            onClick={() => {
-              if (pageStep == 4) {
-                setUpGoal();
-              } else if (pageStep == 1) {
-                submitQuestions();
-              } else if (pageStep == 3) {
-                if (goalDetails?.goalType == "Wealth+") {
-                  submitWealth();
-                } else {
-                  if (pageStep > 0 && pageStep < 6) {
-                    setPageStep(pageStep + 1);
-                  }
-                }
-              }
-            }}
-          >
-            {loading ? <ButtonLoader /> : "Continue"}
           </button>
         )}
       </div>

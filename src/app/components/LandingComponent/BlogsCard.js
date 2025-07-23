@@ -1,15 +1,21 @@
+"use client";
 import React from "react";
 import blogsCardImage from "../Images/blogs-card-image.png";
 import { FaArrowRight } from "react-icons/fa6";
+import { useRouter } from "next/navigation";
 
 const BlogsCard = () => {
+  const router = useRouter();
   return (
-    <div className="w-full flex flex-col gap-3">
+    <div className="w-full flex flex-col gap-3 ">
       <div>
-        <img src={blogsCardImage.src} className="h-[205px]" />
+        <img
+          src={blogsCardImage.src}
+          className="h-[205px] lg:h-[250px] w-full"
+        />
       </div>
       <div className="flex flex-col gap-2">
-        <p className="text-[13px] text-[#4C4D55] font-normal leading-5 font-poppins text-black">
+        <p className="text-[13px] text-[#4C4D55] font-normal leading-5 font-poppins ">
           Actylis Limerick - Strengthening Partnerships with a Biopharma CDMO
         </p>
         <p className="text-[13px] text-[#4C4D55] font-semibold font-poppins">
@@ -25,7 +31,12 @@ const BlogsCard = () => {
           between them and the limitations of each approach.
         </p>
       </div>
-      <div className="flex items-center gap-1 pb-3">
+      <div
+        className="flex items-center gap-1 pb-3 cursor-pointer"
+        onClick={() => {
+          router.push("/blog/details");
+        }}
+      >
         <p className="text-[13px] text-[#4C4D55] font-normal leading-5">
           Read Story
         </p>

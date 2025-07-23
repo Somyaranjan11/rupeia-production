@@ -50,8 +50,8 @@ const Page = () => {
   }, []);
   console.log("category", category,categoryList);
   return (
-    <div className="pt-24 pb-16  flex flex-col h-screen font-poppins overflow-hidden w-full">
-      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
+    <div className="pt-24 pb-16  flex flex-col h-screen font-poppins overflow-hidden w-full web-app-blogs-bg-color">
+      <div className="px-5 fixed top-0 left-0 w-full z-10">
         <NavbarCommonPage page={"Blogs"} handleClick={handleClick} />
         <div className="flex overflow-x-auto w-full gap-5 py-2 my-auto">
           {category?.map((data, index) => (

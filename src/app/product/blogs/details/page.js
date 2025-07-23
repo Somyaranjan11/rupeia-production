@@ -32,8 +32,8 @@ const Page = () => {
     router.push("/product/blogs/content");
   };
   return (
-    <div className="px-5 overflow-y-auto font-poppins flex flex-col h-screen pt-24 pb-16">
-      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
+    <div className="px-5 overflow-y-auto font-poppins flex flex-col h-screen pt-24 pb-16 web-app-blogs-bg-color">
+      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md ">
         <NavbarCommonPage page={"Blogs"} handleClick={handleClick} />
       </div>
       <div className="flex items-center justify-between">

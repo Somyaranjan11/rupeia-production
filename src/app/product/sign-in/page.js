@@ -21,7 +21,7 @@ const Page = () => {
   };
   return (
     <div className="flex justify-between flex-col h-full w-full overflow-hidden">
-      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
+      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">
         <NavbarCommonPage page={"Log In"} handleClick={handleClick} />
       </div>
       <div className="w-full">

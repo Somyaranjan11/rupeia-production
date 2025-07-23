@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import React from "react";
 import { BsArrowLeftShort } from "react-icons/bs";
 import Mobile from "../icons/Mobile";
@@ -10,15 +10,15 @@ const NavbarCommonPage = ({
   handleClick = () => {
     console.log("rupeia");
   },
+  isBottomShow = true,
 }) => {
   const pathname = usePathname();
   const router = useRouter();
+  console.log("isBottomShow", isBottomShow);
   return (
     <div
-      className={`flex flex-row items-center justify-between py-6  font-poppins relative ${
-        pathname.includes("saved-post") || pathname.includes("liked-post")
-          ? ""
-          : "border-b-[0.5px]"
+      className={`flex flex-row items-center justify-between py-6 px-5  font-poppins relative ${
+        isBottomShow ? "border-b-[0.5px]" : ""
       }`}
     >
       <div className="flex flex-row items-center gap-2">
@@ -31,7 +31,7 @@ const NavbarCommonPage = ({
       </div>
       <div className="flex flex-row items-center gap-2">
         <span
-          className={`flex items-center justify-center bg-[#FFFFFF] rounded-[5px] px-1 py-[3px]  `}
+          className={`hidden items-center justify-center bg-[#FFFFFF] rounded-[5px] px-1 py-[3px]  `}
         >
           <Mobile className={`#551262`} />
           <p className={`text-[12px] font-normal leading-5 text-[#551262]`}>

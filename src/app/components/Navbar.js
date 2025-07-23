@@ -38,28 +38,53 @@ const Navbar = () => {
     },
     {
       id: 2,
+      name: "Actions",
+      route: "/product/actions",
+    },
+    {
+      id: 3,
+      name: "Preferences",
+      route: "/product/preferences",
+    },
+    {
+      id: 4,
       name: "Invite Friends",
       route: "/product/refer",
     },
     {
-      id: 3,
+      id: 5,
+      name: "Your Plan",
+      route: "/product/plan",
+    },
+    {
+      id: 6,
       name: "Customer Support",
       route: "/product/ticket",
     },
     {
-      id: 4,
+      id: 7,
       name: "Terms and Conditions",
       route: "/product/terms-condition",
     },
     {
-      id: 5,
+      id: 8,
       name: "Saved Posts",
       route: "/product/saved-post",
     },
     {
-      id: 6,
+      id: 9,
       name: "Liked Posts",
       route: "/product/liked-post",
+    },
+    {
+      id: 11,
+      name: "Notifications",
+      route: "/product/notifications",
+    },
+    {
+      id: 12,
+      name: "My Manager",
+      route: "/product/my-manager",
     },
   ];
 
@@ -98,28 +123,6 @@ const Navbar = () => {
     } finally {
     }
   };
-  const [deferredPrompt, setDeferredPrompt] = useState(null);
-
-  useEffect(() => {
-    window.addEventListener("beforeinstallprompt", (event) => {
-      event.preventDefault(); // Stop automatic prompt
-      setDeferredPrompt(event); // Save event for later
-    });
-  }, []);
-
-  const handleInstallClick = () => {
-    console.log("deferredPrompt", deferredPrompt);
-    if (deferredPrompt) {
-      deferredPrompt.prompt(); // Show install prompt
-      deferredPrompt.userChoice.then((choice) => {
-        if (choice.outcome === "accepted") {
-          console.log("User installed the PWA");
-        } else {
-          console.log("User dismissed the installation");
-        }
-      });
-    }
-  };
 
   return (
     <div className="flex flex-row items-center justify-between mx-5 py-7 border-b-[0.5px] font-poppins relative">
@@ -150,16 +153,13 @@ const Navbar = () => {
         </p>
       </div>
       <div className="flex flex-row items-center gap-2">
-        <span
+        {/* <span
           className={`flex items-center justify-center  ${
             pathname.includes("customer-support") ||
             pathname.includes("chat-bot")
               ? ""
               : "bg-[#FFFFFF] rounded-[5px] px-1 py-[3px]"
           }`}
-          // onClick={() => {
-          //   handleInstallClick();
-          // }}
         >
           {pathname.includes("customer-support") ||
           pathname.includes("chat-bot") ? (
@@ -178,7 +178,7 @@ const Navbar = () => {
           >
             Lite
           </p>
-        </span>
+        </span> */}
 
         {/* <button
           className="text-[12px] font-normal bg-[#FFFFFF] rounded-[5px] px-1 py-[3px] text-[#551262]"
@@ -253,7 +253,7 @@ const Navbar = () => {
 
       {isOpen && (
         <div
-          className={`fixed top-0 left-0 h-full w-[80%] bg-white shadow-2xl z-50 p-4 transform duration-1000  ease-in-out`}
+          className={`fixed top-0 left-0 h-full w-[80%] bg-[#000219] shadow-2xl z-50 p-4 transform duration-1000  ease-in-out`}
           ref={popupRef}
         >
           <div className="flex flex-col gap-2 border-b-[1px] border-[#E3E3E3] pb-3">
@@ -262,13 +262,13 @@ const Navbar = () => {
                 <div
                   className={` px-4 h-9 ${
                     pathname?.includes(data?.route)
-                      ? "bg-[#E3E3E3] rounded-lg  flex items-center"
+                      ? "bg-[#551262] rounded-lg  flex items-center"
                       : ""
                   }`}
                   key={index}
                 >
                   <p
-                    className="text-[13px] font-poppins font-medium leading-7 text-black"
+                    className="text-[13px] font-poppins font-medium leading-7 text-[#ECE6ED]"
                     onClick={() => {
                       router.push(data?.route);
                       setIsOpen(false);
@@ -280,7 +280,7 @@ const Navbar = () => {
               ))}
             </div>
           </div>
-          <div className="flex flex-col gap-2 mt-3">
+          <div className="flex flex-col mt-3">
             <p className="text-[#808084] text-[13px] font-poppins font-medium leading-7 px-4 h-9">
               Options
             </p>
@@ -289,13 +289,13 @@ const Navbar = () => {
                 <div
                   className={` px-4 h-9 ${
                     pathname?.includes(data?.route)
-                      ? "bg-[#E3E3E3] rounded-lg  flex items-center"
+                      ? "bg-[#551262] rounded-lg  flex items-center"
                       : ""
                   }`}
                   key={index}
                 >
                   <p
-                    className="text-[13px] font-poppins font-medium leading-7 text-black"
+                    className="text-[13px] font-poppins font-medium leading-7 text-[#ECE6ED]"
                     onClick={() => {
                       if (data?.route) {
                         router.push(data?.route);
@@ -310,10 +310,10 @@ const Navbar = () => {
             </div>
           </div>
           <div className="flex items-center gap-2 fixed bottom-5 ">
-            <p className="rounded-full border-[1px] bg-[#551262D4] border-[#794083] h-[35px] w-[35px] flex justify-center items-center text-[18px] font-semibold">
+            <p className="rounded-full border-[1px] bg-[#551262D4] border-[#794083] h-[35px] w-[35px] flex justify-center items-center text-[18px] font-semibold text-[#ECE6ED]">
               {user?.firstName?.split("")[0]}
             </p>
-            <p className="text-black  text-[13px] font-medium ">
+            <p className="text-[13px] font-medium text-[#ECE6ED] ">
               {" "}
               {user?.firstName}
             </p>

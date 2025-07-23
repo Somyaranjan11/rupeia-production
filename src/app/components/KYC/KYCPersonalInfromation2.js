@@ -204,9 +204,7 @@ const KYCPersonalInfromation2 = ({
         {/* Dropdown Button */}
         <div className="flex flex-row flex-wrap gap-2 mt-1">
           {occupation_type?.map((item, index) => (
-            <div className="w-fit"
-             key={index}
-            >
+            <div className="w-fit" key={index}>
               <button
                 className={`border-[1px] border-[#916D98] text-[14px] font-medium leading-7  px-6 h-[40px] w-fit rounded-3xl focus:outline-none ${
                   thirdPageOnboard.occupation_type == item.value
@@ -243,9 +241,7 @@ const KYCPersonalInfromation2 = ({
         {/* Dropdown Button */}
         <div className="flex flex-row flex-wrap gap-2 mt-1">
           {income_slab?.map((item, index) => (
-            <div className="w-fit"
-             key={index}
-            >
+            <div className="w-fit" key={index}>
               <button
                 className={`border-[1px] border-[#916D98] text-[14px] font-medium leading-7  px-6 h-[40px] w-fit rounded-3xl focus:outline-none ${
                   thirdPageOnboard.income_slab == item.value
@@ -275,7 +271,7 @@ const KYCPersonalInfromation2 = ({
           </p>
         )}
       </div>
-      <div className="border-[1px] border-[#65636394] py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
+      <div className=" border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-tl-[38px] rounded-tr-[38px]  border-t-[1px] rounded-4xl">
         <button
           className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white ${
             loading

@@ -8,6 +8,8 @@ const KYCAddessInformation = ({
   fourthPageOnboard,
   setPageStep,
   fistPageOnboard,
+  setMdDetails,
+  mfDetails,
 }) => {
   const [loading, setLoading] = useState(false);
   const updateProfileDetails = () => {
@@ -77,7 +79,13 @@ const KYCAddessInformation = ({
           if (res3) {
             ShowSucessmessages("Details have been updated");
           }
-          setPageStep(5)
+          setMdDetails({
+            ...mfDetails,
+            communication_mobile_number: res3?.data?.id,
+            communication_address: res1?.data?.id,
+            communication_email_address: res2?.data?.id,
+          });
+          setPageStep(5);
         })
       )
       .catch((error) => {
@@ -112,6 +120,7 @@ const KYCAddessInformation = ({
                 address_1: e.target.value,
               });
             }}
+            value={fourthPageOnboard?.address_1}
           />
         </div>
         <div>
@@ -130,6 +139,7 @@ const KYCAddessInformation = ({
                 });
               }
             }}
+            value={fourthPageOnboard?.pin_code}
           />
         </div>
         <div>
@@ -146,6 +156,7 @@ const KYCAddessInformation = ({
                 city: e.target.value,
               });
             }}
+            value={fourthPageOnboard?.city}
           />
         </div>
         <div>
@@ -162,10 +173,11 @@ const KYCAddessInformation = ({
                 state: e.target.value,
               });
             }}
+            value={fourthPageOnboard?.state}
           />
         </div>
       </div>
-      <div className="border-[1px] border-[#65636394] py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
+      <div className=" border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-tl-[38px] rounded-tr-[38px]  border-t-[1px] rounded-4xl">
         <button
           className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white ${
             loading

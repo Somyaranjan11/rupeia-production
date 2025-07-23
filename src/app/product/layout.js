@@ -10,7 +10,7 @@ const Layout = ({ children }) => {
       className={` h-screen flex flex-col font-poppins ${
         pathname.includes("customer-support") || pathname.includes("chat-bot")
           ? "bg-white"
-          : "bg-primary"
+          : "bg-[#1A0120]"
       }`}
     >
       <div className="flex flex-col h-full">

@@ -37,7 +37,7 @@ const WealthCard3 = ({ setGoalDetails, goalDetails }) => {
           ))}
         </div>
       </div>
-      <div className="flex flex-col gap-1 mt-4">
+      <div className="flex-col gap-1 mt-4 hidden">
         <p className="text-[13px] font-medium leading-6">
           Do you wish to fulfill a certain goal or create long term wealth?
         </p>

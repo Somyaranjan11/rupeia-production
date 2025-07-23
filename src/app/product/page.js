@@ -16,7 +16,7 @@ const Page = () => {
   const router = useRouter();
   const user = getUserData();
   return (
-    <div className="h-screen flex flex-col font-poppins mt-5 pb-20 w-full">
+    <div className="h-screen flex flex-col font-poppins mt-5 pb-20 w-full bg-[#1A0120]">
       <div className="flex justify-center items-center flex-col gap-1">
         <p className="text-[32px] font-semibold leading-7 font-poppins">
           Hi {user?.firstName}!

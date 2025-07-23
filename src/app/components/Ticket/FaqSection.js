@@ -28,7 +28,7 @@ const FaqSection = ({ categoriesValue }) => {
   }, []);
   console.log("faqSection", faqSection);
   return (
-    <div className="py-25 px-5 plan-card min-h-screen overflow-y-auto">
+    <div className="py-25 px-5 bg-[#1A0120] min-h-screen overflow-y-auto">
       <div className="h-fit flex flex-col">
         <span className="text-[19px] font-medium">
           <p className="text-white">Okay! Now tell us about your</p>{" "}

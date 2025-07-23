@@ -30,8 +30,6 @@ const KYCEmail = ({
     spouse_name_isnumber_validation: false,
   });
   const onBoardFunction = () => {
-    setPageStep(3);
-    return;
     if (secondPageOnboard?.father_name == "") {
       setOnBoardError({ ...onBoardError, father_name_blank_validation: true });
     } else if (/^\s/.test(secondPageOnboard?.father_name)) {
@@ -83,7 +81,7 @@ const KYCEmail = ({
       .patch(
         `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/kyc/kyc_requests/${kyc_id}`,
         payloadData,
-        headers
+        { headers }
       )
       .then((res1) => {
         if (res1) {
@@ -99,8 +97,42 @@ const KYCEmail = ({
         setLoading(false);
       });
   };
+  const RedirectToSignIn = () => {
+    const kyc_id = localStorage.getItem("kyc_id");
+    const payloadData = {
+      kyc_request: kyc_id,
+      type: "aadhaar",
+      postback_url: "https://rupeia-production-uw3m.vercel.app/product",
+    };
+    const token = localStorage.getItem("accessToken");
+    axios
+      .post(
+        `${process.env.NEXT_PUBLIC_ONBOARDING_BASE_URL}/docs/identity_documents`,
+        payloadData,
+        {
+          headers: {
+            "Content-type": "application/json; charset=UTF-8",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      )
+      .then((response) => {
+        if (response) {
+          console.log("response is", response.data);
+        }
+      })
+      .catch((error) => {
+        console.log("error is", error);
+      })
+      .finally(() => {});
+  };
   return (
     <div className="flex flex-col gap-3">
+      <div>
+        <button type="button" onClick={RedirectToSignIn}>
+          Redirect
+        </button>
+      </div>
       <div>
         <p className="text-[14px] font-medium leading-7 font-poppins">
           Father name
@@ -257,9 +289,7 @@ const KYCEmail = ({
         {/* Dropdown Button */}
         <div className="flex flex-row gap-3">
           {gender?.map((item, index) => (
-            <div className="w-full"
-            key={index}
-            >
+            <div className="w-full" key={index}>
               <button
                 className={`mb-1 border-[1px] border-[#916D98] text-[14px] font-medium leading-7  px-3 h-[40px] w-full rounded-3xl focus:outline-none ${
                   item == secondPageOnboard.gender
@@ -398,7 +428,7 @@ const KYCEmail = ({
           </p>
         )}
       </div>
-      <div className="border-[1px] border-[#65636394] py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
+      <div className=" border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-tl-[38px] rounded-tr-[38px]  border-t-[1px] rounded-4xl">
         <button
           className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white ${
             loading

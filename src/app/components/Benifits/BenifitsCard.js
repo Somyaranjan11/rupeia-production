@@ -3,21 +3,70 @@ import graphImage from "../Images/protpolio_graph.png";
 import graphImage1 from "../Images/protfolio_graph_2.png";
 import BenifitsCard2 from "./BenifitsCard2";
 import BenifitsCard3 from "./BenifitsCard3";
+import DSP from "../Images/Goals/DSP.png";
+import DonutChart from "./DonutChart";
 
 const BenifitsCard = () => {
   const [investmentYear, setInvestmentYear] = useState("10");
+  const personalised_fund = [
+    {
+      id: 1,
+      name: "DSP ELSS Tax Saver Fund",
+      percentage: "18.76%",
+      cagr: "3Y CAGR",
+    },
+    {
+      id: 2,
+      name: "DSP ELSS Tax Saver Fund",
+      percentage: "18.76%",
+      cagr: "3Y CAGR",
+    },
+    {
+      id: 3,
+      name: "DSP ELSS Tax Saver Fund",
+      percentage: "18.76%",
+      cagr: "3Y CAGR",
+    },
+    {
+      id: 4,
+      name: "DSP ELSS Tax Saver Fund",
+      percentage: "18.76%",
+      cagr: "3Y CAGR",
+    },
+  ];
   return (
     <div>
-      <div className="flex flex-col gap-3">
-        <p className="text-[21px] font-poppins text-center font-semibold text-[#FFFFFF]">
-          Suggested Investment
-        </p>
-        <p className="text-[13px] font-medium text-white text-center">
-          Great news! We&apos;ve handpicked the best funds just for you. Sit back and
-          start your journey!
+      <div className="flex flex-col gap-3 monthly-sip rounded-[21px] p-2">
+        <p className="text-[14px] font-medium text-white text-center leading-6">
+          Monthly SIP of ₹55,000 at an expected CAGR of 18.76% will enable you
+          to achieve your goal in 3 years.
         </p>
       </div>
-      <div className="flex justify-center items-center flex-col my-3">
+      <div className="flex justify-center items-center flex-col mb-4 mt-8">
+        <p className="text-[15px] font-poppins font-medium text-[#FFFFFF]">
+          Personalised Funds
+        </p>
+        <p className="content-none border-[1px] border-[#FFFFFF] bg-red-300 my-2 w-[80px]"></p>
+      </div>
+      <div className="flex flex-col gap-4">
+        {personalised_fund?.map((data, index) => (
+          <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full" key={index}>
+            <div className="flex pr-10 gap-2">
+              <img src={DSP.src} className="h-[38px] w-[38px]" />
+              <p className="text-[14px] font-medium text-black">{data?.name}</p>
+            </div>
+            <div>
+              <p className="text-[16px] font-semibold text-[#5BCC98]">
+                {data?.percentage}
+              </p>
+              <p className="text-[13px] font-medium text-black text-nowrap">
+                {data?.cagr}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
+      <div className="flex justify-center items-center flex-col mb-4 mt-8">
         <p className="text-[13px] font-poppins font-medium text-[#FFFFFF]">
           Performance
         </p>
@@ -70,7 +119,7 @@ const BenifitsCard = () => {
         </div>
         <div className="relative mb-5">
           <img
-          alt="graph-image"
+            alt="graph-image"
             src={graphImage.src}
             className={`h-[100px] w-full absolute  ${
               investmentYear == "10"
@@ -80,7 +129,11 @@ const BenifitsCard = () => {
                 : "-top-2"
             }`}
           />
-          <img src={graphImage1.src} className="h-[100px] w-full " alt="graph-image1" />
+          <img
+            src={graphImage1.src}
+            className="h-[100px] w-full "
+            alt="graph-image1"
+          />
         </div>
         <div className="bg-[#D9D9D9DE] flex justify-between items-center rounded-3xl h-9 my-2 px-1 gap-2">
           <p
@@ -122,14 +175,17 @@ const BenifitsCard = () => {
       </div>
       <div className="flex justify-center items-center flex-col mt-5">
         <p className="text-[13px] font-poppins font-medium text-[#FFFFFF]">
-          Benefits
+          Distribution
         </p>
         <p className="content-none border-[1px] border-[#FFFFFF] bg-red-300 my-2 w-[50px]"></p>
       </div>
-      <div>
+      {/* <div className="mt-10">
+       <DonutChart/>
+      </div> */}
+      {/* <div>
         <BenifitsCard2 />
         <BenifitsCard3 />
-      </div>
+      </div> */}
     </div>
   );
 };

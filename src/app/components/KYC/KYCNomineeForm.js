@@ -7,6 +7,8 @@ const KYCNomineeForm = ({
   setSevenPageOnboard,
   sevenPageOnboard,
   setPageStep,
+  setMdDetails,
+  mfDetails,
 }) => {
   const [onBoardError, setOnBoardError] = useState({
     first_blank_validation: false,
@@ -77,6 +79,10 @@ const KYCNomineeForm = ({
       .then((response) => {
         if (response) {
           console.log("response is", response.data);
+          setMdDetails({
+            ...mfDetails,
+            nominee1: response?.data?.id,
+          });
           ShowSucessmessages("Nominee details added");
           setPageStep(8);
         }
@@ -268,7 +274,7 @@ const KYCNomineeForm = ({
           </p>
         )}
       </div>
-      <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
+      <div className=" border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-tl-[38px] rounded-tr-[38px]  border-t-[1px] rounded-4xl">
         <button
           className={` bg-[#551262] w-full  py-2 rounded-full text-[14px] leading-7 font-medium text-white ${
             loading

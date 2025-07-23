@@ -30,7 +30,12 @@ const LandingNavbar = () => {
         <p className="text-[#ECE6ED] text-[18px] font-medium cursor-pointer">
           NEWS
         </p>
-        <p className="text-[#ECE6ED] text-[18px] font-medium cursor-pointer">
+        <p
+          className="text-[#ECE6ED] text-[18px] font-medium cursor-pointer"
+          onClick={() => {
+            router.push("/blog");
+          }}
+        >
           BLOGS
         </p>
         <p
@@ -65,7 +70,7 @@ const LandingNavbar = () => {
         </button>
       </div>
       <div className="block sm:hidden">
-        <GiHamburgerMenu className="text-[26px] text-white"/>
+        <GiHamburgerMenu className="text-[26px] text-white" />
       </div>
     </div>
   );

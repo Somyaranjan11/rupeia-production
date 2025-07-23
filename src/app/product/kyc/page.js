@@ -58,6 +58,16 @@ const Page = () => {
     dob: "",
     relationship: "",
   });
+  const [mfDetails, setMdDetails] = useState({
+    communication_email_address: "",
+    communication_mobile_number: "",
+    communication_address: "",
+    overseas_communication_address: null,
+    payout_bank_account: "",
+    nominee1: "",
+    nominee1_allocation_percentage: 100,
+  });
+  console.log("mfDetails", mfDetails);
   return (
     <div className=" px-5 font-poppins flex flex-col h-full relative overflow-y-auto">
       <div className="flex items-center justify-between mt-4">
@@ -80,7 +90,6 @@ const Page = () => {
             {pageStep == 6 && "Nominee"}
             {pageStep == 7 && "Add Nominee"}
             {pageStep == 8 && "Add Nominee"}
-
           </p>
         </div>
         <div
@@ -127,6 +136,8 @@ const Page = () => {
             fourthPageOnboard={fourthPageOnboard}
             setPageStep={setPageStep}
             fistPageOnboard={fistPageOnboard}
+            setMdDetails={setMdDetails}
+            mfDetails={mfDetails}
           />
         )}
         {pageStep == 5 && (
@@ -134,6 +145,8 @@ const Page = () => {
             setFifthPageOnboard={setFifthPageOnboard}
             fifthPageOnboard={fifthPageOnboard}
             setPageStep={setPageStep}
+            setMdDetails={setMdDetails}
+            mfDetails={mfDetails}
           />
         )}
         {pageStep == 6 && <KYCAddNominee setPageStep={setPageStep} />}
@@ -142,13 +155,11 @@ const Page = () => {
             setSevenPageOnboard={setSevenPageOnboard}
             sevenPageOnboard={sevenPageOnboard}
             setPageStep={setPageStep}
+            setMdDetails={setMdDetails}
+            mfDetails={mfDetails}
           />
         )}
-        {pageStep == 8 && (
-          <KYCAllNominee
-            setPageStep={setPageStep}
-          />
-        )}
+        {pageStep == 8 && <KYCAllNominee setPageStep={setPageStep} mfDetails={mfDetails} sevenPageOnboard={sevenPageOnboard} />}
       </div>
       {/* {pageStep > 5 && (
         <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">

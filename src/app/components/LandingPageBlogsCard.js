@@ -8,7 +8,7 @@ const LandingPageBlogsCard = () => {
   const router = useRouter();
   return (
     <div
-      className="bg-primary rounded-2xl flex flex-col font-poppins h-full relative"
+      className="bg-product-card-css rounded-2xl flex flex-col font-poppins h-full relative"
       onClick={() => {
         router.push("product/blogs/content");
       }}

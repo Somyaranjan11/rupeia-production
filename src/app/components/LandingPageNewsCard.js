@@ -8,7 +8,7 @@ const LandingPageNewsCard = () => {
   const router = useRouter();
   return (
     <div
-      className="bg-primary rounded-2xl flex flex-col font-poppins h-full relative w-full"
+      className="bg-product-card-css rounded-2xl flex flex-col font-poppins h-full relative w-full"
       onClick={() => {
         router.push("product/news/content");
       }}

@@ -4,6 +4,15 @@ import styles from "./page.module.css";
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import "./globals.css";
+import { getUserData } from "./utility/getUserData";
+import { GoArrowUpRight, GoGoal } from "react-icons/go";
+import Bag from "./icons/Bag";
+import { MdSip } from "react-icons/md";
+import LandingPageCard from "./components/LandingPageCard";
+import LandingPageNewsCard from "./components/LandingPageNewsCard";
+import LandingPageBlogsCard from "./components/LandingPageBlogsCard";
+import { usePathname } from "next/navigation";
+import Navbar from "./components/Navbar";
 
 export default function Home() {
   const router = useRouter();
@@ -15,104 +24,96 @@ export default function Home() {
         .catch((err) => console.log("Service Worker Registration Failed", err));
     }
   }, []);
-
-  useEffect(() => {
-    // Immediately redirect authenticated users to the /Finsearch page
-    if (true) {
-      router.push("/product");
-    }
-  }, [router]);
+  const user = getUserData();
+   const pathname = usePathname();
   return (
-   
-      <div className={styles.page}>
-        <main className={styles.main}>
-          <Image
-            className={styles.logo}
-            src="/next.svg"
-            alt="Next.js logo"
-            width={180}
-            height={38}
-            priority
-          />
-          <ol>
-            <li>
-              Get started by editing <code>src/app/page.js</code>.
-            </li>
-            <li className="text-red-500">
-              Save and see your changes instantly.
-            </li>
-          </ol>
+    <div
+      className={` h-screen flex flex-col font-poppins ${
+        pathname.includes("customer-support") || pathname.includes("chat-bot")
+          ? "bg-white"
+          : "bg-[#1A0120]"
+      }`}
+    >
+      <div className="flex flex-col h-full">
+        <div className="w-full">
+          <Navbar />
+        </div>
+        <div className="flex justify-center items-center flex-col gap-1 mt-5">
+          <p className="text-[32px] font-semibold leading-7 font-poppins">
+            Hi {user?.firstName}!
+          </p>
+          <p className="text-[16px] font-medium leading-7 font-poppins">
+            Welcome Back{" "}
+          </p>
+        </div>
 
-          <div className={styles.ctas}>
-            <a
-              className={styles.primary}
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
+        <div className="bg-white rounded-4xl flex flex-col h-full mt-3 p-2 relative">
+          {/* Landing page boxes */}
+          <div className="flex justify-between items-center px-5 pb-4 pt-4 gap-3">
+            <div
+              className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+              onClick={() => {
+                router.push("/product/pulse");
+              }}
             >
-              <Image
-                className={styles.logo}
-                src="/vercel.svg"
-                alt="Vercel logomark"
-                width={20}
-                height={20}
-              />
-              Deploy now
-            </a>
-            <a
-              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.secondary}
+              <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+                <GoGoal className="text-[18px]" />
+              </div>
+              <p className="text-[12px] text-black font-medium leading-7 pt-2">
+                Pulse
+              </p>
+              <p className="text-[11px] text-black font-medium">60%</p>
+            </div>
+            <div
+              className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+              onClick={() => {
+                router.push("/product/portfolio");
+              }}
             >
-              Read our docs
-            </a>
+              <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+                <Bag />
+              </div>
+              <p className="text-[12px] text-black font-medium leading-7 pt-2">
+                Portfolio
+              </p>
+              <p className="text-[11px] text-black font-medium">₹4,7k </p>
+            </div>
+            <div
+              className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+              onClick={() => {
+                router.push("/product/sip");
+              }}
+            >
+              <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+                <MdSip className="text-[18px]" />
+              </div>
+              <p className="text-[12px] text-black font-medium leading-7 pt-2">
+                SIP
+              </p>
+              <p className="text-[11px] text-black font-medium">(₹5,6k)</p>
+            </div>
           </div>
-        </main>
-        <footer className={styles.footer}>
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/file.svg"
-              alt="File icon"
-              width={16}
-              height={16}
-            />
-            Learn
-          </a>
-          <a
-            href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/window.svg"
-              alt="Window icon"
-              width={16}
-              height={16}
-            />
-            Examples
-          </a>
-          <a
-            href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              aria-hidden
-              src="/globe.svg"
-              alt="Globe icon"
-              width={16}
-              height={16}
-            />
-            Go to nextjs.org →
-          </a>
-        </footer>
+          <div className="flex items-center gap-2 px-5">
+            <p className="text-[16px] font-medium leading-6 text-black">
+              Let’s Grow Your Wealth
+            </p>
+            <span>
+              <GoArrowUpRight className="text-black" />
+            </span>
+          </div>
+          <div className="h-full w-auto mt-3 overflow-y-hidden overflow-x-auto flex gap-3  mb-12 ml-5 ">
+            <div className="min-w-[270px]">
+              <LandingPageCard />
+            </div>
+            <div className="min-w-[270px]">
+              <LandingPageNewsCard />
+            </div>
+            <div className="min-w-[270px]">
+              <LandingPageBlogsCard />
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
   );
 }
