@@ -21,7 +21,7 @@ const DonutChart = () => {
 
   return (
     <div className="donut-wrapper">
-      <svg width="100%" height="100%" viewBox="-1 -1 2 2" >
+      <svg className='chart-svg' width="100%" height="100%" viewBox="-1 -1 2 2" >
         {data.map((slice, i) => {
           const [startX, startY] = getCoordinatesForPercent(cumulativePercent);
           const slicePercent = slice.value / total;

@@ -1,19 +1,20 @@
 import React from "react";
-import GoalsImage1 from "../../components/Images/goalsImage1.png";
-import GoalsImage2 from "../../components/Images/goalsImage2.png";
-import GoalsImage3 from "../../components/Images/goalsImage3.png";
-import GoalsImage4 from "../../components/Images/goalsImage4.png";
-import GoalsImage5 from "../../components/Images/goalsImage5.png";
-import GoalsImage6 from "../../components/Images/goalsImage6.png";
-import GoalsImage7 from "../../components/Images/goalsImage7.png";
-import WealthImage1 from "../../components/Images/wealthimage2.png";
-import WealthImage2 from "../../components/Images/wealthimage3.png";
-import WealthImage3 from "../../components/Images/wealthimage4.png";
-import WealthImage4 from "../../components/Images/wealthimage5.png";
-import WealthMobileImage1 from "../../components/Images/wealth-mobile-image.png";
-import WealthMobileImage2 from "../../components/Images/wealth-mobile-image2.png";
-import WealthMobileImage3 from "../../components/Images/wealth-mobile-image3.png";
-import WealthMobileImage4 from "../../components/Images/welath-mobile-image4.png";
+import GoalsImage1 from "../Images/goalsImage1.png";
+import GoalsImage2 from "../Images/goalsImage2.png";
+import GoalsImage3 from "../Images/goalsImage3.png";
+import GoalsImage4 from "../Images/goalsImage4.png";
+import GoalsImage5 from "../Images/goalsImage5.png";
+import GoalsImage6 from "../Images/goalsImage6.png";
+import GoalsImage7 from "../Images/goalsImage7.png";
+import WealthImage1 from "../Images/wealthimage2.png";
+import WealthImage2 from "../Images/wealthimage3.png";
+import WealthImage3 from "../Images/wealthimage4.png";
+import WealthImage4 from "../Images/wealthimage5.png";
+import WealthMobileImage1 from "../Images/wealth-mobile-image.png";
+import WealthMobileImage2 from "../Images/wealth-mobile-image2.png";
+import WealthMobileImage3 from "../Images/wealth-mobile-image3.png";
+import WealthMobileImage4 from "../Images/welath-mobile-image4.png";
+
 
 const Benifits = () => {
   return (
