@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 import LandingPageNewsCard from "../components/LandingPageNewsCard";
 import LandingPageBlogsCard from "../components/LandingPageBlogsCard";
 export const dynamic = "force-dynamic";
+import { useUser } from "@clerk/nextjs";
 import { getUserData } from "../utility/getUserData";
 const Page = () => {
   const router = useRouter();

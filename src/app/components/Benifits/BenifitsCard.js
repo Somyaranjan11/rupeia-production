@@ -50,7 +50,9 @@ const BenifitsCard = () => {
       </div>
       <div className="flex flex-col gap-4">
         {personalised_fund?.map((data, index) => (
-          <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full" key={index}>
+          <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full"
+          key={index}
+          >
             <div className="flex pr-10 gap-2">
               <img src={DSP.src} className="h-[38px] w-[38px]" />
               <p className="text-[14px] font-medium text-black">{data?.name}</p>
