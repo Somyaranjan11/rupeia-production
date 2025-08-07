@@ -16,6 +16,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  LabelList,
 } from "recharts";
 import { addComma } from "@/app/utility/addComma";
 import BenfitsImage1 from "../Images/benifits-1.png";
@@ -149,18 +150,22 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           }}
         >
           <p style={{ margin: 0, fontWeight: "600" }}>Month: {label}</p>
-          {payload.map((entry, index) => (
-            <p
-              key={index}
-              style={{
-                color: "black",
-                margin: "2px 0",
-                fontWeight: "600",
-              }}
-            >
-              {entry.name}: ₹{addComma(entry.value)}
-            </p>
-          ))}
+          {payload
+            .slice() // creates a shallow copy so original payload isn't mutated
+            .reverse()
+            .map((entry, index) => (
+              <p
+                key={index}
+                style={{
+                  color: "black",
+                  margin: "2px 0",
+                  fontWeight: "600",
+                }}
+                className="flex flex-col-reverse"
+              >
+                {entry.name}: ₹{addComma(entry.value)}
+              </p>
+            ))}
         </div>
       );
     }
@@ -225,7 +230,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div className="flex flex-col gap-4">
             {allocationFunds?.map((data, index) => (
-              <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full" key={index}>
+              <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full">
                 <div className="flex pr-10 gap-2 items-center">
                   <img src={data?.fundIcon} className="h-[48px] w-[48px]" />
                   <p className="text-[14px] font-medium text-black">
@@ -347,36 +352,52 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div
             style={{ width: "100%", height: "350px" }}
-            className="investment-card-background p-2 py-3 rounded-3xl border-[1px] border-[#794083] relative"
+            className="investment-card-background py-3 rounded-3xl border-[1px] border-[#794083] relative flex justify-center items-center"
           >
             {/* <p className="text-[13px] font-poppins font-semibold leading-5 pb-2">
               ₹1L invested for 10 years could become
             </p> */}
-            <ResponsiveContainer width="100%" height="100%">
+            <ResponsiveContainer width="90%" height={300}>
               <LineChart
                 data={dataGrid}
-                margin={{ top: 5, right: 30, left: 20, bottom: 5 }}
+               margin={{ top: 20, right: 40, left: 40, bottom: 20 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
                 <XAxis dataKey="month" stroke="white" />
                 {/* <YAxis stroke="white" /> */}
-                <Tooltip content={CustomTooltip} />
-                {/* <Legend /> */}
+                <Tooltip />
                 <Line
                   type="monotone"
                   dataKey="investedAmount"
                   stroke="lightblue"
-                  activeDot={{ r: 6 }}
                   strokeWidth={2}
+                  activeDot={{ r: 4 }}
                   name="Invested Amount"
-                />
+                >
+                  <LabelList
+                    dataKey="investedAmount"
+                    position="top"
+                    formatter={(val) => `₹${addComma(val)}`}
+                    fill="lightblue"
+                     className="text-[12px] font-medium"
+                  />
+                </Line>
                 <Line
                   type="monotone"
                   dataKey="currentValue"
                   stroke="lightgreen"
                   strokeWidth={2}
+                  activeDot={{ r: 5 }}
                   name="Current Value"
-                />
+                >
+                  <LabelList
+                    dataKey="currentValue"
+                    position="top"
+                    formatter={(val) => `₹${addComma(val)}`}
+                    fill="lightgreen"
+                    className="text-[12px] font-medium"
+                  />
+                </Line>
               </LineChart>
             </ResponsiveContainer>
           </div>
@@ -404,9 +425,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div className="bg-[#400B4B] flex flex-col gap-6 p-6 rounded-3xl">
             {benifitsData.map((data, index) => (
-              <div className="flex flex-row items-center gap-6"
-              key={index}
-              >
+              <div className="flex flex-row items-center gap-6">
                 <div className="bg-[#A76CE8] p-2 h-[45px] w-[45px] rounded-4xl flex flex-col items-center justify-center">
                   <img
                     src={data.image.src}
