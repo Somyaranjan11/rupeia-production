@@ -1,6 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-const AnalyizeCard = () => {
+const AnalyizeCard = ({ setPageStep, pageStep }) => {
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setPageStep(pageStep + 1);
+    }, 5000); // 5 seconds
+
+    // Clear timeout on unmount to avoid memory leaks
+    return () => clearTimeout(timer);
+  }, [pageStep, setPageStep]);
+
   return (
     <div className="min-h-screen">
       <div className="loading-container flex justify-center items-center flex-col min-h-screen">

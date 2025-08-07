@@ -30,15 +30,7 @@ const Page = () => {
       setPageStep(pageStep - 1);
     }
   };
-  const pageName = [1, 2].includes(pageStep)
-    ? "Grow"
-    : [3, 4].includes(pageStep)
-    ? "Goals"
-    : [5].includes(pageStep)
-    ? "Benefits"
-    : [6].includes(pageStep)
-    ? "Wealth+"
-    : "";
+
   const [goalDetails, setGoalDetails] = useState({
     goalId: "",
     goalTitle: "",
@@ -47,6 +39,8 @@ const Page = () => {
     goalAmount: 0,
     duration: 0,
     wealth_budget: 0,
+    goal_create_id: 0,
+    wealth_create_id: 0,
   });
   const [goalQuestionSelect, setGoalQuestionSelect] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -71,6 +65,10 @@ const Page = () => {
         }
       );
       if (response?.data?.success) {
+        setGoalDetails({
+          ...goalDetails,
+          goal_create_id: response?.data?.data?.goalId,
+        });
         ShowSucessmessages("Your goal created successfully");
         if (pageStep > 0 && pageStep < 7) {
           setPageStep(pageStep + 1);
@@ -131,6 +129,10 @@ const Page = () => {
         }
       );
       if (response?.data?.success) {
+        setGoalDetails({
+          ...goalDetails,
+          wealth_create_id: response?.data?.data?.wealthPlusId,
+        });
         ShowSucessmessages("Your wealth created successfully");
         if (pageStep > 0 && pageStep < 7) {
           setPageStep(5);
@@ -143,6 +145,17 @@ const Page = () => {
       setLoading(false);
     }
   };
+  const pageName = [1, 2].includes(pageStep)
+    ? "Grow"
+    : [4].includes(pageStep)
+    ? "Goals"
+    : [5].includes(pageStep)
+    ? "Benefits"
+    : [3, 6].includes(pageStep)
+    ? goalDetails?.goalType == "Goal"
+      ? "Goals"
+      : "Wealth+"
+    : "";
   return (
     <div className="font-poppins flex flex-col h-screen overflow-hidden">
       {/* Navbar stays fixed at the top */}
@@ -228,8 +241,10 @@ const Page = () => {
               loading={loading}
             />
           )}
-          {pageStep == 6 && <BenifitsCard />}
-          {pageStep == 5 && <AnalyizeCard />}
+          {pageStep == 5 && (
+            <AnalyizeCard setPageStep={setPageStep} pageStep={pageStep} />
+          )}
+          {pageStep == 6 && <BenifitsCard goalDetailsProps={goalDetails} />}
           {/* {pageStep == 7 && <Confirmation />} */}
         </div>
       </div>
@@ -240,7 +255,7 @@ const Page = () => {
           (pageStep == 1 || pageStep == 3 || pageStep == 4) && "hidden"
         }`}
       >
-        {[2, 8, 6, 5, 7].includes(pageStep) && (
+        {[2, 8, 6, 7].includes(pageStep) && (
           <button
             className="border-[#FFFFFF] border-[1px] w-full py-2 rounded-full text-[15px] leading-7 font-medium text-white"
             type="button"

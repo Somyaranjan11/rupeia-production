@@ -1,6 +1,6 @@
 import React from "react";
-import Aryan from "../../components/Images/aryan-founder1.png";
-import Urvasi from "../../components/Images/urvasi-founder2.png";
+import Aryan from "../../components/Images/founder-image-2-final.jpeg";
+import Urvasi from "../../components/Images/founder-image-1-final.jpeg";
 
 const Founder = () => {
   return (
@@ -27,7 +27,24 @@ const Founder = () => {
             Founder
           </p>
           <p className="text-[#AF7BB6] text-[14px] sm:text-[16px] font-medium">
-            LinkedIn | Email{" "}
+            <a
+              href="https://www.linkedin.com/in/aryansinghofficial28/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline pr-1"
+            >
+              LinkedIn
+            </a>
+            |
+            <a
+              href="mailto:aryan.singh@rupeia.com"
+              // href="https://mail.google.com/mail/?view=cm&fs=1&to=aryan.singh@rupeia.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline pl-1"
+            >
+              Email
+            </a>{" "}
           </p>
         </div>
         <div className="flex flex-col gap-1">
@@ -43,7 +60,24 @@ const Founder = () => {
             Founder
           </p>
           <p className="text-[#AF7BB6] text-[14px] sm:text-[16px] font-medium">
-            LinkedIn | Email{" "}
+            <a
+              href="https://www.linkedin.com/in/urvashi-lakhmani/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline pr-1"
+            >
+              LinkedIn
+            </a>
+            |
+            <a
+              href="mailto:urvashi.lakhmani@rupeia.com"
+              // href="https://mail.google.com/mail/?view=cm&fs=1&to=aryan.singh@rupeia.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-500 underline pl-1"
+            >
+              Email
+            </a>{" "}
           </p>
         </div>
       </div>

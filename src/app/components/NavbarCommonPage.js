@@ -14,7 +14,6 @@ const NavbarCommonPage = ({
 }) => {
   const pathname = usePathname();
   const router = useRouter();
-  console.log("isBottomShow", isBottomShow);
   return (
     <div
       className={`flex flex-row items-center justify-between py-6 px-5  font-poppins relative ${

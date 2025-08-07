@@ -55,7 +55,7 @@ const Page = () => {
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               Portfolio
             </p>
-            <p className="text-[11px] text-black font-medium">₹4,7k </p>
+            <span className="text-[11px] text-black font-medium">₹4,70,000 <span className="text-green-600">(7.8%)</span></span>
           </div>
           <div
             className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
@@ -69,7 +69,7 @@ const Page = () => {
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               SIP
             </p>
-            <p className="text-[11px] text-black font-medium">(₹5,6k)</p>
+            <p className="text-[11px] text-black font-medium">₹5,600</p>
           </div>
         </div>
         <div className="flex items-center gap-2 px-5">

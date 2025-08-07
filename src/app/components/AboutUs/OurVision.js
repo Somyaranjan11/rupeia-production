@@ -5,10 +5,10 @@ const OurVision = () => {
   return (
     <div className="relative h-[250px] rounded-4xl sm:h-[350px] w-full sm:w-[60%] mx-auto px-4 sm:px-28">
       {/* Background Image */}
-      <img src={visionImage.src} alt="Our Vision" className="w-full h-full" />
+      <img src={visionImage.src} alt="Our Vision" className="w-full h-full hidden" />
 
       {/* Overlay Text */}
-      <div className="absolute inset-0 flex items-center justify-center bg-opacity-40 flex-col gap-3">
+      <div className="absolute inset-0 flex items-center justify-center bg-opacity-40 flex-col gap-3  rounded-3xl bg-[#0d0d0d8a] vision-shadow">
         <h2 className="text-white text-[24px] sm:text-[35px] md:text-[50px] font-bold text-center px-4 uppercase">
           Our Vision
         </h2>

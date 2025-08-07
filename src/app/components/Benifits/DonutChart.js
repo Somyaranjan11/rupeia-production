@@ -1,16 +1,22 @@
 import React from "react";
 
-const data = [
-  { name: "Large Cap", value: 22, color: "#A76CE8" },
-  { name: "Small Cap", value: 29, color: "#EE6FCB" },
-  { name: "Gold", value: 14, color: "#3AC2BD" },
-  { name: "Debt", value: 12, color: "#FF9E28" },
-  { name: "Mid Cap", value: 7, color: "#F9C829" },
-  { name: "Flexi Cap", value: 10, color: "#54A1E8" },
+const COLORS = [
+  "#A76CE8",
+  "#EE6FCB",
+  "#3AC2BD",
+  "#FF9E28",
+  "#F9C829",
+  "#54A1E8",
+  "#FF6666",
+  "#8DFF9E",
 ];
 
-const DonutChart = () => {
-  const total = data.reduce((acc, curr) => acc + curr.value, 0);
+const DonutChart = ({ allocationFunds = [] }) => {
+  const total = allocationFunds.reduce(
+    (acc, curr) => acc + curr.allocationPercentage,
+    0
+  );
+
   let cumulativePercent = 0;
 
   const getCoordinatesForPercent = (percent, radius = 1) => {
@@ -20,69 +26,67 @@ const DonutChart = () => {
   };
 
   return (
-    <div className="donut-wrapper">
-      <svg width="100%" height="100%" className="chart-svg" viewBox="-1 -1 2 2">
-        {data.map((slice, i) => {
-          const [startX, startY] = getCoordinatesForPercent(cumulativePercent);
-          const slicePercent = slice.value / total;
-          cumulativePercent += slicePercent;
-          const [endX, endY] = getCoordinatesForPercent(cumulativePercent);
+    <div className="w-full">
+      <div className="donut-wrapper relative w-full h-[300px] flex justify-center items-center">
+        <svg
+          width="100%"
+          height="100%"
+          viewBox="-1 -1 2 2"
+          className="chart-svg"
+        >
+          {allocationFunds.map((slice, i) => {
+            const slicePercent = slice.allocationPercentage / total;
+            const [startX, startY] =
+              getCoordinatesForPercent(cumulativePercent);
+            cumulativePercent += slicePercent;
+            const [endX, endY] = getCoordinatesForPercent(cumulativePercent);
+            const largeArcFlag = slicePercent > 0.5 ? 1 : 0;
 
-          const largeArcFlag = slicePercent > 0.5 ? 0 : 0;
-
-          const pathData = `
+            const pathData = `
             M ${startX} ${startY}
             A 1 1 0 ${largeArcFlag} 1 ${endX} ${endY}
-            L ${endX * 0} ${endY * 0}
-            A 0.6 0.6 0 ${largeArcFlag} 0 ${startX * 0} ${startY * 0}
-            Z
+            L 0 0
           `;
 
-          // Mid-point for label
-          const midPercent = cumulativePercent - slicePercent / 2;
-          const [textX, textY] = getCoordinatesForPercent(midPercent, 0.5);
+            const midPercent = cumulativePercent - slicePercent / 2;
+            const [textX, textY] = getCoordinatesForPercent(midPercent, 0.5);
 
+            return (
+              <g key={i}>
+                <path d={pathData} fill={COLORS[i % COLORS.length]} />
+                <text
+                  x={textX}
+                  y={textY}
+                  textAnchor="middle"
+                  dominantBaseline="middle"
+                  fill="white"
+                  fontSize="0.11"
+                >
+                  {Math.round(slicePercent * 100)}%
+                </text>
+              </g>
+            );
+          })}
+
+          <circle cx="0" cy="0" r="0.24" fill="black" />
+        </svg>
+
+        {/* Labels (outside) */}
+      </div>
+      <div className="flex flex-row flex-wrap gap-4 mt-8">
+        {allocationFunds?.map((slice, i) => {
           return (
-            <g key={i}>
-              <path d={pathData} fill={slice.color} />
-              <text
-                x={textX}
-                y={textY}
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fill="white"
-                fontSize="0.11"
-              >
-                {Math.round(slicePercent * 100)}%
-              </text>
-            </g>
+            <div key={i} className="flex items-center gap-2 mb-1">
+              <div
+                style={{ backgroundColor: COLORS[i % COLORS.length] }}
+                className="h-5 w-5 border-[1px] border-black rounded"
+              ></div>
+              <p className="text-[14px] capitalize">
+                {slice.fundCategory.replace(/-/g, " ")}
+              </p>
+            </div>
           );
         })}
-
-        {/* Small inner circle to cut the middle (donut hole) */}
-        <circle cx="0" cy="0" r="0.24" fill="black" width={20} height={20} />
-      </svg>
-
-      {/* External labels positioned manually */}
-      <div className="labels">
-        <span className="label" style={{ top: "28%", left: "85%" }}>
-          Small Cap
-        </span>
-        <span className="label" style={{ top: "70%", left: "85%" }}>
-          Large Cap
-        </span>
-        <span className="label" style={{ top: "12%", left: "-5%" }}>
-          Gold
-        </span>
-        <span className="label" style={{ top: "5%", left: "80%" }}>
-          Debt
-        </span>
-        <span className="label" style={{ top: "70%", left: "-15%" }}>
-          Mid Cap
-        </span>
-        <span className="label" style={{ top: "-10%", left: "35%" }}>
-          Flexi Cap
-        </span>
       </div>
     </div>
   );

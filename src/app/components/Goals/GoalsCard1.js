@@ -36,14 +36,7 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
   useEffect(() => {
     fetchBlogs();
   }, []);
-  console.log("goalCategory", goalCategory);
-  const showGoalImage = (goalType) => {
-    if ((goalType = "Buying a Car 🚗")) {
-      return goals1;
-    } else {
-      return goals2;
-    }
-  };
+  console.log("goalDetails", goalDetails);
   return (
     <div className="font-poppins">
       <p className="text-[22px] font-semibold pr-10 text-white">
@@ -81,7 +74,13 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                   {data?.goalType}
                 </p> */}
                 {data?.goalType == "Buying a Car 🚗" && (
-                  <div className="relative">
+                  <div
+                    className={`relative ${
+                      goalDetails?.goalId == data?.goalId
+                        ? "border-[2px] border-white rounded-[20px]"
+                        : ""
+                    }`}
+                  >
                     <img src={goals1.src} className="h-[150px]" />
                     <div className="absolute bottom-0 p-5  w-[60%]">
                       <p
@@ -98,7 +97,13 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                   </div>
                 )}
                 {data?.goalType == "Buying a Home 🏠" && (
-                  <div className="relative">
+                  <div
+                    className={`relative ${
+                      goalDetails?.goalId == data?.goalId
+                        ? "border-[2px] border-white rounded-[20px]"
+                        : ""
+                    }`}
+                  >
                     <img src={goals2.src} className="h-[150px]" />
                     <div className="absolute bottom-0 p-5  w-[60%]">
                       <p
@@ -115,7 +120,13 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                   </div>
                 )}
                 {data?.goalType == "Retirement Planning 🧘" && (
-                  <div className="relative">
+                  <div
+                    className={`relative ${
+                      goalDetails?.goalId == data?.goalId
+                        ? "border-[2px] border-white rounded-[20px]"
+                        : ""
+                    }`}
+                  >
                     <img src={goals3.src} className="h-[150px]" />
                     <div className="absolute bottom-0 p-5  w-[60%]">
                       <p
@@ -132,7 +143,13 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                   </div>
                 )}
                 {data?.goalType == "Childs Education 🎓" && (
-                  <div className="relative">
+                  <div
+                    className={`relative ${
+                      goalDetails?.goalId == data?.goalId
+                        ? "border-[2px] border-white rounded-[20px]"
+                        : ""
+                    }`}
+                  >
                     <img src={goals4.src} className="h-[150px]" />
                     <div className="absolute bottom-0 p-5  w-[60%]">
                       <p
@@ -149,7 +166,13 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                   </div>
                 )}
                 {data?.goalType == "Building a Startup 🚀" && (
-                  <div className="relative">
+                  <div
+                    className={`relative ${
+                      goalDetails?.goalId == data?.goalId
+                        ? "border-[2px] border-white rounded-[20px]"
+                        : ""
+                    }`}
+                  >
                     <img src={goals5.src} className="h-[150px]" />
                     <div className="absolute bottom-0 p-5  w-[60%]">
                       <p
@@ -166,7 +189,13 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                   </div>
                 )}
                 {data?.goalType == "International Vacation ✈️" && (
-                  <div className="relative">
+                  <div
+                    className={`relative ${
+                      goalDetails?.goalId == data?.goalId
+                        ? "border-[2px] border-white rounded-[20px]"
+                        : ""
+                    }`}
+                  >
                     <img src={goals6.src} className="h-[150px]" />
                     <div className="absolute bottom-0 p-5  w-[60%]">
                       <p
@@ -183,7 +212,13 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                   </div>
                 )}
                 {data?.goalType == "Marriage Expenses 💍" && (
-                  <div className="relative">
+                  <div
+                    className={`relative ${
+                      goalDetails?.goalId == data?.goalId
+                        ? "border-[2px] border-white rounded-[20px]"
+                        : ""
+                    }`}
+                  >
                     <img src={goals7.src} className="h-[150px]" />
                     <div className="absolute bottom-0 p-5  w-[60%]">
                       <p

@@ -1,6 +1,7 @@
 import React from "react";
 import landingImage from "../../components/Images/stree-free-image-23 (1).png";
-import downloadRupeia from "../../components/Images/download-rupeia.png";
+// import downloadRupeia from "../../components/Images/download-rupeia.png";
+import downloadRupeia from "../../components/Images/rupeia-qrcode.jpeg";
 import leftImage from "../../components/Images/image copy 5.png";
 import rightImage from "../../components/Images/right-stree-free-image.png";
 import capImage from "../../components/Images/strees-free-cap-image1.png";
@@ -8,9 +9,9 @@ import scheduleMobileImage from "../../components/Images/schedule-mobile-image.p
 
 import { IoCallOutline } from "react-icons/io5";
 
-const SteeeFree = () => {
+const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
   return (
-    <div className="px-4 sm:px-16 py-5 sm:py-10 bg-[#350040]">
+    <div className="px-4 sm:px-16 py-5 sm:py-10 top-page-bg-class">
       <div className="flex justify-center items-center flex-col gap-3 sm:gap-10 mt-10 relative">
         <span className="text-[#FFFFFF] text-[42px] sm:text-[80px] leading-5 sm:tracking-wide relative">
           Stress free
@@ -25,10 +26,15 @@ const SteeeFree = () => {
         <div>
           <img
             src={rightImage.src}
-            className="w-[400px] sm:w-[1000px] h-[500px] absolute -right-28 -top-20  "
+            className="w-[400px] sm:w-[1000px] h-[500px] absolute -right-28 -top-20  hidden "
           />
           <div className="fixed -right-0 sm:-right-0  top-40 sm:top-28 z-50 ">
-            <div className="recomended-blogs  flex-row items-center justify-center gap-2 h-[48px] w-fit px-7 rounded-l-full hidden sm:flex">
+            <div
+              className="recomended-blogs  cursor-pointer flex-row items-center justify-center gap-2 h-[48px] w-fit px-7 rounded-l-full hidden sm:flex"
+              onClick={() => {
+                openScheduleCall();
+              }}
+            >
               <IoCallOutline className="text-[20px] hidden sm:block" />
               <p className="text-[16px] font-normal tracking-wide hidden sm:block">
                 Schedule a call
@@ -45,9 +51,9 @@ const SteeeFree = () => {
         <div className="flex flex-row sm:flex-row  lg:justify-center lg:items-center sm:gap-0  ">
           <img
             src={leftImage.src}
-            className="w-full sm:w-[1200px] h-[800px] absolute -left-28 "
+            className="w-full sm:w-[1200px] h-[800px] absolute -left-28 hidden "
           />
-          <div className="w-fit  h-fit  lg:justify-center sm:justify-start flex sm:hidden absolute -top-2 ">
+          <div className="w-fit  h-fit  lg:justify-center sm:justify-start  sm:hidden absolute -top-2 hidden ">
             <div className=" border-[1px] border-[#FFFFFF61] h-fit ml-1 py-2 sm:py-10 w-[100px] sm:w-[210px] sm:px-10 justify-s flex flex-row gap-1 items-center justify-center rounded-2xl bg-[#D9D9D914] ">
               <p className="text-[#CAC6C5] sm:text-[14px] text-[30px]">AI</p>
               <p className="text-[#CAC6C5E5] text-[12px] sm:text-[18px] pt-3">
@@ -61,7 +67,7 @@ const SteeeFree = () => {
               <p className="text-[#CAC6C5E5] text-[20px] pt-4">Powered</p>
             </div>
           </div>
-          <div className="w-full sm:w-[700px] flex justify-end lg:ml-16 ">
+          <div className="w-full sm:w-[700px] flex justify-end lg:ml-2  -mr-20 ">
             <img
               src={landingImage.src}
               className="h-[300px] lg:h-[600px] sm:w-[700px]"
@@ -83,9 +89,22 @@ const SteeeFree = () => {
             </button>
           </div>
           {/* QR code */}
-          <div className="w-full justify-center sm:justify-end  items-center sm:items-end mt-10 hidden md:flex bg-red-400 relative">
-            <div className="bg-[#DBDBDB14] border-[1px] border-[#FFFFFF61] p-4 rounded-3xl fixed bottom-5 z-50">
-              <img src={downloadRupeia.src} className="h-[120px] w-[250px]" />
+          <div className="w-full justify-center sm:justify-end  items-center sm:items-end mt-10 hidden md:flex  relative">
+            <div
+              className="bg-[#DBDBDB14] border-[1px] border-[#FFFFFF61] p-4 rounded-3xl  cursor-pointer fixed bottom-5 z-50 flex justify-center items-center gap-5"
+              onClick={() => {
+                openPopUp();
+              }}
+            >
+              <img src={downloadRupeia.src} className="h-[120px] w-[150px]" />
+              <div className="flex flex-col gap-2">
+                <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px] leading-8 font-semibold">
+                  Early{" "}
+                </p>
+                <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px] leading-8 font-semibold">
+                  Access
+                </p>
+              </div>
             </div>
           </div>
         </div>

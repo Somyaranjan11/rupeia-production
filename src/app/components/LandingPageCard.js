@@ -18,12 +18,11 @@ const LandingPageCard = () => {
           <h3 className="text-3xl font-bold bg-gradient-to-b from-[#ffffff] to-[#747474] bg-clip-text text-transparent">
             GROW
           </h3>
-          <p className="text-[22px] font-medium leading-7 mt-2">
+          <p className="text-[20px] font-medium leading-7 mt-2">
             Steady Wealth{" "}
           </p>
           <p className="text-[11px] font-medium mt-1">
-            You get 2x the gain if <br />
-            you make gain
+            Stress free investing
           </p>
         </div>
         <div className="bg-[#9563A257] flex justify-center items-center h-[100px] w-[100px] rounded-l-full image-card-class">

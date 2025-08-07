@@ -52,6 +52,9 @@ const SIPCalculate = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    fetchGrowCalculation();
+  }, []);
 
   return (
     <div className="font-poppins px-5 sm:px-20 py-11 flex flex-col gap-7 mt-10 border-t-[1px] border-b-[1px] border-[#FFFFFF61]">

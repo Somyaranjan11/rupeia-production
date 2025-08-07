@@ -4,8 +4,10 @@ import rupeiaLogo from "../../components/Images/rupeia_footer_logo.png";
 import { FaInstagram } from "react-icons/fa";
 import { FaLinkedin } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
+import { IoMail } from "react-icons/io5";
 import downLoadRupeia from "../../components/Images/download-rupeia.png";
 import { FaAngleDown } from "react-icons/fa6";
+import Logo from "@/app/SVG/Logo";
 
 const Footer = () => {
   const homeMenu = [
@@ -68,8 +70,8 @@ const Footer = () => {
       <div className="flex flex-col sm:flex-row justify-between">
         <div className="flex flex-col gap-3 sm:gap-6">
           <div>
-            <img src={rupeiaLogo.src} className="h-[50px] w-[230px]" />
-            <p className="text-[18px] font-medium pl-[75px] text-white">
+            <Logo/>
+            <p className="text-[18px] font-medium pl-[55px] text-white">
               Stress Free Investing
             </p>
           </div>
@@ -78,7 +80,7 @@ const Footer = () => {
             <span className="flex flex-row items-center gap-5">
               <FaInstagram className="text-[32px] text-[#A4A1A0]" />
               <FaLinkedin className="text-[32px] text-[#A4A1A0]" />
-              <FaTwitter className="text-[32px] text-[#A4A1A0]" />
+              <IoMail className="text-[32px] text-[#A4A1A0]" />
             </span>
           </div>
         </div>
@@ -274,7 +276,7 @@ const Footer = () => {
             )}
           </div>
         </div>
-        <div className="bg-[#DBDBDB14] border-[1px] border-[#FFFFFF61] h-fit rounded-3xl p-3 hidden sm:block">
+        <div className="bg-[#DBDBDB14] border-[1px] border-[#FFFFFF61] h-fit rounded-3xl p-3 hidden sm:hidden">
           <img src={downLoadRupeia.src} className="h-[120px] w-[260px]" />
         </div>
       </div>

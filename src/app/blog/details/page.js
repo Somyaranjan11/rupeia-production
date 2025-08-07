@@ -1,5 +1,5 @@
 "use client";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 import LandingNavbar from "@/app/components/LandingComponent/LandingNavbar";
 // import blogsCardImage from "../Images/blogs-card-image.png";
@@ -8,8 +8,13 @@ import { FaAngleDown } from "react-icons/fa";
 import Categories from "@/app/components/LandingComponent/Categories";
 import BlogsCard from "@/app/components/LandingComponent/BlogsCard";
 import Footer from "@/app/components/MobileLandingPageComponent/Footer";
+import { useSearchParams } from "next/navigation";
+import axios from "axios";
+import AnimateLoader from "@/app/components/Loader/AnimateLoader";
 
 const Page = () => {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
   const blogData = {
     description:
       "Scaling up the synthesis of Active Pharmaceutical Ingredients (APIs) from laboratory-scale (milligrams to grams) to commercial-scale (kilograms to metric tons) is not a linear process and can be incredibly complex and challenging. There are many issues that may not be evident to a chemist with limited scale-up experience that can have a drastic effect on the success of the process. This phase in pharmaceutical manufacturing, known as Process Research and Development (PR&D), involves numerous technical hurdles that must be addressed in order to ensure efficiency and quality. In this article, we will explore three of the key technical challenges associated with scaling up a synthetic process.",
@@ -80,80 +85,107 @@ const Page = () => {
   };
 
   const [open, setOpen] = useState(0);
-  const headingRefs = useRef(blogData.headings.map(() => React.createRef()));
+  const headingRefs = useRef([]);
   const conclusionRef = useRef(null);
   const summaryRef = useRef(null);
-  console.log("blogData", blogData);
+  const [loading, setLoading] = useState(true);
+  const [blogDetails, setBlogDetails] = useState();
+
+  useEffect(() => {
+    const fetchCategory = async () => {
+      try {
+        const response = await axios.get(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/userblogs/${id}`
+        );
+        if (response?.data) {
+          setBlogDetails(response?.data);
+          headingRefs.current = response?.data?.sectionData.longDescription.map(
+            (_, i) => headingRefs.current[i] ?? React.createRef()
+          );
+        }
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchCategory();
+  }, [id]);
   return (
     <div className="bg-white min-h-screen overflow-x-hidden flex flex-col">
       {/* Navbar */}
       <div className="">
         <LandingNavbar />
       </div>
-      <div className="w-full px-4 sm:px-28">
-        <div className="relative my-6 sm:my-10">
-          <img
-            src={blogsCardImage.src}
-            className="h-[245px] sm:h-[507px] w-full rounded-3xl"
-          />
-          <div className="blogs-inner-page-bg-color absolute h-[507px] top-0 rounded-[20px] w-[60%] pl-[10%] hidden sm:block">
-            <div className="flex justify-center flex-col h-full gap-3">
-              <div className="flex flex-row gap-5">
-                <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3 text-[16px] font-semibold leading-6 rounded-lg">
-                  PHARMA
-                </button>
-                <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3 text-[16px] font-semibold leading-6 rounded-lg">
+      {loading ? (
+        <div className="w-full px-4 sm:px-28">
+          <AnimateLoader count={8} />
+        </div>
+      ) : (
+        <div className="w-full px-4 sm:px-28">
+          <div className="relative my-6 sm:my-10">
+            <img
+              src={blogDetails?.sectionData?.image}
+              className="h-[245px] sm:h-[507px] w-full rounded-3xl"
+            />
+            <div className="blogs-inner-page-bg-color absolute h-[507px] top-0 rounded-[20px] w-[60%] pl-[10%] hidden sm:hidden">
+              <div className="flex justify-center flex-col h-full gap-3">
+                <div className="flex flex-row gap-5">
+                  <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3 text-[16px] font-semibold leading-6 rounded-lg">
+                    {blogDetails?.sectionData?.blogType}
+                  </button>
+                  {/* <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3 text-[16px] font-semibold leading-6 rounded-lg">
                   TRENDING
-                </button>
+                </button> */}
+                </div>
+                <p className="text-[#FFFFFF] text-[36px] font-semibold">
+                  {blogDetails?.sectionData?.heading}
+                </p>
+                <p className="text-[#F7F7F9] text-[17px] font-semibold leading-6">
+                  2nd August 2024 | 6 min read
+                </p>
               </div>
-              <p className="text-[#FFFFFF] text-[36px] font-semibold">
-                Actylis Limerick - Strengthening Partnerships with a Biopharma
-                CDMO
+            </div>
+            <div className="flex justify-center flex-col h-full gap-3 mt-5 sm:hidden">
+              <div className="flex flex-row gap-5">
+                <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3  text-[13px] sm:text-[16px] font-semibold leading-6 rounded-lg">
+                  {blogDetails?.sectionData?.heading}
+                </button>
+                {/* <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3  text-[13px] sm:text-[16px] font-semibold leading-6 rounded-lg">
+                TRENDING
+              </button> */}
+              </div>
+              <p className="text-[#000000] text-[22px] sm:text-[36px] font-semibold">
+                {blogDetails?.sectionData?.heading}
               </p>
-              <p className="text-[#F7F7F9] text-[17px] font-semibold leading-6">
+              <p className="text-[#4C4D55] text-[16px] sm:text-[17px] font-semibold leading-6">
                 2nd August 2024 | 6 min read
               </p>
             </div>
           </div>
-          <div className="flex justify-center flex-col h-full gap-3 mt-5 sm:hidden">
-            <div className="flex flex-row gap-5">
-              <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3  text-[13px] sm:text-[16px] font-semibold leading-6 rounded-lg">
-                PHARMA
-              </button>
-              <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3  text-[13px] sm:text-[16px] font-semibold leading-6 rounded-lg">
-                TRENDING
-              </button>
-            </div>
-            <p className="text-[#000000] text-[22px] sm:text-[36px] font-semibold">
-              Actylis Limerick - Strengthening Partnerships with a Biopharma
-              CDMO
-            </p>
-            <p className="text-[#4C4D55] text-[16px] sm:text-[17px] font-semibold leading-6">
-              2nd August 2024 | 6 min read
-            </p>
-          </div>
-        </div>
-        <div className="w-full flex flex-col sm:flex-row gap-7">
-          <div className="w-full sm:w-[25%]">
-            <div className="bg-[#F0E6F1] p-10 rounded-[28px]">
-              <p className="text-[#000000] text-[18px] font-semibold">
-                Contents
-              </p>
-              <div className="flex flex-col gap-[6px] mt-2">
-                {blogData?.headings?.map((data, index) => (
-                  <p
-                    key={index}
-                    className="text-[#4C4D55] text-[16px] font-medium cursor-pointer hover:underline"
-                    onClick={() =>
-                      headingRefs.current[index].current?.scrollIntoView({
-                        behavior: "smooth",
-                      })
-                    }
-                  >
-                    {data?.heading}
-                  </p>
-                ))}
-                {/* <p
+          <div className="w-full flex flex-col sm:flex-row gap-7">
+            <div className="w-full sm:w-[25%]">
+              <div className="bg-[#F0E6F1] p-10 rounded-[28px]">
+                <p className="text-[#000000] text-[18px] font-semibold">
+                  Contents
+                </p>
+                <div className="flex flex-col gap-[6px] mt-2">
+                  {blogDetails?.sectionData?.longDescription?.map(
+                    (data, index) => (
+                      <p
+                        key={index}
+                        className="text-[#4C4D55] text-[16px] font-medium cursor-pointer hover:underline"
+                        onClick={() =>
+                          headingRefs.current[index].current?.scrollIntoView({
+                            behavior: "smooth",
+                          })
+                        }
+                      >
+                        {data?.title}
+                      </p>
+                    )
+                  )}
+                  {/* <p
                   className="text-[#4C4D55] text-[16px] font-medium cursor-pointer hover:underline"
                   onClick={() =>
                     conclusionRef.current?.scrollIntoView({
@@ -173,118 +205,140 @@ const Page = () => {
                 >
                   Summary
                 </p> */}
+                </div>
               </div>
             </div>
-          </div>
-          <div className="w-full sm:w-[55%]">
-            <p className="text-[#000000] font-normal text-[14px] sm:text-[18px]">
-              {blogData?.description}
-            </p>
-            <div className="flex flex-col gap-6 mt-6">
-              {blogData?.headings?.map((value, index) => (
-                <div
-                  className="flex flex-col gap-5"
-                  key={index}
-                  ref={headingRefs.current[index]}
-                >
-                  <p className="text-[#4C4D55] text-[22px] sm:text-[26px] font-semibold">
-                    {value?.heading}
-                  </p>
-                  <p className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]">
-                    {value?.desc}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <div className="my-5">
-              <p className="text-[#4C4D55] font-semibold text-[22px] sm:text-[26px]">
-                Frequently Asked Questions
+            <div className="w-full sm:w-[55%]">
+              <p className="text-[#4C4D55] text-[36px] font-semibold">
+                {blogDetails?.sectionData?.heading}
               </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 sm:gap-8  mt-3 w-full">
-              {blogData?.faqs?.map((data, index) => (
-                <div
-                  className="border-[1px] border-[#551262] bg-[#F0E6F1] px-5 sm:px-8 flex flex-col gap-3 justify-between  py-4 rounded-4xl h-fit w-full"
-                  key={index}
-                >
-                  <div className="flex justify-between items-center gap-3">
-                    <span className="text-[14px] sm:text-[18px] font-medium leading-[150%] font-poppins w-[100%] text-[#551262]">
-                      {data?.question}
-                    </span>
-                    <span
-                      onClick={() => {
-                        if (open == index + 1) {
-                          setOpen(0);
-                        } else {
-                          setOpen(index + 1);
-                        }
-                      }}
+              <p className="text-[#4C4D55] text-[17px] font-semibold leading-6">
+                2nd August 2024 | 6 min read
+              </p>
+              <p className="text-[#000000] font-normal text-[14px] sm:text-[18px] mt-5">
+                {blogDetails?.sectionData?.shortDescription}
+              </p>
+              <div className="flex flex-col gap-6 mt-6">
+                {blogDetails?.sectionData?.longDescription?.map(
+                  (value, index) => (
+                    <div
+                      className="flex flex-col gap-5 font-poppins"
+                      key={index}
+                      ref={headingRefs.current[index]}
                     >
-                      <FaAngleDown className="text-[#551262] cursor-pointer text-[25px]" />
-                    </span>
+                      <p className="text-[#4C4D55] text-[22px] sm:text-[26px] font-semibold">
+                        {value?.title}
+                      </p>
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: value?.description?.replace(/\n/g, "<br />"),
+                        }}
+                        className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]"
+                      />
+                      {/* <p className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]">
+                      {value?.description}
+                    </p> */}
+                    </div>
+                  )
+                )}
+              </div>
+              <div className="my-5">
+                <p className="text-[#4C4D55] font-semibold text-[22px] sm:text-[26px]">
+                  Frequently Asked Questions
+                </p>
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-1 gap-4 sm:gap-8  mt-3 w-full">
+                {blogDetails?.faqs?.map((data, index) => (
+                  <div
+                    className="border-[1px] border-[#551262] bg-[#F0E6F1] px-5 sm:px-8 flex flex-col gap-3 justify-between  py-4 rounded-4xl h-fit w-full"
+                    key={index}
+                  >
+                    <div className="flex justify-between items-center gap-3">
+                      <span className="text-[14px] sm:text-[18px] font-medium leading-[150%] font-poppins w-[100%] text-[#551262]">
+                        {data?.question}
+                      </span>
+                      <span
+                        onClick={() => {
+                          if (open == index + 1) {
+                            setOpen(0);
+                          } else {
+                            setOpen(index + 1);
+                          }
+                        }}
+                      >
+                        <FaAngleDown className="text-[#551262] cursor-pointer text-[25px]" />
+                      </span>
+                    </div>
+                    {open == index + 1 && (
+                      <p className="text-[13px] sm:text-[14px] text-left text-[#4C4D55]">
+                        {data?.answer}
+                      </p>
+                    )}
                   </div>
-                  {open == index + 1 && (
-                    <p className="text-[13px] sm:text-[14px] text-left text-[#4C4D55]">
-                      {data?.answer}
-                    </p>
-                  )}
-                </div>
-              ))}
-            </div>
-            <div className="flex flex-col gap-5 mt-5 " ref={conclusionRef}>
-              <p className="text-[#4C4D55] text-[26px] font-semibold">
-                Conclusion
-              </p>
-              <p className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]">
-                {blogData?.conclusion}
-              </p>
-            </div>
-            <div className="flex flex-col gap-5 mt-5" ref={summaryRef}>
-              <p className="text-[#4C4D55] text-[26px] font-semibold">
-                Summmary
-              </p>
-              <p className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]">
-                {blogData?.summary}
-              </p>
-            </div>
-            <div className="my-5">
-              <div className="flex flex-row items-center gap-1 text-[#4C4D55] text-[18px] font-semibold">
-                <p>By:</p>
-                <p>{blogData?.by}</p>
+                ))}
               </div>
-              <div className="flex flex-row gap-1 mt-2 items-center text-[#4C4D55] text-[18px] font-semibold">
-                <p>LinkedIn- </p>
-                <p>{blogData?.profile_id}</p>
+              <div
+                className="flex flex-col gap-5 mt-5 hidden"
+                ref={conclusionRef}
+              >
+                <p className="text-[#4C4D55] text-[26px] font-semibold">
+                  Conclusion
+                </p>
+                <p className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]">
+                  {blogData?.conclusion}
+                </p>
+              </div>
+              <div className="flex flex-col gap-5 mt-5 hidden" ref={summaryRef}>
+                <p className="text-[#4C4D55] text-[26px] font-semibold">
+                  Summmary
+                </p>
+                <p className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]">
+                  {blogData?.summary}
+                </p>
+              </div>
+              <div className="my-5">
+                <div className="flex flex-row items-center gap-1 text-[#4C4D55] text-[18px] font-semibold">
+                  <p>By:</p>
+                  <p>{blogDetails?.writtenBy}</p>
+                </div>
+                <div className="flex flex-row gap-1 mt-2 items-center text-[#551262] text-[18px] font-semibold">
+                  <p className="text-[#4C4D55]">LinkedIn- </p>
+                  <a href={blogDetails?.profileId} target="_blank" className="">
+                    {blogDetails?.writtenBy}
+                  </a>
+                  {/* <p>{blogDetails?.profileId}</p> */}
+                </div>
               </div>
             </div>
           </div>
-        </div>
-        <div className="my-5 sm:my-14 flex flex-col gap-5 ">
-          <div className="pb-5">
+          <div className="my-5 sm:my-14 flex flex-col gap-5 ">
+            <div className="pb-5">
+              <p className="text-[24px] font-normal leading-5 text-black">
+                Related Blogs
+              </p>
+            </div>
+            <div className="w-full overflow-x-auto lg:overflow-x-hidden mx-4 sm:mx-0 pr-4">
+              <div className="flex flex-row gap-0 sm:gap-8  ">
+                {[1, 2, 3, 4].map((data, index) => (
+                  <div
+                    key={`card-row-1-${index}`}
+                    className="min-w-[277px] lg:min-w-[277px] pr-4 sm:pr-0 "
+                  >
+                    <BlogsCard />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+          <div className="flex flex-col gap-10 mb-20 ">
             <p className="text-[24px] font-normal leading-5 text-black">
-              Related Blogs
+              Explore Other Categories
             </p>
-          </div>
-          <div className="w-full overflow-x-auto lg:overflow-x-hidden mx-4 sm:mx-0 pr-4">
-            <div className="flex flex-row gap-0 sm:gap-8  ">
-              {[1, 2, 3, 4].map((data, index) => (
-                <div
-                  key={`card-row-1-${index}`}
-                  className="min-w-[277px] lg:min-w-[277px] pr-4 sm:pr-0 "
-                >
-                  <BlogsCard />
-                </div>
-              ))}
-            </div>
+            <Categories />
           </div>
         </div>
-        <div className="flex flex-col gap-10 mb-20 ">
-          <p className="text-[24px] font-normal leading-5 text-black">
-            Explore Other Categories
-          </p>
-          <Categories />
-        </div>
-      </div>
+      )}
+
       <div>
         <Footer />
       </div>

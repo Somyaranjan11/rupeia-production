@@ -599,8 +599,8 @@ body {
 
 .donut-wrapper {
   position: relative;
-  width: 236px;
-  height: 236px;
+  width: 100%;
+  height: 260px;
   background-color: #1c0f23;
   border-radius: 10px;
   margin: auto;
@@ -624,4 +624,62 @@ body {
   backdrop-filter: blur(5px);
   white-space: nowrap;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+.investment-card-background *:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Landing-page css */
+.top-page-bg-class {
+  background: linear-gradient(180.09deg, #1a0120 48.24%, #42004f 99.92%);
+}
+.vision-shadow {
+  box-sizing: border-box;
+  border: 2px solid white;
+  border-color: white;
+  box-shadow: -1px 1px 20px 6px #9b8686;
+}
+
+/* Schedule a call css */
+.schedule-call {
+  background: linear-gradient(180deg, #551262 0%, #270330 100%);
+}
+.schedule-text {
+  color: linear-gradient(180.03deg, #fff6f6 65.79%, #423d3d 99.97%);
+}
+
+/* Contact US */
+.contact-us-image {
+  background: linear-gradient(
+    180deg,
+    #350040 0%,
+    rgba(158, 67, 186, 0.7) 47.73%,
+    #350040 100%
+  );
+}
+
+.donut-container {
+  width: 90%;
+  height: 306px;
+  position: relative;
+  font-family: Arial, sans-serif;
+  color: white;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.chart-svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* Optional: To make multi-line text easier on the SVG */
+.chart-svg text tspan {
+  text-anchor: middle;
+}
+.recharts-legend-item-text{
+  font-size: 13px !important;
 }

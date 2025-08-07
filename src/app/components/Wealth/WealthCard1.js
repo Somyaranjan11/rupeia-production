@@ -119,7 +119,11 @@ const WealthCard1 = ({
             {goalsCard?.map((data, index) => (
               <div
               key={index}
-                className="relative"
+                className={`relative  ${
+                  goalDetails?.goalType == data?.name
+                    ? "border-[2px] border-white rounded-[20px]"
+                    : ""
+                }`}
                 onClick={() => {
                   setGoalDetails({
                     ...goalDetails,
@@ -135,7 +139,7 @@ const WealthCard1 = ({
                     {data?.header}
                   </p>
                   <p
-                    className={`text-[${data?.color_text}] text-[15px] font-semibold leading-7`}
+                    className={`text-[${data?.color_text}] text-[14px] leading-7`}
                   >
                     {data?.text}
                   </p>

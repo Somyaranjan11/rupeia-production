@@ -48,10 +48,10 @@ const Brand = () => {
     },
   ];
   return (
-    <div className="bg-[#A90C2B1A]">
+    <div className="contact-us-image">
       <div className="px-5 sm:px-10 flex flex-col gap-5 py-6 sm:py-12">
         <div>
-          <p className="text-[22px] sm:text-[32px] text-center font-semibold  text-[#551262]">
+          <p className="text-[22px] sm:text-[32px] text-center font-semibold  text-white">
             Our Funding Partners
           </p>
         </div>

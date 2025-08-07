@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Howitworks = () => {
   const [howWorks, setHowWorks] = useState(1);
@@ -48,15 +49,25 @@ const Howitworks = () => {
             setHowWorks(1);
           }}
         >
-          <div className="">
-            <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
-              <span> Smart</span>
-              <span className="text-[#AF7BB6] px-1">Analysis</span>
-              <span className="px-1">and</span>
-            </span>
-            <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
-              <span>Fund Allocation</span>
-            </span>
+          <div className="flex flex-row  justify-between">
+            <div>
+              <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
+                <span> Smart</span>
+                <span className="text-[#AF7BB6] px-1">Analysis</span>
+                <span className="px-1">and</span>
+              </span>
+              <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
+                <span>Fund Allocation</span>
+              </span>
+            </div>
+
+            {howWorks != 1 && (
+              <div>
+                <span>
+                  <IoIosArrowDown className="text-[#cbbdcd] text-[50px]" />
+                </span>
+              </div>
+            )}
           </div>
           {howWorks == 1 && (
             <p className="text-[14px] sm:text-[17px] font-normal text-[#C7B7CA] text-left">
@@ -76,12 +87,22 @@ const Howitworks = () => {
             setHowWorks(2);
           }}
         >
-          <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
-            <span className="text-[#AF7BB6] px-1">AI</span>
-            <span>powered and seek</span>
-            <span className="text-[#AF7BB6] px-1">Risk Appetite</span>
-            <span>analysis</span>
-          </span>
+          <div className="flex flex-row  justify-between">
+            <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
+              <span className="text-[#AF7BB6] px-1">AI</span>
+              <span>powered and seek</span>
+              <span className="text-[#AF7BB6] px-1">Risk Appetite</span>
+              <span>analysis</span>
+            </span>
+
+            {howWorks != 2 && (
+              <div>
+                <span>
+                  <IoIosArrowDown className="text-[#cbbdcd] text-[50px]" />
+                </span>
+              </div>
+            )}
+          </div>
           {howWorks == 2 && (
             <p className="text-[14px] sm:text-[17px]  font-normal text-[#C7B7CA] text-left">
               Experts track your progress regularly to keep you aligned with
@@ -100,16 +121,27 @@ const Howitworks = () => {
             setHowWorks(3);
           }}
         >
-          <div>
-            <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
-              <span className="text-[#AF7BB6]">Stress Free</span>
-              <span className=" px-1">Investing and </span>
-            </span>
-            <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
-              <span>Money </span>
-              <span className="text-[#AF7BB6] px-1">Growth</span>
-            </span>
+          <div className="flex flex-row  justify-between">
+            <div>
+              <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
+                <span className="text-[#AF7BB6]">Stress Free</span>
+                <span className=" px-1">Investing and </span>
+              </span>
+              <span className="text-[20px] sm:text-[24px] font-medium text-white flex flex-wrap gap-[2px]">
+                <span>Money </span>
+                <span className="text-[#AF7BB6] px-1">Growth</span>
+              </span>
+            </div>
+
+            {howWorks != 3 && (
+              <div>
+                <span>
+                  <IoIosArrowDown className="text-[#cbbdcd] text-[50px]" />
+                </span>
+              </div>
+            )}
           </div>
+
           {howWorks == 3 && (
             <p className="text-[14px] sm:text-[17px] font-normal text-[#C7B7CA] text-left">
               We monitor your portfolio and reshuffle funds to boost returns,
