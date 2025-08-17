@@ -183,7 +183,7 @@ const Page = () => {
             onMouseEnter={() => setIsPaused(true)}
             onMouseLeave={() => setIsPaused(false)}
             style={{
-              height: "500px",
+              height: "800px",
               overflow: "hidden",
               borderBottom: "1px solid #ccc",
               paddingRight: "10px",

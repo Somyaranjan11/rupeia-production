@@ -230,9 +230,8 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div className="flex flex-col gap-4">
             {allocationFunds?.map((data, index) => (
-              <div
-                className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full"
-                key={index}
+              <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full"
+              key={index}
               >
                 <div className="flex pr-10 gap-2 items-center">
                   <img src={data?.fundIcon} className="h-[48px] w-[48px]" />
@@ -363,7 +362,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
             <ResponsiveContainer width="90%" height={300}>
               <LineChart
                 data={dataGrid}
-                margin={{ top: 20, right: 40, left: 40, bottom: 20 }}
+               margin={{ top: 20, right: 40, left: 40, bottom: 20 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
                 <XAxis dataKey="month" stroke="white" />
@@ -382,7 +381,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
                     position="top"
                     formatter={(val) => `₹${addComma(val)}`}
                     fill="lightblue"
-                    className="text-[12px] font-medium"
+                     className="text-[12px] font-medium"
                   />
                 </Line>
                 <Line
@@ -428,7 +427,9 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div className="bg-[#400B4B] flex flex-col gap-6 p-6 rounded-3xl">
             {benifitsData.map((data, index) => (
-              <div className="flex flex-row items-center gap-6" key={index}>
+              <div className="flex flex-row items-center gap-6"
+              key={index}
+              >
                 <div className="bg-[#A76CE8] p-2 h-[45px] w-[45px] rounded-4xl flex flex-col items-center justify-center">
                   <img
                     src={data.image.src}

@@ -52,23 +52,29 @@ const Page = () => {
                   </p>
                 </span>
               </div>
+
               <div className="py-3 sm:py-5 px-4 sm:px-8 flex flex-col gap-2 sm:gap-4 w-[50%] sm:w-fit">
                 <div className="flex flex-wrap items-center gap-0 sm:gap-2">
                   <MdEmail className="text-white text-[21px]" />
                   <p className="text-[12px] sm:text-[16px] font-medium text-white w-fit truncate">
-                    aryansingh@gmail.com
+                    aryan.singh@rupeia.com
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <FaLinkedin className="text-white text-[21px]" />
-                  <p className="text-[13px] sm:text-[16px] font-medium text-white">
+                  <a
+                    href="https://www.linkedin.com/in/aryansinghofficial28/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline pr-1"
+                  >
                     Aryan Singh
-                  </p>
+                  </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <IoCall className="text-white text-[21px]" />
                   <p className="text-[13px] sm:text-[16px] font-medium text-white">
-                    +91-98063 37763
+                    +91-63947 38759
                   </p>
                 </div>
               </div>
@@ -91,14 +97,19 @@ const Page = () => {
                 <div className="flex flex-wrap items-center gap-2">
                   <MdEmail className="text-white text-[21px]" />
                   <p className="text-[12px] sm:text-[16px] font-medium text-white w-fit truncate">
-                    aryansingh@gmail.com
+                    urvashi.lakhmani@rupeia.com
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <FaLinkedin className="text-white text-[21px]" />
-                  <p className="text-[13px] sm:text-[16px] font-medium text-white">
-                    Aryan Singh
-                  </p>
+                  <a
+                    href="https://www.linkedin.com/in/urvashi-lakhmani/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline pr-1"
+                  >
+                    Urvashi Lakhmani
+                  </a>
                 </div>
                 <div className="flex items-center gap-2">
                   <IoCall className="text-white text-[21px]" />
@@ -125,19 +136,25 @@ const Page = () => {
                 <div className="flex flex-wrap items-center gap-2">
                   <MdEmail className="text-white text-[21px]" />
                   <p className="text-[12px] sm:text-[16px] font-medium text-white w-fit truncate">
-                    aryansingh@gmail.com
+                    support@rupeia.com
                   </p>
                 </div>
                 <div className="flex items-center gap-2">
                   <FaLinkedin className="text-white text-[21px]" />
-                  <p className="text-[13px] sm:text-[16px] font-medium text-white">
-                    Aryan Singh
-                  </p>
+                  <a
+                    href="https://www.linkedin.com/company/rupeia/?viewAsMember=true"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline pr-1"
+                  >
+                    Rupeia
+                  </a>
                 </div>
+
                 <div className="flex items-center gap-2">
                   <IoCall className="text-white text-[21px]" />
                   <p className="text-[13px] sm:text-[16px] font-medium text-white">
-                    +91-98063 37763
+                    +91-95992 94789
                   </p>
                 </div>
               </div>

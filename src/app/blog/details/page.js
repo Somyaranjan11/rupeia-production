@@ -11,6 +11,7 @@ import Footer from "@/app/components/MobileLandingPageComponent/Footer";
 import { useSearchParams } from "next/navigation";
 import axios from "axios";
 import AnimateLoader from "@/app/components/Loader/AnimateLoader";
+import { FaLinkedin } from "react-icons/fa";
 
 const Page = () => {
   const searchParams = useSearchParams();
@@ -237,7 +238,10 @@ const Page = () => {
                       />
                       {value?.image && (
                         <div>
-                          <img src={value?.image}  className="h-[400px] w-full"/>
+                          <img
+                            src={value?.image}
+                            className="h-[400px] w-full"
+                          />
                         </div>
                       )}
 
@@ -259,19 +263,20 @@ const Page = () => {
                     className="border-[1px] border-[#551262] bg-[#F0E6F1] px-5 sm:px-8 flex flex-col gap-3 justify-between  py-4 rounded-4xl h-fit w-full"
                     key={index}
                   >
-                    <div className="flex justify-between items-center gap-3">
+                    <div
+                      className="flex justify-between items-center gap-3"
+                      onClick={() => {
+                        if (open == index + 1) {
+                          setOpen(0);
+                        } else {
+                          setOpen(index + 1);
+                        }
+                      }}
+                    >
                       <span className="text-[14px] sm:text-[18px] font-medium leading-[150%] font-poppins w-[100%] text-[#551262]">
                         {data?.question}
                       </span>
-                      <span
-                        onClick={() => {
-                          if (open == index + 1) {
-                            setOpen(0);
-                          } else {
-                            setOpen(index + 1);
-                          }
-                        }}
-                      >
+                      <span>
                         <FaAngleDown className="text-[#551262] cursor-pointer text-[25px]" />
                       </span>
                     </div>
@@ -306,18 +311,19 @@ const Page = () => {
                 <div className="flex flex-row items-center gap-1 text-[#4C4D55] text-[18px] font-semibold">
                   <p>By:</p>
                   <p>{blogDetails?.writtenBy}</p>
+                  <a href={blogDetails?.profileId} target="_blank" className="">
+                    <FaLinkedin className="text-[16px]" />
+                  </a>
                 </div>
                 <div className="flex flex-row gap-1 mt-2 items-center text-[#551262] text-[18px] font-semibold">
-                  <p className="text-[#4C4D55]">LinkedIn- </p>
-                  <a href={blogDetails?.profileId} target="_blank" className="">
-                    {blogDetails?.writtenBy}
-                  </a>
+                  <p className="text-[#4C4D55] flex items-center"></p>
+
                   {/* <p>{blogDetails?.profileId}</p> */}
                 </div>
               </div>
             </div>
           </div>
-          <div className="my-5 sm:my-14 flex flex-col gap-5 ">
+          <div className="my-5 sm:my-14 flex flex-col gap-5 hidden ">
             <div className="pb-5">
               <p className="text-[24px] font-normal leading-5 text-black">
                 Related Blogs
@@ -336,7 +342,7 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className="flex flex-col gap-10 mb-20 ">
+          <div className="flex flex-col gap-10 mb-20 mt-10 ">
             <p className="text-[24px] font-normal leading-5 text-black">
               Explore Other Categories
             </p>

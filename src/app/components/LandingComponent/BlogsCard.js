@@ -7,7 +7,12 @@ import { useRouter } from "next/navigation";
 const BlogsCard = ({ image, heading, description, blog_id }) => {
   const router = useRouter();
   return (
-    <div className="w-full flex flex-col gap-3 ">
+    <div
+      className="w-full flex flex-col gap-3 "
+      onClick={() => {
+        router.push(`/blog/details?id=${blog_id}`);
+      }}
+    >
       <div>
         <img
           src={image}
@@ -25,12 +30,7 @@ const BlogsCard = ({ image, heading, description, blog_id }) => {
           {description ? description : ""}
         </p>
       </div>
-      <div
-        className="flex items-center gap-1 pb-3 cursor-pointer"
-        onClick={() => {
-          router.push(`/blog/details?id=${blog_id}`);
-        }}
-      >
+      <div className="flex items-center gap-1 pb-3 cursor-pointer">
         <p className="text-[13px] text-[#4C4D55] font-normal leading-5">
           Read Story
         </p>

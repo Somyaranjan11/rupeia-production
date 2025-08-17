@@ -107,16 +107,16 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
           />
           <div className="w-fit  h-fit  lg:justify-center sm:justify-start  sm:hidden absolute -top-2 hidden ">
             <div className=" border-[1px] border-[#FFFFFF61] h-fit ml-1 py-2 sm:py-10 w-[100px] sm:w-[210px] sm:px-10 justify-s flex flex-row gap-1 items-center justify-center rounded-2xl bg-[#D9D9D914] ">
-              <p className="text-[#CAC6C5] sm:text-[14px] text-[30px]">AI</p>
+              <p className="text-[#CAC6C5] sm:text-[14px] text-[26px]">24/7</p>
               <p className="text-[#CAC6C5E5] text-[12px] sm:text-[18px] pt-3">
-                Powered
+                Monitoring
               </p>
             </div>
           </div>
           <div className="w-fit  h-fit  justify-center sm:justify-start hidden sm:flex ml-20 ">
-            <div className=" border-[1px] border-[#FFFFFF61] h-fit py-4 sm:py-10 w-[150px] sm:w-[250px] px-10 justify-s flex flex-row gap-1 items-center sm:rounded-4xl bg-[#D9D9D914] ">
-              <p className="text-[#CAC6C5] text-[50px] font-medium">AI</p>
-              <p className="text-[#CAC6C5E5] text-[20px] pt-4">Powered</p>
+            <div className=" border-[1px] border-[#FFFFFF61] h-fit py-4 sm:py-10 w-[150px] sm:w-[250px] justify-center flex flex-row gap-1 items-center sm:rounded-4xl bg-[#D9D9D914] ">
+              <p className="text-[#CAC6C5] text-[40px] font-medium">24/7</p>
+              <p className="text-[#CAC6C5E5] text-[20px] pt-4">Monitoring</p>
             </div>
           </div>
           <div className="w-full sm:w-[700px] flex justify-end lg:ml-2  -mr-20 ">
@@ -126,7 +126,7 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
             />
           </div>
         </div>
-        <div className="flex flex-col justify-start gap-6 sm:gap-20 w-full sm:w-[30%]  ">
+        <div className="flex flex-col justify-start gap-6 sm:gap-20 w-full sm:w-[30%] mb-28  ">
           <div className="w-full flex flex-col justify-center sm:items-start items-center sm:justify-start gap-5 sm:gap-7 px-6 sm:px-0">
             <div className="flex flex-col sm:gap-2">
               <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px]">
@@ -154,7 +154,7 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
                 openPopUp();
               }}
             >
-              <img src={downloadRupeia.src} className="h-[120px] w-[150px]" />
+              <img src={downloadRupeia.src} className="h-[80px] w-[100px]" />
               <div className="flex flex-col gap-2">
                 <p className="landing-page-text text-center sm:text-left text-[24px] sm:text-[30px] leading-8 font-semibold">
                   Early{" "}

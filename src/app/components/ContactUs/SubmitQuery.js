@@ -107,7 +107,7 @@ const SubmitQuery = ({ categoriesValue }) => {
     }
   };
   return (
-    <div>
+    <div className="mt-5">
       <div className="h-fit flex flex-col">
         <span className="text-[19px] font-medium">
           <p className="text-white">Okay! Now tell us about your query.</p>{" "}

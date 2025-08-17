@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const TicketCategories = ({ setCategoriesValue, categoriesValue, setStep }) => {
   const categories = [
@@ -15,23 +15,28 @@ const TicketCategories = ({ setCategoriesValue, categoriesValue, setStep }) => {
       name: "Goals related",
     },
     {
-      id: 1,
+      id: 4,
       name: "Onboarding related",
     },
     {
-      id: 1,
+      id: 5,
       name: "Refunds & SIP Management related",
     },
+    {
+      id: 6,
+      name: "I have a different query",
+    },
   ];
-  console.log("categoriesValue", categoriesValue);
+  const [isDifferentQuery, setIsDifferentQuery] = useState(false);
+  console.log("categoriesValue", isDifferentQuery);
   return (
     <div>
-      <div className=" h-fit flex items-center gap-1 ">
-        <span className="text-[17px] font-medium flex flex-row items-center gap-1">
-          <p className="text-white">Welcome to our</p>{" "}
-          <p className="text-[#F7DCFFC2]">Customer</p>{" "}
+      <div className=" h-fit flex flex-row flex-wrap items-center gap-1 ">
+        <span className="text-[15px] sm:text-[17px] font-medium flex flex-row items-center gap-1">
+          <span className="text-white">Welcome to our</span>{" "}
+          <span className="text-[#F7DCFFC2]">Customer</span>{" "}
         </span>
-        <span className="text-[17px] font-medium flex flex-row items-center gap-1 mt-1">
+        <span className="text-[15px] sm:text-[17px] font-medium flex flex-row  items-center gap-1">
           <p className="text-[#F7DCFFC2]">Support</p>{" "}
           <p className="text-white">helpline!</p>{" "}
         </span>
@@ -50,7 +55,12 @@ const TicketCategories = ({ setCategoriesValue, categoriesValue, setStep }) => {
                   : "text-white"
               }`}
               onClick={() => {
-                setCategoriesValue(data?.name);
+                if (data?.id != 6) {
+                  setCategoriesValue(data?.name);
+                  setIsDifferentQuery(false);
+                } else {
+                  setIsDifferentQuery(true);
+                }
               }}
             >
               <p className="text-[12px] font-normal">{data?.name}</p>
@@ -60,12 +70,18 @@ const TicketCategories = ({ setCategoriesValue, categoriesValue, setStep }) => {
         <div className="flex justify-center items-center mb-7 mt-2">
           <button
             className={` rounded-[12px] h-[50px] w-[191px] ${
-              categoriesValue == ""
+              categoriesValue == "" && !isDifferentQuery
                 ? "cursor-not-allowed border-[1px] border-[#916D98] text-[#AF7BB6]"
-                : "bg-[#551262] text-white cursor-pointer "
+                : isDifferentQuery
+                ? "bg-[#551262] text-white cursor-pointer "
+                : "bg-[#551262] text-white cursor-pointer"
             }`}
             onClick={() => {
-              setStep(2);
+              if (isDifferentQuery) {
+                setStep(3);
+              } else {
+                setStep(2);
+              }
             }}
             type="button"
           >

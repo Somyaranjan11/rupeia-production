@@ -18,7 +18,7 @@ const Founder = () => {
           <img
             src={Aryan.src}
             alt="founder-1"
-            className="h-[290px] w-[250px] sm:h-[360px] sm:w-[330px]"
+            className="h-[290px] w-[250px] sm:h-[400px] sm:w-[330px] rounded-[14px]"
           />
           <p className="text-[#ECE6ED] text-[18px] sm:text-[22px] font-medium">
             Aryan Singh
@@ -51,7 +51,7 @@ const Founder = () => {
           <img
             src={Urvasi.src}
             alt="founder-2"
-            className="h-[290px] w-[250px] sm:h-[360px] sm:w-[330px]"
+            className="h-[290px] w-[250px] sm:h-[400px] sm:w-[330px] rounded-[14px]"
           />
           <p className="text-[#ECE6ED] text-[18px] sm:text-[22px] font-medium">
             Urvashi Lakhmani

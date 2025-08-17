@@ -41,11 +41,11 @@ const FAQS = ({ categoriesValue, setStep }) => {
         ) : (
           faqSection?.map((data, index) => (
             <div
-              className="border-[1px] border-[#916D98] why-rupeia-blur px-5 sm:px-8 flex flex-col gap-3 justify-between items-center py-4 rounded-4xl h-fit"
+              className="border-[1px] border-[#916D98] why-rupeia-blur px-5 sm:px-8 flex flex-col gap-3 justify-between items-center py-3 rounded-4xl h-fit"
               key={index}
             >
               <div className="flex justify-between items-center gap-3 w-full">
-                <span className="text-[14px] sm:text-[18px] font-medium leading-[150%] font-poppins w-[100%] text-[#FFFFFF]">
+                <span className="text-[13px] sm:text-[14px] font-medium leading-[150%] font-poppins w-[100%] text-[#FFFFFF]">
                   {index + 1}. {data?.question}
                 </span>
                 <span
@@ -69,7 +69,7 @@ const FAQS = ({ categoriesValue, setStep }) => {
           ))
         )}
       </div>
-      <div className="flex justify-center items-center mb-7 mt-2">
+      <div className="flex justify-center items-center mb-7 mt-5">
         <button
           className={`cursor-pointer rounded-[12px] h-[50px] w-[191px] ${
             categoriesValue == ""
@@ -81,7 +81,7 @@ const FAQS = ({ categoriesValue, setStep }) => {
           }}
           type="button"
         >
-          Continue
+          Raise a Ticket
         </button>
       </div>
     </div>

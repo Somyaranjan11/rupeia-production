@@ -131,7 +131,7 @@ const Page = () => {
         </p>
         <Categories />
       </div>
-      <div className="mt-16 flex flex-col gap-5 ">
+      <div className="mt-16 flex flex-col gap-5 hidden">
         <div className="pb-5 px-4 sm:px-28">
           <p className="text-[24px] font-normal leading-5 text-black">
             Popular Blogs
@@ -150,7 +150,7 @@ const Page = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-5 mt-10">
+      <div className="flex flex-col gap-5 mt-10 hidden">
         <div className="pb-5 px-4 sm:px-28">
           <p className="text-[24px] font-normal leading-5 text-black">
             Most Read Blogs

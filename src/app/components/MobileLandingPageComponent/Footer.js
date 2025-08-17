@@ -70,7 +70,7 @@ const Footer = () => {
       <div className="flex flex-col sm:flex-row justify-between">
         <div className="flex flex-col gap-3 sm:gap-6">
           <div>
-            <Logo/>
+            <Logo />
             <p className="text-[18px] font-medium pl-[55px] text-white">
               Stress Free Investing
             </p>
@@ -78,23 +78,46 @@ const Footer = () => {
           <div className="flex flex-col gap-2 sm:gap-4 ">
             <p className="text-[18px] font-medium text-white">Follow us on:</p>
             <span className="flex flex-row items-center gap-5">
-              <FaInstagram className="text-[32px] text-[#A4A1A0]" />
-              <FaLinkedin className="text-[32px] text-[#A4A1A0]" />
-              <IoMail className="text-[32px] text-[#A4A1A0]" />
+              <a
+                href="https://www.linkedin.com/company/rupeia/?viewAsMember=true"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline pr-1"
+              >
+                <FaLinkedin className="text-[32px] text-[#A4A1A0]" />
+              </a>
+              <a
+                href="https://www.instagram.com/rupeia.official?igsh=cGFnaHowa2dzcWY2&utm_source=qr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline pr-1"
+              >
+                <FaInstagram className="text-[32px] text-[#A4A1A0]" />
+              </a>
+              <a
+               href="https://mail.google.com/mail/?view=cm&fs=1&to=support@rupeia.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-blue-500 underline pr-1"
+              >
+                <IoMail className="text-[32px] text-[#A4A1A0]" />
+              </a>
             </span>
           </div>
         </div>
         <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-20 mt-3 sm:mt-0">
           <div>
             <div className="flex justify-between items-center">
-              <p className="text-[16px] sm:text-[18px] font-medium text-white">Home</p>
+              <p className="text-[16px] sm:text-[18px] font-medium text-white">
+                Home
+              </p>
               <span
                 className="block sm:hidden"
                 onClick={() => {
                   setIsOptionOpen(!isOptionOpen);
                 }}
               >
-                <FaAngleDown className="text-white"/>
+                <FaAngleDown className="text-white" />
               </span>
             </div>
             <div className=" flex-col gap-[6px] mt-4 hidden sm:flex">
@@ -156,13 +179,17 @@ const Footer = () => {
               )}
             </div>
             <div className="flex justify-between items-center">
-              <p className="text-[16px] sm:text-[18px] font-medium text-white">News</p>
+              <p className="text-[16px] sm:text-[18px] font-medium text-white">
+                News
+              </p>
               <span className="block sm:hidden">
                 <FaAngleDown className="text-white" />
               </span>
             </div>
             <div className="flex justify-between items-center">
-              <p className="text-[16px] sm:text-[18px] font-medium text-white">Blogs</p>
+              <p className="text-[16px] sm:text-[18px] font-medium text-white">
+                Blogs
+              </p>
               <span className="block sm:hidden">
                 <FaAngleDown className="text-white" />
               </span>
@@ -244,7 +271,9 @@ const Footer = () => {
           </div>
           <div>
             <div className="flex justify-between items-center">
-              <p className="text-[16px] sm:text-[18px] font-medium text-white">About Us</p>
+              <p className="text-[16px] sm:text-[18px] font-medium text-white">
+                About Us
+              </p>
               <span
                 className="block sm:hidden"
                 onClick={() => {
