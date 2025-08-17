@@ -1,6 +1,8 @@
 "use client";
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import OTPComponent from "@/app/components/SignUP/OTPComponent";
+import PhoneNumberComponent from "@/app/components/SignUP/PhoneNumberComponent";
+import PhoneNumberVerify from "@/app/components/SignUP/PhoneNumberVerify";
 import SetPin from "@/app/components/SignUP/SetPin";
 import SignupComponent from "@/app/components/SignUP/SignupComponent";
 import SignUpComponent2 from "@/app/components/SignUP/SignUpComponent2";
@@ -18,6 +20,8 @@ const Page = () => {
     pin: "",
     verify_pin: "",
     temp_token: "",
+    phone_otp: "",
+    phone_number: "",
   });
   const [page, setPage] = useState(1);
   const router = useRouter();
@@ -34,11 +38,14 @@ const Page = () => {
         <NavbarCommonPage page={"Sign Up"} handleClick={handleClick} />
       </div>
       <div className="w-full">
-        <div className="pt-28 pb-5">
-          <p className="text-[20px] font-poppins leading-7 font-semibold text-center">
-            Welcome to Rupeia!
-          </p>
-        </div>
+        {page != 5 && (
+          <div className="pt-28 pb-5">
+            <p className="text-[20px] font-poppins leading-7 font-semibold text-center">
+              Welcome to Rupeia!
+            </p>
+          </div>
+        )}
+
         <div className="w-full">
           {page == 1 && (
             <SignupComponent
@@ -65,7 +72,7 @@ const Page = () => {
             />
           )}
           {page == 4 && (
-            <SetPin
+            <PhoneNumberComponent
               setFirstPageOnboard={setFirstPageOnboard}
               fistPageOnboard={fistPageOnboard}
               setPage={setPage}
@@ -73,6 +80,22 @@ const Page = () => {
             />
           )}
           {page == 5 && (
+            <PhoneNumberVerify
+              setFirstPageOnboard={setFirstPageOnboard}
+              fistPageOnboard={fistPageOnboard}
+              setPage={setPage}
+              page={page}
+            />
+          )}
+          {page == 6 && (
+            <SetPin
+              setFirstPageOnboard={setFirstPageOnboard}
+              fistPageOnboard={fistPageOnboard}
+              setPage={setPage}
+              page={page}
+            />
+          )}
+          {page == 7 && (
             <VerifyPin
               setFirstPageOnboard={setFirstPageOnboard}
               fistPageOnboard={fistPageOnboard}

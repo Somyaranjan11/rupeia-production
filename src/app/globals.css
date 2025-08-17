@@ -680,6 +680,9 @@ body {
 .chart-svg text tspan {
   text-anchor: middle;
 }
-.recharts-legend-item-text{
+.recharts-legend-item-text {
   font-size: 13px !important;
+}
+.hamburger-menu-class {
+  background: linear-gradient(179.72deg, #551262 0.24%, #270330 63.43%);
 }

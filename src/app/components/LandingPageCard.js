@@ -14,7 +14,7 @@ const LandingPageCard = () => {
       }}
     >
       <div className="pt-5 flex flex-row justify-between relative mt-4">
-        <div className="pl-[30px]">
+        <div className="pl-[20px]">
           <h3 className="text-3xl font-bold bg-gradient-to-b from-[#ffffff] to-[#747474] bg-clip-text text-transparent">
             GROW
           </h3>

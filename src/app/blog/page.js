@@ -43,7 +43,7 @@ const Page = () => {
       </div>
 
       {/* Blog Landing Image */}
-      <div className="mt-8 sm:mt-16 mb-8 sm:mb-11 px-4 sm:px-28 flex justify-center items-center ">
+      <div className="mt-5 sm:mt-16 mb-5 sm:mb-11 px-4 sm:px-28 flex justify-center items-center ">
         <img
           src={blogLandingImage.src}
           alt="Blog landing"
@@ -62,14 +62,14 @@ const Page = () => {
           <AnimateLoader count={4} />
         </div>
       ) : (
-        <div className="flex flex-col gap-5">
-          <div className="pb-5 px-4 sm:px-28">
+        <div className="flex flex-col gap-2 sm:gap-5">
+          <div className="pb-2 sm:pb-5 px-4 sm:px-28">
             <p className="text-[24px] font-normal leading-5 text-black">
               Recent Blogs
             </p>
           </div>
           <div className="w-full overflow-x-auto lg:overflow-x-hidden mx-4 sm:mx-0 sm:px-28 pr-4">
-            <div className="grid grid-cols-3 gap-5  ">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-5  ">
               {blogDetails.length > 0 &&
                 blogDetails?.map((data, index) => (
                   <div

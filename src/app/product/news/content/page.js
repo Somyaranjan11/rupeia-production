@@ -28,7 +28,7 @@ const Page = () => {
   ];
   const router = useRouter();
   const handleClick = () => {
-    router.push("/product/news/content");
+    router.push("/product");
   };
   const [category, setCategory] = useState([]);
   const [loading, setLoading] = useState(true);

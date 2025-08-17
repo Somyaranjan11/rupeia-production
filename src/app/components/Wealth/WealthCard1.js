@@ -118,7 +118,6 @@ const WealthCard1 = ({
           <div className="flex flex-col gap-5 mt-8">
             {goalsCard?.map((data, index) => (
               <div
-              key={index}
                 className={`relative  ${
                   goalDetails?.goalType == data?.name
                     ? "border-[2px] border-white rounded-[20px]"

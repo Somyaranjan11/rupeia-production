@@ -98,8 +98,8 @@ const Page = () => {
 
   return (
     <div className="font-poppins flex flex-col h-screen overflow-hidden">
-      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
-        <NavbarCommonPage page={"Saved by you"} handleClick={handleClick} />
+      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">
+        <NavbarCommonPage page={"Saved by you"} handleClick={handleClick} isBottomShow={false}/>
       </div>
       <div className="overflow-y-auto flex flex-col px-5 pt-20 pb-20">
         <div className="flex flex-row justify-center items-center gap-8 my-4">
@@ -131,9 +131,9 @@ const Page = () => {
           {loading ? (
             <AnimateLoader count={3} />
           ) : currentPage == "blogs" ? (
-            <BlogsCard detailsData={savedBlogs} />
+            <BlogsCard detailsData={savedBlogs} from={"saved-post"} />
           ) : (
-            <NewsCard detailsData={savedNews} />
+            <NewsCard detailsData={savedNews} from={"saved-post"} />
           )}
         </div>
       </div>

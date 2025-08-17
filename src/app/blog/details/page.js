@@ -128,7 +128,7 @@ const Page = () => {
               src={blogDetails?.sectionData?.image}
               className="h-[245px] sm:h-[507px] w-full rounded-3xl"
             />
-            <div className="blogs-inner-page-bg-color absolute h-[507px] top-0 rounded-[20px] w-[60%] pl-[10%] hidden sm:hidden">
+            <div className="blogs-inner-page-bg-color absolute h-[507px] top-0 rounded-[20px] w-[60%] pl-[10%] hidden">
               <div className="flex justify-center flex-col h-full gap-3">
                 <div className="flex flex-row gap-5">
                   <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3 text-[16px] font-semibold leading-6 rounded-lg">
@@ -146,11 +146,11 @@ const Page = () => {
                 </p>
               </div>
             </div>
-            <div className="flex justify-center flex-col h-full gap-3 mt-5 sm:hidden">
+            <div className="flex justify-center flex-col h-full gap-3  sm:hidden">
               <div className="flex flex-row gap-5">
-                <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3  text-[13px] sm:text-[16px] font-semibold leading-6 rounded-lg">
+                {/* <button className="text-[#4C4D55] h-[32px] w-fit px-3  text-[13px] sm:text-[16px] font-semibold leading-6 rounded-lg">
                   {blogDetails?.sectionData?.heading}
-                </button>
+                </button> */}
                 {/* <button className="bg-[#F0E6F1] text-[#4C4D55] h-[32px] w-fit px-3  text-[13px] sm:text-[16px] font-semibold leading-6 rounded-lg">
                 TRENDING
               </button> */}
@@ -165,7 +165,7 @@ const Page = () => {
           </div>
           <div className="w-full flex flex-col sm:flex-row gap-7">
             <div className="w-full sm:w-[25%]">
-              <div className="bg-[#F0E6F1] p-10 rounded-[28px]">
+              <div className="bg-[#F0E6F1]  p-5 md:p-10 rounded-[28px]">
                 <p className="text-[#000000] text-[18px] font-semibold">
                   Contents
                 </p>
@@ -209,10 +209,10 @@ const Page = () => {
               </div>
             </div>
             <div className="w-full sm:w-[55%]">
-              <p className="text-[#4C4D55] text-[36px] font-semibold">
+              <p className="text-[#4C4D55] text-[28px] lg:text-[36px] font-semibold">
                 {blogDetails?.sectionData?.heading}
               </p>
-              <p className="text-[#4C4D55] text-[17px] font-semibold leading-6">
+              <p className="text-[#4C4D55] text-[17px] font-semibold leading-6 mt-2">
                 2nd August 2024 | 6 min read
               </p>
               <p className="text-[#000000] font-normal text-[14px] sm:text-[18px] mt-5">
@@ -235,6 +235,12 @@ const Page = () => {
                         }}
                         className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]"
                       />
+                      {value?.image && (
+                        <div>
+                          <img src={value?.image}  className="h-[400px] w-full"/>
+                        </div>
+                      )}
+
                       {/* <p className="text-[#4C4D55] font-normal text-[14px] sm:text-[18px]">
                       {value?.description}
                     </p> */}

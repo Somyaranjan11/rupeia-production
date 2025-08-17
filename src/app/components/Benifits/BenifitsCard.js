@@ -230,9 +230,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div className="flex flex-col gap-4">
             {allocationFunds?.map((data, index) => (
-              <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full"
-              key={index}
-              >
+              <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full">
                 <div className="flex pr-10 gap-2 items-center">
                   <img src={data?.fundIcon} className="h-[48px] w-[48px]" />
                   <p className="text-[14px] font-medium text-black">
@@ -427,9 +425,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div className="bg-[#400B4B] flex flex-col gap-6 p-6 rounded-3xl">
             {benifitsData.map((data, index) => (
-              <div className="flex flex-row items-center gap-6"
-              key={index}
-              >
+              <div className="flex flex-row items-center gap-6">
                 <div className="bg-[#A76CE8] p-2 h-[45px] w-[45px] rounded-4xl flex flex-col items-center justify-center">
                   <img
                     src={data.image.src}

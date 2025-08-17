@@ -4,6 +4,7 @@ import ButtonLoader from "../Loader/ButtonLoader";
 import axios from "axios";
 import ShowSucessmessages from "../alert/ShowSucessmessages";
 import { useRouter } from "next/navigation";
+import { handleApiError } from "@/app/utility/handleApiError";
 
 const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
   const inputsRef = [useRef(), useRef(), useRef(), useRef()];
@@ -51,8 +52,7 @@ const EnterPin = ({ setFirstPageOnboard, fistPageOnboard, setPage, page }) => {
           getUserData();
         }
       } catch (error) {
-        console.error("❌ Error:", error.response?.data || error.message);
-        ShowErroemessage(error.response?.data?.message);
+        handleApiError(error);
       } finally {
         setLoading(false);
       }

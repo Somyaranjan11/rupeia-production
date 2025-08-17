@@ -1,4 +1,6 @@
+"use client";
 import React from "react";
+import { useState, useEffect } from "react";
 import landingImage from "../../components/Images/stree-free-image-23 (1).png";
 // import downloadRupeia from "../../components/Images/download-rupeia.png";
 import downloadRupeia from "../../components/Images/rupeia-qrcode.jpeg";
@@ -10,6 +12,53 @@ import scheduleMobileImage from "../../components/Images/schedule-mobile-image.p
 import { IoCallOutline } from "react-icons/io5";
 
 const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+  const [isInstalled, setIsInstalled] = useState(false);
+  useEffect(() => {
+    // Detect install prompt availability
+    window.addEventListener("beforeinstallprompt", (event) => {
+      event.preventDefault();
+      setDeferredPrompt(event);
+    });
+
+    // Detect if app is already installed
+    if (window.matchMedia("(display-mode: standalone)").matches) {
+      setIsInstalled(true);
+    }
+
+    // For iOS / Safari PWA detection
+    if (window.navigator.standalone === true) {
+      setIsInstalled(true);
+    }
+
+    // Detect install event (when user actually installs)
+    window.addEventListener("appinstalled", () => {
+      console.log("PWA was installed");
+      setIsInstalled(true);
+      setDeferredPrompt(null);
+    });
+  }, []);
+
+  const investNowFunction = () => {
+    if (isInstalled) {
+      console.log("Already installed");
+      alert("App is already installed on your device!");
+      return;
+    }
+
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      deferredPrompt.userChoice.then((choice) => {
+        if (choice.outcome === "accepted") {
+          console.log("User installed the PWA");
+        } else {
+          console.log("User dismissed the installation");
+        }
+      });
+    } else {
+      alert("Install prompt is not available right now.");
+    }
+  };
   return (
     <div className="px-4 sm:px-16 py-5 sm:py-10 top-page-bg-class">
       <div className="flex justify-center items-center flex-col gap-3 sm:gap-10 mt-10 relative">
@@ -43,6 +92,9 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
             <img
               src={scheduleMobileImage.src}
               className="w-[39px] h-[148px] block sm:hidden"
+              onClick={() => {
+                openScheduleCall();
+              }}
             />
           </div>
         </div>
@@ -84,7 +136,13 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
                 Journey now!
               </p>
             </div>
-            <button className="text-[13px] mt-2 sm:text-[20px] font-semibold w-[130px] sm:w-[200px] px-4 h-[60px] sm:h-[70px] border-[4px] sm:border-[8px] border-[#AF7BB6C7] landing-page-button-shadow bg-[#ECE6ED] rounded-full text-[#270330]">
+            <button
+              className="text-[13px] mt-2 sm:text-[20px] font-semibold w-[130px] sm:w-[200px] px-4 h-[60px] sm:h-[70px] border-[4px] sm:border-[8px] border-[#AF7BB6C7] landing-page-button-shadow bg-[#ECE6ED] rounded-full text-[#270330] cursor-pointer"
+              onClick={() => {
+                investNowFunction();
+              }}
+              type="button"
+            >
               INVEST NOW
             </button>
           </div>

@@ -1,5 +1,6 @@
 import "./globals.css";
 import localFont from "next/font/local";
+import { ServiceWorkerRegister } from "@/lib/serviceWorkerRegister";
 
 import Head from "next/head";
 export const dynamic = "force-dynamic";
@@ -30,14 +31,15 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-      <html lang="en">
-        <Head>
-          {/* ✅ Add the manifest file link */}
-          <link rel="manifest" href="/manifest.json" />
-        </Head>
-        <body className={`${geistSans.variable} ${geistMono.variable}`}>
-          {children}
-        </body>
-      </html>
+    <html lang="en">
+      <Head>
+        {/* ✅ Add the manifest file link */}
+        <link rel="manifest" href="/manifest.json" />
+      </Head>
+      <body className={`${geistSans.variable} ${geistMono.variable}`}>
+        <ServiceWorkerRegister />
+        {children}
+      </body>
+    </html>
   );
 }

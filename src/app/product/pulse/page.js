@@ -5,6 +5,9 @@ import { useRouter } from "next/navigation";
 import { MdAddCircle } from "react-icons/md";
 import AnimateLoader from "@/app/components/Loader/AnimateLoader";
 import axios from "axios";
+import { PiWaveformBold } from "react-icons/pi";
+import pulseBlog from "../../components/Images/DefaultScreen/pulse-blog.png";
+import PulseDefaultScreen from "@/app/components/Sip-Portfolio/PulseDefaultScreen";
 
 const Page = () => {
   const router = useRouter();
@@ -40,18 +43,25 @@ const Page = () => {
     router.push("/product");
   };
   console.log("Summary", Summary);
-  return (
-    <div className="font-poppins flex flex-col h-screen overflow-y-auto plan-card">
-      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
+  console.log(
+    Summary?.overall?.totalReturns?.length > 0 &&
+      Summary?.goals?.returns?.length > 0 &&
+      Summary?.wealth?.returns?.length > 0
+  );
+  return Summary?.overall?.totalReturns?.length > 0 &&
+    Summary?.goals?.returns?.length > 0 &&
+    Summary?.wealth?.returns?.length > 0 ? (
+    <div className="font-poppins flex flex-col h-screen overflow-y-auto bg-[#1A0120]">
+      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">
         <NavbarCommonPage page={"Pulse"} handleClick={handleClick} />
       </div>
       <div className="py-25 px-5">
         <div className=" flex flex-col gap-5">
-          <p className="text-[#FFFFFF] text-[18px] font-semibold">
+          <p className="text-[#FFFFFF] text-[18px] font-semibold pr-10">
             Welcome to your pulse dashboard!
           </p>
           <p className="text-[#FFFFFFB8] text-[15px] font-medium">
-            Let’s analyze your overall profit!
+            Pulse measures your daily performance
           </p>
         </div>
         {loading ? (
@@ -69,19 +79,25 @@ const Page = () => {
                 Last updated on 3 May. Updates at 3:30 pm IST today.
               </p>
             </div>
-            <div className="border-[1px] border-[#916d98] p-3 flex justify-center items-center flex-col gap-1 rounded-3xl">
-              <p className="text-[#FFFFFF] text-[12px] font-medium">
-                Wedding Money
-              </p>
-              <p className="text-[#FFFFFF] text-[22px] font-semibold">
-                {Summary?.goals?.returns} %{" "}
-              </p>
+            <div className="p-[1px] rounded-3xl bg-gradient-to-b from-[#916D98] to-[#302432]">
+              <div className="rounded-3xl bg-[#1A0120] p-3 flex justify-center items-center flex-col gap-1">
+                <p className="text-[#FFFFFF] text-[12px] font-medium">
+                  Wedding Money
+                </p>
+                <p className="text-[#FFFFFF] text-[22px] font-semibold">
+                  {Summary?.goals?.returns} %
+                </p>
+              </div>
             </div>
-            <div className="border-[1px] border-[#916d98] p-3 flex justify-center items-center flex-col gap-1 rounded-3xl">
-              <p className="text-[#FFFFFF] text-[12px] font-medium">Whealth+</p>
-              <p className="text-[#FFFFFF] text-[22px] font-semibold">
-                {Summary?.wealth?.returns}%
-              </p>
+            <div className="p-[1px] rounded-3xl bg-gradient-to-b from-[#916D98] to-[#302432]">
+              <div className="rounded-3xl bg-[#1A0120] p-3 flex justify-center items-center flex-col gap-1">
+                <p className="text-[#FFFFFF] text-[12px] font-medium">
+                  Whealt+
+                </p>
+                <p className="text-[#FFFFFF] text-[22px] font-semibold">
+                  {Summary?.wealth?.returns}%
+                </p>
+              </div>
             </div>
           </div>
         )}
@@ -95,7 +111,16 @@ const Page = () => {
           <MdAddCircle className="text-[21px]" />
           <p className="text-[14px] font-semibold text-[#FFFFFFCC]">Add Goal</p>
         </div>
+        <div className="mt-6">
+          <img
+            src={pulseBlog.src}
+            onClick={() => {
+              router.push("/product/blogs/content");
+            }}
+          />
+        </div>
       </div>
+
       <div className="py-4 px-5 fixed z-50 bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">
         <button
           className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white`}
@@ -108,6 +133,8 @@ const Page = () => {
         </button>
       </div>
     </div>
+  ) : (
+    <PulseDefaultScreen />
   );
 };
 

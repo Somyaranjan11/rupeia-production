@@ -365,7 +365,7 @@ const KYCEmail = ({
               });
             }}
           >
-            Un Married
+            UnMarried
           </button>
         </div>
         {onBoardError?.marital_blank_validation && (

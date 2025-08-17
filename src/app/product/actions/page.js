@@ -9,7 +9,7 @@ const Page = () => {
   };
   return (
     <div className="font-poppins flex flex-col h-screen overflow-y-auto">
-      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
+      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">
         <NavbarCommonPage page={"Actions"} handleClick={handleClick} />
       </div>
       <div className="pt-25 px-5">

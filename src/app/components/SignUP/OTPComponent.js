@@ -3,6 +3,7 @@ import ShowErroemessage from "../alert/ShowErroemessage";
 import axios from "axios";
 import ButtonLoader from "../Loader/ButtonLoader";
 import ShowSucessmessages from "../alert/ShowSucessmessages";
+import { handleApiError } from "@/app/utility/handleApiError";
 
 const OTPComponent = ({
   setFirstPageOnboard,
@@ -32,17 +33,19 @@ const OTPComponent = ({
         );
         console.log("response?.data", response?.data);
         if (response?.data?.success) {
+          ShowSucessmessages("OTP has been verified");
           setFirstPageOnboard({
             ...fistPageOnboard,
             temp_token: response?.data?.data?.tempToken,
           });
-          ShowSucessmessages("OTP has been verified");
-          setPage(page + 1);
+          if (response?.data?.userState == "REGISTRATION_NOT_DONE") {
+            setPage(3);
+          }
         } else {
           console.log("error");
         }
       } catch (error) {
-        console.error("❌ Error:", error.response?.data || error.message);
+        handleApiError(error)
         setError(true);
       } finally {
         setLoading(false);

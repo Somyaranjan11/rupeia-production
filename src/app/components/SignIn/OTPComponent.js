@@ -3,6 +3,7 @@ import ShowErroemessage from "../alert/ShowErroemessage";
 import axios from "axios";
 import ButtonLoader from "../Loader/ButtonLoader";
 import ShowSucessmessages from "../alert/ShowSucessmessages";
+import { handleApiError } from "@/app/utility/handleApiError";
 
 const OTPComponent = ({
   setFirstPageOnboard,
@@ -32,9 +33,33 @@ const OTPComponent = ({
         );
         console.log("response?.data", response?.data);
         if (response?.data?.success) {
-          localStorage.setItem("accessToken", response?.data?.accessToken);
           ShowSucessmessages("OTP has been verified");
-          setPage(page + 1);
+          const userState = response?.data?.user;
+          if (
+            userState?.userAuthState == "PHONE_NOT_VERIFIED" &&
+            userState?.phoneNumber &&
+            userState?.phoneNumber.length > 0
+          ) {
+            sendOTPToMobileNumber(
+              userState?.phoneNumber,
+              response?.data?.accessToken
+            );
+            setFirstPageOnboard({
+              phone_number: userState?.phoneNumber,
+            });
+          } else if (
+            userState?.userAuthState == "PHONE_NOT_VERIFIED" &&
+            !userState?.phoneNumber
+          ) {
+            setPage(3);
+          }
+          if (localStorage.getItem("accessToken")) {
+            localStorage.removeItem("accessToken");
+            localStorage.setItem("accessToken", response?.data?.accessToken);
+          } else {
+            localStorage.setItem("accessToken", response?.data?.accessToken);
+          }
+          // setPage(page + 1);
         } else {
           console.log("error");
         }
@@ -44,6 +69,40 @@ const OTPComponent = ({
       } finally {
         setLoading(false);
       }
+    }
+  };
+  const sendOTPToMobileNumber = async (number, token) => {
+    const payloadData = {
+      phoneNumber: `${number}`,
+    };
+    try {
+      setLoading(true);
+      let token_id = token;
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/otp/request-otp`,
+        payloadData,
+        {
+          headers: {
+            Authorization: `Bearer ${token_id}`, // <-- add Authorization header
+          },
+        }
+      );
+      if (response?.data?.success) {
+        ShowSucessmessages("OTP has send successfully");
+        setPage(4);
+        if (fistPageOnboard?.phone_otp) {
+          setFirstPageOnboard({
+            ...fistPageOnboard,
+            phone_otp: "",
+          });
+        }
+      } else {
+        console.log("error");
+      }
+    } catch (error) {
+      handleApiError(error);
+    } finally {
+      setLoading(false);
     }
   };
   return (

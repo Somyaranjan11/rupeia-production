@@ -8,6 +8,7 @@ import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import axios from "axios";
 import AnimateLoader from "@/app/components/Loader/AnimateLoader";
 import SIPCard from "@/app/components/SIP/SIPCard";
+import portfolioImage from "../../components/Images/DefaultScreen/grow-default.png";
 
 const Page = () => {
   const [currentPage, setCurrentPage] = useState("goal");
@@ -67,8 +68,8 @@ const Page = () => {
     return fundDetails?.find((data) => data?.goalId == goalID);
   }, [fundDetails, goalID]);
   return (
-    <div className="font-poppins flex flex-col h-screen overflow-hidden plan-card">
-      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#551262]">
+    <div className="font-poppins flex flex-col h-screen overflow-hidden bg-[#1A0120]">
+      <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">
         <NavbarCommonPage page={"Portfolio"} handleClick={handleClick} />
       </div>
       {loading ? (
@@ -111,82 +112,87 @@ const Page = () => {
               </div>
             </div>
           </div>
-          <div className="my-4 flex flex-col  w-full">
-            <div className="flex items-center justify-center">
-              {" "}
-              <p className="text-[13px] leading-5 font-medium">
-                All investments
-              </p>
-            </div>
-            <div
-              className={`flex flex-row ${
-                fundDetails?.length > 0 ? "justify-start" : " justify-center"
-              } items-center gap-7 my-2 overflow-x-auto w-full mx-auto pl-4 hide-scrollbar`}
-            >
-              {fundDetails?.length > 0 ? (
-                fundDetails.map((data, index) => (
-                  <div key={index} className="min-w-max">
-                    <p
-                      className={`text-[14px] leading-8 font-medium whitespace-nowrap ${
-                        data?.goalId == goalID && currentPage == "goal"
-                          ? "text-white"
-                          : "text-[#FFFFFF70]"
-                      } `}
-                      onClick={() => {
-                        setGoalId(data?.goalId);
-                        setCurrentPage("goal");
-                      }}
-                    >
-                      {data?.goalTitle}
-                    </p>
-                    {data?.goalId == goalID && currentPage == "goal" && (
-                      <p className="border-[1px]"></p>
-                    )}
-                  </div>
-                ))
-              ) : (
+          {investmentDetails?.funds?.length > 0 &&
+          wealthDetails?.funds?.length > 0 ? (
+            <div className="my-4 flex flex-col  w-full">
+              <div className="flex items-center justify-center">
+                {" "}
+                <p className="text-[13px] leading-5 font-medium">
+                  All investments
+                </p>
+              </div>
+              <div
+                className={`flex flex-row ${
+                  fundDetails?.length > 0 ? "justify-start" : " justify-center"
+                } items-center gap-7 my-2 overflow-x-auto w-full mx-auto pl-4 hide-scrollbar`}
+              >
+                {fundDetails?.length > 0 ? (
+                  fundDetails.map((data, index) => (
+                    <div key={index} className="min-w-max">
+                      <p
+                        className={`text-[14px] leading-8 font-medium whitespace-nowrap ${
+                          data?.goalId == goalID && currentPage == "goal"
+                            ? "text-white"
+                            : "text-[#FFFFFF70]"
+                        } `}
+                        onClick={() => {
+                          setGoalId(data?.goalId);
+                          setCurrentPage("goal");
+                        }}
+                      >
+                        {data?.goalTitle}
+                      </p>
+                      {data?.goalId == goalID && currentPage == "goal" && (
+                        <p className="border-[1px]"></p>
+                      )}
+                    </div>
+                  ))
+                ) : (
+                  <span
+                    className={`text-[14px] leading-7 font-medium whitespace-nowrap min-w-max ${
+                      currentPage == "goal" ? "text-white" : "text-[#FFFFFF70]"
+                    }`}
+                    onClick={() => setCurrentPage("goal")}
+                  >
+                    Goal
+                    {currentPage == "goal" && <p className="border-[1px]"></p>}
+                  </span>
+                )}
                 <span
                   className={`text-[14px] leading-7 font-medium whitespace-nowrap min-w-max ${
-                    currentPage == "goal" ? "text-white" : "text-[#FFFFFF70]"
+                    currentPage == "wealth-creation"
+                      ? "text-white"
+                      : "text-[#FFFFFF70]"
                   }`}
-                  onClick={() => setCurrentPage("goal")}
+                  onClick={() => setCurrentPage("wealth-creation")}
                 >
-                  Goal
-                  {currentPage == "goal" && <p className="border-[1px]"></p>}
+                  Wealth +
+                  {currentPage == "wealth-creation" && (
+                    <p className="border-[1px]"></p>
+                  )}
                 </span>
-              )}
-              <span
-                className={`text-[14px] leading-7 font-medium whitespace-nowrap min-w-max ${
-                  currentPage == "wealth-creation"
-                    ? "text-white"
-                    : "text-[#FFFFFF70]"
-                }`}
-                onClick={() => setCurrentPage("wealth-creation")}
-              >
-                Wealth +
-                {currentPage == "wealth-creation" && (
-                  <p className="border-[1px]"></p>
-                )}
-              </span>
-            </div>
-            {loading ? (
-              <AnimateLoader count={2} />
-            ) : (
-              <div>
-                {currentPage == "goal" ? (
-                  <SIPCard
-                    investmentDetails={investmentDetails}
-                    currentPage={currentPage}
-                  />
-                ) : (
-                  <SIPCard
-                    investmentDetails={wealthDetails}
-                    currentPage={currentPage}
-                  />
-                )}
               </div>
-            )}
-          </div>
+              {loading ? (
+                <AnimateLoader count={2} />
+              ) : (
+                <div>
+                  {currentPage == "goal" ? (
+                    <SIPCard
+                      investmentDetails={investmentDetails}
+                      currentPage={currentPage}
+                    />
+                  ) : (
+                    <SIPCard
+                      investmentDetails={wealthDetails}
+                      currentPage={currentPage}
+                    />
+                  )}
+                </div>
+              )}
+            </div>
+          ) : (
+            <img src={portfolioImage.src} />
+          )}
         </div>
       )}
     </div>

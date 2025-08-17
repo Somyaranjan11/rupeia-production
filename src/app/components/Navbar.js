@@ -10,7 +10,6 @@ import { getUserData } from "../utility/getUserData";
 
 const Navbar = () => {
   const isLoggedIn = checkLogin();
-  console.log("isLoggedIn", isLoggedIn);
   const user = getUserData();
   const [token, setToken] = useState(null);
   const [isOpen, setIsOpen] = useState(false);
@@ -39,23 +38,24 @@ const Navbar = () => {
     {
       id: 2,
       name: "Actions",
-      route: "/product/actions",
+      // route: "/product/actions",
+      route: "/product/pulse/default",
     },
-    {
-      id: 3,
-      name: "Preferences",
-      route: "/product/preferences",
-    },
+    // {
+    //   id: 3,
+    //   name: "Preferences",
+    //   route: "/product/preferences",
+    // },
     {
       id: 4,
       name: "Invite Friends",
       route: "/product/refer",
     },
-    {
-      id: 5,
-      name: "Your Plan",
-      route: "/product/plan",
-    },
+    // {
+    //   id: 5,
+    //   name: "Your Plan",
+    //   route: "/product/plan",
+    // },
     {
       id: 6,
       name: "Customer Support",
@@ -81,11 +81,11 @@ const Navbar = () => {
       name: "Notifications",
       route: "/product/notifications",
     },
-    {
-      id: 12,
-      name: "My Manager",
-      route: "/product/my-manager",
-    },
+    // {
+    //   id: 12,
+    //   name: "My Manager",
+    //   route: "/product/my-manager",
+    // },
   ];
 
   // Close the popup when clicking outside
@@ -192,7 +192,7 @@ const Navbar = () => {
         {isLoggedIn ? (
           <div
             onClick={() => {
-              router.push("/product/profile");
+              router.push("/product/wealth");
             }}
             className="flex flex-row items-center gap-1.5"
           >
@@ -298,8 +298,16 @@ const Navbar = () => {
                     className="text-[13px] font-poppins font-medium leading-7 text-[#ECE6ED]"
                     onClick={() => {
                       if (data?.route) {
-                        router.push(data?.route);
-                        setIsOpen(false);
+                        if (isLoggedIn) {
+                          router.push(data?.route);
+                          setIsOpen(false);
+                        } else {
+                          if (data.route == "/product/terms-condition") {
+                            router.push(data?.route);
+                          } else {
+                            router.push("/product/login");
+                          }
+                        }
                       }
                     }}
                   >

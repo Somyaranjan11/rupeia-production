@@ -19,7 +19,7 @@ const KYCPersonalInfromation2 = ({
     {
       id: 2,
       name: "Professional",
-      value: "professional",
+      value: "service",
     },
     {
       id: 3,
@@ -34,17 +34,17 @@ const KYCPersonalInfromation2 = ({
     {
       id: 5,
       name: "Public Sector",
-      value: "public_sector",
+      value: "public_sector_service",
     },
     {
       id: 6,
       name: "Private Sector",
-      value: "private_sector",
+      value: "private_sector_service",
     },
     {
       id: 7,
       name: "Government Sector",
-      value: "government_sector",
+      value: "government_service",
     },
     {
       id: 8,

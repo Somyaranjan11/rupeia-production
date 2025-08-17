@@ -5,6 +5,8 @@ import ShowErroemessage from "../alert/ShowErroemessage";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "@/app/utility/firebase";
 import axios from "axios";
+import { handleApiError } from "@/app/utility/handleApiError";
+import ButtonLoader from "../Loader/ButtonLoader";
 
 const SceduleCall = ({ closeScheduleCall = () => {} }) => {
   const [formData, setFormData] = useState({
@@ -18,16 +20,61 @@ const SceduleCall = ({ closeScheduleCall = () => {} }) => {
 
   const submitButton = async () => {
     try {
-      setLoading(true);
-      try {
-        if (localStorage.getItem("accessTokenForLandingPage").length > 0) {
+      if (localStorage.getItem("accessTokenForLandingPage")?.length > 0) {
+        const now = new Date();
+        const date = now.toLocaleDateString("en-GB").split("/").join("-"); // "dd-mm-yyyy"
+        const time = now.toLocaleTimeString("en-US", {
+          hour: "numeric",
+          minute: "2-digit",
+          hour12: true,
+        });
+        // ✅ Prepare data for schedule call API
+        const scheduleCallData = {
+          phoneNumber: formData.phone_number,
+          date: date,
+          time: time,
+          issueDescription: formData?.any_thing_else_word,
+          language: formData?.language,
+        };
+        const accessToken = localStorage.getItem("accessTokenForLandingPage");
+        const scheduleCallResponse = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/schedule-call-web/`,
+          scheduleCallData,
+          {
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+              "Content-Type": "application/json",
+            },
+          }
+        );
+        console.log("📞 Schedule Call Response:", scheduleCallResponse?.data);
+      } else {
+        const result = await signInWithPopup(auth, provider);
+        const user = result.user;
+        const email = user.email;
+        const fullName = user.displayName || "";
+        const photoUrl = user.photoURL;
+        const [firstName, lastName] = fullName.split(" ");
+
+        const payloadData = {
+          email: email,
+          firstName: firstName,
+          lastName: lastName,
+          referralCode: "",
+          googlePhotoUrl: photoUrl,
+        };
+        const response = await axios.post(
+          `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/oauth/google`,
+          payloadData
+        );
+        if (response?.data?.success) {
+          ShowSucessmessages(response?.data?.message);
+          const accessToken = response?.data?.accessToken;
+          // Save token to local storage
+          localStorage.setItem("accessTokenForLandingPage", accessToken);
           const now = new Date();
           const date = now.toLocaleDateString("en-GB").split("/").join("-"); // "dd-mm-yyyy"
-          const time = now.toLocaleTimeString("en-US", {
-            hour: "numeric",
-            minute: "2-digit",
-            hour12: true,
-          });
+          const time = now.toTimeString().slice(0, 5); // "HH:MM"
           // ✅ Prepare data for schedule call API
           const scheduleCallData = {
             phoneNumber: formData.phone_number,
@@ -36,7 +83,6 @@ const SceduleCall = ({ closeScheduleCall = () => {} }) => {
             issueDescription: formData?.any_thing_else_word,
             language: formData?.language,
           };
-          const accessToken = localStorage.getItem("accessTokenForLandingPage");
           const scheduleCallResponse = await axios.post(
             `${process.env.NEXT_PUBLIC_API_BASE_URL}/schedule-call-web/`,
             scheduleCallData,
@@ -48,74 +94,22 @@ const SceduleCall = ({ closeScheduleCall = () => {} }) => {
             }
           );
           console.log("📞 Schedule Call Response:", scheduleCallResponse?.data);
-        } else {
-          const result = await signInWithPopup(auth, provider);
-          const user = result.user;
-          const email = user.email;
-          const fullName = user.displayName || "";
-          const photoUrl = user.photoURL;
-          const [firstName, lastName] = fullName.split(" ");
-
-          const payloadData = {
-            email: email,
-            firstName: firstName,
-            lastName: lastName,
-            referralCode: "",
-            googlePhotoUrl: photoUrl,
-          };
-          const response = await axios.post(
-            `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/oauth/google`,
-            payloadData
-          );
-          if (response?.data?.success) {
-            ShowSucessmessages(response?.data?.message);
-            const accessToken = response?.data?.accessToken;
-            // Save token to local storage
-            localStorage.setItem("accessTokenForLandingPage", accessToken);
-            const now = new Date();
-            const date = now.toLocaleDateString("en-GB").split("/").join("-"); // "dd-mm-yyyy"
-            const time = now.toTimeString().slice(0, 5); // "HH:MM"
-            // ✅ Prepare data for schedule call API
-            const scheduleCallData = {
-              phoneNumber: formData.phone_number,
-              date: date,
-              time: time,
-              issueDescription: formData?.any_thing_else_word,
-              language: formData?.language,
-            };
-            const scheduleCallResponse = await axios.post(
-              `${process.env.NEXT_PUBLIC_API_BASE_URL}/schedule-call-web/`,
-              scheduleCallData,
-              {
-                headers: {
-                  Authorization: `Bearer ${accessToken}`,
-                  "Content-Type": "application/json",
-                },
-              }
-            );
-            console.log(
-              "📞 Schedule Call Response:",
-              scheduleCallResponse?.data
-            );
-          }
         }
-      } catch (error) {
-        console.error("❌ Error:", error.response?.data || error.message);
-        ShowErroemessage(error.response?.data?.message);
       }
     } catch (error) {
-      console.error("❌ Error during login:", error);
+      console.error("❌ Error:", error.response?.data || error.message);
+      handleApiError(error);
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <div className="absolute bg-[#000000BA] min-h-screen w-screen  z-50 top-20 flex justify-center items-center ">
-      <div className="schedule-call w-[491px] h-fit rounded-[15px] ">
+    <div className="absolute bg-[#000000BA] min-h-screen w-screen  z-50 top-32 sm:top-20 flex justify-center items-center ">
+      <div className="schedule-call w-[90%] sm:w-[491px] h-fit rounded-[15px] ">
         <div className="flex justify-between border-b-[1px] border-[#916D98] p-5">
           <div>
-            <p className="schedule-text text-[20px] font-medium">
+            <p className="schedule-text text-[17px] sm:text-[20px] font-medium">
               Schedule a call with us!
             </p>
           </div>
@@ -128,7 +122,7 @@ const SceduleCall = ({ closeScheduleCall = () => {} }) => {
           />
         </div>
         <div className="flex flex-col gap-5 px-5 pb-5 mt-2 w-full">
-          <div className="flex justify-between items-center w-full mt-6 gap-10">
+          <div className="flex justify-between items-center w-full mt-6 gap-4 sm:gap-10">
             <div className="flex flex-col gap-2 w-full">
               <p className="text-[15px] font-medium">First Name</p>
               <input
@@ -166,10 +160,10 @@ const SceduleCall = ({ closeScheduleCall = () => {} }) => {
               />
             </div>
           </div>
-          <div className="flex justify-between items-center w-full gap-10">
+          <div className="flex justify-between items-center w-full gap-4 sm:gap-10">
             <div className="flex flex-col gap-2 w-full">
-              <p className="text-[15px] font-medium">First Name</p>
-              <div className="flex justify-between w-full gap-10">
+              <p className="text-[15px] font-medium">Language</p>
+              <div className="flex justify-between w-full gap-4 sm:gap-10">
                 <button
                   type="button"
                   className={` cursor-pointer h-[48px] w-[100%] rounded-4xl text-[16px] font-medium px-2 focus:outline-none ${
@@ -219,12 +213,12 @@ const SceduleCall = ({ closeScheduleCall = () => {} }) => {
           </div>
           <div className="flex justify-center items-center pb-5">
             <button
-              className="bg-[#551262] h-[57px] w-[191px] rounded-[12px] cursor-pointer"
+              className="bg-[#551262] h-[47px] sm:h-[57px] w-[191px] rounded-[12px] cursor-pointer"
               onClick={() => {
                 submitButton();
               }}
             >
-              Schedule a call
+              {loading ? <ButtonLoader /> : "Schedule a call"}
             </button>
           </div>
         </div>

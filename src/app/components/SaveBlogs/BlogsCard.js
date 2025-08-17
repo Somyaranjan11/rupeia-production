@@ -3,8 +3,10 @@ import Share from "@/app/icons/Share";
 import React from "react";
 import { CiHeart } from "react-icons/ci";
 import BlogImage from "../../components/Images/blogs-content.png";
+import blogsDefault from "../../components/Images/DefaultScreen/blogs-like-default.png";
+import blogsSaveDefault from "../../components/Images/DefaultScreen/blogs-default.png";
 
-const BlogsCard = ({ detailsData }) => {
+const BlogsCard = ({ detailsData, from = "" }) => {
   const handleShare = async () => {
     const shareData = {
       title: "Check this out!",
@@ -25,7 +27,7 @@ const BlogsCard = ({ detailsData }) => {
   };
   return (
     <div className="flex flex-col gap-3">
-      {detailsData?.length > 0 &&
+      {detailsData?.length > 0 ? (
         detailsData?.map((data, index) => (
           <div className=" recomended-blogs p-3 rounded-2xl" key={index}>
             <div className="flex items-center gap-2 ">
@@ -61,7 +63,16 @@ const BlogsCard = ({ detailsData }) => {
               </div>
             </div>
           </div>
-        ))}
+        ))
+      ) : (
+        <div>
+          {from == "saved-post" ? (
+            <img src={blogsSaveDefault.src} />
+          ) : (
+            <img src={blogsDefault.src} />
+          )}
+        </div>
+      )}
     </div>
   );
 };

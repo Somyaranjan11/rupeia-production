@@ -81,13 +81,13 @@ const Page = () => {
           </span>
         </div>
         <div className="h-full w-auto mt-3 overflow-y-hidden overflow-x-auto flex gap-3  mb-12 ml-5 ">
-          <div className="min-w-[270px]">
+          <div className="min-w-[280px]">
             <LandingPageCard />
           </div>
-          <div className="min-w-[270px]">
+          <div className="min-w-[280px]">
             <LandingPageNewsCard />
           </div>
-          <div className="min-w-[270px]">
+          <div className="min-w-[280px]">
             <LandingPageBlogsCard />
           </div>
         </div>

@@ -3,6 +3,7 @@ import ButtonLoader from "../Loader/ButtonLoader";
 import ShowErroemessage from "../alert/ShowErroemessage";
 import ShowSucessmessages from "../alert/ShowSucessmessages";
 import axios from "axios";
+import { handleApiError } from "@/app/utility/handleApiError";
 
 const SignUpComponent2 = ({
   setFirstPageOnboard,
@@ -54,18 +55,15 @@ const SignUpComponent2 = ({
           `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/register`,
           payloadData
         );
-        console.log("response?.data", response?.data);
         if (response?.data?.success) {
-          ShowSucessmessages("Registration completed");
-          localStorage.setItem(
-            "accessToken",
-            response?.data?.accessToken
-          );
-          setPage(page + 1);
+          ShowSucessmessages("Registration is completed");
+          localStorage.setItem("accessToken", response?.data?.accessToken);
+          if (response?.data?.user?.userAuthState == "PHONE_NOT_VERIFIED") {
+            setPage(4);
+          }
         }
       } catch (error) {
-        console.error("❌ Error:", error.response?.data || error.message);
-        ShowErroemessage("Unable to register. Please try again");
+        handleApiError(error);
       } finally {
         setLoading(false);
       }

@@ -10,8 +10,15 @@ import { signInWithPopup } from "firebase/auth";
 import ShowSucessmessages from "../alert/ShowSucessmessages";
 import ShowErroemessage from "../alert/ShowErroemessage";
 import axios from "axios";
+import { handleApiError } from "@/app/utility/handleApiError";
+import ButtonLoader from "../Loader/ButtonLoader";
 
-const LoginComponent = () => {
+const LoginComponent = ({
+  setFirstPageOnboard,
+  fistPageOnboard,
+  setPage,
+  page,
+}) => {
   const router = useRouter();
   const [loading, setLoading] = useState(false);
   const handleLogin = async () => {
@@ -23,11 +30,6 @@ const LoginComponent = () => {
       const fullName = user.displayName || ""; // e.g. "John Doe"
       const photoUrl = user.photoURL;
       const [firstName, lastName] = fullName.split(" ");
-      console.log("Email:", email);
-      console.log("First Name:", firstName);
-      console.log("Last Name:", lastName);
-      console.log("Google Photo URL:", photoUrl);
-
       const payloadData = {
         email: email,
         firstName: firstName,
@@ -44,12 +46,34 @@ const LoginComponent = () => {
         console.log("response?.data", response?.data);
         if (response?.data?.success) {
           ShowSucessmessages(response?.data?.message);
-          localStorage.setItem("accessToken", response?.data?.accessToken);
-          getUserData(response?.data?.accessToken);
+          const userState = response?.data?.user;
+          if (
+            userState?.userAuthState == "PHONE_NOT_VERIFIED" &&
+            userState?.phoneNumber &&
+            userState?.phoneNumber.length > 0
+          ) {
+            sendOTPToMobileNumber(
+              userState?.phoneNumber,
+              response?.data?.accessToken
+            );
+            setFirstPageOnboard({
+              phone_number: userState?.phoneNumber,
+            });
+          } else if (
+            userState?.userAuthState == "PHONE_NOT_VERIFIED" &&
+            !userState?.phoneNumber
+          ) {
+            setPage(3);
+          }
+          if (localStorage.getItem("accessToken")) {
+            localStorage.removeItem("accessToken");
+            localStorage.setItem("accessToken", response?.data?.accessToken);
+          } else {
+            localStorage.setItem("accessToken", response?.data?.accessToken);
+          }
         }
       } catch (error) {
-        console.error("❌ Error:", error.response?.data || error.message);
-        ShowErroemessage(error.response?.data?.message);
+        handleApiError(error);
       } finally {
         setLoading(false);
       }
@@ -59,24 +83,41 @@ const LoginComponent = () => {
       setLoading(false);
     }
   };
-  const getUserData = async (token) => {
-    let token_id = token ? token : localStorage.getItem("accessToken");
+  const sendOTPToMobileNumber = async (number, token) => {
+    const payloadData = {
+      phoneNumber: `${number}`,
+    };
     try {
-      const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/auth/me`,
+      setLoading(true);
+      let token_id = token;
+      const response = await axios.post(
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/otp/request-otp`,
+        payloadData,
         {
           headers: {
             Authorization: `Bearer ${token_id}`, // <-- add Authorization header
           },
         }
       );
-      console.log("✅ Response:", response.data);
-      localStorage.setItem("userData", JSON.stringify(response?.data?.user));
-      router.push("/product");
+      if (response?.data?.success) {
+        ShowSucessmessages("OTP has send successfully");
+        setPage(2);
+        if (fistPageOnboard?.phone_otp) {
+          setFirstPageOnboard({
+            ...fistPageOnboard,
+            phone_otp: "",
+          });
+        }
+      } else {
+        console.log("error");
+      }
     } catch (error) {
-      console.error("❌ Error:", error.response?.data || error.message);
+      handleApiError(error);
+    } finally {
+      setLoading(false);
     }
   };
+
   return (
     <div className="bg-[#D9B9E2] p-5 flex flex-col gap-2 rounded-t-xl">
       <div
@@ -86,9 +127,13 @@ const LoginComponent = () => {
         <span>
           <FcGoogle />
         </span>
-        <p className="text-[13px] font-medium leading-5 text-white">
-          Continue with Google
-        </p>
+        {loading ? (
+          <ButtonLoader />
+        ) : (
+          <p className="text-[13px] font-medium leading-5 text-white">
+            Continue with Google
+          </p>
+        )}
       </div>
       <div
         className="bg-[#270330] rounded-2xl flex justify-center items-center gap-2 py-2"

@@ -2,7 +2,11 @@
 import NavbarCommonPage from "@/app/components/NavbarCommonPage";
 import EnterPin from "@/app/components/SignIn/EnterPin";
 import OTPComponent from "@/app/components/SignIn/OTPComponent";
+import PhoneNumberComponent from "@/app/components/SignIn/PhoneNumberComponent";
+import PhoneNumberVerify from "@/app/components/SignIn/PhoneNumberVerify";
+import SetPin from "@/app/components/SignIn/SetPin";
 import SignInComponent from "@/app/components/SignIn/SignInComponent";
+import VerifyPin from "@/app/components/SignIn/VerifyPin";
 import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 
@@ -10,15 +14,19 @@ const Page = () => {
   const [fistPageOnboard, setFirstPageOnboard] = useState({
     email_id: "",
     pin: "",
-    otp: "",
+    phone_otp: "",
+    phone_number: "",
+    pin: "",
+    verify_pin: "",
   });
   const [page, setPage] = useState(1);
   const router = useRouter();
   const handleClick = () => {
-    if (page > 1 && page < 3) {
+    if (page > 1 && page < 4) {
       setPage(page - 1);
     }
   };
+  console.log("fistPageOnboard",fistPageOnboard)
   return (
     <div className="flex justify-between flex-col h-full w-full overflow-hidden">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">
@@ -48,6 +56,38 @@ const Page = () => {
             />
           )}
           {page == 3 && (
+            <PhoneNumberComponent
+              setFirstPageOnboard={setFirstPageOnboard}
+              fistPageOnboard={fistPageOnboard}
+              setPage={setPage}
+              page={page}
+            />
+          )}
+          {page == 4 && (
+            <PhoneNumberVerify
+              setFirstPageOnboard={setFirstPageOnboard}
+              fistPageOnboard={fistPageOnboard}
+              setPage={setPage}
+              page={page}
+            />
+          )}
+          {page == 5 && (
+            <SetPin
+              setFirstPageOnboard={setFirstPageOnboard}
+              fistPageOnboard={fistPageOnboard}
+              setPage={setPage}
+              page={page}
+            />
+          )}
+          {page == 6 && (
+            <VerifyPin
+              setFirstPageOnboard={setFirstPageOnboard}
+              fistPageOnboard={fistPageOnboard}
+              setPage={setPage}
+              page={page}
+            />
+          )}
+          {page == 7 && (
             <EnterPin
               setFirstPageOnboard={setFirstPageOnboard}
               fistPageOnboard={fistPageOnboard}

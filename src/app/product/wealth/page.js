@@ -264,7 +264,7 @@ const Page = () => {
                 setPageStep(pageStep + 1);
               }
               if (pageStep == 6) {
-                router.push("/product");
+                router.push("/product/kyc");
               }
             }}
           >
