@@ -118,6 +118,8 @@ const KYCPersonalInfromation2 = ({
       country_of_birth: "in",
       place_of_birth: "in",
       pep_details: "not_applicable",
+      income_slab: thirdPageOnboard?.income_slab,
+      occupation_type: thirdPageOnboard?.occupation_type,
     };
     const token = localStorage.getItem("accessToken");
     const kyc_id = localStorage.getItem("kyc_id");
@@ -183,7 +185,7 @@ const KYCPersonalInfromation2 = ({
               localStorage.setItem("profile_id", res2?.data?.id);
               localStorage.setItem("kyc_status", res1?.data?.status);
             }
-            setPageStep(4);
+            setPageStep(5);
           }
         })
       )

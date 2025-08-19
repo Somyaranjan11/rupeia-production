@@ -115,7 +115,7 @@ const KYCAllNominee = ({ setPageStep, mfDetails, sevenPageOnboard }) => {
         </span>
         <p className="text-[#FFFFFFCC] text-[15px]">Add nominee</p>
       </div>
-       <div className=" border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-tl-[38px] rounded-tr-[38px]  border-t-[1px] rounded-4xl">
+      <div className=" border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-tl-[38px] rounded-tr-[38px]  border-t-[1px] rounded-4xl">
         <button
           className={` bg-[#551262] w-full  py-2 rounded-full text-[14px] leading-7 font-medium text-white`}
           type="button"

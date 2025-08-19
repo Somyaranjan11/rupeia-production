@@ -15,9 +15,12 @@ import WealthMobileImage2 from "../../components/Images/wealth-mobile-image2.png
 import WealthMobileImage3 from "../../components/Images/wealth-mobile-image3.png";
 import WealthMobileImage4 from "../../components/Images/welath-mobile-image4.png";
 
-const Benifits = () => {
+const Benifits = ({ id }) => {
   return (
-    <div className="wealth-backgroud flex flex-col gap-10 border-t-[0.5px] sm:border-none border-[#8D6F92] py-10 sm:py-20 px-4 sm:px-28">
+    <div
+      className="wealth-backgroud flex flex-col gap-10 border-t-[0.5px] sm:border-none border-[#8D6F92] py-10 sm:py-20 px-4 sm:px-28"
+      id={id}
+    >
       <div className="flex flex-col gap-10">
         <div className="flex flex-col">
           <p className="text-[32px] sm:text-[53px] font-semibold tracking-wide text-[#ECE6ED] text-center leading-[100%] ">

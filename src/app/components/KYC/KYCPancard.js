@@ -61,20 +61,18 @@ const KYCPancard = ({
         pan_number_blank_validation: false,
         pan_number_invalid_format: true,
       });
-    }
-    // else if (fistPageOnboard?.aadhaar_number == "") {
-    //   setOnBoardError({
-    //     ...onBoardError,
-    //     aadhaar_number_blank_validation: true,
-    //   });
-    // } else if (!/^\d{12}$/.test(fistPageOnboard?.aadhaar_number)) {
-    //   setOnBoardError({
-    //     ...onBoardError,
-    //     aadhaar_number_blank_validation: false,
-    //     aadhaar_number_invalid_format: true,
-    //   });
-    // }
-    else {
+    } else if (fistPageOnboard?.aadhaar_number == "") {
+      setOnBoardError({
+        ...onBoardError,
+        aadhaar_number_blank_validation: true,
+      });
+    } else if (!/^\d{4}$/.test(fistPageOnboard?.aadhaar_number)) {
+      setOnBoardError({
+        ...onBoardError,
+        aadhaar_number_blank_validation: false,
+        aadhaar_number_invalid_format: true,
+      });
+    } else {
       createKycRequest();
     }
   };
@@ -83,6 +81,7 @@ const KYCPancard = ({
     const payloadData = {
       name: fistPageOnboard?.name,
       pan: fistPageOnboard?.pan_number,
+      aadhaar_number: fistPageOnboard?.aadhaar_number,
       date_of_birth: fistPageOnboard?.dob,
       email: fistPageOnboard?.email_id,
       mobile: {
@@ -331,12 +330,12 @@ const KYCPancard = ({
         )}
       </div>
       {/* Aadhaar Number */}
-      {/* <div>
+      <div className="mb-24"> 
         <p className="text-[14px] font-medium leading-7 font-poppins">
           Aadhaar Number *
         </p>
         <input
-          placeholder="Please enter your aadhaar Number"
+          placeholder="Please enter your last 4 digit of aadhaar Number"
           className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 h-[45px] w-full rounded-3xl focus:outline-none"
           type="text"
           value={fistPageOnboard?.aadhaar_number}
@@ -358,7 +357,7 @@ const KYCPancard = ({
               });
             }
           }}
-          maxLength={12}
+          maxLength={4}
         />
         {onBoardError?.aadhaar_number_blank_validation && (
           <p className="text-[14px] font-normal text-red-400 mt-1">
@@ -370,7 +369,7 @@ const KYCPancard = ({
             Please enter a valid aadhar number
           </p>
         )}
-      </div> */}
+      </div>
       <div className=" border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-tl-[38px] rounded-tr-[38px]  border-t-[1px] rounded-4xl">
         <button
           className={` bg-[#551262] w-full  py-2 rounded-full text-[14px] leading-7 font-medium text-white ${

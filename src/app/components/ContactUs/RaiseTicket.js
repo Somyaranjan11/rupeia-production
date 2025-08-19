@@ -4,6 +4,7 @@ import Categories from "../Ticket/Categories";
 import TicketCategories from "./TicketCategories";
 import FAQS from "./FAQS";
 import SubmitQuery from "./SubmitQuery";
+import SuccessMessage from "./SuccessMessage";
 const RaiseTicket = ({ closePopUp = () => {} }) => {
   const [categoriesValue, setCategoriesValue] = useState("");
   const [step, setStep] = useState(1);
@@ -35,7 +36,8 @@ const RaiseTicket = ({ closePopUp = () => {} }) => {
           {step == 2 && (
             <FAQS categoriesValue={categoriesValue} setStep={setStep} />
           )}
-          {step == 3 && <SubmitQuery categoriesValue={categoriesValue}/>}
+          {step == 3 && <SubmitQuery categoriesValue={categoriesValue} setStep={setStep}/>}
+          {step == 4 && <SuccessMessage />}
         </div>
       </div>
     </div>

@@ -28,7 +28,7 @@ const Page = () => {
   const handleClick = () => {
     if (page == 1) {
       router.push("/product/login");
-    } else if (page > 1) {
+    } else if (page > 1 && page < 8) {
       setPage(page - 1);
     }
   };

@@ -93,7 +93,7 @@ const KYCBankDetails = ({
             payout_bank_account: res1?.data?.id,
           });
           ShowSucessmessages("Bank Details added");
-          setPageStep(6);
+          setPageStep(7);
         }
       })
       .catch((error) => {

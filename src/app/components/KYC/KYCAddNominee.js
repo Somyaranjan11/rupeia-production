@@ -27,7 +27,7 @@ const KYCAddNominee = ({ setPageStep }) => {
           className={` bg-[#551262] w-full py-2 rounded-full text-[14px] leading-7 font-medium text-white cursor-pointer`}
           type="button"
           onClick={() => {
-            setPageStep(7);
+            setPageStep(8);
           }}
         >
           {"Continue"}

@@ -16,7 +16,7 @@ const NavbarCommonPage = ({
   const router = useRouter();
   return (
     <div
-      className={`flex flex-row items-center justify-between py-6 font-poppins relative ${
+      className={`flex flex-row items-center justify-between py-6 px-4 font-poppins relative ${
         isBottomShow ? "border-b-[0.5px]" : ""
       }`}
     >

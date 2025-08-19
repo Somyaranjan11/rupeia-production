@@ -1,4 +1,5 @@
 "use client";
+import EsignUpload from "@/app/components/KYC/EsignUpload";
 import KYCAddessInformation from "@/app/components/KYC/KYCAddessInformation";
 import KYCAddNominee from "@/app/components/KYC/KYCAddNominee";
 import KYCAllNominee from "@/app/components/KYC/KYCAllNominee";
@@ -84,12 +85,15 @@ const Page = () => {
         <div>
           <p className="text-[16px] leading-7 font-semibold">
             {pageStep == 1 && "KYC Verification"}
-            {(pageStep == 2 || pageStep == 3) && "Personal Information"}
-            {pageStep == 4 && "Address Information"}
-            {pageStep == 5 && "Manage Bank"}
-            {pageStep == 6 && "Nominee"}
-            {pageStep == 7 && "Add Nominee"}
+            {pageStep == 2 && "Personal Information"}
+            {pageStep == 3 && "E sign"}
+
+            {pageStep == 4 && "Personal Information"}
+            {pageStep == 5 && "Address Information"}
+            {pageStep == 6 && "Manage Bank"}
+            {pageStep == 7 && "Nominee"}
             {pageStep == 8 && "Add Nominee"}
+            {pageStep == 9 && "Add Nominee"}
           </p>
         </div>
         <div
@@ -121,7 +125,8 @@ const Page = () => {
             fistPageOnboard={fistPageOnboard}
           />
         )}{" "}
-        {pageStep == 3 && (
+        {pageStep == 3 && <EsignUpload  setPageStep={setPageStep}/>}
+        {pageStep == 4 && (
           <KYCPersonalInfromation2
             setThirdPageOnboard={setThirdPageOnboard}
             thirdPageOnboard={thirdPageOnboard}
@@ -130,7 +135,7 @@ const Page = () => {
             setPageStep={setPageStep}
           />
         )}
-        {pageStep == 4 && (
+        {pageStep == 5 && (
           <KYCAddessInformation
             setFourthPageOnboard={setFourthPageOnboard}
             fourthPageOnboard={fourthPageOnboard}
@@ -140,7 +145,7 @@ const Page = () => {
             mfDetails={mfDetails}
           />
         )}
-        {pageStep == 5 && (
+        {pageStep == 6 && (
           <KYCBankDetails
             setFifthPageOnboard={setFifthPageOnboard}
             fifthPageOnboard={fifthPageOnboard}
@@ -149,8 +154,8 @@ const Page = () => {
             mfDetails={mfDetails}
           />
         )}
-        {pageStep == 6 && <KYCAddNominee setPageStep={setPageStep} />}
-        {pageStep == 7 && (
+        {pageStep == 7 && <KYCAddNominee setPageStep={setPageStep} />}
+        {pageStep == 8 && (
           <KYCNomineeForm
             setSevenPageOnboard={setSevenPageOnboard}
             sevenPageOnboard={sevenPageOnboard}
@@ -159,7 +164,13 @@ const Page = () => {
             mfDetails={mfDetails}
           />
         )}
-        {pageStep == 8 && <KYCAllNominee setPageStep={setPageStep} mfDetails={mfDetails} sevenPageOnboard={sevenPageOnboard} />}
+        {pageStep == 9 && (
+          <KYCAllNominee
+            setPageStep={setPageStep}
+            mfDetails={mfDetails}
+            sevenPageOnboard={sevenPageOnboard}
+          />
+        )}
       </div>
       {/* {pageStep > 5 && (
         <div className="border-[1px] border-[#65636394] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full rounded-3xl ">

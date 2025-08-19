@@ -28,7 +28,7 @@ const TicketCategories = ({ setCategoriesValue, categoriesValue, setStep }) => {
     },
   ];
   const [isDifferentQuery, setIsDifferentQuery] = useState(false);
-  console.log("categoriesValue", isDifferentQuery);
+  console.log("categoriesValue", categoriesValue);
   return (
     <div>
       <div className=" h-fit flex flex-row flex-wrap items-center gap-1 ">
@@ -52,6 +52,8 @@ const TicketCategories = ({ setCategoriesValue, categoriesValue, setStep }) => {
               className={`h-[42px] w-[255px] flex cursor-pointer justify-center items-center rounded-full border-[1px] border-[#7474744A] ${
                 categoriesValue == data?.name
                   ? "bg-white text-black"
+                  : categoriesValue == "" && isDifferentQuery && data?.id == 6
+                  ? "bg-white text-black"
                   : "text-white"
               }`}
               onClick={() => {
@@ -59,6 +61,7 @@ const TicketCategories = ({ setCategoriesValue, categoriesValue, setStep }) => {
                   setCategoriesValue(data?.name);
                   setIsDifferentQuery(false);
                 } else {
+                  setCategoriesValue("");
                   setIsDifferentQuery(true);
                 }
               }}
@@ -67,7 +70,7 @@ const TicketCategories = ({ setCategoriesValue, categoriesValue, setStep }) => {
             </div>
           ))}
         </div>
-        <div className="flex justify-center items-center mb-7 mt-2">
+        <div className="flex justify-center items-center mb-7 mt-2 ">
           <button
             className={` rounded-[12px] h-[50px] w-[191px] ${
               categoriesValue == "" && !isDifferentQuery

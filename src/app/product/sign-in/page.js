@@ -22,11 +22,11 @@ const Page = () => {
   const [page, setPage] = useState(1);
   const router = useRouter();
   const handleClick = () => {
-    if (page > 1 && page < 4) {
-      setPage(page - 1);
+    if (page > 1) {
+      setPage(1);
     }
   };
-  console.log("fistPageOnboard",fistPageOnboard)
+  console.log("fistPageOnboard", fistPageOnboard);
   return (
     <div className="flex justify-between flex-col h-full w-full overflow-hidden">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">

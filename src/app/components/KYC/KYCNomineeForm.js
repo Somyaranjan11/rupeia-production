@@ -84,7 +84,7 @@ const KYCNomineeForm = ({
             nominee1: response?.data?.id,
           });
           ShowSucessmessages("Nominee details added");
-          setPageStep(8);
+          setPageStep(9);
         }
       })
       .catch((error) => {

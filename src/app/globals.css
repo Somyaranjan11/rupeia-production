@@ -686,3 +686,6 @@ body {
 .hamburger-menu-class {
   background: linear-gradient(179.72deg, #551262 0.24%, #270330 63.43%);
 }
+.submitted-success-message {
+  background: linear-gradient(179.72deg, #551262 0.24%, #270330 63.43%);
+}

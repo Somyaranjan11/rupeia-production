@@ -7,9 +7,9 @@ import axios from "axios";
 import ShowSucessmessages from "../alert/ShowSucessmessages";
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "@/app/utility/firebase";
+import { handleApiError } from "@/app/utility/handleApiError";
 
-
-const SubmitQuery = ({ categoriesValue }) => {
+const SubmitQuery = ({ categoriesValue, setStep }) => {
   const router = useRouter();
   const [isEmail, setIsEmail] = useState("email");
   const [query, setQuery] = useState("");
@@ -25,9 +25,9 @@ const SubmitQuery = ({ categoriesValue }) => {
     if (localStorage.getItem("accessTokenForLandingPage")?.length > 0) {
       setLoading(true);
       const payloadData = {
-        subject: categoriesValue,
+        subject: categoriesValue || "Different Query",
         description: query,
-        category: categoriesValue,
+        category: categoriesValue || "Others",
       };
       const token = localStorage.getItem("accessTokenForLandingPage");
       axios
@@ -43,12 +43,11 @@ const SubmitQuery = ({ categoriesValue }) => {
         )
         .then((response) => {
           if (response) {
-            ShowSucessmessages("Support ticket created successfully");
-            router.push("/landing-page");
+            setStep(4);
           }
         })
         .catch((error) => {
-          console.log("error is", error);
+          handleApiError(error);
         })
         .finally(() => {
           setLoading(false);
@@ -96,8 +95,7 @@ const SubmitQuery = ({ categoriesValue }) => {
           )
           .then((response) => {
             if (response) {
-              ShowSucessmessages("Support ticket created successfully");
-              router.push("/landing-page");
+              setStep(4);
             }
           })
           .catch((error) => {
@@ -107,7 +105,7 @@ const SubmitQuery = ({ categoriesValue }) => {
     }
   };
   return (
-    <div className="mt-5">
+    <div className="mt-5 h-[400px] relative">
       <div className="h-fit flex flex-col">
         <span className="text-[19px] font-medium">
           <p className="text-white">Okay! Now tell us about your query.</p>{" "}
@@ -124,7 +122,7 @@ const SubmitQuery = ({ categoriesValue }) => {
             }}
           />
         </div>
-        <div className="flex justify-center items-center mb-7 mt-2">
+        <div className="flex justify-center items-center mb-7 mt-2 absolute bottom-0 left-1/2 -translate-x-1/2 w-full max-w-full rounded-3xl">
           <button
             className={` rounded-[12px] h-[50px] w-[191px] bg-[#551262] text-white cursor-pointer `}
             onClick={() => {
@@ -132,7 +130,7 @@ const SubmitQuery = ({ categoriesValue }) => {
             }}
             type="button"
           >
-            Continue
+            {loading ? <ButtonLoader /> : "Continue"}
           </button>
         </div>
       </div>

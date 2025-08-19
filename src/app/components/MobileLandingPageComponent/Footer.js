@@ -8,6 +8,7 @@ import { IoMail } from "react-icons/io5";
 import downLoadRupeia from "../../components/Images/download-rupeia.png";
 import { FaAngleDown } from "react-icons/fa6";
 import Logo from "@/app/SVG/Logo";
+import { useRouter } from "next/navigation";
 
 const Footer = () => {
   const homeMenu = [
@@ -65,6 +66,14 @@ const Footer = () => {
     },
   ];
   const [isOptionOpen, setIsOptionOpen] = useState(false);
+  const router = useRouter();
+  // const handleScroll = (id) => {
+  //   const section = document.getElementById(id);
+  //   if (section) {
+  //     section.scrollIntoView({ behavior: "smooth" });
+  //   }
+  // };
+
   return (
     <div className="footer-background-color px-5 sm:px-28 pt-10 sm:pt-16 pb-10 flex flex-col gap-5 ">
       <div className="flex flex-col sm:flex-row justify-between">
@@ -95,7 +104,7 @@ const Footer = () => {
                 <FaInstagram className="text-[32px] text-[#A4A1A0]" />
               </a>
               <a
-               href="https://mail.google.com/mail/?view=cm&fs=1&to=support@rupeia.com"
+                href="https://mail.google.com/mail/?view=cm&fs=1&to=support@rupeia.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-blue-500 underline pr-1"
@@ -107,7 +116,12 @@ const Footer = () => {
         </div>
         <div className="flex flex-col sm:flex-row justify-between gap-3 sm:gap-20 mt-3 sm:mt-0">
           <div>
-            <div className="flex justify-between items-center">
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => {
+                router.push("/landing-page");
+              }}
+            >
               <p className="text-[16px] sm:text-[18px] font-medium text-white">
                 Home
               </p>
@@ -122,8 +136,14 @@ const Footer = () => {
             </div>
             <div className=" flex-col gap-[6px] mt-4 hidden sm:flex">
               {homeMenu?.map((data, index) => (
-                <div key={index}>
-                  <p className="text-[14px] font-medium text-[#ECE6ED]">
+                <div
+                  key={index}
+                  // onClick={() => handleScroll("benefits")}
+                  onClick={() => {
+                    router.push("/landing-page");
+                  }}
+                >
+                  <p className="text-[14px] font-medium text-[#ECE6ED] cursor-pointer">
                     {data?.name}
                   </p>
                 </div>
@@ -133,8 +153,13 @@ const Footer = () => {
             {isOptionOpen && (
               <div className=" flex-col gap-[6px] mt-4 flex sm:hidden ">
                 {homeMenu?.map((data, index) => (
-                  <div key={index}>
-                    <p className="text-[14px] font-medium text-[#ECE6ED]">
+                  <div
+                    key={index}
+                    onClick={() => {
+                      router.push("/landing-page");
+                    }}
+                  >
+                    <p className="text-[14px] font-medium text-[#ECE6ED] cursor-pointer">
                       {data?.name}
                     </p>
                   </div>
@@ -144,7 +169,12 @@ const Footer = () => {
           </div>
           <div className="flex flex-col gap-3">
             <div>
-              <div className="flex justify-between items-center">
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => {
+                  router.push("/features-page");
+                }}
+              >
                 <p className="text-[16px] sm:text-[18px] font-medium text-white">
                   Features
                 </p>
@@ -159,8 +189,13 @@ const Footer = () => {
               </div>
               <div className="flex-col gap-[6px] mt-4  hidden sm:flex">
                 {featureMenu?.map((data, index) => (
-                  <div key={index}>
-                    <p className="text-[14px] font-medium text-[#ECE6ED]">
+                  <div
+                    key={index}
+                    onClick={() => {
+                      router.push("/features-page");
+                    }}
+                  >
+                    <p className="text-[14px] font-medium text-[#ECE6ED] cursor-pointer">
                       {data?.name}
                     </p>
                   </div>
@@ -169,8 +204,13 @@ const Footer = () => {
               {isOptionOpen && (
                 <div className="flex-col gap-[6px] mt-4 flex sm:hidden ">
                   {featureMenu?.map((data, index) => (
-                    <div key={index}>
-                      <p className="text-[14px] font-medium text-[#ECE6ED]">
+                    <div
+                      key={index}
+                      onClick={() => {
+                        router.push("/features-page");
+                      }}
+                    >
+                      <p className="text-[14px] font-medium text-[#ECE6ED] cursor-pointer">
                         {data?.name}
                       </p>
                     </div>
@@ -178,7 +218,12 @@ const Footer = () => {
                 </div>
               )}
             </div>
-            <div className="flex justify-between items-center">
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => {
+                router.push("/news");
+              }}
+            >
               <p className="text-[16px] sm:text-[18px] font-medium text-white">
                 News
               </p>
@@ -186,7 +231,12 @@ const Footer = () => {
                 <FaAngleDown className="text-white" />
               </span>
             </div>
-            <div className="flex justify-between items-center">
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => {
+                router.push("/blog");
+              }}
+            >
               <p className="text-[16px] sm:text-[18px] font-medium text-white">
                 Blogs
               </p>
@@ -196,7 +246,7 @@ const Footer = () => {
             </div>
           </div>
           <div className="flex flex-col  gap-3 sm:gap-8">
-            <div>
+            <div className="hidden">
               <div className="flex justify-between items-center">
                 <p className="text-[16px] sm:text-[18px] font-medium text-white">
                   Pricing
@@ -228,7 +278,12 @@ const Footer = () => {
               )}
             </div>
             <div>
-              <div className="flex justify-between items-center">
+              <div
+                className="flex justify-between items-center cursor-pointer"
+                onClick={() => {
+                  router.push("/contact-us");
+                }}
+              >
                 <p className="text-[16px] sm:text-[18px] font-medium text-white">
                   Contact Us
                 </p>
@@ -242,25 +297,41 @@ const Footer = () => {
                 </span>
               </div>
               <div className="flex-col gap-[6px] mt-4 hidden sm:flex">
-                <div>
-                  <p className="text-[14px] font-medium text-[#ECE6ED]">
+                <div
+                  onClick={() => {
+                    router.push("/contact-us");
+                  }}
+                >
+                  <p className="text-[14px] font-medium text-[#ECE6ED] cursor-pointer">
                     Help center
                   </p>
                 </div>
-                <div>
-                  <p className="text-[14px] font-medium text-[#ECE6ED]">
+                <div
+                  onClick={() => {
+                    router.push("/contact-us");
+                  }}
+                >
+                  <p className="text-[14px] font-medium text-[#ECE6ED] cursor-pointer">
                     Our Partners
                   </p>
                 </div>
               </div>
               {isOptionOpen && (
                 <div className="flex-col gap-[6px] mt-4 flex sm:hidden">
-                  <div>
+                  <div
+                    onClick={() => {
+                      router.push("/contact-us");
+                    }}
+                  >
                     <p className="text-[14px] font-medium text-[#ECE6ED]">
                       Help center
                     </p>
                   </div>
-                  <div>
+                  <div
+                    onClick={() => {
+                      router.push("/contact-us");
+                    }}
+                  >
                     <p className="text-[14px] font-medium text-[#ECE6ED]">
                       Our Partners
                     </p>
@@ -270,7 +341,12 @@ const Footer = () => {
             </div>
           </div>
           <div>
-            <div className="flex justify-between items-center">
+            <div
+              className="flex justify-between items-center cursor-pointer"
+              onClick={() => {
+                router.push("/about-us");
+              }}
+            >
               <p className="text-[16px] sm:text-[18px] font-medium text-white">
                 About Us
               </p>
@@ -285,8 +361,13 @@ const Footer = () => {
             </div>
             <div className="flex-col gap-[6px] mt-4 hidden sm:flex">
               {aboutUSMenu?.map((data, index) => (
-                <div key={index}>
-                  <p className="text-[14px] font-medium text-[#ECE6ED]">
+                <div
+                  key={index}
+                  onClick={() => {
+                    router.push("/about-us");
+                  }}
+                >
+                  <p className="text-[14px] font-medium text-[#ECE6ED] cursor-pointer">
                     {data?.name}
                   </p>
                 </div>
@@ -295,7 +376,12 @@ const Footer = () => {
             {isOptionOpen && (
               <div className="flex sm:hidden flex-col gap-[6px] mt-4 ">
                 {aboutUSMenu?.map((data, index) => (
-                  <div key={index}>
+                  <div
+                    key={index}
+                    onClick={() => {
+                      router.push("/about-us");
+                    }}
+                  >
                     <p className="text-[14px] font-medium text-[#ECE6ED]">
                       {data?.name}
                     </p>

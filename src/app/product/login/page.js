@@ -14,9 +14,7 @@ import SetPin from "@/app/components/Login/SetPin";
 import VerifyPin from "@/app/components/Login/VerifyPin";
 const Page = () => {
   const router = useRouter();
-  const handleClick = () => {
-    router.push("/product");
-  };
+
   const [fistPageOnboard, setFirstPageOnboard] = useState({
     email_id: "",
     pin: "",
@@ -26,7 +24,9 @@ const Page = () => {
     verify_pin: "",
   });
   const [page, setPage] = useState(1);
-  console.log("page", page);
+  const handleClick = () => {
+    setPage(1);
+  };
   return (
     <div className="flex justify-between flex-col h-full overflow-hidden">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">

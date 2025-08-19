@@ -44,7 +44,7 @@ const Page = () => {
       <Howitworks />
       {/* <Goal />
         <Wealth /> */}
-      <Benifits />
+      <Benifits id="benefits"/>
       <Graph />
       <SIPCalculate />
       <CustomerReview />

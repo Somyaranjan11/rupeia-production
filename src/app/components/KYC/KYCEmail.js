@@ -87,6 +87,7 @@ const KYCEmail = ({
         if (res1) {
           console.log("response is", res1.data);
           ShowSucessmessages("Details have been updated");
+          RedirectToSignIn();
           setPageStep(3);
         }
       })
@@ -102,7 +103,7 @@ const KYCEmail = ({
     const payloadData = {
       kyc_request: kyc_id,
       type: "aadhaar",
-      postback_url: "https://rupeia-production-uw3m.vercel.app/product",
+      postback_url: "https://rupeia-production.vercel.app/product",
     };
     const token = localStorage.getItem("accessToken");
     axios
@@ -128,11 +129,11 @@ const KYCEmail = ({
   };
   return (
     <div className="flex flex-col gap-3">
-      <div>
+      {/* <div>
         <button type="button" onClick={RedirectToSignIn}>
           Redirect
         </button>
-      </div>
+      </div> */}
       <div>
         <p className="text-[14px] font-medium leading-7 font-poppins">
           Father name
@@ -320,7 +321,7 @@ const KYCEmail = ({
           </p>
         )}
       </div>
-      <div className="">
+      <div className="mb-24">
         <div>
           <p className="text-[14px] font-medium leading-7 font-poppins">
             Marital Status

@@ -85,7 +85,7 @@ const KYCAddessInformation = ({
             communication_address: res1?.data?.id,
             communication_email_address: res2?.data?.id,
           });
-          setPageStep(5);
+          setPageStep(6);
         })
       )
       .catch((error) => {
