@@ -14,34 +14,43 @@ import { IoCallOutline } from "react-icons/io5";
 const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [showProgress, setShowProgress] = useState(false);
+
   useEffect(() => {
     // Detect install prompt availability
-    window.addEventListener("beforeinstallprompt", (event) => {
+    const handleBeforeInstall = (event) => {
       event.preventDefault();
       setDeferredPrompt(event);
-    });
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstall);
 
     // Detect if app is already installed
     if (window.matchMedia("(display-mode: standalone)").matches) {
       setIsInstalled(true);
     }
 
-    // For iOS / Safari PWA detection
     if (window.navigator.standalone === true) {
       setIsInstalled(true);
     }
 
-    // Detect install event (when user actually installs)
+    // Detect install event
     window.addEventListener("appinstalled", () => {
       console.log("PWA was installed");
       setIsInstalled(true);
       setDeferredPrompt(null);
+      setProgress(100);
+      setTimeout(() => setShowProgress(false), 500);
     });
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
+    };
   }, []);
 
   const investNowFunction = () => {
     if (isInstalled) {
-      console.log("Already installed");
       alert("App is already installed on your device!");
       return;
     }
@@ -50,15 +59,28 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choice) => {
         if (choice.outcome === "accepted") {
-          console.log("User installed the PWA");
+          console.log("User accepted install prompt");
+          // Show fake progress
+          setShowProgress(true);
+          setProgress(10);
+          const interval = setInterval(() => {
+            setProgress((prev) => {
+              if (prev >= 90) {
+                clearInterval(interval);
+                return prev;
+              }
+              return prev + 10;
+            });
+          }, 400);
         } else {
-          console.log("User dismissed the installation");
+          console.log("User dismissed install");
         }
       });
     } else {
       alert("Install prompt is not available right now.");
     }
   };
+
   return (
     <div className="px-4 sm:px-16 py-5 sm:py-10 top-page-bg-class">
       <div className="flex justify-center items-center flex-col gap-3 sm:gap-10 mt-10 relative">
@@ -147,6 +169,15 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
               INVEST NOW
             </button>
           </div>
+          {/* Progress Bar */}
+          {showProgress && (
+            <div className="w-full max-w-md mt-4 bg-gray-300 rounded-full h-4">
+              <div
+                className="bg-green-500 h-4 rounded-full transition-all duration-300"
+                style={{ width: `${progress}%` }}
+              ></div>
+            </div>
+          )}
           {/* QR code */}
           <div className="w-full justify-center sm:justify-end  items-center sm:items-end mt-10 hidden md:flex  relative">
             <div
