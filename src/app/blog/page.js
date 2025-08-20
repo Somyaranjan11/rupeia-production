@@ -12,6 +12,7 @@ import LandingNavbar from "../components/LandingComponent/LandingNavbar";
 import Footer from "../components/MobileLandingPageComponent/Footer";
 import axios from "axios";
 import AnimateLoader from "../components/Loader/AnimateLoader";
+import DownloadRupeia from "../components/MobileLandingPageComponent/DownloadRupeia";
 
 const Page = () => {
   const [loading, setLoading] = useState(true);
@@ -35,11 +36,18 @@ const Page = () => {
     };
     fetchCategory();
   }, []);
+  const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
+  const closePopUp = () => {
+    setIsQRCodeOpen(false);
+  };
+  const openPopUp = () => {
+    setIsQRCodeOpen(true);
+  };
   return (
-    <div className="bg-white min-h-screen overflow-x-hidden flex flex-col">
+    <div className="bg-white min-h-screen overflow-x-hidden flex flex-col relative">
       {/* Navbar */}
       <div className="">
-        <LandingNavbar />
+        <LandingNavbar openPopUp={openPopUp} />
       </div>
 
       {/* Blog Landing Image */}
@@ -184,6 +192,7 @@ const Page = () => {
       <div>
         <Footer />
       </div>
+      {isQRCodeOpen && <DownloadRupeia closePopUp={closePopUp} />}
     </div>
   );
 };

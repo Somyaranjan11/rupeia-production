@@ -36,15 +36,15 @@ const MobileBlogs = () => {
           Blogs
         </p>
       </div>
-      <div className="sm:px-28 mt-5">
+      <div className="mt-5">
         <p className="text-white  text-[24px] sm:text-[32px] text-left font-semibold">
           Our Centre of Knowledge{" "}
         </p>
       </div>
-      <div className="w-full flex items-center justify-start sm:justify-between mt-8 sm:px-28 sm:mt-8 overflow-x-auto hide-scrollbar">
-        <div className="flex gap-4 sm:gap-14 px-2">
+      <div className="w-full flex items-center justify-start sm:justify-between mt-8 sm:mt-8">
+        <div className="flex gap-4 sm:gap-14 px-2 items-center justify-center">
           {blogDetails?.length > 0 ? (
-            blogDetails?.map((data, index) => (
+            blogDetails?.slice(0, 3)?.map((data, index) => (
               <div
                 className="border-[1px] border-[#FFFFFF] p-4 w-[300px] sm:w-[403px] h-[444px] flex flex-col gap-2 cursor-pointer"
                 key={index}

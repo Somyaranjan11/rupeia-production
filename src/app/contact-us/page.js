@@ -8,6 +8,7 @@ import Brand from "../components/ContactUs/Brand";
 import Footer from "../components/MobileLandingPageComponent/Footer";
 import LandingNavbar from "../components/LandingComponent/LandingNavbar";
 import RaiseTicket from "../components/ContactUs/RaiseTicket";
+import DownloadRupeia from "../components/MobileLandingPageComponent/DownloadRupeia";
 
 const Page = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,9 +18,16 @@ const Page = () => {
   const openPopUp = () => {
     setIsQRCodeOpen(true);
   };
+  const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
+  const closeInvestingPopUp = () => {
+    setIsQRCodeOpen(false);
+  };
+  const openInvestingPopUp = () => {
+    setIsQRCodeOpen(true);
+  };
   return (
-    <div className="min-h-screen flex flex-col bg-[#350040]  ">
-      <LandingNavbar />
+    <div className="min-h-screen flex flex-col bg-[#350040] relative  ">
+      <LandingNavbar openPopUp={openInvestingPopUp} />
       <div className="px-5 sm:px-28 pt-10 sm:pt-24">
         <div className="bg-[#551262] flex flex-row justify-between items-center rounded-2xl px-3 sm:px-20">
           <div>
@@ -178,6 +186,7 @@ const Page = () => {
       </div>
       <Footer />
       {isOpen && <RaiseTicket closePopUp={closePopUp} />}
+      {isQRCodeOpen && <DownloadRupeia closePopUp={closeInvestingPopUp} />}
     </div>
   );
 };

@@ -329,6 +329,20 @@ body {
     animation: techScroll 20s linear infinite;
   }
 }
+@layer utilities {
+  @keyframes testimonialScroll {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .animate-testimonialScroll {
+    animation: testimonialScroll 25s linear infinite;
+  }
+}
 
 .wealth-backgroud {
   background: linear-gradient(

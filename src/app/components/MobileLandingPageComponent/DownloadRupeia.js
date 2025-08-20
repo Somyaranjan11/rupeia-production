@@ -4,7 +4,7 @@ import QRCODE from "../Images/rupeia-qrcode.jpeg";
 
 const DownloadRupeia = ({ closePopUp }) => {
   return (
-    <div className="absolute bg-[#000000BA] min-h-screen w-screen  z-50 top-20 flex justify-center items-center ">
+    <div className="absolute bg-[#000000BA] min-h-screen w-screen  z-50 top-19 flex justify-center items-center ">
       <div className="bg-[#FFFFFF] w-[900px] h-fit rounded-[15px] p-3">
         <div className="flex justify-end">
           <RxCross1

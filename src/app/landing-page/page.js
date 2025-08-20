@@ -11,12 +11,12 @@ import MobileBlogs from "@/app/components/MobileLandingPageComponent/MobileBlogs
 import SIPCalculate from "@/app/components/MobileLandingPageComponent/SIPCalculate";
 import Wealth from "@/app/components/MobileLandingPageComponent/Wealth";
 import Whyrupeia from "@/app/components/MobileLandingPageComponent/Whyrupeia";
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import LandingNavbar from "../components/LandingComponent/LandingNavbar";
-import SteeeFree from "../components/MobileLandingPageComponent/SteeeFree";
-import PowerByUPI from "../components/MobileLandingPageComponent/PowerByUPI";
 import DownloadRupeia from "../components/MobileLandingPageComponent/DownloadRupeia";
+import PowerByUPI from "../components/MobileLandingPageComponent/PowerByUPI";
 import SceduleCall from "../components/MobileLandingPageComponent/SceduleCall";
+import SteeeFree from "../components/MobileLandingPageComponent/SteeeFree";
 
 const Page = () => {
   const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
@@ -33,18 +33,20 @@ const Page = () => {
   const closeScheduleCall = () => {
     setIsScheduleCall(false);
   };
+  const pageRef = useRef(null);
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#350040] relative">
+    <div
+      className="min-h-screen flex flex-col bg-[#350040] relative"
+      ref={pageRef}
+    >
       <LandingNavbar from="landing-page" openPopUp={openPopUp} />
-      <SteeeFree
-        openPopUp={openPopUp}
-        openScheduleCall={openScheduleCall}
-      />
+      <SteeeFree openPopUp={openPopUp} openScheduleCall={openScheduleCall} />
       <PowerByUPI />
       <Howitworks />
       {/* <Goal />
         <Wealth /> */}
-      <Benifits id="benefits"/>
+      <Benifits id="benefits" />
       <Graph />
       <SIPCalculate />
       <CustomerReview />

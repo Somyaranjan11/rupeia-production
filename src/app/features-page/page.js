@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
 import featuresVector from "../components/Images/features-page-vector-image.png";
 import featuresVectorMobile from "../components/Images/features-mobile-image.png";
 import Footer from "../components/MobileLandingPageComponent/Footer";
@@ -10,6 +11,7 @@ import Benifit5 from "../components/Images/benifit5.png";
 import Benifit6 from "../components/Images/benifits6.png";
 import cardImage from "../components/Images/card-bg-image.png";
 import LandingNavbar from "../components/LandingComponent/LandingNavbar";
+import DownloadRupeia from "../components/MobileLandingPageComponent/DownloadRupeia";
 
 const Page = () => {
   const benifitData = [
@@ -43,16 +45,23 @@ const Page = () => {
       heading: "24/7 monitoring",
       desc: "During market drops, we automatically adjust your portfolio to protect and grow your wealth.",
     },
-     {
+    {
       id: 5,
       image: Benifit6,
       heading: "Dedicated Investment Manager",
       desc: "Stay stress-free with a Dedicated Manager who handles your investments while you focus on your job.",
     },
   ];
+  const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
+  const closeInvestingPopUp = () => {
+    setIsQRCodeOpen(false);
+  };
+  const openInvestingPopUp = () => {
+    setIsQRCodeOpen(true);
+  };
   return (
     <div className="min-h-screen flex flex-col bg-[#350040] gap-8  sm:gap-16">
-      <LandingNavbar />
+      <LandingNavbar openPopUp={openInvestingPopUp} />
       <div className="px-5 sm:px-28">
         <div className="py-3 sm:py-5">
           <p className="text-[36px] sm:text-[64px] text-[#AF7BB6] text-center font-medium tracking-wide">
@@ -111,6 +120,7 @@ const Page = () => {
       <div>
         <Footer />
       </div>
+      {isQRCodeOpen && <DownloadRupeia closePopUp={closeInvestingPopUp} />}
     </div>
   );
 };

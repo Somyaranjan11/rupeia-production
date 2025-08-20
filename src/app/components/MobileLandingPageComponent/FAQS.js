@@ -228,11 +228,14 @@ const FAQS = () => {
             key={index}
             className="border-[0.3px] border-[#9563A2] why-rupeia-blur px-5 sm:px-8 flex flex-col gap-3 justify-between items-center py-4 rounded-4xl h-fit"
           >
-            <div className="flex justify-between items-center gap-3 w-full">
+            <div
+              className="flex justify-between items-center gap-3 w-full"
+              onClick={() => setOpen(open === index + 1 ? 0 : index + 1)}
+            >
               <span className="text-[14px] sm:text-[18px] font-medium leading-[150%] font-poppins text-[#ECE6ED]">
                 {data?.question}
               </span>
-              <span onClick={() => setOpen(open === index + 1 ? 0 : index + 1)}>
+              <span>
                 <FaAngleDown className="text-white cursor-pointer" />
               </span>
             </div>

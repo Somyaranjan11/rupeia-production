@@ -7,6 +7,7 @@ import blogLandingImage4 from "../components/Images/news-desktop-top-image.png";
 import AnimateLoader from "../components/Loader/AnimateLoader";
 import Categories from "../components/LandingComponent/Categories";
 import Footer from "../components/MobileLandingPageComponent/Footer";
+import DownloadRupeia from "../components/MobileLandingPageComponent/DownloadRupeia";
 
 const Page = () => {
   const [category, setCategory] = useState([]);
@@ -137,10 +138,16 @@ const Page = () => {
       year: "numeric",
     });
   }
-
+  const [isQRCodeOpen, setIsQRCodeOpen] = useState(false);
+  const closeInvestingPopUp = () => {
+    setIsQRCodeOpen(false);
+  };
+  const openInvestingPopUp = () => {
+    setIsQRCodeOpen(true);
+  };
   return (
     <div className="bg-white min-h-screen overflow-x-hidden flex flex-col">
-      <LandingNavbar />
+      <LandingNavbar openPopUp={openInvestingPopUp} />
 
       {/* Banner */}
       <div className="mt-8 sm:mt-16 mb-8 sm:mb-11 px-4 sm:px-28 flex justify-center items-center">
@@ -169,7 +176,9 @@ const Page = () => {
               }`}
               onClick={() => setCateGoryList(data)}
             >
-              <p className="text-[14px] text-nowrap sm:text-[19px] font-semibold">{data}</p>
+              <p className="text-[14px] text-nowrap sm:text-[19px] font-semibold">
+                {data}
+              </p>
             </div>
           ))}
         </div>
@@ -212,6 +221,7 @@ const Page = () => {
       <div className="mt-10">
         <Footer />
       </div>
+      {isQRCodeOpen && <DownloadRupeia closePopUp={closeInvestingPopUp} />}
     </div>
   );
 };

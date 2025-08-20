@@ -94,6 +94,7 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
               className="w-[39px] h-[148px] block sm:hidden"
               onClick={() => {
                 openScheduleCall();
+                window.scrollTo({ top: 0, behavior: "smooth" }); // smooth scroll
               }}
             />
           </div>

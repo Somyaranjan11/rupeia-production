@@ -105,7 +105,7 @@ const SceduleCall = ({ closeScheduleCall = () => {} }) => {
   };
 
   return (
-    <div className="absolute bg-[#000000BA] min-h-screen w-screen  z-50 top-32 sm:top-20 flex justify-center items-center ">
+    <div className="fixed lg:absolute bg-[#000000BA] min-h-screen w-screen  z-50  sm:top-20 flex justify-center items-center ">
       <div className="schedule-call w-[90%] sm:w-[491px] h-fit rounded-[15px] ">
         <div className="flex justify-between border-b-[1px] border-[#916D98] p-5">
           <div>

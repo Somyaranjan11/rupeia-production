@@ -6,9 +6,18 @@ import Testimonial3 from "../Images/Testimonials/testimonails3.jpeg";
 import Testimonial4 from "../Images/Testimonials/testimonails4.jpeg";
 import Testimonial5 from "../Images/Testimonials/testimonails5.jpeg";
 import Testimonial6 from "../Images/Testimonials/testimonails6.jpeg";
+import Testimonial7 from "../Images/Testimonials/testimonails7.jpg";
 
 const CustomerReview = () => {
   const customerReview = [
+    {
+      id: 1,
+      content:
+        "Rupeia helped me plan my exit from investments. They made a simple plan, showed tax tips, and told me when to sell. I know when to buy but when it comes to selling, I was not confident.",
+      name: "Shobhit Shukla",
+      details_1: "Data Scientist",
+      image: Testimonial7,
+    },
     {
       id: 1,
       content:
@@ -50,7 +59,7 @@ const CustomerReview = () => {
       image: Testimonial5,
     },
     {
-      id: 5,
+      id: 6,
       content:
         "Rupeia made a clear plan for my dream car. They broke targets into small SIPs, showed timelines, and tracked progress. I feel motivated and on track.",
       name: "Anjali Tripathi",
@@ -63,8 +72,8 @@ const CustomerReview = () => {
       <p className="text-[28px] sm:text-[42px] my-10 sm:my-16 text-center font-medium sm:font-semibold  text-white">
         Meet the people we’ve helped.
       </p>
-      <div className="w-full flex justify-start sm:justify-center items-center overflow-x-auto sm:px-28 hide-scrollbar">
-        <div className="flex gap-4 lg:flex-wrap sm:gap-14 px-2">
+      <div className="w-full flex overflow-x-auto hide-scrollbar">
+        <div className="flex gap-12 px-2 animate-testimonialScroll ">
           {customerReview?.map((data, index) => (
             <div
               key={index}
