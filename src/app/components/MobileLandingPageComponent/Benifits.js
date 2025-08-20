@@ -14,6 +14,9 @@ import WealthMobileImage1 from "../../components/Images/wealth-mobile-image.png"
 import WealthMobileImage2 from "../../components/Images/wealth-mobile-image2.png";
 import WealthMobileImage3 from "../../components/Images/wealth-mobile-image3.png";
 import WealthMobileImage4 from "../../components/Images/welath-mobile-image4.png";
+import GoalMobileImage1 from "../../components/Images/mobile-goal-1.png";
+import GoalMobileImage2 from "../../components/Images/mobile-goal-international-vacation.png";
+import GoalMobileImage3 from "../../components/Images/mobile-goal-retirement.png";
 
 const Benifits = ({ id }) => {
   return (
@@ -59,14 +62,14 @@ const Benifits = ({ id }) => {
           <div className="flex flex-col gap-2 w-full">
             <div>
               {/* Vechicles */}
-              <img src={GoalsImage4.src} className="h-[305px] w-[100%]" />
+              <img src={GoalMobileImage1.src} className="h-[305px] w-[100%]" />
             </div>
             <div className="flex flex-col gap-2">
               {/* Wedding */}
               <img src={GoalsImage5.src} className="h-[167px] w-full" />
 
               {/* International Vacation */}
-              <img src={GoalsImage1.src} className="h-[218px] w-full" />
+              <img src={GoalMobileImage2.src} className="h-[218px] w-full" />
             </div>
           </div>
           <div className="flex flex-col gap-2 w-full">
@@ -85,7 +88,7 @@ const Benifits = ({ id }) => {
 
             <div>
               {/* Retirement */}
-              <img src={GoalsImage7.src} className="h-[220px] w-full" />
+              <img src={GoalMobileImage3.src} className="h-[220px] w-full" />
             </div>
           </div>
         </div>
