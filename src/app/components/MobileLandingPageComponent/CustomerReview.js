@@ -1,4 +1,5 @@
-import React from "react";
+"use client"
+import React, { useState } from "react";
 import profileImage from "../../components/Images/review_profile.png";
 import Testimonial1 from "../Images/Testimonials/testimonails1.jpeg";
 import Testimonial2 from "../Images/Testimonials/testimonails2.jpeg";
@@ -9,6 +10,8 @@ import Testimonial6 from "../Images/Testimonials/testimonails6.jpeg";
 import Testimonial7 from "../Images/Testimonials/testimonails7.jpg";
 
 const CustomerReview = () => {
+    const [isPaused, setIsPaused] = useState(false);
+
   const customerReview = [
     {
       id: 1,
@@ -69,17 +72,26 @@ const CustomerReview = () => {
   ];
   return (
     <div className="px-5 pb-20">
-      <p className="text-[28px] sm:text-[42px] my-10 sm:my-16 text-center font-medium sm:font-semibold  text-white">
+      <p className="text-[28px] sm:text-[42px] my-10 sm:my-16 text-center font-medium sm:font-semibold text-white">
         Meet the people we’ve helped.
       </p>
+
       <div className="w-full flex overflow-x-auto hide-scrollbar">
-        <div className="flex gap-12 px-2 animate-testimonialScroll ">
+        <div
+          className={`flex gap-6 lg:gap-12 px-2 animate-testimonialScroll ${
+            isPaused ? "pause-animation" : ""
+          }`}
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+        >
           {customerReview?.map((data, index) => (
             <div
               key={index}
-              className="h-[360px] sm:h-[400px] min-w-[300px] sm:min-w-0 sm:w-[380px] bg-[#D9D9D914] border border-[#FFFFFF61] px-5 sm:px-8 py-5 sm:py-7 gap-5 rounded-[40px] flex  items-center flex-col"
+              className="h-[360px] sm:h-[400px] min-w-[300px] sm:min-w-0 sm:w-[380px] bg-[#D9D9D914] border border-[#FFFFFF61] px-5 sm:px-8 py-5 sm:py-7 gap-5 rounded-[40px] flex items-center flex-col"
             >
-              <div className="h-[100px] w-[100px]  flex justify-center items-center rounded-full ">
+              <div className="h-[100px] w-[100px] flex justify-center items-center rounded-full">
                 <img
                   src={data?.image.src}
                   className="rounded-full h-[100px] w-[100px] border-[1px] border-[#FFFFFF61]"
@@ -90,14 +102,11 @@ const CustomerReview = () => {
                   {data?.content}
                 </p>
                 <div className="flex flex-col gap-[0.5px] w-full">
-                  <p className="text-[14px] sm:text-[16px]  bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent font-bold">
+                  <p className="text-[14px] sm:text-[16px] bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent font-bold">
                     {data?.name}
                   </p>
-                  <p className="text-[14px] sm:text-[16px]  bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent font-bold">
+                  <p className="text-[14px] sm:text-[16px] bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent font-bold">
                     {data?.details_1}
-                  </p>
-                  <p className="hidden text-[14px] sm:text-[16px]  bg-gradient-to-r from-[#d0cccb] via-[#6a6867] to-[#d0cccb] bg-clip-text text-transparent font-bold">
-                    {data?.details_2}
                   </p>
                 </div>
               </div>

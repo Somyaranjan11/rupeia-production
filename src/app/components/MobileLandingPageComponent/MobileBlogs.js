@@ -41,43 +41,46 @@ const MobileBlogs = () => {
           Our Centre of Knowledge{" "}
         </p>
       </div>
-      <div className="w-full flex items-center justify-start sm:justify-between mt-8 sm:mt-8">
+      <div className="w-full flex items-center justify-start sm:justify-between mt-8 sm:mt-8  overflow-x-auto hide-scrollbar">
         <div className="flex gap-4 sm:gap-14 px-2 items-center justify-center">
-          {blogDetails?.length > 0 ? (
-            blogDetails?.slice(0, 3)?.map((data, index) => (
-              <div
-                className="border-[1px] border-[#FFFFFF] p-4 w-[300px] sm:w-[403px] h-[444px] flex flex-col gap-2 cursor-pointer"
-                key={index}
-                onClick={() => {
-                  router.push(`/blog/details?id=${data?._id}`);
-                }}
-              >
-                <div>
-                  <img
-                    src={data?.sectionData?.image}
-                    className="h-[195px] w-[360px]"
-                  />
-                </div>
-                <div className="flex flex-col gap-3 mt-2">
-                  <span className="flex items-center gap-1">
-                    <CgProfile />
-                    <p className="text-[12px] sm:text-[14px] font-normal text-white">
-                      {data?.writtenBy}
-                    </p>
-                  </span>
+          {blogDetails ? (
+            blogDetails?.length > 0 ? (
+              blogDetails?.slice(0, 3).map((data, index) => (
+                <div
+                  className="border-[1px] border-[#FFFFFF] p-4 w-[300px] sm:w-[403px] h-[444px] flex flex-col gap-2 cursor-pointer"
+                  key={index}
+                  onClick={() => {
+                    router.push(`/blog/details?id=${data?._id}`);
+                  }}
+                >
+                  <div>
+                    <img
+                      src={data?.sectionData?.image}
+                      className="h-[195px] w-[360px]"
+                    />
+                  </div>
+                  <div className="flex flex-col gap-3 mt-2">
+                    <span className="flex items-center gap-1">
+                      <CgProfile />
+                      <p className="text-[12px] sm:text-[14px] font-normal text-white">
+                        {data?.writtenBy}
+                      </p>
+                    </span>
 
-                  <p className="text-[15px] sm:text-[18px] sm:font-medium bg-gradient-to-t from-[#d0cccb] via-[#d0cccb] to-[#d0cccb] bg-clip-text text-transparent">
-                    {data?.sectionData?.heading}
-                  </p>
-                  {/* <p className="text-[12px] sm:text-[14px] font-normal text-white">
-                    {data?.time}
-                  </p> */}
-                  <p className="text-[12px] sm:text-[14px] font-normal text-white line-clamp-2 ">
-                    {data?.sectionData?.shortDescription}
-                  </p>
+                    <p className="text-[15px] sm:text-[18px] sm:font-medium bg-gradient-to-t from-[#d0cccb] via-[#d0cccb] to-[#d0cccb] bg-clip-text text-transparent">
+                      {data?.sectionData?.heading}
+                    </p>
+                    <p className="text-[12px] sm:text-[14px] font-normal text-white line-clamp-2">
+                      {data?.sectionData?.shortDescription}
+                    </p>
+                  </div>
                 </div>
-              </div>
-            ))
+              ))
+            ) : (
+              <p className="text-center text-white text-[16px] mt-5">
+                No blogs found
+              </p>
+            )
           ) : (
             <AnimateLoader count={3} />
           )}

@@ -343,6 +343,9 @@ body {
     animation: testimonialScroll 25s linear infinite;
   }
 }
+.pause-animation {
+  animation-play-state: paused !important;
+}
 
 .wealth-backgroud {
   background: linear-gradient(
