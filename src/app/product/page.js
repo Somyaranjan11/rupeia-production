@@ -12,6 +12,9 @@ import LandingPageNewsCard from "../components/LandingPageNewsCard";
 import LandingPageBlogsCard from "../components/LandingPageBlogsCard";
 export const dynamic = "force-dynamic";
 import { getUserData } from "../utility/getUserData";
+import { PiWaveform } from "react-icons/pi";
+import { IoIosAddCircle } from "react-icons/io";
+
 const Page = () => {
   const router = useRouter();
   const user = getUserData();
@@ -19,7 +22,7 @@ const Page = () => {
     <div className="h-screen flex flex-col font-poppins mt-5 pb-20 w-full bg-[#1A0120]">
       <div className="flex justify-center items-center flex-col gap-1">
         <p className="text-[32px] font-semibold leading-7 font-poppins">
-          Hi {user?.firstName}!
+         Hi {user ? user?.firstName : "User"}!
         </p>
         <p className="text-[16px] font-medium leading-7 font-poppins">
           Welcome Back{" "}
@@ -41,7 +44,9 @@ const Page = () => {
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               Pulse
             </p>
-            <p className="text-[11px] text-black font-medium">60%</p>
+            <p className="text-[11px] text-black font-medium flex">
+              <PiWaveform className="text-[25px]" />
+            </p>
           </div>
           <div
             className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
@@ -55,7 +60,10 @@ const Page = () => {
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               Portfolio
             </p>
-            <span className="text-[11px] text-black font-medium">₹4,70,000 <span className="text-green-600">(7.8%)</span></span>
+            {/* <span className="text-[11px] text-black font-medium">₹4,70,000 <span className="text-green-600">(7.8%)</span></span> */}
+            <span>
+              <IoIosAddCircle className="text-[#1A0120] text-[25px]"/>
+            </span>
           </div>
           <div
             className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
@@ -69,7 +77,7 @@ const Page = () => {
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               SIP
             </p>
-            <p className="text-[11px] text-black font-medium">₹5,600</p>
+            <p className="text-[15px] text-black font-medium">₹5,600</p>
           </div>
         </div>
         <div className="flex items-center gap-2 px-5">

@@ -3,6 +3,8 @@ import React, { useEffect, useState } from "react";
 import goalMoney from "../Images/Goals/goal-money.png";
 import goalImage from "../Images/Goals/goal-image.png";
 import wealthImage from "../Images/Goals/wealth-image.png";
+import { checkLogin } from "@/app/utility/checkLogin";
+import { useRouter } from "next/navigation";
 
 const WealthCard1 = ({
   setGoalQuestionSelect,
@@ -34,6 +36,7 @@ const WealthCard1 = ({
   const [goalQuestions, setGoalQuestions] = useState([]);
   const [questionList, setQuestionList] = useState([]);
   const [loading, setLoading] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -88,6 +91,7 @@ const WealthCard1 = ({
 
   const totalQuestions = questionList.length;
   const currentQuestion = questionList[currentStep];
+  const isLoggedIn = checkLogin();
 
   return (
     <div className="font-poppins relative">
@@ -125,10 +129,14 @@ const WealthCard1 = ({
                 }`}
                 key={index}
                 onClick={() => {
-                  setGoalDetails({
-                    ...goalDetails,
-                    goalType: data?.name,
-                  });
+                  if (isLoggedIn) {
+                    setGoalDetails({
+                      ...goalDetails,
+                      goalType: data?.name,
+                    });
+                  } else {
+                    router.push("/product/login");
+                  }
                 }}
               >
                 <img src={data?.image.src} className="w-full h-[160px]" />

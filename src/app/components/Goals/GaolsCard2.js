@@ -17,7 +17,7 @@ const GaolsCard2 = ({
     setGoalDetails({ ...goalDetails, duration: Number(e.target.value) });
   };
   const normalizedValue =
-    ((goalDetails?.goalAmount - 12000) / (1000000 - 12000)) * 100;
+    ((goalDetails?.goalAmount - 50000) / (5000000 - 50000)) * 100;
   const normalizedEductionValue =
     ((goalDetails?.duration - 1) / (25 - 1)) * 100;
 
@@ -42,7 +42,8 @@ const GaolsCard2 = ({
           <input
             type="range"
             min="50000"
-            max="50000000"
+            max="5000000"
+            step="50000" // 👈 ensures increments of 50,000
             value={goalDetails?.goalAmount}
             onChange={handleChange}
             className="range-slider-education-goal-amount w-full h-[9px] appearance-none rounded-lg overflow-hidden bg-red-500"
@@ -91,7 +92,7 @@ const GaolsCard2 = ({
           </div>
         </div>
       </div>
-      <div className="web-app-gola-wealth-pro-tips p-6 rounded-[20px] border-[0.5px] border-[#FFFFFF] relative mt-10">
+      <div className="web-app-gola-wealth-pro-tips p-6 rounded-[20px] border-[0.5px] border-[#FFFFFF] relative mt-10 hidden">
         <div>
           <p className="text-[16px] font-semibold leading-6 text-center">
             Pro Tips

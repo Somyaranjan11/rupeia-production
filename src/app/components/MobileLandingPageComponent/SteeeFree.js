@@ -8,40 +8,52 @@ import leftImage from "../../components/Images/image copy 5.png";
 import rightImage from "../../components/Images/right-stree-free-image.png";
 import capImage from "../../components/Images/strees-free-cap-image1.png";
 import scheduleMobileImage from "../../components/Images/schedule-mobile-image.png";
+import rupeiaLogo from "../Images/rupeia_footer_logo.png";
 
 import { IoCallOutline } from "react-icons/io5";
+import { useRouter } from "next/navigation";
 
 const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
+  const router = useRouter();
   const [deferredPrompt, setDeferredPrompt] = useState(null);
   const [isInstalled, setIsInstalled] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [showProgress, setShowProgress] = useState(false);
+
   useEffect(() => {
     // Detect install prompt availability
-    window.addEventListener("beforeinstallprompt", (event) => {
+    const handleBeforeInstall = (event) => {
       event.preventDefault();
       setDeferredPrompt(event);
-    });
+    };
+
+    window.addEventListener("beforeinstallprompt", handleBeforeInstall);
 
     // Detect if app is already installed
     if (window.matchMedia("(display-mode: standalone)").matches) {
       setIsInstalled(true);
     }
 
-    // For iOS / Safari PWA detection
     if (window.navigator.standalone === true) {
       setIsInstalled(true);
     }
 
-    // Detect install event (when user actually installs)
+    // Detect install event
     window.addEventListener("appinstalled", () => {
       console.log("PWA was installed");
       setIsInstalled(true);
       setDeferredPrompt(null);
+      setProgress(100);
+      setTimeout(() => setShowProgress(false), 500);
     });
+
+    return () => {
+      window.removeEventListener("beforeinstallprompt", handleBeforeInstall);
+    };
   }, []);
 
   const investNowFunction = () => {
     if (isInstalled) {
-      console.log("Already installed");
       alert("App is already installed on your device!");
       return;
     }
@@ -50,15 +62,28 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
       deferredPrompt.prompt();
       deferredPrompt.userChoice.then((choice) => {
         if (choice.outcome === "accepted") {
-          console.log("User installed the PWA");
+          console.log("User accepted install prompt");
+          // Show fake progress
+          setShowProgress(true);
+          setProgress(10);
+          const interval = setInterval(() => {
+            setProgress((prev) => {
+              if (prev >= 90) {
+                clearInterval(interval);
+                return prev;
+              }
+              return prev + 10;
+            });
+          }, 400);
         } else {
-          console.log("User dismissed the installation");
+          console.log("User dismissed install");
         }
       });
     } else {
       alert("Install prompt is not available right now.");
     }
   };
+
   return (
     <div className="px-4 sm:px-16 py-5 sm:py-10 top-page-bg-class">
       <div className="flex justify-center items-center flex-col gap-3 sm:gap-10 mt-10 relative">
@@ -140,13 +165,31 @@ const SteeeFree = ({ openPopUp = () => {}, openScheduleCall = () => {} }) => {
             <button
               className="text-[13px] mt-2 sm:text-[20px] font-semibold w-[130px] sm:w-[200px] px-4 h-[60px] sm:h-[70px] border-[4px] sm:border-[8px] border-[#AF7BB6C7] landing-page-button-shadow bg-[#ECE6ED] rounded-full text-[#270330] cursor-pointer"
               onClick={() => {
-                investNowFunction();
+                // investNowFunction();
+                router.push("/webapp-download");
               }}
               type="button"
             >
               INVEST NOW
             </button>
           </div>
+          {/* Progress Bar */}
+          {false && (
+            <div className="flex justify-center items-center flex-col gap-3 fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-[#350040] w-[90%] mt-10 z-[99999] rounded-[15px] h-[180px] px-4 ">
+              <div>
+                <img src={rupeiaLogo.src} className="h-[38x] w-[178px]" />
+              </div>
+              <div className="bg-[#FFFFFF] w-full h-[6px] rounded-3xl">
+                <div
+                  className="bg-[#AF7BB6C7] rounded-full h-full transition-all duration-300"
+                  style={{ width: `${40}%` }}
+                ></div>
+              </div>
+              <div>
+                <p className="text-[14px] font-medium">50% Downloaded</p>
+              </div>
+            </div>
+          )}
           {/* QR code */}
           <div className="w-full justify-center sm:justify-end  items-center sm:items-end mt-10 hidden md:flex  relative">
             <div

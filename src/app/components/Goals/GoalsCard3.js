@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 import ButtonLoader from "../Loader/ButtonLoader";
-import proTips from "../Images/Goals/pro-tips.png"
+import proTips from "../Images/Goals/pro-tips.png";
 import { addComma } from "@/app/utility/addComma";
 const GoalsCard3 = ({
   setGoalDetails,
@@ -29,6 +29,7 @@ const GoalsCard3 = ({
           type="range"
           min="50000"
           max="5000000"
+          step="50000" // 👈 ensures increments of 50,000
           value={goalDetails?.wealth_budget}
           onChange={handleChange}
           className="range-slider-education-goal-amount w-full h-[9px] appearance-none rounded-lg overflow-hidden bg-red-500"
@@ -45,7 +46,7 @@ const GoalsCard3 = ({
           </p>
         </div>
       </div>
-      <div className="web-app-gola-wealth-pro-tips p-6 rounded-[20px] border-[0.5px] border-[#FFFFFF] relative mt-10">
+      <div className="web-app-gola-wealth-pro-tips p-6 rounded-[20px] border-[0.5px] border-[#FFFFFF] relative mt-10 hidden">
         <div>
           <p className="text-[16px] font-semibold leading-6 text-center">
             Pro Tips

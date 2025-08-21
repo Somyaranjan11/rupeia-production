@@ -30,7 +30,7 @@ const Page = () => {
   return (
     <div className="flex justify-between flex-col h-full overflow-hidden">
       <div className="px-5 fixed top-0 left-0 w-full z-10 shadow-md bg-[#1A0120]">
-        <NavbarCommonPage Page={"Rupeia"} handleClick={handleClick} />
+        <NavbarCommonPage page={"Rupeia"} handleClick={handleClick} />
       </div>
       {page == 1 && (
         <div>

@@ -56,7 +56,7 @@ const OTPComponent = ({
     <div className="px-5 flex flex-col gap-5 w-full">
       <div className="flex flex-col gap-5">
         <div>
-          <p className="text-[13px] leading-5 font-normal px-5">
+          <p className="text-[13px] leading-5 font-normal px-5 text-center">
             An OTP has been sent to your Email ID ({fistPageOnboard?.email_id})
           </p>
         </div>

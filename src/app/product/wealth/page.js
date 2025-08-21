@@ -28,6 +28,8 @@ const Page = () => {
   const handleClick = () => {
     if (pageStep > 1) {
       setPageStep(pageStep - 1);
+    } else {
+      router.push("/product");
     }
   };
 
@@ -176,8 +178,10 @@ const Page = () => {
       {/* Scrollable Middle Content */}
       <div
         className={`flex-grow ${
-          pageStep == 5 ? "" : "overflow-y-auto pt-20 pb-20"
-        }  ${pageStep == 1 ? "px-0" : " px-5"}`}
+          pageStep == 5 ? "" : "overflow-y-auto pt-20 "
+        }  ${pageStep == 1 ? "px-0" : " px-5"} ${
+          pageStep == 1 || pageStep == 6 ? "pb-0" : "pb-20"
+        }`}
       >
         {/* {pageStep == 1 && (
           <div className="pr-16 pt-2">
@@ -197,7 +201,7 @@ const Page = () => {
             </span>
           </div>
         )}
-        <div className="mt-5 mb-[80px]">
+        <div className={`mt-5 ${pageStep == 6 ? "" : "mb-[80px]"}`}>
           {pageStep == 1 && (
             <WealthCard1
               setGoalQuestionSelect={setGoalQuestionSelect}
@@ -252,10 +256,11 @@ const Page = () => {
       {/* Continue Button stays fixed at the bottom */}
       <div
         className={`bg-[#1A0120] py-4 px-5 fixed bottom-0 left-1/2 -translate-x-1/2 max-w-[calc(100%)] w-full ${
-          (pageStep == 1 || pageStep == 3 || pageStep == 4) && "hidden"
+          (pageStep == 1 || pageStep == 3 || pageStep == 4 || pageStep == 6) &&
+          "hidden"
         }`}
       >
-        {[2, 8, 6, 7].includes(pageStep) && (
+        {[2, 8, 7].includes(pageStep) && (
           <button
             className="border-[#FFFFFF] border-[1px] w-full py-2 rounded-full text-[15px] leading-7 font-medium text-white"
             type="button"
@@ -263,9 +268,9 @@ const Page = () => {
               if (pageStep > 0 && pageStep < 6) {
                 setPageStep(pageStep + 1);
               }
-              if (pageStep == 6) {
-                router.push("/product/kyc");
-              }
+              // if (pageStep == 6) {
+              //   router.push("/product/kyc");
+              // }
             }}
           >
             Continue

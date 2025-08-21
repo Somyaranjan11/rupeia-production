@@ -95,7 +95,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
             setGoalDetails(res1.data.data);
             const transformedData = res1?.data?.data?.monthlyGrowth.map(
               (item) => ({
-                month: item.month,
+                month: `${(item.month / 12).toFixed(1)} Y`,
                 investedAmount: item.investedAmount,
                 currentValue: item.currentValue,
               })
@@ -103,14 +103,22 @@ const BenifitsCard = ({ goalDetailsProps }) => {
             setDataGrid(transformedData);
           } else {
             setGoalDetails(res1.data.data);
-            const transformedData = res1?.data?.data?.monthlyGrowth
+            console.log(
+              "es1?.data?.data?.monthlyGrowth",
+              res1?.data?.data?.monthlyGrowth
+            );
+            const transformedDataWealth = res1?.data?.data?.monthlyGrowth
               ?.map((item) => ({
                 month: item.month,
                 investedAmount: item.investedAmount,
                 currentValue: item.currentValue,
               }))
-              .filter((item) => [36, 60, 119].includes(item.month));
-
+              .filter((item) => [36, 60, 120].includes(item.month));
+            const transformedData = transformedDataWealth?.map((item) => ({
+              month: `${(item.month / 12).toFixed(1)} Y`,
+              investedAmount: item.investedAmount,
+              currentValue: item.currentValue,
+            }));
             setDataGrid(transformedData);
           }
         }
@@ -134,6 +142,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
   console.log("goalDetails", goalDetails);
   console.log("mutualFunds", mutualFunds);
   console.log("allocationFunds", allocationFunds);
+  console.log("dataGrid", dataGrid);
   const CustomTooltip = ({ active, payload, label }) => {
     if (active && payload?.length) {
       return (
@@ -207,20 +216,50 @@ const BenifitsCard = ({ goalDetailsProps }) => {
       ) : (
         <div>
           <div className="flex flex-col gap-3 monthly-sip rounded-[21px] p-2">
-            <span className="text-[14px] font-medium text-white text-center leading-6">
-              Monthly SIP of{" "}
-              <span className="font-semibold">₹{goalDetails?.sipAmount}</span>{" "}
-              at an expected CAGR of
-              <span className="font-semibold">
-                {" "}
-                {goalDetails?.cagr?.toFixed(2)}%{" "}
-              </span>{" "}
-              will enable you to achieve your goal in{" "}
-              <span className="font-semibold">
-                {goalDetails?.duration / 12} years
+            {goalDetailsProps?.goalType == "Wealth+" && (
+              <span className="text-[14px] font-medium text-white text-center leading-6">
+                Monthly {goalDetailsProps?.investmentType} of{" "}
+                <span className="font-semibold">
+                  ₹{addComma(goalDetails?.sipAmount)}
+                </span>{" "}
+                at an expected CAGR of
+                <span className="font-semibold">
+                  {" "}
+                  {goalDetails?.cagr?.toFixed(2)}%{" "}
+                </span>{" "}
+                will build wealth of{" "}
+                <span className="font-semibold">
+                  {" "}
+                  ₹{addComma(goalDetails?.expectedValue)}
+                </span>{" "}
+                in{" "}
+                <span className="font-semibold">
+                  {" "}
+                  {goalDetails?.duration / 12} years
+                </span>
+                .
               </span>
-              .
-            </span>
+            )}
+
+            {goalDetailsProps?.goalType == "Goal" && (
+              <span className="text-[14px] font-medium text-white text-center leading-6 p-2">
+                Monthly SIP of{" "}
+                <span className="font-semibold">
+                  {" "}
+                  ₹{addComma(goalDetails?.sipAmount)}
+                </span>{" "}
+                at an expected CAGR of
+                <span className="font-semibold">
+                  {" "}
+                  {goalDetails?.cagr?.toFixed(2)}%{" "}
+                </span>{" "}
+                will enable you to achieve your goal in{" "}
+                <span className="font-semibold">
+                  {goalDetails?.duration / 12} years
+                </span>
+                .
+              </span>
+            )}
           </div>
           <div className="flex justify-center items-center flex-col mb-4 mt-8">
             <p className="text-[15px] font-poppins font-medium text-[#FFFFFF]">
@@ -230,8 +269,9 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div className="flex flex-col gap-4">
             {allocationFunds?.map((data, index) => (
-              <div className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full"
-              key={index}
+              <div
+                className="flex justify-between bg-[#FFFFFF] rounded-[21px] px-2 pt-2 pb-4 w-full"
+                key={index}
               >
                 <div className="flex pr-10 gap-2 items-center">
                   <img src={data?.fundIcon} className="h-[48px] w-[48px]" />
@@ -362,7 +402,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
             <ResponsiveContainer width="90%" height={300}>
               <LineChart
                 data={dataGrid}
-               margin={{ top: 20, right: 40, left: 40, bottom: 20 }}
+                margin={{ top: 20, right: 40, left: 40, bottom: 20 }}
               >
                 <CartesianGrid strokeDasharray="3 3" stroke="#ccc" />
                 <XAxis dataKey="month" stroke="white" />
@@ -381,7 +421,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
                     position="top"
                     formatter={(val) => `₹${addComma(val)}`}
                     fill="lightblue"
-                     className="text-[12px] font-medium"
+                    className="text-[12px] font-medium"
                   />
                 </Line>
                 <Line
@@ -427,9 +467,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
           </div>
           <div className="bg-[#400B4B] flex flex-col gap-6 p-6 rounded-3xl">
             {benifitsData.map((data, index) => (
-              <div className="flex flex-row items-center gap-6"
-              key={index}
-              >
+              <div className="flex flex-row items-center gap-6" key={index}>
                 <div className="bg-[#A76CE8] p-2 h-[45px] w-[45px] rounded-4xl flex flex-col items-center justify-center">
                   <img
                     src={data.image.src}
@@ -442,6 +480,15 @@ const BenifitsCard = ({ goalDetailsProps }) => {
                 </p>
               </div>
             ))}
+          </div>
+          <div className="bg-[#1A0120] py-4 px-5 max-w-[calc(100%)] w-full">
+            <button
+              className={`w-full py-2 rounded-full text-[15px] leading-7 font-medium 
+                   text-white border-[1px] border-white 
+              }`}
+            >
+              Continue
+            </button>
           </div>
         </div>
       )}

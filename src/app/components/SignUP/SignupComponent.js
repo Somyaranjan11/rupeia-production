@@ -97,7 +97,7 @@ const SignupComponent = ({
     }
   };
   return (
-    <div className="px-5 flex flex-col gap-5 w-full">
+    <div className="px-5 flex flex-col gap-5 w-full overflow-y-auto">
       <div>
         <input
           placeholder="Email address*"

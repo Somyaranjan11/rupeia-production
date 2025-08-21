@@ -126,7 +126,7 @@ const NewsContent = ({ categoryList }) => {
                           likeNews(data?._id);
                         }}
                       />
-                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
+                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium hidden">
                         {data?.likeCount}
                       </p>
                     </span>
@@ -135,7 +135,7 @@ const NewsContent = ({ categoryList }) => {
                       onClick={handleShare}
                     >
                       <Share />
-                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
+                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium hidden">
                         11K
                       </p>
                     </span>
@@ -147,7 +147,7 @@ const NewsContent = ({ categoryList }) => {
                       >
                         <Save />
                       </div>
-                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
+                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium hidden">
                         {data?.saveCount}
                       </p>
                     </span>

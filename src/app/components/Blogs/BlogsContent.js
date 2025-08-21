@@ -36,9 +36,9 @@ const BlogsContent = ({ blogsContent, categoryList }) => {
     try {
       setLoading(true);
       const response = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_BASE_URL}/blogs?category=${categoryList}`
+        `${process.env.NEXT_PUBLIC_API_BASE_URL}/userblogs?category=${categoryList}`
       );
-      setBlogs(response?.data?.data);
+      setBlogs(response?.data);
     } catch (error) {
       console.error("Error fetching blogs:", error);
     } finally {
@@ -93,6 +93,7 @@ const BlogsContent = ({ blogsContent, categoryList }) => {
       setLoading(false);
     }
   };
+  console.log("blogs", blogs);
   return (
     <div className="h-full w-full overflow-y-auto px-5">
       {loading ? (
@@ -104,17 +105,17 @@ const BlogsContent = ({ blogsContent, categoryList }) => {
               <div key={index}>
                 <div>
                   <img
-                    src={BlogsImage.src}
-                    className="h-[190px]"
+                    src={data?.sectionData?.image}
+                    className="h-[190px] rounded-2xl"
                     alt="blogs-image"
                   />
                 </div>
                 <div className="flex flex-col gap-3 mt-4">
                   <p className="text-[17px] font-poppins font-medium leading-6">
-                    {data?.title}
+                    {data?.sectionData?.heading}
                   </p>
-                  <p className="text-[15px] font-poppins font-medium leading-6">
-                    {data?.content}
+                  <p className="text-[14px] font-poppins font-medium leading-6">
+                    {data?.sectionData?.shortDescription}
                   </p>
                 </div>
                 <div className="flex justify-end items-center mt-1">
@@ -129,7 +130,7 @@ const BlogsContent = ({ blogsContent, categoryList }) => {
                 </div>
                 <div className="flex justify-between items-center mt-3">
                   <div>
-                    <p className="text-[#FFFFFF7A] text-[13px] leading-6 font-medium">
+                    <p className="text-[#FFFFFF7A] text-[13px] leading-6 font-medium hidden">
                       few hours ago
                     </p>
                   </div>
@@ -141,7 +142,7 @@ const BlogsContent = ({ blogsContent, categoryList }) => {
                           saveLike(data?._id);
                         }}
                       />
-                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
+                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium hidden">
                         {data?.likeCount}
                       </p>
                     </span>
@@ -150,7 +151,7 @@ const BlogsContent = ({ blogsContent, categoryList }) => {
                       onClick={handleShare}
                     >
                       <Share />
-                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
+                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium hidden">
                         10K
                       </p>
                     </span>
@@ -162,7 +163,7 @@ const BlogsContent = ({ blogsContent, categoryList }) => {
                       >
                         <Save />
                       </div>
-                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium">
+                      <p className="text-[#F2EAF3] text-[11px] leading-6 font-medium hidden">
                         {data?.saveCount}
                       </p>
                     </span>

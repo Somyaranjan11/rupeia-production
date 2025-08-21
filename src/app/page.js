@@ -25,7 +25,7 @@ export default function Home() {
     }
   }, []);
   const user = getUserData();
-   const pathname = usePathname();
+  const pathname = usePathname();
   return (
     <div
       className={` h-screen flex flex-col font-poppins ${
@@ -40,7 +40,7 @@ export default function Home() {
         </div>
         <div className="flex justify-center items-center flex-col gap-1 mt-5">
           <p className="text-[32px] font-semibold leading-7 font-poppins">
-            Hi {user?.firstName}!
+            Hi {user ? user?.firstName : "User"}!
           </p>
           <p className="text-[16px] font-medium leading-7 font-poppins">
             Welcome Back{" "}

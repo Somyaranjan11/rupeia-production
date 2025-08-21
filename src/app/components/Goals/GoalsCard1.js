@@ -82,7 +82,7 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                     }`}
                   >
                     <img src={goals1.src} className="h-[150px]" />
-                    <div className="absolute bottom-0 p-5  w-[60%]">
+                    <div className="absolute top-10 w-[60%] pl-3">
                       <p
                         className={`text-[#281F1F] text-[24px] font-medium leading-6`}
                       >
@@ -105,7 +105,7 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                     }`}
                   >
                     <img src={goals2.src} className="h-[150px]" />
-                    <div className="absolute bottom-0 p-5  w-[60%]">
+                    <div className="absolute top-10 w-[60%] pl-3">
                       <p
                         className={`text-[#281F1F] text-[24px] font-medium leading-6`}
                       >
@@ -128,7 +128,7 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                     }`}
                   >
                     <img src={goals3.src} className="h-[150px]" />
-                    <div className="absolute bottom-0 p-5  w-[60%]">
+                    <div className="absolute top-10 w-[60%] pl-3">
                       <p
                         className={`text-[#281F1F] text-[24px] font-medium leading-6`}
                       >
@@ -151,7 +151,7 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                     }`}
                   >
                     <img src={goals4.src} className="h-[150px]" />
-                    <div className="absolute bottom-0 p-5  w-[60%]">
+                    <div className="absolute top-10 w-[60%] pl-3">
                       <p
                         className={`text-[#281F1F] text-[24px] font-medium leading-6`}
                       >
@@ -174,7 +174,7 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                     }`}
                   >
                     <img src={goals5.src} className="h-[150px]" />
-                    <div className="absolute bottom-0 p-5  w-[60%]">
+                    <div className="absolute top-10 w-[60%] pl-3">
                       <p
                         className={`text-[#281F1F] text-[24px] font-medium leading-6`}
                       >
@@ -197,7 +197,7 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                     }`}
                   >
                     <img src={goals6.src} className="h-[150px]" />
-                    <div className="absolute bottom-0 p-5  w-[60%]">
+                    <div className="absolute top-10 w-[60%] pl-3">
                       <p
                         className={`text-[#281F1F] text-[24px] font-medium leading-6`}
                       >
@@ -220,7 +220,7 @@ const GoalsCard1 = ({ setGoalDetails, goalDetails, setPageStep, pageStep }) => {
                     }`}
                   >
                     <img src={goals7.src} className="h-[150px]" />
-                    <div className="absolute bottom-0 p-5  w-[60%]">
+                    <div className="absolute top-10 w-[60%] pl-3">
                       <p
                         className={`text-[#281F1F] text-[24px] font-medium leading-6`}
                       >

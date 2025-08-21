@@ -96,7 +96,7 @@ const PhoneNumberComponent = ({
       </div>
       <div>
         <input
-          placeholder="Enter Invite Code"
+          placeholder="Enter Invite Code (optional)"
           className="border-[1px] border-[#916D98] text-[14px] font-medium leading-7 text-[#FFFFFF] px-3 h-[52px] w-full rounded-3xl focus:outline-none"
           value={fistPageOnboard?.invite_code}
           type="text"
