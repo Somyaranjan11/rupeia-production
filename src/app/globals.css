@@ -706,3 +706,6 @@ body {
 .submitted-success-message {
   background: linear-gradient(179.72deg, #551262 0.24%, #270330 63.43%);
 }
+.join-now-button-bg {
+  background: radial-gradient(50% 50% at 50% 50%, #9b84f0 0%, #560297 100%);
+}

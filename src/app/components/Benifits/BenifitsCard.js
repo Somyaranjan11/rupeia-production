@@ -24,6 +24,7 @@ import BenfitsImage2 from "../Images/benifits-2.png";
 import BenfitsImage3 from "../Images/benifits-3.png";
 import BenfitsImage4 from "../Images/benifits-4.png";
 import BenfitsImage5 from "../Images/benifits-5.png";
+import { useRouter } from "next/navigation";
 
 const BenifitsCard = ({ goalDetailsProps }) => {
   console.log("goalDetailsProps", goalDetailsProps);
@@ -59,6 +60,7 @@ const BenifitsCard = ({ goalDetailsProps }) => {
   const [mutualFunds, setMutualFunds] = useState();
   const [allocationFunds, setAllocationFunds] = useState();
   const [dataGrid, setDataGrid] = useState([]);
+  const router = useRouter();
 
   useEffect(() => {
     const fetchQuestions = async () => {
@@ -486,6 +488,10 @@ const BenifitsCard = ({ goalDetailsProps }) => {
               className={`w-full py-2 rounded-full text-[15px] leading-7 font-medium 
                    text-white border-[1px] border-white 
               }`}
+              type="button"
+              onClick={() => {
+                router.push("/product/join-now");
+              }}
             >
               Continue
             </button>

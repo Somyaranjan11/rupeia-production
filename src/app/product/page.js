@@ -77,7 +77,7 @@ const Page = () => {
             <p className="text-[12px] text-black font-medium leading-7 pt-2">
               SIP
             </p>
-            <p className="text-[15px] text-black font-medium">₹5,600</p>
+            <p className="text-[15px] text-black font-medium">₹0</p>
           </div>
         </div>
         <div className="flex items-center gap-2 px-5">
