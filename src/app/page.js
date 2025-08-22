@@ -29,84 +29,94 @@ export default function Home() {
   const user = getUserData();
   const pathname = usePathname();
   return (
-    <div className="h-screen flex flex-col font-poppins mt-5 pb-20 w-full bg-[#1A0120]">
-      <div className="flex justify-center items-center flex-col gap-1">
-        <p className="text-[32px] font-semibold leading-7 font-poppins">
-          Hi {user ? user?.firstName : "User"}!
-        </p>
-        <p className="text-[16px] font-medium leading-7 font-poppins">
-          Welcome Back{" "}
-        </p>
-      </div>
+    <div
+      className={` h-screen flex flex-col font-poppins ${
+        pathname.includes("customer-support") || pathname.includes("chat-bot")
+          ? "bg-white"
+          : "bg-[#1A0120]"
+      }`}
+    >
+      <div className="flex flex-col h-full">
+        <div className="w-full">
+          <Navbar />
+        </div>
+        <div className="flex justify-center items-center flex-col gap-1 mt-5">
+          <p className="text-[32px] font-semibold leading-7 font-poppins">
+            Hi {user ? user?.firstName : "User"}!
+          </p>
+          <p className="text-[16px] font-medium leading-7 font-poppins">
+            Welcome Back{" "}
+          </p>
+        </div>
 
-      <div className="bg-white rounded-4xl flex flex-col h-full mt-3 mb-10 p-2 relative">
-        {/* Landing page boxes */}
-        <div className="flex justify-between items-center px-5 pb-4 pt-4 gap-3">
-          <div
-            className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
-            onClick={() => {
-              router.push("/product/pulse");
-            }}
-          >
-            <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
-              <GoGoal className="text-[18px]" />
+        <div className="bg-white rounded-4xl flex flex-col h-full mt-3 p-2 relative">
+          {/* Landing page boxes */}
+          <div className="flex justify-between items-center px-5 pb-4 pt-4 gap-3">
+            <div
+              className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+              onClick={() => {
+                router.push("/product/pulse");
+              }}
+            >
+              <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+                <GoGoal className="text-[18px]" />
+              </div>
+              <p className="text-[12px] text-black font-medium leading-7 pt-2">
+                Pulse
+              </p>
+              <p className="text-[11px] text-black font-medium flex">
+                <PiWaveform className="text-[25px]" />
+              </p>
             </div>
-            <p className="text-[12px] text-black font-medium leading-7 pt-2">
-              Pulse
-            </p>
-            <p className="text-[11px] text-black font-medium flex">
-              <PiWaveform className="text-[25px]" />
-            </p>
+            <div
+              className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+              onClick={() => {
+                router.push("/product/portfolio");
+              }}
+            >
+              <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+                <Bag />
+              </div>
+              <p className="text-[12px] text-black font-medium leading-7 pt-2">
+                Portfolio
+              </p>
+              <span>
+                <IoIosAddCircle className="text-[#1A0120] text-[25px]" />
+              </span>
+            </div>
+            <div
+              className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
+              onClick={() => {
+                router.push("/product/sip");
+              }}
+            >
+              <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
+                <MdSip className="text-[18px]" />
+              </div>
+              <p className="text-[12px] text-black font-medium leading-7 pt-2">
+                SIP
+              </p>
+              <p className="text-[18px] text-black font-medium">₹0</p>
+            </div>
           </div>
-          <div
-            className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
-            onClick={() => {
-              router.push("/product/portfolio");
-            }}
-          >
-            <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
-              <Bag />
-            </div>
-            <p className="text-[12px] text-black font-medium leading-7 pt-2">
-              Portfolio
+          <div className="flex items-center gap-2 px-5">
+            <p className="text-[16px] font-medium leading-6 text-black">
+              Let’s Grow Your Wealth
             </p>
-            {/* <span className="text-[11px] text-black font-medium">₹4,70,000 <span className="text-green-600">(7.8%)</span></span> */}
             <span>
-              <IoIosAddCircle className="text-[#1A0120] text-[25px]" />
+              <GoArrowUpRight className="text-black" />
             </span>
           </div>
-          <div
-            className="relative border-[1px] border-[#9563A2] w-full flex justify-center items-center flex-col rounded-xl pt-1 pb-2"
-            onClick={() => {
-              router.push("/product/sip");
-            }}
-          >
-            <div className="bg-primary p-[7px] w-fit rounded-xl absolute -top-4">
-              <MdSip className="text-[18px]" />
+          <div className="h-full w-auto mt-3 overflow-y-hidden overflow-x-auto flex gap-3  mb-12 ml-5 ">
+            <div className="min-w-[270px]">
+              <LandingPageCard />
             </div>
-            <p className="text-[12px] text-black font-medium leading-7 pt-2">
-              SIP
-            </p>
-            <p className="text-[15px] text-black font-medium">₹0</p>
-          </div>
-        </div>
-        <div className="flex items-center gap-2 px-5">
-          <p className="text-[16px] font-medium leading-6 text-black">
-            Let’s Grow Your Wealth
-          </p>
-          <span>
-            <GoArrowUpRight className="text-black" />
-          </span>
-        </div>
-        <div className="h-full w-auto mt-3 overflow-y-hidden overflow-x-auto flex gap-3  mb-12 ml-5 ">
-          <div className="min-w-[280px]">
-            <LandingPageCard />
-          </div>
-          <div className="min-w-[280px]">
-            <LandingPageNewsCard />
-          </div>
-          <div className="min-w-[280px]">
-            <LandingPageBlogsCard />
+            <div className="min-w-[270px]">
+              <LandingPageNewsCard />
+            </div>
+            <div className="min-w-[270px]">
+              <LandingPageBlogsCard />
+            </div>
           </div>
         </div>
       </div>
